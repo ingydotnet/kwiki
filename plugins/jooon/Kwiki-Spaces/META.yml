@@ -1,0 +1,13 @@
+name: Kwiki-Spaces
+version: 0.01
+abstract: Blocks edit based on added URLs
+author: Jon Aslund <jon.aslund.org>
+license: perl
+distribution_type: module
+requires:
+  perl: 5.6.1
+  Kwiki: 0.38
+no_index:
+  directory:
+    - inc
+generated_by: Module::Install version 0.34

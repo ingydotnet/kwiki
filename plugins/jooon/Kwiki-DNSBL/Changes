@@ -1,0 +1,12 @@
+---
+version: 0.02
+date:    Wed Mar  2 22:36:11 CET 2005
+changes:
+- Gets the ip address in a slightly different way
+- Removed utf-8 from perldoc
+- Check for external module at install time (ingy)
+---
+version: 0.01
+date:    Thu Feb 17 20:24:00 CET 2005
+changes:
+- Initial release
