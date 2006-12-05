@@ -1,0 +1,10 @@
+---
+version: 0.11
+date:    Sat Jun 17 15:59:19 PDT 2006
+changes:
+- Fixed an html boo boo
+---
+version: 0.10
+date:    Sat Jun 17 11:11:49 PDT 2006
+changes:
+- Initial release

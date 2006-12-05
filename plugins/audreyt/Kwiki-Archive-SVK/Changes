@@ -1,0 +1,16 @@
+[Changes for 0.06 - 2004-09-20]
+
+* Make "kwiki -update" work with Subversion 1.0.x.
+* When importing from RCS, rename instead of deleting old RCS files.
+  (Both reported by Marcus Ramberg)
+
+[Changes for 0.05 - 2004-09-07]
+
+* Fixed RCS import glitch; reported by Marcus Ramberg.
+* Try to avoid edit contention by affecting utime; reported by Chia-Liang Kao.
+
+[Changes for 0.04 - 2004-09-04]
+
+* Fixed initialization of repository.
+* Fixed off-by-one error as passed to Time::Local.
+  (Both reported by Greg Matheson)

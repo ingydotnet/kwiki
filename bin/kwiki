@@ -1,0 +1,96 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+our $VERSION = '0.37';
+use Cwd 'abs_path';
+use FindBin;
+
+sub valid_base {
+    my $base = shift;
+    -d $base and
+    -d "$base/Kwiki" and
+    -d "$base/plugins";
+}
+
+sub find_base {
+    return $ENV{KWIKI_REPOSITORY_BASE}
+      if defined $ENV{KWIKI_REPOSITORY_BASE};
+    my $base = $FindBin::Bin;
+    my $bin = $0;
+    $bin =~ s/.*\///;
+    $bin = "$base/$bin";
+    while (-l $bin) {
+        $bin = abs_path(readlink $bin);
+        $base = $bin;
+        $base =~ s/(.*)\/.*/$1/;
+    }
+    $base = abs_path("$base/..");
+    return $base if valid_base($base);
+    die <<'...';
+Can't locate Kwiki repository. 
+Try setting the KWIKI_REPOSITORY_BASE environment variable.
+...
+} 
+
+BEGIN {
+    my $base = find_base();
+    die "$base is an invalid Kwiki source code repository"
+      unless valid_base($base);
+    unless (-e 'lib') {
+        system("$base/bin/make-lib-tree.pl $base/* $base/plugins/*") == 0
+          or die "make-lib-tree.pl failed";
+        die unless -d 'lib';
+    }
+    my $lib = abs_path('lib');
+    eval "use lib '$lib'; 1"
+      or die $@;
+    local $ENV{KWIKI_REPOSITORY_BASE} = $base;
+}
+
+use Kwiki;
+my @configs = qw(config*.yaml -plugins plugins);
+Kwiki->new->load_hub(@configs)->command->process(@ARGV)->hub->remove_hooks;
+
+__END__
+
+=head1 NAME
+
+kwiki - The Kwiki Command Line Tool for Checked Out Code
+
+=head1 USAGE
+
+    > # Get the source code and put 'kwiki' in your path
+    > svn co http://svn.kwiki.org/kwiki ~/src/kwiki
+    > export PATH=$PATH:~/src/kwiki/bin
+
+    > # Make a new Kwiki site
+    > mkdir ~/kwiki
+    > cd ~/kwiki
+    > kwiki -new my-first-kwiki
+    > cd my-first-kwiki
+    > kwiki -update
+
+=head1 DESCRIPTION
+
+This script does the same thing as the C<kwiki> command line program
+that is normally installed when you install C<Kwiki.pm> from CPAN.
+
+Use this script instead, when you are getting the Kwiki related modules
+from C<http://svn.kwiki.org/kwiki/> instead of CPAN.
+
+=head1 AUTHOR
+
+Brian Ingerson <ingy@cpan.org>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2005. Brian Ingerson. All rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See http://www.perl.com/perl/misc/Artistic.html
+
+=cut
+
+# vim: set ft=perl:

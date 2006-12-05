@@ -1,0 +1,4 @@
+You should take care to make sure this directory is not accessable by the web.
+
+For apache users a .htaccess file is provided to do just that. However this
+requires that your apache pays attention to the .htaccess file!

@@ -1,0 +1,5 @@
+---
+version: 0.10
+date: Fri May 27 21:26:09 UTC 2005
+changes:
+- Initial version of Kwiki::Ajax

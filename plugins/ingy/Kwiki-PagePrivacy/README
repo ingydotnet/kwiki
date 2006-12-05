@@ -1,0 +1,28 @@
+NAME
+    Kwiki::PagePrivacy - Kwiki Page Privacy Plugin
+
+SYNOPSIS
+DESCRIPTION
+    Kwiki::PagePrivacy is a plugin that lets you mark individual pages as:
+
+        * Public - normal readable/writable
+        * Protected - readonly to everyone except the control group.
+        * Private - invisible to everyone but the control group.
+
+    By control group I mean that there are multiple entry points or "views" into the kwiki and the view has an associated permissions group. 
+
+    Visit http://www.kwiki.org/?AdminView for how to build separate views for your kwiki.
+
+    Don't forget to secure the admin view with something like Apache's .htaccess files. You only want people who are admins setting the privacy levels. 
+
+AUTHOR
+    Brian Ingerson <ingy@cpan.org>
+
+COPYRIGHT
+    Copyright (c) 2004. Brian Ingerson. All rights reserved.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+    See http://www.perl.com/perl/misc/Artistic.html
+

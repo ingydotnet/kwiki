@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+# - Determine if Kwiki will be running on this machine
+# - Determine the user that the webserver will run as
+# - Determine which perl we will be using
+# - Rewrite scripts to use the correct perl in the hashbang
+# - Check if we have svn
+# - Select a klist
+# - Get all sources for the klist
+# - Create klib
+# - Set appropriate file permissions
+# - Install Kwiki
+# - Delete Kwiki-Kwiki distro files
+# - Yay!

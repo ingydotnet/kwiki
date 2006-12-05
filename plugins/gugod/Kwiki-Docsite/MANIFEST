@@ -1,0 +1,6 @@
+Changes
+lib/Kwiki/Docsite.pm
+Makefile.PL
+MANIFEST
+README
+t/00-load.t

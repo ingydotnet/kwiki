@@ -1,0 +1,5 @@
+---
+version: 0.10
+date: Mon Jun 20 11:50:28 PDT 2005
+changes:
+- Initial version of Kwiki::Transclude

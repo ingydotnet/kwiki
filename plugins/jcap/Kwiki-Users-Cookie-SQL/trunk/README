@@ -1,0 +1,44 @@
+Kwiki-Users-Cookie-SQL
+
+VERSION 0.01
+
+Subclass of Kwiki::Users::Cookie.  This module uses the cookie value to perform
+a SQL lookup, and returns that value as the username. 
+
+INSTALLATION
+    
+To install this module, run the following commands:
+
+    perl Makefile.PL
+    make
+    make test
+    make install
+
+    cd /path/to/kwiki
+    echo "users_class: Kwiki::Users::Cookie::SQL" >> config.yaml
+    echo "users_cookie_name: user_cookie"    >> config.yaml
+    echo "users_sql_dsn: dbi:mysql:kwiki" >> config.yaml 
+    echo "users_sql_db_user: sql_user" >> config.yaml 
+    echo "users_sql_db_pass: sql_pass" >> config.yaml 
+    echo "users_sql_table: users" >> config.yaml 
+    echo "users_sql_return_value_column: username" >> config.yaml
+    echo "users_sql_where_cookie_column: sid" >> config.yaml
+    echo "users_sql_where_extra: AND active = 1" >> config.yaml
+    echo "users_sql_order_by: created_date desc" >> config.yaml
+
+This would query the data source "dbi:mysql:kwiki":
+
+     SELECT username 
+       FROM users 
+      WHERE ( sid = $cookies{$user_cookie_name} ) 
+            AND active = 1 
+   ORDER BY created_date desc;
+
+Optionally, to display the user name install Kwiki::UserName::Cookie.
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2005 John cappiello
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.

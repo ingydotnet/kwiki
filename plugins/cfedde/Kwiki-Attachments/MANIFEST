@@ -1,0 +1,7 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Kwiki-Attachments.t
+lib/Kwiki/Attachments.pm
+META.yml                                 Module meta-data (added by MakeMaker)
