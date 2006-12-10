@@ -72,7 +72,7 @@ END
 sub assert_directory {
     chdir io->dir(shift || '.')->assert->open->name;
     my $noun = shift;
-    my @all_files = grep { not /^\.[\\\/]?lib$/ } io('.')->all;
+    my @all_files = grep { not /^\.[\\\/]?(lib|Makefile)$/ } io('.')->all;
     die "Can't make new $noun in a non-empty directory\n"
       if @all_files;
 }

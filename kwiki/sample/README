@@ -1,6 +1,0 @@
-This is a sample Kwiki installation directory.
-
-To install a Kwiki instance in this directory, simply run the command "make".
-
-Then configure your web server to expose this directory as a CGI.
-

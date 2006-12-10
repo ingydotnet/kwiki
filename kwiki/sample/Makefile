@@ -15,5 +15,5 @@ update:
 $(KWIKI_BASE)/lib:
 	$(MAKE) -C $@
 
-clean:
-	ls | grep -v Makefile | grep -v README | xargs rm -fr
+PURGE:
+	ls | grep -v Makefile | xargs rm -fr
