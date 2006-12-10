@@ -1,11 +1,10 @@
 Welcome to Kwiki 2.0
 
-For a fast start, change directory:
+For a fast start:
 
     > perl Configure.pl
-    > cd kwiki/sample
-    > more README
-    > make
+    > cd kwiki
+    > # Follow instructions in ./README
 
 == Installation
 
