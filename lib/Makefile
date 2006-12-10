@@ -2,28 +2,28 @@ include ../core/modules.mk
 
 all: core
 
-core: $(CORE_PATHS) $(CORE_MODULES)
+core: dummy/dummy $(CORE_PATHS) $(CORE_MODULES)
 
 $(CORE_LEVEL_1):
 	ln -s ../core/*/lib/$@ $@
 
-$(CORE_LEVEL_2): dummy
+$(CORE_LEVEL_2):
 	@( \
 	cd dummy; \
 	lib=../../core/*/lib/$@; \
-	ln -s $$lib ../$@; \
+	ln -fs $$lib ../$@; \
 	echo ln -s $$lib $@ \
 	)
 
-$(CORE_LEVEL_3): dummy/dummy
+$(CORE_LEVEL_3):
 	@( \
 	cd dummy/dummy; \
 	lib=../../../core/*/lib/$@; \
-	ln -s $$lib ../../$@; \
+	ln -fs $$lib ../../$@; \
 	echo ln -s $$lib $@ \
 	)
 
-$(CORE_PATHS) dummy dummy/dummy:
+$(CORE_PATHS) dummy/dummy:
 	mkdir -p $@
 
 clean:

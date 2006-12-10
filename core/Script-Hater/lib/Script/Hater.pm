@@ -33,6 +33,7 @@ sub run {
 sub data {
     require YAML;
     local $/;
+    no warnings 'once';
     YAML::Load(<main::DATA>);
 }
 
@@ -41,12 +42,17 @@ sub generic_handler {
     my $next;
 
     if (my $handler = $data->{handler}) {
-        $next = $self->$handler($data)
+        $next = $self->$handler($data);
+        $next ||= '';
+        $next = '' unless $next =~ /^[a-z]\w+$/;
     }
 
     $self->clear if $data->{clear};
 
-    print "\n", $data->{print} if $data->{print};
+    if (my $print = $data->{print}) {
+        $print .= "\n" unless $print =~ /\n\z/;
+        print "\n$print";
+    }
 
     $next = $self->prompt($data->{prompt}) if $data->{prompt};
 

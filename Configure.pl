@@ -6,7 +6,7 @@ use Config();
 
 # Clobber @INC to make sure we are self contained.
 BEGIN {
-    system("cd lib; make core") == 0 or die;
+    system("(cd lib; make core)") == 0 or die;
     @INC = (
         'lib',
         $Config::Config{privlib},
@@ -22,14 +22,21 @@ Script::Hater->new->run;
     package Script::Hater;
     use IO::All;
 
+    sub initialize {
+        my ($self, $data) = @_;
+        my $save = $self->save;
+        $save->{kwiki_base} = $ENV{PWD};
+        return;
+    }
+
     sub write_config_yaml {
         my ($self, $data) = @_;
         my $save = $self->save;
         my $config = <<"...";
-perl_path: $save->{perl_path}
-kwiki_base: .
+PERL = $save->{perl_path}
+KWIKI_BASE = $save->{kwiki_base}
 ...
-        io('config.yaml')->print($config);
+        io('config.mk')->print($config);
         return;
     }
 
@@ -52,6 +59,10 @@ __DATA__
 ---
 start:
   handler: check_sanity
+  next: setup
+
+setup:
+  handler: initialize
   next: welcome
 
 welcome:

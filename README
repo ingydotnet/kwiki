@@ -2,14 +2,14 @@ Welcome to Kwiki 2.0
 
 For a fast start, change directory:
 
-    cd server/
-    more README
-    make
+    > perl Configure.pl
+    > cd kwiki/sample
+    > more README
+    > make
 
 == Installation
 
-0 Run `make` in this directory
-0 Put `./bin/` in your path
+0 Run `perl Configure.pl` in this directory
+0 Put `/path/to/this/dir/bin/` in your path
 0 Run `kwiki -new mywiki` somewhere
-
 
