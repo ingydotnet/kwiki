@@ -3,4 +3,4 @@ all:
 
 clean:
 	$(MAKE) -C lib clean
-	rm config.*
+	rm -f config.*

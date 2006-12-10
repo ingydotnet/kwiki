@@ -1,10 +1,15 @@
 include ../core/modules.mk
-include ../cpan/modules.mk
-
-all: core cpan
+include ../plugins/modules.mk
 
 #-------------------------------------------------------------------------------
-core: dummy/dummy $(CORE_PATHS) $(CORE_MODULES)
+all: core cpan
+
+$(CORE_PATHS) $(CPAN_PATHS) $(PLUGIN_PATHS) dummy/dummy/dummy/dummy:
+	mkdir -p $@
+
+#-------------------------------------------------------------------------------
+core: $(CORE_PATHS) $(CORE_MODULES) \
+	dummy/dummy/dummy/dummy \
 
 $(CORE_LEVEL_1):
 	ln -s ../core/*/lib/$@ $@
@@ -26,7 +31,8 @@ $(CORE_LEVEL_3):
 	)
 
 #-------------------------------------------------------------------------------
-cpan: dummy/dummy $(CPAN_PATHS) $(CPAN_MODULES)
+cpan: $(CPAN_PATHS) $(CPAN_MODULES) \
+	dummy/dummy/dummy/dummy 
 
 $(CPAN_LEVEL_1):
 	ln -s ../cpan/*/lib/$@ $@
@@ -48,8 +54,40 @@ $(CPAN_LEVEL_3):
 	)
 
 #-------------------------------------------------------------------------------
-$(CORE_PATHS) $(CPAN_PATHS) dummy/dummy:
-	mkdir -p $@
+plugins: $(PLUGIN_PATHS) $(PLUGIN_MODULES) \
+	dummy/dummy/dummy/dummy 
+
+$(PLUGIN_LEVEL_2):
+	@( \
+	cd dummy; \
+	lib=../../plugins/*/*/lib/$@; \
+	ln -fs $$lib ../$@; \
+	echo ln -s $$lib $@ \
+	)
+
+$(PLUGIN_LEVEL_3):
+	@( \
+	cd dummy/dummy; \
+	lib=../../../plugins/*/*/lib/$@; \
+	ln -fs $$lib ../../$@; \
+	echo ln -s $$lib $@ \
+	)
+
+$(PLUGIN_LEVEL_4):
+	@( \
+	cd dummy/dummy/dummy; \
+	lib=../../../../plugins/*/*/lib/$@; \
+	ln -fs $$lib ../../../$@; \
+	echo ln -s $$lib $@ \
+	)
+
+$(PLUGIN_LEVEL_5):
+	@( \
+	cd dummy/dummy/dummy/dummy; \
+	lib=../../../plugins/*/*/lib/$@; \
+	ln -fs $$lib ../../$@; \
+	echo ln -s $$lib $@ \
+	)
 
 #-------------------------------------------------------------------------------
 clean:
