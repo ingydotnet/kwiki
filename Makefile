@@ -1,2 +1,6 @@
 all:
-	@echo Kwiki 2.0 under construction!!!
+	@echo No default target
+
+clean:
+	$(MAKE) -C lib clean
+	rm config.*
