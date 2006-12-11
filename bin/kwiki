@@ -8,7 +8,7 @@ use FindBin;
 sub valid_base {
     my $base = shift;
     -d $base and
-    -d "$base/Kwiki" and
+    -d "$base/core/Kwiki" and
     -d "$base/plugins";
 }
 
