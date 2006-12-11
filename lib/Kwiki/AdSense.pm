@@ -1,0 +1,1 @@
+../../plugins/ingy/Kwiki-AdSense/lib/Kwiki/AdSense.pm

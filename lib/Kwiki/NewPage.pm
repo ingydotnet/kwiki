@@ -1,0 +1,1 @@
+../../plugins/ingy/Kwiki-NewPage/lib/Kwiki/NewPage.pm

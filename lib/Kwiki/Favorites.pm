@@ -1,0 +1,1 @@
+../../plugins/ingy/Kwiki-Favorites/lib/Kwiki/Favorites.pm

@@ -1,0 +1,1 @@
+../../../plugins/gugod/Kwiki-Search-Plucene/lib/Kwiki/Search/Plucene.pm

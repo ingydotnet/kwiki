@@ -1,0 +1,1 @@
+../core/Spiffy/lib/Spiffy.pm

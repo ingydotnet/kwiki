@@ -1,0 +1,1 @@
+../../../plugins/ingy/Kwiki-Theme-Klassik/lib/Kwiki/Theme/Klassik.pm

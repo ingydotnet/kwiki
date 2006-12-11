@@ -1,0 +1,1 @@
+../../../plugins/gugod/Kwiki-DB/lib/Kwiki/DB/ClassDBI.pm

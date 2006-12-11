@@ -6,7 +6,6 @@ use Config();
 
 # Clobber @INC to make sure we are self contained.
 BEGIN {
-    system("(cd lib; make all)") == 0 or die;
     @INC = (
         'lib',
         $Config::Config{privlib},

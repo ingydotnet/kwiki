@@ -1,0 +1,1 @@
+../../plugins/gugod/Kwiki-SocialMap/lib/Kwiki/SocialMap.pm

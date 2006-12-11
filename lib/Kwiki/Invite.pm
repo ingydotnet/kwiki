@@ -1,0 +1,1 @@
+../../plugins/gugod/Kwiki-Invite/lib/Kwiki/Invite.pm

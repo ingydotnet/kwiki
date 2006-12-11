@@ -1,0 +1,1 @@
+../../plugins/rjbs/Kwiki-IRCMode/lib/Kwiki/IRCMode.pm

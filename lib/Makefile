@@ -89,4 +89,4 @@ $(PLUGIN_LEVEL_5):
 
 #-------------------------------------------------------------------------------
 clean:
-	ls | grep -v Makefile | xargs rm -rf
+	rm -rf dummy

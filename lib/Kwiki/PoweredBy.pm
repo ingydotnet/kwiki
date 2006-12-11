@@ -1,0 +1,1 @@
+../../plugins/ingy/Kwiki-PoweredBy/lib/Kwiki/PoweredBy.pm

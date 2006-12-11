@@ -1,0 +1,1 @@
+../../plugins/gugod/Kwiki-PageTemplate/lib/Kwiki/PageTemplate.pm

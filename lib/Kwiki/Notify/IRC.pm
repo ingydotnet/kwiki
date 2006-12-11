@@ -1,0 +1,1 @@
+../../../plugins/ian/Kwiki-Notify-IRC/lib/Kwiki/Notify/IRC.pm
