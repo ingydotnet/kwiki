@@ -13,8 +13,8 @@ sub valid_base {
 }
 
 sub find_base {
-    return $ENV{KWIKI_REPOSITORY_BASE}
-      if defined $ENV{KWIKI_REPOSITORY_BASE};
+    return $ENV{KWIKI_BASE}
+      if defined $ENV{KWIKI_BASE};
     my $base = $FindBin::Bin;
     my $bin = $0;
     $bin =~ s/.*\///;
@@ -28,7 +28,7 @@ sub find_base {
     return $base if valid_base($base);
     die <<'...';
 Can't locate Kwiki repository. 
-Try setting the KWIKI_REPOSITORY_BASE environment variable.
+Try setting the KWIKI_BASE environment variable.
 ...
 } 
 
@@ -36,15 +36,9 @@ BEGIN {
     my $base = find_base();
     die "$base is an invalid Kwiki source code repository"
       unless valid_base($base);
-    unless (-e 'lib') {
-        system("$base/bin/make-lib-tree.pl $base/* $base/plugins/*") == 0
-          or die "make-lib-tree.pl failed";
-        die unless -d 'lib';
-    }
-    my $lib = abs_path('lib');
-    eval "use lib '$lib'; 1"
+    eval "use lib '$base/lib'; 1"
       or die $@;
-    local $ENV{KWIKI_REPOSITORY_BASE} = $base;
+    $ENV{KWIKI_BASE} = $base;
 }
 
 use Kwiki;

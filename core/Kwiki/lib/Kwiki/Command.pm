@@ -18,6 +18,9 @@ sub handle_new {
     $self->install('status');
     $self->install('widgets');
     io('plugin')->mkdir;
+    io('registry.dd')->unlink;
+    io->link('lib')->symlink("$ENV{KWIKI_BASE}/lib")
+      if defined $ENV{KWIKI_BASE};
     $self->set_permissions;
     warn "\nKwiki software installed! Point your browser at this location.\n\n";
 }
