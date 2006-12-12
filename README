@@ -1,14 +1,155 @@
-Welcome to Kwiki 2.0
+= Welcome to Kwiki 2.0
 
-For a fast start:
+Kwiki is wiki software that is especially popular in the Perl community.
+It is of course written in Perl, but you don't need to be fluent in Perl
+or even know what Perl is to start using a Kwiki wiki today.
 
-    > perl Configure.pl
-    > cd kwiki
-    > # Follow instructions in ./README
+One of the main advantages of Kwiki over other wiki software is that it
+is comprised of lots of little software parts called plugins. There are
+nearly 200 Kwiki plugins, with the number growing every day.
 
-== Installation
+A plugin can change a Kwiki installation in any number of ways. The
+effect can range from being simple as changing a color scheme to complex
+as turning the wiki into a blog.
 
-0 Run `perl Configure.pl` in this directory
-0 Put `/path/to/this/dir/bin/` in your path
-0 Run `kwiki -new mywiki` somewhere
+In practice, Kwiki installations end up looking and behaving very
+different from each other, because a given installation is defined by
+the set of plugins that the owner of the wiki is using.
+
+There are plugins for almost anything you can think of, and even things
+you probably haven't. If Kwiki doesn't have something you need, it isn't
+too hard for you to write a plugin for yourself. Find a friendly Kwiki
+hacker if you need help getting started.
+
+== The Kwiki Vision
+
+Kwiki is a great solution for those people who just want to install and
+easily maintain a wiki site. But Kwiki is much more than that...
+
+The vision of Kwiki is to be a software environment where
+programmers can add to the framework as easily as a person would
+edit a page on a wiki.
+
+In an abstract sense, you can think of the Kwiki project as a wiki, and
+each Kwiki plugin as a wiki page. Even though these plugins aren't open
+for /everybody/ to edit, there is a strong sense of trust in the
+community. Anyone who is interested (and generally trustworthy) can get
+commit access to the project just by asking.
+
+Kwiki encourages experimentation. No idea is too weird for Kwiki. There
+are no inherent rules to follow. This makes Kwiki a hacker's playground.
+Just be careful, or somebody might get an eye poked out.
+
+Finally Kwiki doesn't make judgments on "Wiki Concepts". For instance,
+Kwiki does not prefer CamelCaseLinks over [Free Links], or a file system
+database over an RDBMS. Kwiki supports them all, with plugins for
+everything. You could probably clone, say, MediaWiki (the Wikipedia wiki
+software), using the right combination of Kwiki plugins.
+
+The point is, if there is something about Kwiki that you don't
+like, you don't need to convince the Kwiki community to change.
+Just write a plugin!
+
+= INSTALLATION
+
+Kwiki is incredibly easy to set up. Kwiki bundles everything you need to
+get up and running including an optional standalone web server. All you
+need is a Unix environment with Perl of version 5.8.3 or higher.
+
+Ready? You only need to do a few simple steps:
+
+1) Get the Kwiki software.
+
+Odds are, that since you are reading this, you already have done this
+step. If not, you can get the software using one of these methods:
+
+  A) svn checkout http://svn.2.kwiki.org/kwiki /usr/local/kwiki
+
+     This is the preferred way to get the sources, since it makes
+     getting updates as easy as `svn update`.
+
+  B) svk checkout http://svn.2.kwiki.org/kwiki /usr/local/kwiki
+
+     SVK is even better than SVN, but takes a little bit more time to
+     get used to. It is the Hacker's Choice for version control.
+
+  C) Download the latest Kwiki tarball from
+     http://downloads.2.kwiki.org/ and untar it.
+
+Kwiki does not have an install procedure. Once you have the software, it
+is "installed". Just put it some nice, safe place like `/usr/local/kwiki`.
+
+2) Put the `kwiki` command line utility in your PATH.
+
+At the top level of your new Kwiki software is a directory called `bin`
+which contains the command line utility called `kwiki`. This utility is
+needed for managing the Kwiki software.
+
+You should put this `bin` directory in your PATH environment setting. Use a
+command like this in your login script:
+
+    export PATH=/usr/local/kwiki/bin:$PATH
+
+Now you can run `kwiki` commands in your shell.
+
+3) Run the command `kwiki -configure`.
+
+You need to run this command once for each time you update the Kwiki
+software. This command learns things about your system environment and
+saves them in a place that Kwiki can access them from easily. It will
+ask you a few questions.
+
+To learn find out what questions it will ask you (so you can be prepared
+to answer them) see http://2.kwiki.org/?KwikiConfigurationQuestions.
+
+4) Create a new wiki with `kwiki -new`.
+
+This command installs a Kwiki instance, which is a running wiki website.
+You can either create a new directory, or specify the directory name in
+the command.
+
+    cd /path/to/cgi/
+    mkdir kwikii-01
+    cd kwiki-01
+    kwiki -new
+
+or (more simply):
+
+    kwiki -new /path/to/cgi/kwiki-01
+
+5) Start a web server with `kwiki -start`.
+
+Kwiki comes with its own lightweight web server. To start running your new
+Kwiki instance, go into its directory and run `kwiki -start`. Or optionally
+specify the directory on the command:
+
+    kwiki -start /path/to/cgi/kwiki-01
+
+This is the easy way to get going, but for a real wiki on the Web,
+you'll probably want to use a "real" web server. In this case, just make
+sure your webserver is running and knows about your Kwiki.
+
+You can use any CGI enabled web server to run Kwiki. Apache and Lighttpd
+are popular choices. Just put your new Kwiki instance directory in a
+place where the web server expects to have Perl CGI programs. This may
+or may not require configuration changes to your web server.
+
+6) You are done!!!
+
+Well at least you got a Kwiki up and running. :-) See the next section
+for advice on configuring and maintaining your new Kwiki.
+
+== Installation Command Line Synopsis
+
+In review, basically just do these commands:
+
+  > svk checkout http://svn.2.kwiki.org/kwiki /usr/local/kwiki
+  > export PATH=/usr/local/kwiki/bin:$PATH
+  > kwiki -configure
+  > kwiki -new /path/to/cgi/kwiki-01
+  > kwiki -start /path/to/cgi/kwiki-01
+
+= CONFIGURATION
+
+= COMMUNITY
 
