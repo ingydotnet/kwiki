@@ -17,7 +17,8 @@ CORE_LEVEL_1 = \
 CORE_LEVEL_2 = \
 	IO/All.pm \
 	Kwiki/Archive.pm Kwiki/Base.pm Kwiki/BrowserDetect.pm Kwiki/CGI.pm \
-	Kwiki/Command.pm Kwiki/Config.pm Kwiki/ContentObject.pm \
+	Kwiki/Command.pm Kwiki/Config.pm Kwiki/Configure.pm \
+	Kwiki/ContentObject.pm \
 	Kwiki/Cookie.pm Kwiki/CSS.pm Kwiki/Display.pm Kwiki/Edit.pm \
 	Kwiki/Files.pm Kwiki/Formatter.pm Kwiki/Hub.pm Kwiki/Icons.pm \
 	Kwiki/Installer.pm Kwiki/Javascript.pm Kwiki/Pages.pm \

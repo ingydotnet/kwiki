@@ -1,9 +1,11 @@
 #!/usr/bin/env perl
+use 5.008003;
 use strict;
 use warnings;
-our $VERSION = '0.37';
+our $VERSION = '0.40';
 use Cwd 'abs_path';
 use FindBin;
+use Config;
 
 sub valid_base {
     my $base = shift;
@@ -38,6 +40,13 @@ BEGIN {
       unless valid_base($base);
     eval "use lib '$base/lib'; 1"
       or die $@;
+    if (1 || XXX("XXX - Only for test")) {
+        @INC = (
+            "$base/lib",
+            $Config::Config{privlib},
+            $Config::Config{archlib},
+        ); 
+    }
     $ENV{KWIKI_BASE} = $base;
 }
 

@@ -1,6 +1,13 @@
 package Kwiki::Command;
 use Spoon::Command -Base;
 
+sub process {
+    if (defined $ENV{KWIKI_BASE}) {
+        $self->hub->config->add_plugin('Kwiki::Configure');
+    }
+    $self->SUPER::process(@_);
+}
+
 sub handle_new {
     $self->assert_directory(shift, 'Kwiki');
     $self->add_new_default_config;
