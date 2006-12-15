@@ -7,16 +7,10 @@ use Cwd 'abs_path';
 use FindBin;
 use Config;
 
-sub valid_base {
-    my $base = shift;
-    -d $base and
-    -d "$base/core/Kwiki" and
-    -d "$base/plugins";
-}
-
 sub find_base {
     return $ENV{KWIKI_BASE}
       if defined $ENV{KWIKI_BASE};
+
     my $base = $FindBin::Bin;
     my $bin = $0;
     $bin =~ s/.*\///;
@@ -27,26 +21,46 @@ sub find_base {
         $base =~ s/(.*)\/.*/$1/;
     }
     $base = abs_path("$base/..");
-    return $base if valid_base($base);
+    return $base if -d "$base/lib/Kwiki";
+
+    if ($ENV{HOME}) {
+        $base = abs_path("$ENV{HOME}/.kwiki");
+        return $base
+          if (-d $base and -w $base);
+    }
+
     die <<'...';
-Can't locate Kwiki repository. 
-Try setting the KWIKI_BASE environment variable.
+
+*ERROR*: Can't locate Kwiki base repository.
+
+Try setting the KWIKI_BASE environment variable to a writable directory
+where Kwiki can store site information. Alternately you can create a
+~/.kwiki/ directory for this purpose.
+
+If you install Kwiki from SVN (http://svn.2.kwiki.org/kwiki/trunk/) or
+from a Kwiki download tarball (instead of CPAN), then Kwiki will use
+that directory as the base.
+
+NOTE: Installing Kwiki from SVN is recommended. It makes installing and
+      updating Kwiki trivial.
+
 ...
 } 
 
+# Add $KWIKI_BASE/lib to @INC;
 BEGIN {
-    my $base = find_base();
-    die "$base is an invalid Kwiki source code repository"
-      unless valid_base($base);
-    eval "use lib '$base/lib'; 1"
-      or die $@;
-#     $ENV{KWIKI_TEST} = 1;
+    $ENV{KWIKI_TEST} = 1;
     if ($ENV{KWIKI_TEST}) {
         @INC = (
-            "$base/lib",
             $Config::Config{privlib},
             $Config::Config{archlib},
         ); 
+    }
+
+    my $base = find_base();
+    if (-e "$base/lib") {
+        eval "use lib '$base/lib'; 1"
+          or die $@;
     }
     $ENV{KWIKI_BASE} = $base;
 }
@@ -59,36 +73,33 @@ __END__
 
 =head1 NAME
 
-kwiki - The Kwiki Command Line Tool for Checked Out Code
+kwiki - The Kwiki Command Line Tool
 
 =head1 USAGE
 
-    > # Get the source code and put 'kwiki' in your path
-    > svn co http://svn.kwiki.org/kwiki ~/src/kwiki
-    > export PATH=$PATH:~/src/kwiki/bin
+    > kwiki -new /path/to/cgi-bin/my-kwiki
 
-    > # Make a new Kwiki site
-    > mkdir ~/kwiki
-    > cd ~/kwiki
-    > kwiki -new my-first-kwiki
-    > cd my-first-kwiki
-    > kwiki -update
+    Kwiki software installed! Point your browser at this location.
 
 =head1 DESCRIPTION
 
-This script does the same thing as the C<kwiki> command line program
-that is normally installed when you install C<Kwiki.pm> from CPAN.
+Kwiki is a simple extendable wiki framework, written in Perl.
 
-Use this script instead, when you are getting the Kwiki related modules
-from C<http://svn.kwiki.org/kwiki/> instead of CPAN.
+See L<Kwiki::Command> for more information on using this command line tool.
+
+=head1 NOTE
+
+If you are on Mac OS X, use the command C<perldoc Kwiki.pm> to get the
+Kwiki B<module> documentation.
 
 =head1 AUTHOR
 
-Brian Ingerson <ingy@cpan.org>
+Ingy döt Net <ingy@cpan.org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2005. Brian Ingerson. All rights reserved.
+Copyright (c) 2004-2005. Brian Ingerson. All rights reserved.
+Copyright (c) 2006. Ingy döt Net. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
