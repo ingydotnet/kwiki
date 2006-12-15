@@ -40,7 +40,8 @@ BEGIN {
       unless valid_base($base);
     eval "use lib '$base/lib'; 1"
       or die $@;
-    if (1 || XXX("XXX - Only for test")) {
+#     $ENV{KWIKI_TEST} = 1;
+    if ($ENV{KWIKI_TEST}) {
         @INC = (
             "$base/lib",
             $Config::Config{privlib},

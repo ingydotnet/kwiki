@@ -124,6 +124,8 @@ sub handle_update {
       unless -d 'plugin';
     $self->create_registry;
     $self->install($_) for $self->all_class_ids;
+    io->link('lib')->symlink("$ENV{KWIKI_BASE}/lib")
+      if defined $ENV{KWIKI_BASE} and not -e 'lib';
     $self->set_permissions;
 }
 
