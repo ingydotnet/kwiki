@@ -37,7 +37,7 @@ field 'id';
 field 'name' => '';
         
 sub new {
-    $self = super;
+    $self = $self->SUPER::new(@_);
     $self->set_user_name;
     return $self;
 }

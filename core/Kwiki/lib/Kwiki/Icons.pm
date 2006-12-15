@@ -17,7 +17,7 @@ sub register {
 }
 
 sub init {
-    super;
+    $self->SUPER::init(@_);
     if ($self->preferences->can('use_icons') and
         $self->preferences->use_icons->value) {
         $self->template->add_path($self->icons_path);

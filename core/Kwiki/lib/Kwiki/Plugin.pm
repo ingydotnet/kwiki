@@ -19,7 +19,7 @@ field preferences =>
 
 sub new {
     return $self if ref $self;
-    super;
+    $self->SUPER::new(@_);
 }
 
 sub init {

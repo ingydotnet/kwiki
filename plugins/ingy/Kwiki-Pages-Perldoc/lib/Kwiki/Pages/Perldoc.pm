@@ -6,7 +6,7 @@ our $VERSION = '0.12';
 const page_class => 'Kwiki::Page::Perldoc';
 
 sub init {
-    super;
+    $self->SUPER::init(@_);
     $self->hub->config->add_file('pages.yaml');
 }
 

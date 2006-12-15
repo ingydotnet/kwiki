@@ -18,7 +18,7 @@ sub init {
 sub paired_arguments { qw(-plugins) }
 sub new {
     my ($args, @configs) = $self->parse_arguments(@_);
-    $self = super(@configs);
+    $self = $self->SUPER::new(@configs);
     if (my $plugins_file = $args->{-plugins}) {
         $self->add_plugins_file($plugins_file);
         $self->plugins_file($plugins_file);
@@ -123,7 +123,7 @@ sub add_path {
 
 sub get_packed_files {
     my @return;
-    my @packed = super;
+    my @packed = $self->SUPER::get_packed_files(@_);
     while (my ($name, $content) = splice(@packed, 0, 2)) {
         if ($name =~ /^(plugins|config\.yaml)$/) {
             next if -f $name;

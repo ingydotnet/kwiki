@@ -5,7 +5,7 @@ const class_id  => 'formatter';
 stub 'top_class';
 
 sub new {
-    $self = super;
+    $self = $self->SUPER::new(@_);
     $self->hub;
     return $self;
 }
@@ -343,7 +343,7 @@ sub html_start {
 }
 
 sub match_phrase {
-    return unless super;
+    return unless $self->SUPER::match_phrase(@_);
     return unless $self->matched =~ /^\{([\w\-]+)(?:\s*\:)?\s*(.*)\}$/;
     $self->arguments($2);
     my $method = lc $1;

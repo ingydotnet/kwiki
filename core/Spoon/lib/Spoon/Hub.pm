@@ -9,7 +9,7 @@ field config_files => [];
 field all_hooks => [];
 
 sub new {
-    $self = super;
+    $self = $self->SUPER::new(@_);
     $self->init;
     $Spoon::Base::HUB = $self;
 }

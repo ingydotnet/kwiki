@@ -22,7 +22,7 @@ const default_css_file => 'kwiki.css';
 const default_javascript_file => '';
 
 sub init {
-    super;
+    $self->SUPER::init(@_);
     my $theme_id = $self->theme_id;
     my $template_path = 
       sprintf $self->default_template_path, $theme_id;

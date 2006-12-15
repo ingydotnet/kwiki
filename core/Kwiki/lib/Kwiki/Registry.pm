@@ -3,9 +3,9 @@ use Spoon::Registry '-Base';
 
 sub add {
     my ($key, $value) = @_;
-    return super
+    return $self->SUPER::add(@_)
       unless $key eq 'preference' and @_ == 2;
-    super($key, $value->id, object => $value);
+    $self->SUPER::add($key, $value->id, object => $value);
 }
 
 sub not_a_plugin {
