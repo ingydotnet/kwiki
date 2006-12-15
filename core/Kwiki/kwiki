@@ -3,7 +3,7 @@ use 5.008003;
 use strict;
 use warnings;
 our $VERSION = '0.40';
-use Cwd 'abs_path';
+use Cwd 'cwd', 'abs_path';
 use FindBin;
 use Config;
 
@@ -15,13 +15,16 @@ sub find_base {
     my $bin = $0;
     $bin =~ s/.*\///;
     $bin = "$base/$bin";
+    my $home = cwd();
     while (-l $bin) {
+        chdir $base;
         $bin = abs_path(readlink $bin);
         $base = $bin;
         $base =~ s/(.*)\/.*/$1/;
     }
-    $base = abs_path("$base/..");
-    return $base if -d "$base/lib/Kwiki";
+    chdir $home;
+    $base = abs_path("$base/../..");
+    return $base if -d "$base/lib/Kwiki" and -d "$base/core/Kwiki";
 
     if ($ENV{HOME}) {
         $base = abs_path("$ENV{HOME}/.kwiki");
