@@ -12,7 +12,7 @@ const all_phrases => [qw(
     asis wafl_phrase forced 
     titlehyper titlewiki titlemailto 
     hyper wiki mailto 
-    ndash mdash strong em u tt del
+    ndash mdash strong em u code tt del
 )];
 const css_file => 'formatter.css';
 
@@ -26,7 +26,7 @@ sub formatter_classes {
         Spoon::Formatter::WaflBlock
         Line Heading Paragraph Preformatted Comment
         Ulist Olist Item Table TableRow TableCell
-        Strong Emphasize Underline Delete Inline MDash NDash Asis
+        Strong Emphasize Underline Delete Code Inline MDash NDash Asis
         ForcedLink HyperLink TitledHyperLink TitledMailLink MailLink 
         TitledWikiLink WikiLink
     );
@@ -320,8 +320,18 @@ use Kwiki ':char_classes';
 const formatter_id => 'tt';
 const pattern_start => qr/(^|(?<=[^$ALPHANUM]))\[\=/;
 const pattern_end => qr/\](?=[^$ALPHANUM]|\z)/;
-const html_start => "<tt>";
-const html_end => "</tt>";
+const html_start => "<code>";
+const html_end => "</code>";
+
+################################################################################
+package Kwiki::Formatter::Code;
+use base 'Spoon::Formatter::Unit';
+use Kwiki ':char_classes';
+const formatter_id => 'code';
+const pattern_start => qr/(^|(?<=[^$ALPHANUM]))`/;
+const pattern_end => qr/`(?=[^$ALPHANUM]|\z)/;
+const html_start => "<code>";
+const html_end => "</code>";
 
 ################################################################################
 package Kwiki::Formatter::Delete;
