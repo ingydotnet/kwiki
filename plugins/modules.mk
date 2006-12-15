@@ -86,6 +86,7 @@ PLUGIN_LEVEL_2 = \
 	Kwiki/Search.pm \
 	Kwiki/Session.pm \
 	Kwiki/ShellBlocks.pm \
+	Kwiki/Sifr.pm \
 	Kwiki/SocialMap.pm \
 	Kwiki/Spaces.pm \
 	Kwiki/Spork.pm \
