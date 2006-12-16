@@ -92,6 +92,11 @@ command like this in your login script:
 
 Now you can run `kwiki` commands in your shell.
 
+NOTE: If you have already installed an older version of Kwiki, you may
+      already have a `kwiki` script in your PATH. It is important that
+      you put the new script in front of the older one in your PATH. Do
+      a `which kwiki` command to make sure things are set up properly.
+
 3) Run the command `kwiki -configure`.
 
 You need to run this command once for each time you update the Kwiki
@@ -152,4 +157,3 @@ In review, basically just do these commands:
 = CONFIGURATION
 
 = COMMUNITY
-
