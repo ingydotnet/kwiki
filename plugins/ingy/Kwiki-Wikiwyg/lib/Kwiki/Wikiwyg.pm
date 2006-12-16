@@ -152,6 +152,7 @@ Ingy döt Net <ingy@cpan.org>
 =head1 COPYRIGHT
 
 Copyright (c) 2006. Ingy döt Net. All rights reserved.
+
 Copyright (c) 2005. Brian Ingerson. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
@@ -352,7 +353,7 @@ See the Wikiwyg documentation for details.
 
 AUTHORS:
 
-    Brian Ingerson <ingy@cpan.org>
+    Ingy döt Net <ingy@cpan.org>
     Casey West <casey@geeknest.com>
     Chris Dent <cdent@burningchrome.com>
     Matt Liggett <mml@pobox.com>

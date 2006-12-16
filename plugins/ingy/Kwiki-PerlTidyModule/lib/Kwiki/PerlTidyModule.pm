@@ -86,9 +86,11 @@ Kwiki::PerlTidyModule - Kwiki Perl Tidy Module Plugin
 
 =head1 AUTHOR
 
-Brian Ingerson <INGY@cpan.org>
+Ingy döt Net <ingy@cpan.org>
 
 =head1 COPYRIGHT
+
+Copyright (c) 2006. Ingy döt Net. All rights reserved.
 
 Copyright (c) 2004. Brian Ingerson. All rights reserved.
 

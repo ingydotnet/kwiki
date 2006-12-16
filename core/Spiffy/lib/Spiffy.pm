@@ -1056,6 +1056,7 @@ Ingy döt Net <ingy@cpan.org>
 =head1 COPYRIGHT
 
 Copyright (c) 2006. Ingy döt Net. All rights reserved.
+
 Copyright (c) 2004. Brian Ingerson. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it

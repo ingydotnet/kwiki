@@ -358,7 +358,7 @@ default.
 Sue Spence <sue_cpan@pennine.com>
 
 This module is based almost entirely on work by
-Eric Lowry <eric@clubyo.com> and Brian Ingerson <INGY@cpan.org>
+Eric Lowry <eric@clubyo.com> and Ingy döt Net <ingy@cpan.org>
 
 Hacked for IE client file names by Chris Fedde <cfedde@cpan.org>
 

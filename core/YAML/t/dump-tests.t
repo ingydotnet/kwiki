@@ -18,13 +18,13 @@ __DATA__
 
 ===
 +++ perl
-{name => 'Brian Ingerson',
+{name => 'Ingy dot Net',
  rank => 'JAPH',
  'serial number' => '8675309',
 };
 +++ yaml
 ---
-name: Brian Ingerson
+name: Ingy dot Net
 rank: JAPH
 serial number: 8675309
 

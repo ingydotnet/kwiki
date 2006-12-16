@@ -222,7 +222,7 @@ in config.yaml.
 
 =head1 AUTHOR
 
-YAPC::NA, Chris Dent, Brian Ingerson
+YAPC::NA, Chris Dent, Ingy döt Net
 
 =head1 CREDITS
 
@@ -234,6 +234,8 @@ so keywords are only written to writable pages, and added support
 for related tags and display of tag intersections.
 
 =head1 COPYRIGHT
+
+Copyright (c) 2006. Ingy döt Net. All rights reserved.
 
 Copyright (c) 2005. Brian Ingerson. All rights reserved.
 

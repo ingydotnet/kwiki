@@ -1,10 +1,7 @@
 use inc::Module::Install;
 
-name('Kwiki-Spork');
-author('Brian Ingerson <ingy@cpan.org>');
-abstract('Kwiki Spork Plugin');
-license('perl');
-version_from('lib/Kwiki/Spork.pm');
+name 'Kwiki-Spork';
+all_from 'lib/Kwiki/Spork.pm';
 
 requires(qw(
     perl 5.6.1
@@ -12,6 +9,4 @@ requires(qw(
     Spork 0.18
 ));
 
-check_nmake();
-
-&WriteAll();
+WriteAll;

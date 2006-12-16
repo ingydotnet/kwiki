@@ -521,7 +521,7 @@ L<http://purplewiki.blueoxen.net/> and L<http://www.burningchrome.com/~cdent/mt/
 
 Chris Dent, <cdent@burningchrome.com>
 
-Many thanks to Brian Ingerson, Matthew O'Connor and Eugene Eric Kim
+Many thanks to Ingy döt Net, Matthew O'Connor and Eugene Eric Kim
 for various bits of help and inspiration.
 
 =head1 SEE ALSO

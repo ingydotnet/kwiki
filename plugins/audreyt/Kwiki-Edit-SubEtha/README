@@ -53,11 +53,11 @@ DESCRIPTION
      * for OSX people, a "SubEthaEdit" button that just links to see://see_url.
 
 AUTHORS
-    Autrijus Tang <autrijus@autrijus.org>, Brian Ingerson <INGY@cpan.org>.
+    Autrijus Tang <autrijus@autrijus.org>, Ingy döt Net <ingy@cpan.org>.
 
 COPYRIGHT
-    Copyright 2004 by Autrijus Tang <autrijus@autrijus.org>, Brian Ingerson
-    <INGY@cpan.org>.
+    Copyright 2004 by Autrijus Tang <autrijus@autrijus.org>, Ingy döt Net
+    <ingy@cpan.org>.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

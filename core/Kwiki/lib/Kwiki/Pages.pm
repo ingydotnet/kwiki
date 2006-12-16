@@ -287,9 +287,11 @@ Kwiki::Pages - Kwiki Pages Base Class
 
 =head1 AUTHOR
 
-Brian Ingerson <INGY@cpan.org>
+Ingy döt Net <ingy@cpan.org>
 
 =head1 COPYRIGHT
+
+Copyright (c) 2006. Ingy döt Net. All rights reserved.
 
 Copyright (c) 2004. Brian Ingerson. All rights reserved.
 
@@ -315,4 +317,4 @@ If this installation looks more mundane than you had expected after visiting Kwi
 
 These plugin modules are available on [CPAN http://search.cpan.org/search?query=kwiki&mode=dist]. Visit http://www.kwiki.org/?KwikiPluginInstallation to learn more about installing plugins.
 
---[http://www.kwiki.org/?BrianIngerson Brian Ingerson]
+--[http://www.kwiki.org/?IngyDotNet Ingy döt Net]

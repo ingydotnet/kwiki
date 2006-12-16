@@ -63,7 +63,7 @@ The following icons are provided:
 
 The icons have been packaged by Ian Langworth <ian@cpan.org>.
 
-Credits to Brian Ingerson and Jooon for further tweaks.
+Credits to Ingy döt Net and Jooon for further tweaks.
 
 =head1 SEE ALSO
 

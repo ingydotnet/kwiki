@@ -155,13 +155,13 @@ __DATA__
 =head1 AUTHORS
 
 Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>,
-Brian Ingerson E<lt>INGY@cpan.orgE<gt>.
+Ingy döt Net E<lt>ingy@cpan.orgE<gt>.
 
 =head1 COPYRIGHT
 
 Copyright 2004 by
 Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>,
-Brian Ingerson E<lt>INGY@cpan.orgE<gt>.
+Ingy döt Net E<lt>ingy@cpan.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.

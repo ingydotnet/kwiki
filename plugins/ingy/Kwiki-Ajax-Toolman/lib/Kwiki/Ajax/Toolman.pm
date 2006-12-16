@@ -28,12 +28,14 @@ Kwiki::Ajax::Toolman - Tool-man Javascript Libraries for Kwiki
 
 =head1 AUTHOR
 
-Brian Ingerson <ingy@cpan.org>
+Ingy döt Net <ingy@cpan.org>
 
 This module is just a distribution of the Tool-man Javascript framework
 by Tim Taylor tim@tool-man.org, available at http://tool-man.org/examples/
 
 =head1 COPYRIGHT
+
+Copyright (c) 2006. Ingy döt Net. All rights reserved.
 
 Copyright (c) 2005. Brian Ingerson. All rights reserved.
 

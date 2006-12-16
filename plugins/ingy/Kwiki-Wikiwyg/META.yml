@@ -7,7 +7,7 @@ generated_by: Module::Install version 0.54
 distribution_type: module
 version: 0.13
 name: Kwiki-Wikiwyg
-author: Brian Ingerson <ingy@cpan.org>
+author: Ingy döt Net <ingy@cpan.org>
 license: perl
 requires: 
   perl: 5.6.1

@@ -214,7 +214,7 @@ This returns a list of page ids.
 =head1 AUTHORS
 
 Chris Dent, <cdent@burningchrome.com>
-Brian Ingerson, <ingy@ttul.org>
+Ingy döt Net, <ingy@cpan.org>
 
 =head1 CREDITS
 

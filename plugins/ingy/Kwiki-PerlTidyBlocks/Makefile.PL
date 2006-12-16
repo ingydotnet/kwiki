@@ -1,10 +1,7 @@
 use inc::Module::Install;
 
-name('Kwiki-PerlTidyBlocks');
-author('Brian Ingerson <ingy@cpan.org>');
-abstract('Kwiki Perl Tidy Blocks Plugin');
-license('perl');
-version_from('lib/Kwiki/PerlTidyBlocks.pm');
+name 'Kwiki-PerlTidyBlocks';
+all_from 'lib/Kwiki/PerlTidyBlocks.pm';
 
 requires(qw(
     perl 5.6.1
@@ -13,6 +10,4 @@ requires(qw(
     Perl::Tidy 20031021
 ));
 
-check_nmake();
-
-&WriteAll();
+WriteAll;

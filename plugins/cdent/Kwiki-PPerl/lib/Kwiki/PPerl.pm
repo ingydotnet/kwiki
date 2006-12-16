@@ -44,7 +44,7 @@ come when we know how it works.
 =head1 AUTHOR
 
 Chris Dent, C<< <cdent@burningchrome.com> >>
-Brian Ingerson, C<< <ingy@cpan.org> >>
+Ingy döt Net, C<< <ingy@cpan.org> >>
 
 =head1 BUGS
 
