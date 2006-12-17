@@ -1,0 +1,1 @@
+../../../plugins/cpan/Kwiki-Search-Spotlight-0.01/lib/Kwiki/Search/Spotlight.pm

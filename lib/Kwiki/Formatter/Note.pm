@@ -1,0 +1,1 @@
+../../../plugins/cpan/Kwiki-Formatter-Note-0.01/lib/Kwiki/Formatter/Note.pm

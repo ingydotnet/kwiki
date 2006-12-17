@@ -1,0 +1,1 @@
+../../plugins/cpan/Kwiki-Indexer-0.1.1/lib/Kwiki/Indexer.pm

@@ -1,0 +1,1 @@
+../../../plugins/cpan/Kwiki-Indexer-Swish-0.1.1/lib/Kwiki/Indexer/Swish.pm

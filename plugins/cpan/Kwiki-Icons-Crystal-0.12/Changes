@@ -1,0 +1,20 @@
+---
+version: 0.12
+date:    Thu, 21 Oct 2004 22:16:07 -0500
+changes:
+- Path fix, got files mixed up before putting it in CVS.
+- Changed all the icons to specify a white PNG background. (Stupid IE)
+- Added a note about transparency to the POD
+
+---
+version: 0.11
+date:    Tue, 19 Oct 2004 19:35:51 -0500
+changes:
+- Replaced some icons that I missed.
+
+---
+version: 0.10
+date:    Tue, 19 Oct 2004 14:33:51 -0500
+changes:
+- Initial release, forked from Kwiki::Icons::Gnome
+

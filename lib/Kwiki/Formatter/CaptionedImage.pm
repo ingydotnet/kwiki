@@ -1,0 +1,1 @@
+../../../plugins/cpan/Kwiki-Formatter-CaptionedImage-0.01/lib/Kwiki/Formatter/CaptionedImage.pm

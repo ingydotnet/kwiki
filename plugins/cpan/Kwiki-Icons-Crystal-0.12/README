@@ -1,0 +1,61 @@
+Kwiki::Icons::CrUyssetralC(o3n)tributed Perl DocumKewnitkait:i:oIncons::Crystal(3)
+
+
+
+NNAAMMEE
+       Kwiki::Icons::Crystal - Kwiki Crystal Icons plugin
+
+SSYYNNOOPPSSIISS
+        $ cpan Kwiki::Icons::Crystal
+          $ cd /path/to/kwiki
+          $ vim plugins
+          $ kwiki -update
+
+DDEESSCCRRIIPPTTIIOONN
+       This is a Kwiki icons package that includes icons from the
+       Crystal SVG KDE icon theme.
+
+       IIccoonnss
+
+       The following icons are provided:
+
+       * edit
+       * favorites
+       * guest_book
+       * home
+       * new_page
+       * plugin_index
+       * recent_changes
+       * revisions (now the same as revisions_previous)
+       * revisions_current
+       * revisions_next
+       * revisions_previous
+       * user_preferences
+       * weather
+
+AAUUTTHHOORR
+       The icons have been packaged by Matt Howard after borrow­
+       ing work by Ian Langworth <langworth.com>.
+
+       Credits to Brian Ingerson and Jooon for further tweaks.
+
+SSEEEE AALLSSOO
+       Kwiki, Kwiki::Icons, <http://www.everaldo.com/>
+
+CCOOPPYYRRIIGGHHTT AANNDD LLIICCEENNSSEE
+       Copyright (c) 2004. Ian Langworth. All rights reserved.
+
+       The Crystal SVG icon set is from the KDE packages.  They
+       are licensed under the LGPL with an additional section
+       that defines "source code" in the context of graphics.
+       For more information, see
+       <http://artist.kde.org/new/license.html>
+
+       The code borrowed from Ian's work falls under the General
+       Public License.
+
+       See <http://www.gnu.org/copyleft/gpl.html>
+
+
+
+perl v5.8.4                 2004-10-19   Kwiki::Icons::Crystal(3)

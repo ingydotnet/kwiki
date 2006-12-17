@@ -1,0 +1,1 @@
+../../plugins/cpan/Kwiki-QuickWAFL-0.02/lib/Kwiki/QuickWAFL.pm

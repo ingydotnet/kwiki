@@ -1,0 +1,1 @@
+../../plugins/cpan/Kwiki-OpenSearch-0.02/lib/Kwiki/OpenSearch.pm

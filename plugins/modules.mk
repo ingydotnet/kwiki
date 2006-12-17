@@ -5,17 +5,24 @@ PLUGINS_PATHS = \
 	Kwiki/Atom \
 	Kwiki/Command \
 	Kwiki/DB \
+	Kwiki/Diff \
 	Kwiki/Edit \
 	Kwiki/Formatter \
 	Kwiki/Icons \
+	Kwiki/Indexer \
 	Kwiki/Notify \
+	Kwiki/OpenSearch \
 	Kwiki/Pages \
 	Kwiki/Purple \
+	Kwiki/RecentChanges \
 	Kwiki/SOAP \
 	Kwiki/Search \
+	Kwiki/Simple/Server \
+	Kwiki/TableOfContents \
 	Kwiki/Template/TT2 \
 	Kwiki/Template/TT2/UTF8 \
 	Kwiki/Theme \
+	Kwiki/Toolbar \
 	Kwiki/UniUI \
 	Kwiki/UserMessage \
 	Kwiki/UserName \
@@ -43,6 +50,33 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/WeblogUpdates.pm \
 	Kwiki/Yahoo.pm \
 	Kwiki/Attachments.pm \
+	Kwiki/BroadcastMessage.pm \
+	Kwiki/DisableWikiNames.pm \
+	Kwiki/DMOZLink.pm \
+	Kwiki/Email.pm \
+	Kwiki/EscapeURI.pm \
+	Kwiki/Export.pm \
+	Kwiki/Footnote.pm \
+	Kwiki/GoogleLink.pm \
+	Kwiki/HatenaAuth.pm \
+	Kwiki/Image.pm \
+	Kwiki/Indexer.pm \
+	Kwiki/JSLog.pm \
+	Kwiki/JSON.pm \
+	Kwiki/ListPages.pm \
+	Kwiki/OpenSearch.pm \
+	Kwiki/Podcast.pm \
+	Kwiki/PrinterFriendly.pm \
+	Kwiki/Prototype.pm \
+	Kwiki/QuickWAFL.pm \
+	Kwiki/RecentChanges.pm \
+	Kwiki/ReferrerLog.pm \
+	Kwiki/RenamePage.pm \
+	Kwiki/Scriptaculous.pm \
+	Kwiki/ShortcutLinks.pm \
+	Kwiki/TableOfContents.pm \
+	Kwiki/TypeKey.pm \
+	Kwiki/URLBL.pm \
 	Kwiki/Ajax.pm \
 	Kwiki/AnchorLink.pm \
 	Kwiki/AuthorOnlyPageEditing.pm \
@@ -121,6 +155,37 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/SOAP/Fortune.pm \
 	Kwiki/SOAP/Google.pm \
 	Kwiki/Theme/CPB.pm \
+	Kwiki/Archive/SVK.pm \
+	Kwiki/Diff/Mutual.pm \
+	Kwiki/Edit/AdvisoryLock.pm \
+	Kwiki/Edit/BackgroundSave.pm \
+	Kwiki/Edit/ContentionManagement.pm \
+	Kwiki/Edit/RequireUserName.pm \
+	Kwiki/Formatter/CaptionedImage.pm \
+	Kwiki/Formatter/Hatena.pm \
+	Kwiki/Formatter/Note.pm \
+	Kwiki/Edit/HatenaAuthRequired.pm \
+	Kwiki/Users/HatenaAuth.pm \
+	Kwiki/Icons/Crystal.pm \
+	Kwiki/Indexer/Regex.pm \
+	Kwiki/Indexer/Swish.pm \
+	Kwiki/Notify/Mail.pm \
+	Kwiki/OpenSearch/Service.pm \
+	Kwiki/RecentChanges/Atom.pm \
+	Kwiki/Search/Spotlight.pm \
+	Kwiki/TableOfContents/Print.pm \
+	Kwiki/Theme/BlueOcean.pm \
+	Kwiki/Theme/GreenHouse.pm \
+	Kwiki/Theme/Hatena.pm \
+	Kwiki/Theme/JustContent.pm \
+	Kwiki/Theme/PerlMongers.pm \
+	Kwiki/Theme/TabNav.pm \
+	Kwiki/Toolbar/List.pm \
+	Kwiki/Edit/TypeKeyRequired.pm \
+	Kwiki/Users/TypeKey.pm \
+	Kwiki/UserName/Cookie.pm \
+	Kwiki/Widgets/RandomQuote.pm \
+	Kwiki/Widgets/RecentChanges.pm \
 	Kwiki/Command/Edit.pm \
 	Kwiki/Command/RecentChanges.pm \
 	Kwiki/DB/ClassDBI.pm \
@@ -148,6 +213,7 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Theme/Bluepole.pm \
 
 PLUGINS_LEVEL_4 = \
+	Kwiki/Simple/Server/HTTP.pm \
 	Kwiki/Template/TT2/UTF8.pm \
 
 PLUGINS_LEVEL_5 = \

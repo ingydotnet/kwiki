@@ -1,0 +1,17 @@
+---
+name: Kwiki-RenamePage
+version: 0.01
+author:
+  - Dr Bean <drbean@cpan.org>
+abstract: Better Names for Misnamed Kwiki Pages
+license: perl
+build_requires:
+  Test::More: 0
+provides:
+  Kwiki::RenamePage:
+    file: lib/Kwiki/RenamePage.pm
+    version: 0.01
+  Kwiki::RenamePage::CGI:
+    file: lib/Kwiki/RenamePage.pm
+    version: 0.01
+generated_by: Module::Build version 0.2611

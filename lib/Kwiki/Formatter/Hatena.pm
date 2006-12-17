@@ -1,0 +1,1 @@
+../../../plugins/cpan/Kwiki-Formatter-Hatena-0.04/lib/Kwiki/Formatter/Hatena.pm

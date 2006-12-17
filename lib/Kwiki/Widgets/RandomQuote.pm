@@ -1,0 +1,1 @@
+../../../plugins/cpan/Kwiki-Widgets-RandomQuote-0.01/lib/Kwiki/Widgets/RandomQuote.pm
