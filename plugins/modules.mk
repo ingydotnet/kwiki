@@ -55,8 +55,6 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/DMOZLink.pm \
 	Kwiki/Email.pm \
 	Kwiki/EscapeURI.pm \
-	Kwiki/Export.pm \
-	Kwiki/Footnote.pm \
 	Kwiki/GoogleLink.pm \
 	Kwiki/HatenaAuth.pm \
 	Kwiki/Image.pm \
@@ -64,19 +62,15 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/JSLog.pm \
 	Kwiki/JSON.pm \
 	Kwiki/ListPages.pm \
-	Kwiki/OpenSearch.pm \
 	Kwiki/Podcast.pm \
 	Kwiki/PrinterFriendly.pm \
 	Kwiki/Prototype.pm \
 	Kwiki/QuickWAFL.pm \
-	Kwiki/RecentChanges.pm \
 	Kwiki/ReferrerLog.pm \
 	Kwiki/RenamePage.pm \
 	Kwiki/Scriptaculous.pm \
 	Kwiki/ShortcutLinks.pm \
 	Kwiki/TableOfContents.pm \
-	Kwiki/TypeKey.pm \
-	Kwiki/URLBL.pm \
 	Kwiki/Ajax.pm \
 	Kwiki/AnchorLink.pm \
 	Kwiki/AuthorOnlyPageEditing.pm \
@@ -144,10 +138,14 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/DNSBL.pm \
 	Kwiki/Spaces.pm \
 	Kwiki/URLBlock.pm \
+	Kwiki/Export.pm \
+	Kwiki/Footnote.pm \
+	Kwiki/OpenSearch.pm \
+	Kwiki/TypeKey.pm \
+	Kwiki/URLBL.pm \
 	Kwiki/IRCMode.pm \
 
 PLUGINS_LEVEL_3 = \
-	Kwiki/Archive/SVK.pm \
 	Kwiki/Atom/Server.pm \
 	Kwiki/Edit/SubEtha.pm \
 	Kwiki/Theme/HLB.pm \
@@ -170,7 +168,6 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Indexer/Regex.pm \
 	Kwiki/Indexer/Swish.pm \
 	Kwiki/Notify/Mail.pm \
-	Kwiki/OpenSearch/Service.pm \
 	Kwiki/RecentChanges/Atom.pm \
 	Kwiki/Search/Spotlight.pm \
 	Kwiki/TableOfContents/Print.pm \
@@ -181,8 +178,6 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Theme/PerlMongers.pm \
 	Kwiki/Theme/TabNav.pm \
 	Kwiki/Toolbar/List.pm \
-	Kwiki/Edit/TypeKeyRequired.pm \
-	Kwiki/Users/TypeKey.pm \
 	Kwiki/UserName/Cookie.pm \
 	Kwiki/Widgets/RandomQuote.pm \
 	Kwiki/Widgets/RecentChanges.pm \
@@ -211,6 +206,9 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Theme/YAPCChicago.pm \
 	Kwiki/UniUI/Theme.pm \
 	Kwiki/Theme/Bluepole.pm \
+	Kwiki/OpenSearch/Service.pm \
+	Kwiki/Edit/TypeKeyRequired.pm \
+	Kwiki/Users/TypeKey.pm \
 
 PLUGINS_LEVEL_4 = \
 	Kwiki/Simple/Server/HTTP.pm \

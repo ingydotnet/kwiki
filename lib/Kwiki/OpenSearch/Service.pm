@@ -1,1 +1,1 @@
-../../../plugins/cpan/Kwiki-OpenSearch-Service-0.02/lib/Kwiki/OpenSearch/Service.pm
+../../../plugins/miyagawa/Kwiki-OpenSearch-Service/lib/Kwiki/OpenSearch/Service.pm

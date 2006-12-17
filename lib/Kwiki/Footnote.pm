@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-Footnote-0.01/lib/Kwiki/Footnote.pm
+../../plugins/miyagawa/Kwiki-Footnote/lib/Kwiki/Footnote.pm
