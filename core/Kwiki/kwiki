@@ -52,11 +52,11 @@ NOTE: Installing Kwiki from SVN is recommended. It makes installing and
 
 # Add $KWIKI_BASE/lib to @INC;
 BEGIN {
-    $ENV{KWIKI_TEST} = 1;
+    # $ENV{KWIKI_TEST} = 1;
     if ($ENV{KWIKI_TEST}) {
         @INC = (
-            $Config::Config{privlib},
             $Config::Config{archlib},
+            $Config::Config{privlib},
         ); 
     }
 
