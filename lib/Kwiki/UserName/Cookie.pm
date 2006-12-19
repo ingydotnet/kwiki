@@ -1,1 +1,1 @@
-../../../plugins/cpan/Kwiki-UserName-Cookie-0.01/lib/Kwiki/UserName/Cookie.pm
+../../../plugins/jcap/Kwiki-UserName-Cookie/lib/Kwiki/UserName/Cookie.pm

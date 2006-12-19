@@ -27,6 +27,7 @@ PLUGINS_PATHS = \
 	Kwiki/UserMessage \
 	Kwiki/UserName \
 	Kwiki/Users \
+	Kwiki/Users/Cookie \
 	Kwiki/Widgets \
 
 PLUGINS_LEVEL_2 = \
@@ -187,7 +188,6 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Theme/PerlMongers.pm \
 	Kwiki/Theme/TabNav.pm \
 	Kwiki/Toolbar/List.pm \
-	Kwiki/UserName/Cookie.pm \
 	Kwiki/Widgets/RandomQuote.pm \
 	Kwiki/Widgets/RecentChanges.pm \
 	Kwiki/Command/Edit.pm \
@@ -214,6 +214,8 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Theme/Selectable.pm \
 	Kwiki/Theme/YAPCChicago.pm \
 	Kwiki/UniUI/Theme.pm \
+	Kwiki/UserName/Cookie.pm \
+	Kwiki/Users/Cookie.pm \
 	Kwiki/Theme/Bluepole.pm \
 	Kwiki/OpenSearch/Service.pm \
 	Kwiki/Edit/TypeKeyRequired.pm \
@@ -223,6 +225,7 @@ PLUGINS_LEVEL_3 = \
 PLUGINS_LEVEL_4 = \
 	Kwiki/Simple/Server/HTTP.pm \
 	Kwiki/Template/TT2/UTF8.pm \
+	Kwiki/Users/Cookie/SQL.pm \
 
 PLUGINS_LEVEL_5 = \
 	Kwiki/Template/TT2/UTF8/Provider.pm \
