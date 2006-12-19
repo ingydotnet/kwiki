@@ -10,24 +10,31 @@ CPAN_LEVEL_2 = \
 	URI/data.pm \
 	URI/Escape.pm \
 	URI/file.pm \
+	URI/_foreign.pm \
 	URI/ftp.pm \
+	URI/_generic.pm \
 	URI/gopher.pm \
 	URI/Heuristic.pm \
 	URI/http.pm \
 	URI/https.pm \
-	URI/ldap.pm \
 	URI/ldapi.pm \
+	URI/_ldap.pm \
+	URI/ldap.pm \
 	URI/ldaps.pm \
+	URI/_login.pm \
 	URI/mailto.pm \
 	URI/mms.pm \
 	URI/news.pm \
 	URI/nntp.pm \
 	URI/pop.pm \
 	URI/QueryParam.pm \
+	URI/_query.pm \
 	URI/rlogin.pm \
 	URI/rsync.pm \
 	URI/rtsp.pm \
 	URI/rtspu.pm \
+	URI/_segment.pm \
+	URI/_server.pm \
 	URI/sip.pm \
 	URI/sips.pm \
 	URI/snews.pm \
@@ -37,15 +44,8 @@ CPAN_LEVEL_2 = \
 	URI/tn3270.pm \
 	URI/URL.pm \
 	URI/urn.pm \
-	URI/WithBase.pm \
-	URI/_foreign.pm \
-	URI/_generic.pm \
-	URI/_ldap.pm \
-	URI/_login.pm \
-	URI/_query.pm \
-	URI/_segment.pm \
-	URI/_server.pm \
 	URI/_userpass.pm \
+	URI/WithBase.pm \
 
 CPAN_LEVEL_3 = \
 	URI/file/Base.pm \

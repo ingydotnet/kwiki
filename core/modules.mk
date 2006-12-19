@@ -166,14 +166,14 @@ CORE_LEVEL_4 = \
 
 CORE_LEVEL_5 = \
 	Template/Plugin/GD/Graph/area.pm \
-	Template/Plugin/GD/Graph/bars.pm \
 	Template/Plugin/GD/Graph/bars3d.pm \
-	Template/Plugin/GD/Graph/lines.pm \
+	Template/Plugin/GD/Graph/bars.pm \
 	Template/Plugin/GD/Graph/lines3d.pm \
+	Template/Plugin/GD/Graph/lines.pm \
 	Template/Plugin/GD/Graph/linespoints.pm \
 	Template/Plugin/GD/Graph/mixed.pm \
-	Template/Plugin/GD/Graph/pie.pm \
 	Template/Plugin/GD/Graph/pie3d.pm \
+	Template/Plugin/GD/Graph/pie.pm \
 	Template/Plugin/GD/Graph/points.pm \
 	Template/Plugin/GD/Text/Align.pm \
 	Template/Plugin/GD/Text/Wrap.pm \

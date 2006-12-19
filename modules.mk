@@ -7,5 +7,5 @@ modules.mk:
 	grep '\.pm$$' | \
 	grep '/lib/' | \
 	grep -v '/t/' | \
-	sort -f | \
+	sort -fd | \
 	perl ../bin/make-make.pl $(TYPE) $(GLOB_LEVEL) > $@
