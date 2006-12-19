@@ -144,14 +144,22 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/TypeKey.pm \
 	Kwiki/URLBL.pm \
 	Kwiki/IRCMode.pm \
+	Kwiki/AccessBlacklist.pm \
+	Kwiki/BabelTest.pm \
+	Kwiki/Htaccess.pm \
+	Kwiki/PageInfo.pm \
+	Kwiki/ColumnBlocks.pm \
+	Kwiki/MovePage.pm \
+	Kwiki/RecentChangesRSS.pm \
+	Kwiki/SpamWhitelist.pm \
 
 PLUGINS_LEVEL_3 = \
 	Kwiki/Atom/Server.pm \
 	Kwiki/Edit/SubEtha.pm \
 	Kwiki/Theme/HLB.pm \
 	Kwiki/Purple/Sequence.pm \
-	Kwiki/SOAP/Fortune.pm \
 	Kwiki/SOAP/Google.pm \
+	Kwiki/SOAP/Fortune.pm \
 	Kwiki/Theme/CPB.pm \
 	Kwiki/Archive/SVK.pm \
 	Kwiki/Diff/Mutual.pm \
@@ -209,6 +217,7 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/OpenSearch/Service.pm \
 	Kwiki/Edit/TypeKeyRequired.pm \
 	Kwiki/Users/TypeKey.pm \
+	Kwiki/Theme/OSCON.pm \
 
 PLUGINS_LEVEL_4 = \
 	Kwiki/Simple/Server/HTTP.pm \

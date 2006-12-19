@@ -1,0 +1,1 @@
+../../plugins/unstable/Kwiki-PageInfo/lib/Kwiki/PageInfo.pm

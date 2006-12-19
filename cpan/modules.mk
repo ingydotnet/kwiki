@@ -7,14 +7,6 @@ CPAN_LEVEL_1 = \
 	URI.pm \
 
 CPAN_LEVEL_2 = \
-	URI/_foreign.pm \
-	URI/_generic.pm \
-	URI/_ldap.pm \
-	URI/_login.pm \
-	URI/_query.pm \
-	URI/_segment.pm \
-	URI/_server.pm \
-	URI/_userpass.pm \
 	URI/data.pm \
 	URI/Escape.pm \
 	URI/file.pm \
@@ -46,6 +38,14 @@ CPAN_LEVEL_2 = \
 	URI/URL.pm \
 	URI/urn.pm \
 	URI/WithBase.pm \
+	URI/_foreign.pm \
+	URI/_generic.pm \
+	URI/_ldap.pm \
+	URI/_login.pm \
+	URI/_query.pm \
+	URI/_segment.pm \
+	URI/_server.pm \
+	URI/_userpass.pm \
 
 CPAN_LEVEL_3 = \
 	URI/file/Base.pm \

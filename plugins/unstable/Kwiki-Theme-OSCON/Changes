@@ -1,0 +1,5 @@
+---
+version: 0.10
+date: Mon Feb 14 07:56:07 PST 2005
+changes:
+- Initial version of Kwiki::Theme::OSCON
