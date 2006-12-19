@@ -151,6 +151,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/ColumnBlocks.pm \
 	Kwiki/MovePage.pm \
 	Kwiki/RecentChangesRSS.pm \
+	Kwiki/SisterSites.pm \
 	Kwiki/SpamWhitelist.pm \
 
 PLUGINS_LEVEL_3 = \
