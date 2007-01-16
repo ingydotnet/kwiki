@@ -2,7 +2,6 @@
 
 modules.mk:
 	find . -type f | \
-	grep -v '/Kwiki-Kwiki/' | \
 	grep '\.pm$$' | \
 	grep '/lib/' | \
 	grep -v '/t/' | \
