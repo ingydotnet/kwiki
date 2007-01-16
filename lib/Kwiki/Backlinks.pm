@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Backlinks/lib/Kwiki/Backlinks.pm
+../../src/plugins/cdent/Kwiki-Backlinks/lib/Kwiki/Backlinks.pm

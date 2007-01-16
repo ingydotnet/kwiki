@@ -1,1 +1,1 @@
-../../cpan/URI-1.35/lib/URI/rtsp.pm
+../../src/cpan/URI-1.35/lib/URI/rtsp.pm

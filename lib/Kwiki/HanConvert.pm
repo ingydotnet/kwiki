@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-HanConvert/lib/Kwiki/HanConvert.pm
+../../src/plugins/gugod/Kwiki-HanConvert/lib/Kwiki/HanConvert.pm

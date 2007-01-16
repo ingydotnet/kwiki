@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-ShortcutLinks-0.03/lib/Kwiki/ShortcutLinks.pm
+../../src/plugins/cpan/Kwiki-ShortcutLinks-0.03/lib/Kwiki/ShortcutLinks.pm

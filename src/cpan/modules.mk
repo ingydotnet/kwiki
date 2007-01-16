@@ -63,21 +63,21 @@ CPAN_MODULES = $(CPAN_LEVEL_1) $(CPAN_LEVEL_2) $(CPAN_LEVEL_3)
 cpan: $(CPAN_PATHS) $(CPAN_MODULES)
 
 $(CPAN_LEVEL_1):
-	ln -s ../cpan/*/lib/$@ $@
+	ln -fs ../src/cpan/*/lib/$@ $@
 
 $(CPAN_LEVEL_2):
 	@( \
 	cd dummy; \
-	lib=../../cpan/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../src/cpan/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../$@; \
 	)
 
 $(CPAN_LEVEL_3):
 	@( \
 	cd dummy/dummy; \
-	lib=../../../cpan/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../../src/cpan/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../../$@; \
 	)
 

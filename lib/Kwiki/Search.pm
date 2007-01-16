@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-Search/lib/Kwiki/Search.pm
+../../src/plugins/ingy/Kwiki-Search/lib/Kwiki/Search.pm

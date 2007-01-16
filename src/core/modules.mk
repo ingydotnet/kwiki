@@ -183,37 +183,37 @@ CORE_MODULES = $(CORE_LEVEL_1) $(CORE_LEVEL_2) $(CORE_LEVEL_3) $(CORE_LEVEL_4) $
 core: $(CORE_PATHS) $(CORE_MODULES)
 
 $(CORE_LEVEL_1):
-	ln -s ../core/*/lib/$@ $@
+	ln -fs ../src/core/*/lib/$@ $@
 
 $(CORE_LEVEL_2):
 	@( \
 	cd dummy; \
-	lib=../../core/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../src/core/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../$@; \
 	)
 
 $(CORE_LEVEL_3):
 	@( \
 	cd dummy/dummy; \
-	lib=../../../core/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../../src/core/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../../$@; \
 	)
 
 $(CORE_LEVEL_4):
 	@( \
 	cd dummy/dummy/dummy; \
-	lib=../../../../core/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../../../src/core/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../../../$@; \
 	)
 
 $(CORE_LEVEL_5):
 	@( \
 	cd dummy/dummy/dummy/dummy; \
-	lib=../../../../../core/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../../../../src/core/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../../../../$@; \
 	)
 

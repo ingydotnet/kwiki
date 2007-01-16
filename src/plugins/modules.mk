@@ -237,32 +237,32 @@ plugins: $(PLUGINS_PATHS) $(PLUGINS_MODULES)
 $(PLUGINS_LEVEL_2):
 	@( \
 	cd dummy; \
-	lib=../../plugins/*/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../src/plugins/*/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../$@; \
 	)
 
 $(PLUGINS_LEVEL_3):
 	@( \
 	cd dummy/dummy; \
-	lib=../../../plugins/*/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../../src/plugins/*/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../../$@; \
 	)
 
 $(PLUGINS_LEVEL_4):
 	@( \
 	cd dummy/dummy/dummy; \
-	lib=../../../../plugins/*/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../../../src/plugins/*/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../../../$@; \
 	)
 
 $(PLUGINS_LEVEL_5):
 	@( \
 	cd dummy/dummy/dummy/dummy; \
-	lib=../../../../../plugins/*/*/lib/$@; \
-	echo "ln -s $$lib $@;"; \
+	lib=../../../../../src/plugins/*/*/lib/$@; \
+	echo "ln -fs $$lib $@;"; \
 	ln -fs $$lib ../../../../$@; \
 	)
 

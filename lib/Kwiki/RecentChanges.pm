@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-RecentChanges/lib/Kwiki/RecentChanges.pm
+../../src/plugins/ingy/Kwiki-RecentChanges/lib/Kwiki/RecentChanges.pm

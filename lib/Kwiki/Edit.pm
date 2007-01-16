@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Edit.pm
+../../src/core/Kwiki/lib/Kwiki/Edit.pm

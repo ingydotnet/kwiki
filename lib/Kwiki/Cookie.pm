@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Cookie.pm
+../../src/core/Kwiki/lib/Kwiki/Cookie.pm

@@ -1,1 +1,1 @@
-../../../core/Kwiki/lib/Kwiki/Template/TT2.pm
+../../../src/core/Kwiki/lib/Kwiki/Template/TT2.pm

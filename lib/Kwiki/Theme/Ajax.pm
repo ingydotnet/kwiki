@@ -1,1 +1,1 @@
-../../../plugins/gugod/Kwiki-Theme-Ajax/lib/Kwiki/Theme/Ajax.pm
+../../../src/plugins/gugod/Kwiki-Theme-Ajax/lib/Kwiki/Theme/Ajax.pm

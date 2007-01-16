@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-DMOZLink-0.01/lib/Kwiki/DMOZLink.pm
+../../src/plugins/cpan/Kwiki-DMOZLink-0.01/lib/Kwiki/DMOZLink.pm

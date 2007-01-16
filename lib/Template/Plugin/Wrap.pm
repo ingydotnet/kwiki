@@ -1,1 +1,1 @@
-../../../core/Template-Installed/lib/Template/Plugin/Wrap.pm
+../../../src/core/Template-Installed/lib/Template/Plugin/Wrap.pm

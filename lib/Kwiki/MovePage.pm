@@ -1,1 +1,1 @@
-../../plugins/unstable/Kwiki-Plugins/lib/Kwiki/MovePage.pm
+../../src/plugins/unstable/Kwiki-Plugins/lib/Kwiki/MovePage.pm

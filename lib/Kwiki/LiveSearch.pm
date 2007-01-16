@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-LiveSearch/lib/Kwiki/LiveSearch.pm
+../../src/plugins/gugod/Kwiki-LiveSearch/lib/Kwiki/LiveSearch.pm

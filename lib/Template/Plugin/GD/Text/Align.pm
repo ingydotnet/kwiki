@@ -1,1 +1,1 @@
-../../../../../core/Template-Installed/lib/Template/Plugin/GD/Text/Align.pm
+../../../../../src/core/Template-Installed/lib/Template/Plugin/GD/Text/Align.pm

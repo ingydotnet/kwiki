@@ -1,1 +1,1 @@
-../../core/Template-Installed/lib/Template/Grammar.pm
+../../src/core/Template-Installed/lib/Template/Grammar.pm

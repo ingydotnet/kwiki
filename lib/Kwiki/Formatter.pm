@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Formatter.pm
+../../src/core/Kwiki/lib/Kwiki/Formatter.pm

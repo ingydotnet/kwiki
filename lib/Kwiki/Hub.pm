@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Hub.pm
+../../src/core/Kwiki/lib/Kwiki/Hub.pm

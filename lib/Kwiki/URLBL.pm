@@ -1,1 +1,1 @@
-../../plugins/miyagawa/Kwiki-URLBL/lib/Kwiki/URLBL.pm
+../../src/plugins/miyagawa/Kwiki-URLBL/lib/Kwiki/URLBL.pm

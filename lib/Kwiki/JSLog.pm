@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-JSLog-0.01/lib/Kwiki/JSLog.pm
+../../src/plugins/cpan/Kwiki-JSLog-0.01/lib/Kwiki/JSLog.pm

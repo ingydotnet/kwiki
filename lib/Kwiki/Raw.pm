@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Raw/lib/Kwiki/Raw.pm
+../../src/plugins/cdent/Kwiki-Raw/lib/Kwiki/Raw.pm

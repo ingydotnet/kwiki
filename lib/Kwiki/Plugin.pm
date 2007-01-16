@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Plugin.pm
+../../src/core/Kwiki/lib/Kwiki/Plugin.pm

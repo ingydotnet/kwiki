@@ -1,1 +1,1 @@
-../../../plugins/cpan/Kwiki-Diff-Mutual-0.01/lib/Kwiki/Diff/Mutual.pm
+../../../src/plugins/cpan/Kwiki-Diff-Mutual-0.01/lib/Kwiki/Diff/Mutual.pm

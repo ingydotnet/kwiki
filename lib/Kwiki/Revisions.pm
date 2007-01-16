@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-Revisions/lib/Kwiki/Revisions.pm
+../../src/plugins/ingy/Kwiki-Revisions/lib/Kwiki/Revisions.pm

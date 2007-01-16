@@ -1,1 +1,1 @@
-../../../core/IO-All/lib/IO/All/Socket.pm
+../../../src/core/IO-All/lib/IO/All/Socket.pm

@@ -1,1 +1,1 @@
-../../../core/Template-Installed/lib/Template/Plugin/Dumper.pm
+../../../src/core/Template-Installed/lib/Template/Plugin/Dumper.pm

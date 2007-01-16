@@ -1,1 +1,1 @@
-../../../plugins/ingy/Kwiki-UniUI/lib/Kwiki/UniUI/Theme.pm
+../../../src/plugins/ingy/Kwiki-UniUI/lib/Kwiki/UniUI/Theme.pm

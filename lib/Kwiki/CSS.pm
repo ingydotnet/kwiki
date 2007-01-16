@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/CSS.pm
+../../src/core/Kwiki/lib/Kwiki/CSS.pm

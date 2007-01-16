@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/ContentObject.pm
+../../src/core/Kwiki/lib/Kwiki/ContentObject.pm

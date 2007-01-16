@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Toolbar.pm
+../../src/core/Kwiki/lib/Kwiki/Toolbar.pm

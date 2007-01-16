@@ -1,1 +1,1 @@
-../../plugins/ian/Kwiki-GDGraphGenerator/lib/Kwiki/GDGraphGenerator.pm
+../../src/plugins/ian/Kwiki-GDGraphGenerator/lib/Kwiki/GDGraphGenerator.pm

@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-HomePagePreference/lib/Kwiki/HomePagePreference.pm
+../../src/plugins/ingy/Kwiki-HomePagePreference/lib/Kwiki/HomePagePreference.pm

@@ -1,1 +1,1 @@
-../../../plugins/ian/Kwiki-Icons-Gnome/lib/Kwiki/Icons/Gnome.pm
+../../../src/plugins/ian/Kwiki-Icons-Gnome/lib/Kwiki/Icons/Gnome.pm

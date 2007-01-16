@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Javascript.pm
+../../src/core/Kwiki/lib/Kwiki/Javascript.pm

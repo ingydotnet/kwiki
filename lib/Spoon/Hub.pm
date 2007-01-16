@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/Hub.pm
+../../src/core/Spoon/lib/Spoon/Hub.pm

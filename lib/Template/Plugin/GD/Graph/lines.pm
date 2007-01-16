@@ -1,1 +1,1 @@
-../../../../../core/Template-Installed/lib/Template/Plugin/GD/Graph/lines.pm
+../../../../../src/core/Template-Installed/lib/Template/Plugin/GD/Graph/lines.pm

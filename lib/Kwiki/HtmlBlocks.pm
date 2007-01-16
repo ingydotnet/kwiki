@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-HtmlBlocks/lib/Kwiki/HtmlBlocks.pm
+../../src/plugins/ingy/Kwiki-HtmlBlocks/lib/Kwiki/HtmlBlocks.pm

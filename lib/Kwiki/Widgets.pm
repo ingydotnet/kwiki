@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Widgets.pm
+../../src/core/Kwiki/lib/Kwiki/Widgets.pm

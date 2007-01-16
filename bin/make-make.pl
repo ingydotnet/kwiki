@@ -2,8 +2,8 @@
 use strict;
 use warnings;
 
-my ($type, $stars) = @ARGV;
-$stars ||= 1;
+my ($type, $star_level) = @ARGV;
+$star_level ||= 1;
 
 my @libs = map {
     s!^.*/lib/!! or die $_;
@@ -39,7 +39,7 @@ for my $level (1..5) {
             ${"level$level"} .
             "\n";
         $all .= "\$(${type}_LEVEL_$level) ";
-        $sections .= make_section($level, $type, $stars);
+        $sections .= make_section($level, $type, $star_level);
     }
 }
 
@@ -59,14 +59,14 @@ if ($all) {
 print "$paths$level1$level2$level3$level4$level5$all$sections";
 
 sub make_section {
-    my ($level, $TYPE, $stars) = @_;
+    my ($level, $TYPE, $star_level) = @_;
     my $type = lc($TYPE);
-    my $star = join '/', (('*') x $stars);
+    my $stars = join '/', (('*') x $star_level);
     my $dots = join '/', (('..') x $level);
     if ($level == 1) {
         return <<"...";
 \$(${TYPE}_LEVEL_$level):
-	ln -s $dots/$type/$star/lib/\$\@ \$\@
+	ln -fs $dots/src/$type/$stars/lib/\$\@ \$\@
 
 ...
     }
@@ -76,8 +76,8 @@ sub make_section {
 \$(${TYPE}_LEVEL_$level):
 	\@( \\
 	cd $dummy; \\
-	lib=$dots/$type/$star/lib/\$\@; \\
-	echo "ln -s \$\$lib \$\@;"; \\
+	lib=$dots/src/$type/$stars/lib/\$\@; \\
+	echo "ln -fs \$\$lib \$\@;"; \\
 	ln -fs \$\$lib $dots2/\$\@; \\
 	)
 

@@ -1,1 +1,1 @@
-../../cpan/URI-1.35/lib/URI/_query.pm
+../../src/cpan/URI-1.35/lib/URI/_query.pm

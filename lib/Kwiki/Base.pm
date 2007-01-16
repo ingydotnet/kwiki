@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Base.pm
+../../src/core/Kwiki/lib/Kwiki/Base.pm

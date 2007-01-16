@@ -1,1 +1,1 @@
-../../plugins/miyagawa/Kwiki-Export/lib/Kwiki/Export.pm
+../../src/plugins/miyagawa/Kwiki-Export/lib/Kwiki/Export.pm

@@ -1,1 +1,1 @@
-../../../plugins/cpan/Kwiki-Theme-TabNav-0.01/lib/Kwiki/Theme/TabNav.pm
+../../../src/plugins/cpan/Kwiki-Theme-TabNav-0.01/lib/Kwiki/Theme/TabNav.pm

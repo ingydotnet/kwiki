@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-ListPages-0.11/lib/Kwiki/ListPages.pm
+../../src/plugins/cpan/Kwiki-ListPages-0.11/lib/Kwiki/ListPages.pm

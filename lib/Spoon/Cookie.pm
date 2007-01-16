@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/Cookie.pm
+../../src/core/Spoon/lib/Spoon/Cookie.pm

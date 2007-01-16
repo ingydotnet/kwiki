@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/IndexList.pm
+../../src/core/Spoon/lib/Spoon/IndexList.pm

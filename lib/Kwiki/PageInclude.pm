@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-PageInclude/lib/Kwiki/PageInclude.pm
+../../src/plugins/gugod/Kwiki-PageInclude/lib/Kwiki/PageInclude.pm

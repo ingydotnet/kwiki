@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Display.pm
+../../src/core/Kwiki/lib/Kwiki/Display.pm

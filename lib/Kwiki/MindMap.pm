@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-MindMap/lib/Kwiki/MindMap.pm
+../../src/plugins/gugod/Kwiki-MindMap/lib/Kwiki/MindMap.pm

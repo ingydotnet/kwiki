@@ -1,1 +1,1 @@
-../../../core/Template-Installed/lib/Template/Plugin/Autoformat.pm
+../../../src/core/Template-Installed/lib/Template/Plugin/Autoformat.pm

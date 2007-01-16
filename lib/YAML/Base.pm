@@ -1,1 +1,1 @@
-../../core/YAML/lib/YAML/Base.pm
+../../src/core/YAML/lib/YAML/Base.pm

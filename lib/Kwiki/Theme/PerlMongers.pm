@@ -1,1 +1,1 @@
-../../../plugins/cpan/Kwiki-Theme-PerlMongers-0.01/lib/Kwiki/Theme/PerlMongers.pm
+../../../src/plugins/cpan/Kwiki-Theme-PerlMongers-0.01/lib/Kwiki/Theme/PerlMongers.pm

@@ -1,1 +1,1 @@
-../../plugins/ian/Kwiki-VimMode/lib/Kwiki/VimMode.pm
+../../src/plugins/ian/Kwiki-VimMode/lib/Kwiki/VimMode.pm

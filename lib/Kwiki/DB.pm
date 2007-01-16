@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-DB/lib/Kwiki/DB.pm
+../../src/plugins/gugod/Kwiki-DB/lib/Kwiki/DB.pm

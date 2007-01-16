@@ -1,1 +1,1 @@
-../../../core/Template-Installed/lib/Template/Namespace/Constants.pm
+../../../src/core/Template-Installed/lib/Template/Namespace/Constants.pm

@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Users.pm
+../../src/core/Kwiki/lib/Kwiki/Users.pm

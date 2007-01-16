@@ -1,1 +1,1 @@
-../../../plugins/cdent/Kwiki-Soap/lib/Kwiki/SOAP/Fortune.pm
+../../../src/plugins/cdent/Kwiki-Soap/lib/Kwiki/SOAP/Fortune.pm

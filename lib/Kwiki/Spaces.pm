@@ -1,1 +1,1 @@
-../../plugins/jooon/Kwiki-Spaces/lib/Kwiki/Spaces.pm
+../../src/plugins/jooon/Kwiki-Spaces/lib/Kwiki/Spaces.pm

@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-BroadcastMessage-0.01/lib/Kwiki/BroadcastMessage.pm
+../../src/plugins/cpan/Kwiki-BroadcastMessage-0.01/lib/Kwiki/BroadcastMessage.pm

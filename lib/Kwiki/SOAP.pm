@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Soap/lib/Kwiki/SOAP.pm
+../../src/plugins/cdent/Kwiki-Soap/lib/Kwiki/SOAP.pm

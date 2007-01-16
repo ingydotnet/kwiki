@@ -1,1 +1,1 @@
-../../cpan/URI-1.35/lib/URI/snews.pm
+../../src/cpan/URI-1.35/lib/URI/snews.pm

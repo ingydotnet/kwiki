@@ -1,1 +1,1 @@
-../../../core/IO-All/lib/IO/All/Temp.pm
+../../../src/core/IO-All/lib/IO/All/Temp.pm

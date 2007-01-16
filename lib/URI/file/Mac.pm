@@ -1,1 +1,1 @@
-../../../cpan/URI-1.35/lib/URI/file/Mac.pm
+../../../src/cpan/URI-1.35/lib/URI/file/Mac.pm

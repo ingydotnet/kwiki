@@ -1,1 +1,1 @@
-../core/Spiffy/lib/Spiffy.pm
+../src/core/Spiffy/lib/Spiffy.pm

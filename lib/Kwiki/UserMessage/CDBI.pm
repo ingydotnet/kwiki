@@ -1,1 +1,1 @@
-../../../plugins/gugod/Kwiki-UserMessage/lib/Kwiki/UserMessage/CDBI.pm
+../../../src/plugins/gugod/Kwiki-UserMessage/lib/Kwiki/UserMessage/CDBI.pm

@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-Scriptaculous-0.01/lib/Kwiki/Scriptaculous.pm
+../../src/plugins/cpan/Kwiki-Scriptaculous-0.01/lib/Kwiki/Scriptaculous.pm

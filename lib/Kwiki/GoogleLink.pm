@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-GoogleLink-0.01/lib/Kwiki/GoogleLink.pm
+../../src/plugins/cpan/Kwiki-GoogleLink-0.01/lib/Kwiki/GoogleLink.pm

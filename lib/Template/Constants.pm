@@ -1,1 +1,1 @@
-../../core/Template-Installed/lib/Template/Constants.pm
+../../src/core/Template-Installed/lib/Template/Constants.pm

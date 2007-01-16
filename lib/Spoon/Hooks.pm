@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/Hooks.pm
+../../src/core/Spoon/lib/Spoon/Hooks.pm

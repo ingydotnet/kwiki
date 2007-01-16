@@ -1,1 +1,1 @@
-../../plugins/unstable/Kwiki-RecentChangesRSS/lib/Kwiki/RecentChangesRSS.pm
+../../src/plugins/unstable/Kwiki-RecentChangesRSS/lib/Kwiki/RecentChangesRSS.pm

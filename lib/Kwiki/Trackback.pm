@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Trackback/lib/Kwiki/Trackback.pm
+../../src/plugins/cdent/Kwiki-Trackback/lib/Kwiki/Trackback.pm

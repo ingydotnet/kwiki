@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-DeletePage/lib/Kwiki/DeletePage.pm
+../../src/plugins/ingy/Kwiki-DeletePage/lib/Kwiki/DeletePage.pm

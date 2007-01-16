@@ -1,1 +1,1 @@
-../../plugins/ian/Kwiki-ForeignLinkGlyphs/lib/Kwiki/ForeignLinkGlyphs.pm
+../../src/plugins/ian/Kwiki-ForeignLinkGlyphs/lib/Kwiki/ForeignLinkGlyphs.pm

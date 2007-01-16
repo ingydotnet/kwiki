@@ -1,1 +1,1 @@
-../../core/YAML/lib/YAML/Marshall.pm
+../../src/core/YAML/lib/YAML/Marshall.pm

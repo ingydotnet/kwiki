@@ -23,8 +23,8 @@ sub find_base {
         $base =~ s/(.*)\/.*/$1/;
     }
     chdir $home;
-    $base = abs_path("$base/../..");
-    return $base if -d "$base/lib/Kwiki" and -d "$base/core/Kwiki";
+    $base = abs_path("$base/../../..");
+    return $base if -d "$base/lib/Kwiki" and -d "$base/src/core/Kwiki";
 
     if ($ENV{HOME}) {
         $base = abs_path("$ENV{HOME}/.kwiki");

@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-Zipcode/lib/Kwiki/Zipcode.pm
+../../src/plugins/ingy/Kwiki-Zipcode/lib/Kwiki/Zipcode.pm

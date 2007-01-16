@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Orphans/lib/Kwiki/Orphans.pm
+../../src/plugins/cdent/Kwiki-Orphans/lib/Kwiki/Orphans.pm

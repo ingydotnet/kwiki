@@ -1,1 +1,1 @@
-../../plugins/jooon/Kwiki-DNSBL/lib/Kwiki/DNSBL.pm
+../../src/plugins/jooon/Kwiki-DNSBL/lib/Kwiki/DNSBL.pm

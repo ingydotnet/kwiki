@@ -1,1 +1,1 @@
-../../../plugins/gugod/Kwiki-Widgets-Links/lib/Kwiki/Widgets/Links.pm
+../../../src/plugins/gugod/Kwiki-Widgets-Links/lib/Kwiki/Widgets/Links.pm

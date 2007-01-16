@@ -1,1 +1,1 @@
-../../plugins/audreyt/Kwiki-ShellBlocks/lib/Kwiki/ShellBlocks.pm
+../../src/plugins/audreyt/Kwiki-ShellBlocks/lib/Kwiki/ShellBlocks.pm

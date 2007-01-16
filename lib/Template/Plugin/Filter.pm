@@ -1,1 +1,1 @@
-../../../core/Template-Installed/lib/Template/Plugin/Filter.pm
+../../../src/core/Template-Installed/lib/Template/Plugin/Filter.pm

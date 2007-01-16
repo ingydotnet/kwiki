@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-PreformattedBlocks/lib/Kwiki/PreformattedBlocks.pm
+../../src/plugins/ingy/Kwiki-PreformattedBlocks/lib/Kwiki/PreformattedBlocks.pm

@@ -1,1 +1,1 @@
-../../../plugins/ingy/Kwiki-Archive-Rcs/lib/Kwiki/Archive/Rcs.pm
+../../../src/plugins/ingy/Kwiki-Archive-Rcs/lib/Kwiki/Archive/Rcs.pm

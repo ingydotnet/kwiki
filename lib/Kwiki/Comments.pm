@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-Comments/lib/Kwiki/Comments.pm
+../../src/plugins/gugod/Kwiki-Comments/lib/Kwiki/Comments.pm

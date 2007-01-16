@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/Formatter.pm
+../../src/core/Spoon/lib/Spoon/Formatter.pm

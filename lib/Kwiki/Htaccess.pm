@@ -1,1 +1,1 @@
-../../plugins/unstable/Kwiki-Htaccess/lib/Kwiki/Htaccess.pm
+../../src/plugins/unstable/Kwiki-Htaccess/lib/Kwiki/Htaccess.pm

@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-EscapeURI-0.02/lib/Kwiki/EscapeURI.pm
+../../src/plugins/cpan/Kwiki-EscapeURI-0.02/lib/Kwiki/EscapeURI.pm

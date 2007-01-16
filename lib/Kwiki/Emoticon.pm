@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-Emoticon/lib/Kwiki/Emoticon.pm
+../../src/plugins/gugod/Kwiki-Emoticon/lib/Kwiki/Emoticon.pm

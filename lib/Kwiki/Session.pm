@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-Session/lib/Kwiki/Session.pm
+../../src/plugins/gugod/Kwiki-Session/lib/Kwiki/Session.pm

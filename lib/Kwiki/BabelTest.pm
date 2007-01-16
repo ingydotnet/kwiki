@@ -1,1 +1,1 @@
-../../plugins/unstable/Kwiki-BabelTest/lib/Kwiki/BabelTest.pm
+../../src/plugins/unstable/Kwiki-BabelTest/lib/Kwiki/BabelTest.pm

@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-GuestBook/lib/Kwiki/GuestBook.pm
+../../src/plugins/ingy/Kwiki-GuestBook/lib/Kwiki/GuestBook.pm

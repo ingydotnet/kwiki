@@ -1,1 +1,1 @@
-../../../core/IO-All/lib/IO/All/File.pm
+../../../src/core/IO-All/lib/IO/All/File.pm

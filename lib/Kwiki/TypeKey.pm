@@ -1,1 +1,1 @@
-../../plugins/miyagawa/Kwiki-TypeKey/lib/Kwiki/TypeKey.pm
+../../src/plugins/miyagawa/Kwiki-TypeKey/lib/Kwiki/TypeKey.pm

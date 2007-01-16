@@ -1,1 +1,1 @@
-../../plugins/cfedde/Kwiki-Attachments/lib/Kwiki/Attachments.pm
+../../src/plugins/cfedde/Kwiki-Attachments/lib/Kwiki/Attachments.pm

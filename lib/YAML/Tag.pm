@@ -1,1 +1,1 @@
-../../core/YAML/lib/YAML/Tag.pm
+../../src/core/YAML/lib/YAML/Tag.pm

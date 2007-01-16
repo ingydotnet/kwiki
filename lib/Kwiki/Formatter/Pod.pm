@@ -1,1 +1,1 @@
-../../../plugins/ingy/Kwiki-Formatter-Pod/lib/Kwiki/Formatter/Pod.pm
+../../../src/plugins/ingy/Kwiki-Formatter-Pod/lib/Kwiki/Formatter/Pod.pm

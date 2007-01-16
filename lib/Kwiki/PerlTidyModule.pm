@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-PerlTidyModule/lib/Kwiki/PerlTidyModule.pm
+../../src/plugins/ingy/Kwiki-PerlTidyModule/lib/Kwiki/PerlTidyModule.pm

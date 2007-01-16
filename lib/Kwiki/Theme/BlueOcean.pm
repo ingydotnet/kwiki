@@ -1,1 +1,1 @@
-../../../plugins/cpan/Kwiki-Theme-BlueOcean-0.01/lib/Kwiki/Theme/BlueOcean.pm
+../../../src/plugins/cpan/Kwiki-Theme-BlueOcean-0.01/lib/Kwiki/Theme/BlueOcean.pm

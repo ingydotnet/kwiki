@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Preferences.pm
+../../src/core/Kwiki/lib/Kwiki/Preferences.pm

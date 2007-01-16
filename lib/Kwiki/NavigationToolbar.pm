@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-NavigationToolbar/lib/Kwiki/NavigationToolbar.pm
+../../src/plugins/gugod/Kwiki-NavigationToolbar/lib/Kwiki/NavigationToolbar.pm

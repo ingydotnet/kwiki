@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Icons.pm
+../../src/core/Kwiki/lib/Kwiki/Icons.pm

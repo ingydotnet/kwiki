@@ -1,1 +1,1 @@
-../../../plugins/unstable/Kwiki-Theme-OSCON/lib/Kwiki/Theme/OSCON.pm
+../../../src/plugins/unstable/Kwiki-Theme-OSCON/lib/Kwiki/Theme/OSCON.pm

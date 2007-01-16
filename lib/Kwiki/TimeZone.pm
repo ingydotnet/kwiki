@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-TimeZone/lib/Kwiki/TimeZone.pm
+../../src/plugins/ingy/Kwiki-TimeZone/lib/Kwiki/TimeZone.pm

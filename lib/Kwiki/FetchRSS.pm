@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-FetchRSS/lib/Kwiki/FetchRSS.pm
+../../src/plugins/cdent/Kwiki-FetchRSS/lib/Kwiki/FetchRSS.pm

@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-Wikiwyg/lib/Kwiki/Wikiwyg.pm
+../../src/plugins/ingy/Kwiki-Wikiwyg/lib/Kwiki/Wikiwyg.pm

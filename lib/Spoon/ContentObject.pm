@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/ContentObject.pm
+../../src/core/Spoon/lib/Spoon/ContentObject.pm

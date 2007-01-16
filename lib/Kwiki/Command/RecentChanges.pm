@@ -1,1 +1,1 @@
-../../../plugins/gugod/Kwiki-Command-RecentChanges/lib/Kwiki/Command/RecentChanges.pm
+../../../src/plugins/gugod/Kwiki-Command-RecentChanges/lib/Kwiki/Command/RecentChanges.pm

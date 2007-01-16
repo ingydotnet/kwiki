@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/Plugin.pm
+../../src/core/Spoon/lib/Spoon/Plugin.pm

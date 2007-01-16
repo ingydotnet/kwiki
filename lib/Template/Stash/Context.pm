@@ -1,1 +1,1 @@
-../../../core/Template-Installed/lib/Template/Stash/Context.pm
+../../../src/core/Template-Installed/lib/Template/Stash/Context.pm

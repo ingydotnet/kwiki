@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-NewPage/lib/Kwiki/NewPage.pm
+../../src/plugins/ingy/Kwiki-NewPage/lib/Kwiki/NewPage.pm

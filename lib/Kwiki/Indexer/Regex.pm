@@ -1,1 +1,1 @@
-../../../plugins/cpan/Kwiki-Indexer-0.1.1/lib/Kwiki/Indexer/Regex.pm
+../../../src/plugins/cpan/Kwiki-Indexer-0.1.1/lib/Kwiki/Indexer/Regex.pm

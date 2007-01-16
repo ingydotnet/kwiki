@@ -1,1 +1,1 @@
-../../plugins/ian/Kwiki-Weather/lib/Kwiki/Weather.pm
+../../src/plugins/ian/Kwiki-Weather/lib/Kwiki/Weather.pm

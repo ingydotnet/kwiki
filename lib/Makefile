@@ -1,11 +1,10 @@
-#-------------------------------------------------------------------------------
-all: core cpan plugins
+links: core cpan plugins
 
 #-------------------------------------------------------------------------------
-include ../core/modules.mk
-include ../cpan/modules.mk
-include ../plugins/modules.mk
+include ../src/core/modules.mk
+include ../src/cpan/modules.mk
+include ../src/plugins/modules.mk
 
 #-------------------------------------------------------------------------------
 $(CORE_PATHS) $(CPAN_PATHS) $(PLUGINS_PATHS):
-	mkdir -p $@
+		mkdir -p $@

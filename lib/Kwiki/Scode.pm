@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-Scode/lib/Kwiki/Scode.pm
+../../src/plugins/gugod/Kwiki-Scode/lib/Kwiki/Scode.pm

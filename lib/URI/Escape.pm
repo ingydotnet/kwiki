@@ -1,1 +1,1 @@
-../../cpan/URI-1.35/lib/URI/Escape.pm
+../../src/cpan/URI-1.35/lib/URI/Escape.pm

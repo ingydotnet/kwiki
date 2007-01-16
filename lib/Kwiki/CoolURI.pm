@@ -1,1 +1,1 @@
-../../plugins/jooon/Kwiki-CoolURI/lib/Kwiki/CoolURI.pm
+../../src/plugins/jooon/Kwiki-CoolURI/lib/Kwiki/CoolURI.pm

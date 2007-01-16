@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Configure.pm
+../../src/core/Kwiki/lib/Kwiki/Configure.pm

@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/CGI.pm
+../../src/core/Kwiki/lib/Kwiki/CGI.pm

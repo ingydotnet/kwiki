@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-PagePrivacy/lib/Kwiki/PagePrivacy.pm
+../../src/plugins/ingy/Kwiki-PagePrivacy/lib/Kwiki/PagePrivacy.pm

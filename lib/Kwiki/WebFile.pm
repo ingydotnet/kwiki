@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/WebFile.pm
+../../src/core/Kwiki/lib/Kwiki/WebFile.pm

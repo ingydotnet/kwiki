@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-Spork/lib/Kwiki/Spork.pm
+../../src/plugins/ingy/Kwiki-Spork/lib/Kwiki/Spork.pm

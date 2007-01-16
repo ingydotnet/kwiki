@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-Email-0.02/lib/Kwiki/Email.pm
+../../src/plugins/cpan/Kwiki-Email-0.02/lib/Kwiki/Email.pm

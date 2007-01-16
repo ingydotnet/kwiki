@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-ParagraphBlocks/lib/Kwiki/ParagraphBlocks.pm
+../../src/plugins/ingy/Kwiki-ParagraphBlocks/lib/Kwiki/ParagraphBlocks.pm

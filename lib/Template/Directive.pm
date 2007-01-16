@@ -1,1 +1,1 @@
-../../core/Template-Installed/lib/Template/Directive.pm
+../../src/core/Template-Installed/lib/Template/Directive.pm

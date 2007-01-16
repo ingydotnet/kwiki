@@ -1,1 +1,1 @@
-../../plugins/ian/Kwiki-Autoformat/lib/Kwiki/Autoformat.pm
+../../src/plugins/ian/Kwiki-Autoformat/lib/Kwiki/Autoformat.pm

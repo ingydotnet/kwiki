@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Technorati/lib/Kwiki/Technorati.pm
+../../src/plugins/cdent/Kwiki-Technorati/lib/Kwiki/Technorati.pm

@@ -1,1 +1,1 @@
-../../../plugins/ingy/Kwiki-Ajax-Toolman/lib/Kwiki/Ajax/Toolman.pm
+../../../src/plugins/ingy/Kwiki-Ajax-Toolman/lib/Kwiki/Ajax/Toolman.pm

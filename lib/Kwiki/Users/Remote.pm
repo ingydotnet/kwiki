@@ -1,1 +1,1 @@
-../../../plugins/ian/Kwiki-Users-Remote/lib/Kwiki/Users/Remote.pm
+../../../src/plugins/ian/Kwiki-Users-Remote/lib/Kwiki/Users/Remote.pm

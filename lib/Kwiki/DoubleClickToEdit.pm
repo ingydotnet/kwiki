@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-DoubleClickToEdit/lib/Kwiki/DoubleClickToEdit.pm
+../../src/plugins/ingy/Kwiki-DoubleClickToEdit/lib/Kwiki/DoubleClickToEdit.pm

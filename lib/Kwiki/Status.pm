@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Status.pm
+../../src/core/Kwiki/lib/Kwiki/Status.pm

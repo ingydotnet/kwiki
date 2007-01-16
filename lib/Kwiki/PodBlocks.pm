@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-PodBlocks/lib/Kwiki/PodBlocks.pm
+../../src/plugins/ingy/Kwiki-PodBlocks/lib/Kwiki/PodBlocks.pm

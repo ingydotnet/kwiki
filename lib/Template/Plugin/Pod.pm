@@ -1,1 +1,1 @@
-../../../core/Template-Installed/lib/Template/Plugin/Pod.pm
+../../../src/core/Template-Installed/lib/Template/Plugin/Pod.pm

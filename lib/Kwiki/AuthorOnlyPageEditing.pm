@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-AuthorOnlyPageEditing/lib/Kwiki/AuthorOnlyPageEditing.pm
+../../src/plugins/gugod/Kwiki-AuthorOnlyPageEditing/lib/Kwiki/AuthorOnlyPageEditing.pm

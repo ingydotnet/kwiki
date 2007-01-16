@@ -1,1 +1,1 @@
-../../plugins/ian/Kwiki-Diff/lib/Kwiki/Diff.pm
+../../src/plugins/ian/Kwiki-Diff/lib/Kwiki/Diff.pm

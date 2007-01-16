@@ -1,1 +1,1 @@
-../../../../core/Template-Installed/lib/Template/Plugin/GD/Text.pm
+../../../../src/core/Template-Installed/lib/Template/Plugin/GD/Text.pm

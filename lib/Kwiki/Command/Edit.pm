@@ -1,1 +1,1 @@
-../../../plugins/gugod/Kwiki-Command-Edit/lib/Kwiki/Command/Edit.pm
+../../../src/plugins/gugod/Kwiki-Command-Edit/lib/Kwiki/Command/Edit.pm

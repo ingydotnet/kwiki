@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-ConfigBlocks/lib/Kwiki/ConfigBlocks.pm
+../../src/plugins/gugod/Kwiki-ConfigBlocks/lib/Kwiki/ConfigBlocks.pm

@@ -1,1 +1,1 @@
-../../../plugins/audreyt/Kwiki-Atom/lib/Kwiki/Atom/Server.pm
+../../../src/plugins/audreyt/Kwiki-Atom/lib/Kwiki/Atom/Server.pm

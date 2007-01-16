@@ -1,1 +1,1 @@
-../../plugins/unstable/Kwiki-Plugins/lib/Kwiki/ColumnBlocks.pm
+../../src/plugins/unstable/Kwiki-Plugins/lib/Kwiki/ColumnBlocks.pm

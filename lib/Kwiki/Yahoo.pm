@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Yahoo/lib/Kwiki/Yahoo.pm
+../../src/plugins/cdent/Kwiki-Yahoo/lib/Kwiki/Yahoo.pm

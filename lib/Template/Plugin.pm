@@ -1,1 +1,1 @@
-../../core/Template-Installed/lib/Template/Plugin.pm
+../../src/core/Template-Installed/lib/Template/Plugin.pm

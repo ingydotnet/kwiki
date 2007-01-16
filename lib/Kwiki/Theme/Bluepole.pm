@@ -1,1 +1,1 @@
-../../../plugins/jooon/Kwiki-Theme-Bluepole/lib/Kwiki/Theme/Bluepole.pm
+../../../src/plugins/jooon/Kwiki-Theme-Bluepole/lib/Kwiki/Theme/Bluepole.pm

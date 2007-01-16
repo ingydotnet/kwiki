@@ -1,1 +1,1 @@
-../../plugins/unstable/Kwiki-AccessBlacklist/lib/Kwiki/AccessBlacklist.pm
+../../src/plugins/unstable/Kwiki-AccessBlacklist/lib/Kwiki/AccessBlacklist.pm

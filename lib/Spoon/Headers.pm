@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/Headers.pm
+../../src/core/Spoon/lib/Spoon/Headers.pm

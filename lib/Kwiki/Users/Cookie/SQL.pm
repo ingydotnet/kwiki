@@ -1,1 +1,1 @@
-../../../../plugins/jcap/Kwiki-Users-Cookie-SQL/lib/Kwiki/Users/Cookie/SQL.pm
+../../../../src/plugins/jcap/Kwiki-Users-Cookie-SQL/lib/Kwiki/Users/Cookie/SQL.pm

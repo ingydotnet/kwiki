@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Blog/lib/Kwiki/Blog.pm
+../../src/plugins/cdent/Kwiki-Blog/lib/Kwiki/Blog.pm

@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-PPerl/lib/Kwiki/PPerl.pm
+../../src/plugins/cdent/Kwiki-PPerl/lib/Kwiki/PPerl.pm

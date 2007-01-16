@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-Infobox/lib/Kwiki/Infobox.pm
+../../src/plugins/gugod/Kwiki-Infobox/lib/Kwiki/Infobox.pm

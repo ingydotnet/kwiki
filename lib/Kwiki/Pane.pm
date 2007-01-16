@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Pane.pm
+../../src/core/Kwiki/lib/Kwiki/Pane.pm

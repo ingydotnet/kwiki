@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-Prototype-0.01/lib/Kwiki/Prototype.pm
+../../src/plugins/cpan/Kwiki-Prototype-0.01/lib/Kwiki/Prototype.pm

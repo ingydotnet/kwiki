@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Purple/lib/Kwiki/Purple.pm
+../../src/plugins/cdent/Kwiki-Purple/lib/Kwiki/Purple.pm

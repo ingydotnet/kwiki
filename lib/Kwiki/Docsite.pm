@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-Docsite/lib/Kwiki/Docsite.pm
+../../src/plugins/gugod/Kwiki-Docsite/lib/Kwiki/Docsite.pm

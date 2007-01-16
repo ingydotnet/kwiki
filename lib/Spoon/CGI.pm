@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/CGI.pm
+../../src/core/Spoon/lib/Spoon/CGI.pm

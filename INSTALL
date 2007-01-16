@@ -1,0 +1,97 @@
+= SYNOPSIS
+
+Basically just do these commands:
+
+  > svk checkout http://svn.2.kwiki.org/kwiki /usr/local/kwiki
+  > export PATH=/usr/local/kwiki/bin:$PATH
+  > kwiki -new /path/to/cgi/kwiki-01
+  > kwiki -start /path/to/cgi/kwiki-01 --port=8080
+  > open http://localhost:8080/index.cgi
+
+= INSTALLATION DETAILS
+
+Kwiki is incredibly easy to set up. Kwiki bundles everything you need to
+get up and running including an optional standalone web server. All you
+need is a Unix environment with Perl of version 5.8.3 or higher.
+
+Ready? You only need to do a few simple steps:
+
+1) Get the Kwiki software.
+
+Odds are, that since you are reading this, you already have done this
+step. If not, you can get the software using one of these methods:
+
+  A) svn checkout http://svn.2.kwiki.org/kwiki /usr/local/kwiki
+
+     This is the preferred way to get the sources, since it makes
+     getting updates as easy as `svn update`.
+
+  B) svk checkout http://svn.2.kwiki.org/kwiki /usr/local/kwiki
+
+     SVK is even better than SVN, but takes a little bit more time to
+     get used to. It is the Hacker's Choice for version control.
+
+  C) Download the latest Kwiki tarball from
+     http://downloads.2.kwiki.org/ and untar it.
+
+Kwiki does not have an install procedure. Once you have the software, it
+is "installed". Just put it some nice, safe place like `/usr/local/kwiki`.
+
+2) Put the `kwiki` command line utility in your PATH.
+
+At the top level of your new Kwiki software is a directory called `bin`
+which contains the command line utility called `kwiki`. This utility is
+needed for managing the Kwiki software.
+
+You should put this `bin` directory in your PATH environment setting. Use a
+command like this in your login script:
+
+    export PATH=/usr/local/kwiki/bin:$PATH
+
+Now you can run `kwiki` commands in your shell.
+
+NOTE: If you have already installed an older version of Kwiki, you may
+      already have a `kwiki` script in your PATH. It is important that
+      you put the new script in front of the older one in your PATH. Do
+      a `which kwiki` command to make sure things are set up properly.
+
+3) Create a new wiki with `kwiki -new`.
+
+This command installs a Kwiki instance, which is a running wiki website.
+You can either create a new directory, or specify the directory name in
+the command.
+
+    cd /path/to/cgi/
+    mkdir kwikii-01
+    cd kwiki-01
+    kwiki -new
+
+or (more simply):
+
+    kwiki -new /path/to/cgi/kwiki-01
+
+4) Start a web server with `kwiki -start`.
+
+Kwiki comes with its own lightweight web server. To start running your new
+Kwiki instance, go into its directory and run `kwiki -start`. Or optionally
+specify the directory on the command:
+
+    kwiki -start /path/to/cgi/kwiki-01
+
+This is the easy way to get going, but for a real wiki on the Web,
+you'll probably want to use a "real" web server. In this case, just make
+sure your webserver is running and knows about your Kwiki.
+
+You can use any CGI enabled web server to run Kwiki. Apache and Lighttpd
+are popular choices. Just put your new Kwiki instance directory in a
+place where the web server expects to have Perl CGI programs. This may
+or may not require configuration changes to your web server.
+
+5) You are done!!!
+
+Well at least you got a Kwiki up and running. :-) See the next section
+for advice on configuring and maintaining your new Kwiki.
+
+= KWIKI CONFIGURATION
+
+...

@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-JSON-0.01/lib/Kwiki/JSON.pm
+../../src/plugins/cpan/Kwiki-JSON-0.01/lib/Kwiki/JSON.pm

@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-Sifr/lib/Kwiki/Sifr.pm
+../../src/plugins/ingy/Kwiki-Sifr/lib/Kwiki/Sifr.pm

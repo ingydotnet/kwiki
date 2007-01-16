@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-Cache/lib/Kwiki/Cache.pm
+../../src/plugins/ingy/Kwiki-Cache/lib/Kwiki/Cache.pm

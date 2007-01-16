@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-WeblogUpdates/lib/Kwiki/WeblogUpdates.pm
+../../src/plugins/cdent/Kwiki-WeblogUpdates/lib/Kwiki/WeblogUpdates.pm

@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Registry.pm
+../../src/core/Kwiki/lib/Kwiki/Registry.pm

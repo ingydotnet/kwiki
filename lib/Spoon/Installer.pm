@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/Installer.pm
+../../src/core/Spoon/lib/Spoon/Installer.pm

@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-UserPhoto/lib/Kwiki/UserPhoto.pm
+../../src/plugins/gugod/Kwiki-UserPhoto/lib/Kwiki/UserPhoto.pm

@@ -1,1 +1,1 @@
-../../core/Spoon/lib/Spoon/MetadataObject.pm
+../../src/core/Spoon/lib/Spoon/MetadataObject.pm

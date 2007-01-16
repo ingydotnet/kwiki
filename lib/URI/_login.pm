@@ -1,1 +1,1 @@
-../../cpan/URI-1.35/lib/URI/_login.pm
+../../src/cpan/URI-1.35/lib/URI/_login.pm

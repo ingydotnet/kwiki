@@ -1,1 +1,1 @@
-../../../../../core/Template-Installed/lib/Template/Plugin/GD/Graph/bars3d.pm
+../../../../../src/core/Template-Installed/lib/Template/Plugin/GD/Graph/bars3d.pm

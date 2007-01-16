@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-UserName/lib/Kwiki/UserName.pm
+../../src/plugins/ingy/Kwiki-UserName/lib/Kwiki/UserName.pm

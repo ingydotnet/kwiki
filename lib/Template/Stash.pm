@@ -1,1 +1,1 @@
-../../core/Template-Installed/lib/Template/Stash.pm
+../../src/core/Template-Installed/lib/Template/Stash.pm

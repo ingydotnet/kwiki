@@ -1,1 +1,1 @@
-../../plugins/ingy/Kwiki-PerlTidyBlocks/lib/Kwiki/PerlTidyBlocks.pm
+../../src/plugins/ingy/Kwiki-PerlTidyBlocks/lib/Kwiki/PerlTidyBlocks.pm

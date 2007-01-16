@@ -1,1 +1,1 @@
-../../plugins/cpan/Kwiki-RenamePage-0.01/lib/Kwiki/RenamePage.pm
+../../src/plugins/cpan/Kwiki-RenamePage-0.01/lib/Kwiki/RenamePage.pm

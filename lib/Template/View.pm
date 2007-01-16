@@ -1,1 +1,1 @@
-../../core/Template-Installed/lib/Template/View.pm
+../../src/core/Template-Installed/lib/Template/View.pm

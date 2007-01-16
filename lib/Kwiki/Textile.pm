@@ -1,1 +1,1 @@
-../../plugins/gugod/Kwiki-Textile/lib/Kwiki/Textile.pm
+../../src/plugins/gugod/Kwiki-Textile/lib/Kwiki/Textile.pm

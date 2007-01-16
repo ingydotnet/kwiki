@@ -1,1 +1,1 @@
-../../../plugins/audreyt/Kwiki-Theme-HLB/lib/Kwiki/Theme/HLB.pm
+../../../src/plugins/audreyt/Kwiki-Theme-HLB/lib/Kwiki/Theme/HLB.pm

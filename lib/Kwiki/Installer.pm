@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Installer.pm
+../../src/core/Kwiki/lib/Kwiki/Installer.pm

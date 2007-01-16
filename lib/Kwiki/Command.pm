@@ -1,1 +1,1 @@
-../../core/Kwiki/lib/Kwiki/Command.pm
+../../src/core/Kwiki/lib/Kwiki/Command.pm

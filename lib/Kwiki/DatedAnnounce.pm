@@ -1,1 +1,1 @@
-../../plugins/cdent/Kwiki-Dated-Announce/lib/Kwiki/DatedAnnounce.pm
+../../src/plugins/cdent/Kwiki-Dated-Announce/lib/Kwiki/DatedAnnounce.pm

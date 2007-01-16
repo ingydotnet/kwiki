@@ -1,1 +1,1 @@
-../../../core/IO-All/lib/IO/All/DBM.pm
+../../../src/core/IO-All/lib/IO/All/DBM.pm

@@ -1,1 +1,1 @@
-../../plugins/unstable/Kwiki-SisterSites/lib/Kwiki/SisterSites.pm
+../../src/plugins/unstable/Kwiki-SisterSites/lib/Kwiki/SisterSites.pm
