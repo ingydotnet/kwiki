@@ -157,6 +157,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/SpamWhitelist.pm \
 
 PLUGINS_LEVEL_3 = \
+	Kwiki/Theme/Sonia.pm \
 	Kwiki/Atom/Server.pm \
 	Kwiki/Edit/SubEtha.pm \
 	Kwiki/Theme/HLB.pm \
