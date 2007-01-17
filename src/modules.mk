@@ -1,7 +1,7 @@
 .PHONY: modules.mk
 
 modules.mk:
-	find . -type f | \
+	find . | \
 	grep '\.pm$$' | \
 	grep '/lib/' | \
 	grep -v '/t/' | \

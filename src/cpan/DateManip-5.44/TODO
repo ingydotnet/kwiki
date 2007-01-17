@@ -1,0 +1,308 @@
+########################################################################
+# MISC
+########################################################################
+
+Fix Date_ConvTZ so that errors are handled for timezones too.  Also,
+add errlev flags to many functions.
+
+Specify a holiday of:
+  1*12:0:31:0:0:0*FW1             = New Year's Day
+  fails.  Fix it.  Alan Burlison <Alan.Burlison@sun.com>
+
+Add ParseRecur flag:
+   WDn (n=1-7): Day n of the current week.
+
+Jay Jacobs <jay@lach.net>
+   Recurrences are broken slightly.  The way to calculate the Nth date
+   is currently:
+      D(N) = D(N-1) + O
+   This leads to the following:
+      D(0) = Jan 31
+      O    = 1 month
+      D(1) = Feb 28
+      D(2) = Mar 28
+      D(3) = Apr 28
+   The desired dates would be Jan 31, Feb 28, Mar 31, Apr 30, ...
+   To fix this, change the calculation to be:
+      D(N) = D(0) + N*O
+
+James Elson <James@citria.com>
+Make a &now function which returns the current time (so you don't
+have to use a language-dependent word).
+
+jfh@cise.ufl.edu
+To Delta_Format, add %02Xv type formats, so that it is formatted to
+2 characters wide with leading 0's, %2Xv is 2 characters wide with
+leading spaces.  %3.1Xv handles decimal places.
+
+Add Date_LocaleInit which calls Date_Init and then sets DateFormat
+config varialbe.  Benjamin Low <ben@snrc.uow.edu.au>
+   Essentially, I use POSIX::strftime to print a known date in the locale
+   'native' format ('%x'), and parse the result to determine d/m/y, m/d/y,
+   or y/m/d.
+   
+   Here's what I do for Date::Parse, perhaps for your module you could just
+   substitute a default value for DateFormat:
+   
+   sub _dmorder
+   # determine the "natural" day/month order for the current locale
+   # - returns a sub which will expect two arguments (month, day) and
+   #   return the arguments swapped as appropriate
+   {  
+	# %x - preferred (year, month, day) representation
+	# - some examples: 1999-12-31, 31/12/99, 30.12.1999, 12/31/99
+	my @d = (POSIX::strftime('%x', 0, 0, 0, 31, 12-1, 99) =~ 
+		/(\d+)\D+(\d+)\D+(\d+)/);
+
+	# check we got one each of "31", "12", and "[19]99" back
+	$@ = "couldn't determine day,month order (got [@d])";
+	warn("$@\n"), return sub { @_ } unless @d == 3;
+	my %d;	$d{$1} = $d{$2} = $d{$3} = 1;
+	warn("$@\n"), return sub { @_ } 
+		unless ($d{31} and $d{12} and ($d{99} or $d{1999}));
+
+	if ($1 == 31) { $@ = undef; return sub { ($_[1], $_[0]) } };	# d/m/y
+	if ($2 == 31) { $@ = undef; return sub { ($_[0], $_[1]) } };	# m/d/y
+	if ($3 == 31) { $@ = undef; return sub { ($_[0], $_[1]) } };	# y/m/d
+
+	return sub { @_ };	# undetermined, use default
+   }
+   
+   *dmorder = _dmorder();
+   
+   # and then later in Parse::Date, after month/day regexps (\d+/\d+)...
+     - ($month, $day) = ($1, $2);    becomes...
+     + ($month, $day) = dmorder($1, $2);
+
+
+Make DateFormat variable handle y/m/d y/d/m m/d/y and d/m/y formats
+in addition to m/d vs. d/m .  Also, make "%D" and "%x" UnixDate formats
+use this variable.  Benjamin Low <ben@snrc.uow.edu.au>
+
+Make `date` check `/bin/date`, etc., so that there is no reason to
+have the ENV{PATH} = ... line.
+
+In DateCalc, make a way to go:
+  date + delta
+  date - delta
+  delta + delta
+  delta - delta
+  Steve Berlage <steve.berlage@entegee.com>
+
+From jfh:
+  /(a|b)/ evals 10 times slower than /a/ || /b/
+
+Change UpdateCurrTZ to UpdateCurrTime and fix docs.  Paul Stone
+  <paul@milestone.com>
+
+Make sure there is a correspondance between:
+  time,localtime,gmtime
+  Date_SecsSince1970,Date_SecsSince1970GMT
+  UnixDate(...,"%s"),UnixDate(...,"%u")
+and document it all.
+
+If TZ=XXX (where XXX is not known), report an error.  Aharon (Al) Schkolnik
+   <aharon@deltathree.com>
+
+As part of language initialization, store ALL ParseDateString regexps in
+a hash (LangRE) in precompiled format.  Then, "require 5.005".
+
+Support timezones of the format +500.  David Coppit <dwc3q@cs.virginia.edu>
+
+Store the holiday desc/name as two lists instead of a hash so that the
+order of parsing can be forced to be the same.
+
+Use autoloader.  Ted Ashton <ashted@southern.edu>
+
+Switch to Math::BigInt instead of using "no integer".  Vishal Bhatia
+   <vishalb@hotmail.com>
+
+Make sure that &DateCalc($date1,"") returns an error.  Jim Anderson
+  <jander@ml.com>
+
+Document that a number of seconds as a Delta should have "sec".  Otherwise
+it'll likely get interpreted as YY, YYYY, YYYYMM, etc.  Disallow bare
+numbers as deltas ?
+
+If it can't determine the local timezone, set TZ to IGNORED ???
+
+Add another INIT variable to NOT initialize any language variable unless
+needed.
+
+Add another internal format "xYYYYxMMxDDxHHxMNxSS" just to make sure
+that NOTHING in Date::Manip is parsing the date itself.  Add a DateCalc
+test using it (with the parsed dates including "next week Sunday" types
+strings to test most routines).
+
+Use of holidays and other named days in ParseDate ("Christmas 1995")
+Abigal <abigail@fnx.com>
+
+Change the Jan1Week1 variable to accept the values "m1-m7" (1st week contains
+Jan X) or "d1-d7" (1st week contains the 1st dX day of week ... so d1
+means that the 1st week of the year contains the 1st Monday).
+
+Make work weeks able to start and stop on arbitrary days (even across
+weekends).
+
+Add the other ISO8601 stuff.
+
+The only change needed to get it to work under 5.001 is to change the line:
+   $file=cwd . "/$file"  if ($file !~ m|^/|);   # $file = "a/b/c"
+to:
+   $file=&getcwd . "/$file"  if ($file !~ m|^/|);   # $file = "a/b/c"
+Since this also may eliminate a shell command (`pwd`), add a flag to
+switch between the two.  Piran Montford <piran@cogapp.com>
+
+Add 15/Oct/1997:07:56:43 (netscape log) suggested by:
+ bugaj@dnrc.bell-labs.com  Stephan Vladimir Bugaj
+
+Try to get rid of `date` in Date_TimeZone
+Also, Cwd::cwd calls `pwd` (Bowen Dwelle) , but this may be inevitable.
+If not, add a variable which will allow you to skip the sections where
+   backticks are used since they are a performance sink.  Suggested by
+   Bowen Dwelle.
+
+Add
+  Spanish
+  German
+  Italian
+  Japanese (Kevin Baker will help)
+
+Fill in some of the language variables ($past, $future, $zones).
+
+Check French special characters.
+
+Change EXPORT to EXPORT_OK (message 9 by Peter Bray)
+
+Add ParseDateTemplate where a template containing any of the formats
+from UnixDate may be used in a string (which may contain perl REs)
+to parse a very strange date.
+
+Mark Dedlow <dedlow@voro.lbl.gov>
+  nth DAY of month
+  nth WEEKDAY of month
+
+Mark D. Anderson <mda@discerning.com>
+  support for quarters (Jan-Mar, Apr-Jun, Jul-Sep, Oct-Dec) as an extra
+  sub-module
+	recur returns first day (or business day) of the quarter
+	42nd day of 3rd quarter
+	what is current quarter
+	how many weeks left in a quarter
+
+########################################################################
+# TESTS
+########################################################################
+
+Add tests for all the new ParseDate formats to the test suite.
+
+########################################################################
+# GRANULARITY
+########################################################################
+
+$flag=&Date_GranularityTest($date,$base,$granularity [,$flags] [$width])
+   $date and $base are dates
+   $granularity and $width are deltas
+   $flags is a list of flags
+
+   To test if a day is one of every other Friday (starting at Friday
+   Feb 7, 1997), go:
+      $base=&ParseDate("Friday Feb 7 1997");
+      $date=&ParseDate("...");
+      $granularity=&ParseDateDelta("+ 2 weeks");
+      $flag=&Date_Granularity($date,$base,$granularity,"exact");
+   If $flag is 1, the $date is a 2nd Friday from Feb 7.
+
+   The most important field in $granularity is the last non-zero element.
+   In the above example, 2 weeks returns the delta 0:0:14:0:0:0 so the
+   last non-zero element is days with a value of 14.
+
+   If $flags is empty, $date is checked to see if it occurs some multiple
+   of 14 days before or after $base.  In this case, hourse, minutes, and
+   seconds are completely ignored.
+
+   If $flags contains the words "before" or "after", $date must come
+   before or after $base.
+
+   If $flags contains any other options, or if $width is passed in, the
+   test is treated in an approximate way.  A flag of "approx" forces this
+   behavior.
+
+   If $width is not passed in in an approximate comparison, it defaults
+   to 1 in the last non-zero element.  Here, the default width is 1 day.
+   If the flag "half" is used, the width (default or passed in) is
+   halved.
+
+   For example if $width is 1 day, add a multiple of $granularity to
+   $base to get as close to $date as possible.  If $date is within plus
+   or minus 1 day of this new base, the test is successful.  A flag of
+   "plus" or "minus" means that $date must be with plus 1 day or within
+   minus one day of this new base.  Flags of "before" or "after" work
+   as well.
+
+@list=&Date_GranularityList($date,$N,$granularity)
+   Returns a list of $N dates AFTER $date which are created by adding
+   $granularity to $date $N times.  If $N<0, it returns $N dates BEFORE
+   $date (the list is in chronological order).
+
+   Make it work in business mode as well which will return only working
+   days.  Example, every other friday and it can be told that if friday
+   falls on a holiday to return either thursday or the following monday
+   or leave it out.
+
+########################################################################
+# DAYLIGHT SAVINGS TIME
+########################################################################
+
+Use zdump command to get timezone info.
+
+If ignoring TIMEZONE info, treat all dates as in current timezone with
+no d.s.t. effects (i.e. Jun 1 12:00 EDT == Jun 1 12:00 EST).
+
+To do calculations, convert to current timezone (Jun 1 12:00 EDT -> Jun 1
+11:00 EST even if that date doesn't really exist)
+
+Determine zone pairings EST/EDT, PST/PDT for all zones.  Store EST#EDT in
+$Date::Manip::TZ rather than just EST or EDT.  Make sure everything is
+paired up.  Places with only a single timezone should work as well.
+
+Make a 2nd hash where EST -> EST#EDT for all timezones.
+
+Add an option to all date calculations to ignore daylight savings time
+transitions.  Both normal/savings timezones are treated as identical to
+the CURRENT timezone.  IgnoreSavingsTime=true
+
+########################################################################
+# TIMEZONES
+########################################################################
+
+Make date format:
+  YYYYMMDDHH:MN:SS+HHMN*EST:EDT
+where EST and EDT are the timezone abbreviations to use (this is set
+when the date is parsed).  If these are not set, they default to the
+timezones to use with +HHMN.
+
+By default, convert all dates to current timezone however unless a
+NOCONV option is set.
+
+Add a Date_Compare to compare two dates (with timezone).
+
+Modify all routines accordingly.
+
+##SPEEDUPS
+
+UpdateHolidays, don't use ParseDate to parse dates of form DD/MM or MM/DD.
+
+In business mode date-date calculations, add a "quick" mode in which the
+number of business days is estimated by:
+    $date1 = &ParseDate("...");
+    $date2 = &ParseDate("...");         # a 2nd date a long time after date1
+    $delta = &DateCalc($date1,$date2);  # get an exact delta
+    $days  = ( split(/:/,$delta) )[2];  # the number of days between the two
+    $yrs   = $days/365.24;              # the number of years between the two
+    $days  = $days*(5/7) - $yrs*9;
+where 9 is the number of holidays in the year.  Add a variable to turn this
+behavior off and another to tell what threshold to apply this to (by default
+apply it to anything 2 months apart or more).  In this mode, only days are
+returned, hours, minutes, seconds are ignored.
+

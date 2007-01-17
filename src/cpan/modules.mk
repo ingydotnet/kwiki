@@ -1,4 +1,5 @@
 CPAN_PATHS = \
+	Date \
 	URI \
 	URI/file \
 	URI/urn \
@@ -7,6 +8,7 @@ CPAN_LEVEL_1 = \
 	URI.pm \
 
 CPAN_LEVEL_2 = \
+	Date/Manip.pm \
 	URI/data.pm \
 	URI/Escape.pm \
 	URI/file.pm \
