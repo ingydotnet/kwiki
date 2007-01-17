@@ -31,6 +31,7 @@ PLUGINS_PATHS = \
 	Kwiki/Widgets \
 
 PLUGINS_LEVEL_2 = \
+	Kwiki/LaTeXMath.pm \
 	Kwiki/Atom.pm \
 	Kwiki/ShellBlocks.pm \
 	Kwiki/Backlinks.pm \

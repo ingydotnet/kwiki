@@ -1,0 +1,1 @@
+../../src/plugins/ambs/Kwiki-LaTeXMath/lib/Kwiki/LaTeXMath.pm
