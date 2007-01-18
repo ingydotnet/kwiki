@@ -140,6 +140,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/DNSBL.pm \
 	Kwiki/Spaces.pm \
 	Kwiki/URLBlock.pm \
+	Kwiki/RecentChangesRSS.pm \
 	Kwiki/Export.pm \
 	Kwiki/Footnote.pm \
 	Kwiki/OpenSearch.pm \
@@ -219,6 +220,8 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/UserName/Cookie.pm \
 	Kwiki/Users/Cookie.pm \
 	Kwiki/Theme/Bluepole.pm \
+	Kwiki/Edit/RequireUserName.pm \
+	Kwiki/Notify/Mail.pm \
 	Kwiki/OpenSearch/Service.pm \
 	Kwiki/Edit/TypeKeyRequired.pm \
 	Kwiki/Users/TypeKey.pm \
