@@ -308,13 +308,13 @@ You have successfully installed a new Kwiki. Now you should /edit this page/ and
 
 If this installation looks more mundane than you had expected after visiting Kwiki sites like http://www.kwiki.org, you need to install some *Kwiki plugins*. Some of the basic plugins you might want are:
 
-* Kwiki::!RecentChanges
-* Kwiki::Search
-* Kwiki::!UserPreferences
-* Kwiki::!UserName
-* Kwiki::Archive::Rcs
-* Kwiki::Revisions
+* !Kwiki::RecentChanges
+* !Kwiki::Search
+* !Kwiki::UserPreferences
+* !Kwiki::UserName
+* !Kwiki::Archive::Rcs
+* !Kwiki::Revisions
 
-These plugin modules are available on [CPAN http://search.cpan.org/search?query=kwiki&mode=dist]. Visit http://www.kwiki.org/?KwikiPluginInstallation to learn more about installing plugins.
+These plugin modules are available as part of the [http://svn.2.kwiki.org/kwiki/trunk Kwiki 2 distribution]. 
 
 --[http://www.kwiki.org/?IngyDotNet Ingy döt Net]
