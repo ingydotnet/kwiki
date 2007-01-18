@@ -188,16 +188,13 @@ __theme/sonia/template/tt2/kwiki_screen.html__
        <div id="status_pane">
          [% hub.status.html %]
        </div>
-     </div>
-    </div> <!-- navigacija -->
-
-
-
-
-   <div id="clanci">
        [% IF hub.have_plugin('user_name') %]
        [% INCLUDE user_name_title.html %]
        [% END %]
+     </div>
+    </div> <!-- navigacija -->
+
+   <div id="clanci">
 
     [% INCLUDE $content_pane %]
    <br/>
@@ -366,8 +363,8 @@ input[type=submit]:hover {
 
 .lijevo {
   margin: 2px 0 10px 0;
-  padding: 3px 10px 5px 10px;
-  width: 130px;
+  padding: 1px 2px 10px 2px;
+  width: 146px;
   border-top: 1px solid #DDD;
   border-bottom: 1px solid #DDD;
   color: #6B6B6B;
@@ -479,4 +476,10 @@ p.new {
 #lijeva_rubrika p {
 	padding: 0;
 	margin: 0;
+}
+
+div#user_name_title {
+	text-align: center;
+	font-size: 12px;
+	float: none;	
 }
