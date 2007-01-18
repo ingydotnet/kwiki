@@ -25,6 +25,8 @@ sub edit {
       if $self->cgi->button eq $self->config->edit_save_button_text;
     return $self->preview
       if $self->cgi->button eq $self->config->edit_preview_button_text;
+    return $self->redirect($page->uri)
+      if $self->cgi->button eq $self->config->edit_cancel_button_text;
     my $content = $self->cgi->revision_id
       ? $self->hub->archive->fetch($page, $self->cgi->revision_id)
       : $page->content;
@@ -102,6 +104,7 @@ __config/edit.yaml__
 #
 edit_save_button_text: SAVE
 edit_preview_button_text: PREVIEW
+edit_cancel_button_text: CANCEL
 default_content: Enter your own page content here.
 __template/tt2/edit_button.html__
 [% IF hub.pages.current.is_writable %]
@@ -140,6 +143,7 @@ function clear_default_content(content_box) {
 <form method="POST">
 <input type="submit" name="button" value="[% edit_save_button_text %]" />
 <input type="submit" name="button" value="[% edit_preview_button_text %]" />
+<input type="submit" name="button" value="[% edit_cancel_button_text %]" />
 <br />
 <br />
 <input type="hidden" name="action" value="edit" />
