@@ -23,6 +23,11 @@ sub add_file {
     }
     my $files = $self->files;
     @$files = grep { not /\/$file$/ } @$files;
+    $self->_append_file($files, $file_path);
+}
+
+sub _append_file {
+    my ($files, $file_path) = @_;
     push @$files, $file_path;
 }
 
