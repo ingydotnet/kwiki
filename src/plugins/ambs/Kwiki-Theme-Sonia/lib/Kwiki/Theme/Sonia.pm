@@ -195,9 +195,11 @@ __theme/sonia/template/tt2/kwiki_screen.html__
     </div> <!-- navigacija -->
 
    <div id="clanci">
+      [% IF logo_image %]
       <div style="float: right">
       <img src="[% logo_image %]" alt="Kwiki Logo"/>
       </div>
+      [% END %]
 
     [% INCLUDE $content_pane %]
    <br/>
