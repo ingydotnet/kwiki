@@ -180,6 +180,7 @@ site_title: Kwiki
 main_page: HomePage
 database_directory: database
 logo_image: palm90.png
+favicon: palm32.png
 script_name: index.cgi
 __!config.yaml__
 # Put all local overrides/modifications to the config/* files in this
@@ -188,6 +189,7 @@ __!config.yaml__
 # See: http://www.kwiki.org/?ChangingConfigDotYaml
 #
 logo_image: palm90.png
+favicon: palm32.png
 __!plugins__
 # This is a list of all the plugins your Kwiki is currently set up to
 # use. Modify this list to suit your needs. After modification, run
