@@ -15,10 +15,9 @@ my $list = io( "ack -l '^=\\w+' @ARGV|" ) or die $!;
 while (my $file = $list->chomp->readline) {
     print "$file \n";
 
-    my $f =  io $file;
-
     my $dest = $file;
     $dest =~ s|lib|src/doc|;
+    $dest =~ s/\.\w+$/.pod/;
     next if -e $dest;
 
     print "\t=> $dest\n";
@@ -32,10 +31,8 @@ while (my $file = $list->chomp->readline) {
     my $src  = io $bak or die $!;
 
     my $in_pod = 0;
-    while (my $l = $f->readline) {
-	if ($l =~ /^=cut/)  {
-	    $in_pod = 0;
-	} elsif ($l =~ /^=\w/) {
+    while (my $l = $src->readline) {
+	if ($l =~ /^=\w/ and not $l =~ /^=cut/) {
 	    $in_pod = 1;
 	}
 
@@ -43,6 +40,10 @@ while (my $file = $list->chomp->readline) {
 	    $pod->print($l);
 	} else {
 	    $code->print($l);
+	}
+
+	if ($l =~ /^=cut/ or $l =~ /^__\w+/)  {
+	    $in_pod = 0;
 	}
 
     }
