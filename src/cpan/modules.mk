@@ -66,20 +66,11 @@ cpan: $(CPAN_PATHS) $(CPAN_MODULES)
 
 $(CPAN_LEVEL_1):
 	ln -fs ../src/cpan/*/lib/$@ $@
-
 $(CPAN_LEVEL_2):
-	@( \
 	cd dummy; \
 	lib=../../src/cpan/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../$@; \
-	)
-
+	ln -fs $$lib ../$@;
 $(CPAN_LEVEL_3):
-	@( \
 	cd dummy/dummy; \
 	lib=../../../src/cpan/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../../$@; \
-	)
-
+	ln -fs $$lib ../../$@;

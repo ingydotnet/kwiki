@@ -184,36 +184,19 @@ core: $(CORE_PATHS) $(CORE_MODULES)
 
 $(CORE_LEVEL_1):
 	ln -fs ../src/core/*/lib/$@ $@
-
 $(CORE_LEVEL_2):
-	@( \
 	cd dummy; \
 	lib=../../src/core/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../$@; \
-	)
-
+	ln -fs $$lib ../$@;
 $(CORE_LEVEL_3):
-	@( \
 	cd dummy/dummy; \
 	lib=../../../src/core/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../../$@; \
-	)
-
+	ln -fs $$lib ../../$@;
 $(CORE_LEVEL_4):
-	@( \
 	cd dummy/dummy/dummy; \
 	lib=../../../../src/core/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../../../$@; \
-	)
-
+	ln -fs $$lib ../../../$@;
 $(CORE_LEVEL_5):
-	@( \
 	cd dummy/dummy/dummy/dummy; \
 	lib=../../../../../src/core/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../../../../$@; \
-	)
-
+	ln -fs $$lib ../../../../$@;

@@ -48,10 +48,13 @@ for my $level (1..5) {
     }
 }
 
-my $paths = join '', map {
-    "\t$_ \\\n";
-} sort keys %paths;
-$paths ||= '';
+my $paths = '';
+if ($output_file eq 'modules.mk') {
+    $paths = join '', map {
+        "\t$_ \\\n";
+    } sort keys %paths;
+    $paths ||= '';
+}
 
 if ($paths) {
     $paths = "${type}_PATHS = \\\n$paths\n";
@@ -73,23 +76,27 @@ sub make_section {
     my $stars = join '/', (('*') x $star_level);
     my $dots = join '/', (('..') x $dot_level);
     if ($level == 1) {
-        return <<"...";
+        return ($output_file eq 'modules.mk') ? <<"..." : <<"...";
 \$(${TYPE}_LEVEL_$level):
 	ln -fs $dots/src/$type/$stars/$pathlet/\$\@ \$\@
-
+...
+\$(${TYPE}_LEVEL_$level):
+	link=`perl -e '\$\$_=shift;s!\\.pod\$\$!!;print' \$\@`; \\\
+	ln -fs $dots/src/$type/$stars/$pathlet/\$\@ \$\$link;
 ...
     }
     my $dots2 = join '/', (('..') x ($level - 1));
     my $dummy = join '/', (('dummy') x ($level - 1));
-    return <<"...";
+    return ($output_file eq 'modules.mk') ? <<"..." : <<"...";
 \$(${TYPE}_LEVEL_$level):
-	\@( \\
 	cd $dummy; \\
 	lib=$dots/src/$type/$stars/$pathlet/\$\@; \\
-	echo "ln -fs \$\$lib \$\@;"; \\
-	ln -fs \$\$lib $dots2/\$\@; \\
-	)
-
+	ln -fs \$\$lib $dots2/\$\@;
+...
+\$(${TYPE}_LEVEL_$level):
+	lib=../../src/$type/$stars/$pathlet/\$\@; \\
+        link=`perl -e '\$\$_=shift;s!/!!g;s!\\.pod\$\$!!;print' \$\@`; \\
+	ln -fs \$\$lib \$\$link;
 ...
 }
 

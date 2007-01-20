@@ -1,6 +1,3 @@
-CORE_PATHS = \
-	Kwiki \
-
 CORE_LEVEL_1 = \
 	Kwiki.pod \
 
@@ -13,13 +10,9 @@ CORE_DOCS = $(CORE_LEVEL_1) $(CORE_LEVEL_2)
 core: $(CORE_PATHS) $(CORE_DOCS)
 
 $(CORE_LEVEL_1):
-	ln -fs ../../src/core/*/src/doc/$@ $@
-
+	link=`perl -e '$$_=shift;s!\.pod$$!!;print' $@`; \
+	ln -fs ../../src/core/*/src/doc/$@ $$link;
 $(CORE_LEVEL_2):
-	@( \
-	cd dummy; \
-	lib=../../../src/core/*/src/doc/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../$@; \
-	)
-
+	lib=../../src/core/*/src/doc/$@; \
+        link=`perl -e '$$_=shift;s!/!!g;s!\.pod$$!!;print' $@`; \
+	ln -fs $$lib $$link;

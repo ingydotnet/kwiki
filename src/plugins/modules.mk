@@ -240,34 +240,18 @@ PLUGINS_MODULES = $(PLUGINS_LEVEL_2) $(PLUGINS_LEVEL_3) $(PLUGINS_LEVEL_4) $(PLU
 plugins: $(PLUGINS_PATHS) $(PLUGINS_MODULES)
 
 $(PLUGINS_LEVEL_2):
-	@( \
 	cd dummy; \
 	lib=../../src/plugins/*/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../$@; \
-	)
-
+	ln -fs $$lib ../$@;
 $(PLUGINS_LEVEL_3):
-	@( \
 	cd dummy/dummy; \
 	lib=../../../src/plugins/*/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../../$@; \
-	)
-
+	ln -fs $$lib ../../$@;
 $(PLUGINS_LEVEL_4):
-	@( \
 	cd dummy/dummy/dummy; \
 	lib=../../../../src/plugins/*/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../../../$@; \
-	)
-
+	ln -fs $$lib ../../../$@;
 $(PLUGINS_LEVEL_5):
-	@( \
 	cd dummy/dummy/dummy/dummy; \
 	lib=../../../../../src/plugins/*/*/lib/$@; \
-	echo "ln -fs $$lib $@;"; \
-	ln -fs $$lib ../../../../$@; \
-	)
-
+	ln -fs $$lib ../../../../$@;
