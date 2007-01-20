@@ -2,11 +2,16 @@
 use strict;
 use warnings;
 
-my ($type, $star_level) = @ARGV;
+my ($output_file, $type, $star_level) = @ARGV;
 $star_level ||= 1;
 
+# ./Kwiki/src/doc/Kwiki/Formatter.pod
+
+my $pathlet = ($output_file eq 'modules.mk') ? 'lib' : 'src/doc';
+my $file_type = ($output_file eq 'modules.mk') ? 'MODULES' : 'DOCS';
+
 my @libs = map {
-    s!^.*/lib/!! or die $_;
+    s!^.*/$pathlet/!! or die $_;
     chomp;
     $_;
 } (<STDIN>);
@@ -18,13 +23,13 @@ our $level3 = '';
 our $level4 = '';
 our $level5 = '';
 my $all = '';
-my $sections = lc($type) . ": \$(${type}_PATHS) \$(${type}_MODULES)\n\n";
+my $sections = lc($type) . ": \$(${type}_PATHS) \$(${type}_$file_type)\n\n";
 
 for my $lib (@libs) {
     my @parts = split('/', $lib);
     my $level = @parts;
     my $path = $lib;
-    if ($path =~ s!/\w+.pm$!!) {
+    if ($path =~ s!/\w+.(pm|pod)$!!) {
         $paths{$path} = 1;
     }
     no strict 'refs';
@@ -53,20 +58,24 @@ if ($paths) {
 }
 
 if ($all) {
-    $all = "${type}_MODULES = $all\n\n";
+    $all = "${type}_$file_type = $all\n\n";
 }
 
-print "$paths$level1$level2$level3$level4$level5$all$sections";
+open OUT, "> $output_file" or die "Can't open $output_file for output: $!";
+print OUT "$paths$level1$level2$level3$level4$level5$all$sections";
+close OUT;
 
 sub make_section {
     my ($level, $TYPE, $star_level) = @_;
+    my $dot_level = $level;
+    $dot_level++ if $output_file eq 'docs.mk';
     my $type = lc($TYPE);
     my $stars = join '/', (('*') x $star_level);
-    my $dots = join '/', (('..') x $level);
+    my $dots = join '/', (('..') x $dot_level);
     if ($level == 1) {
         return <<"...";
 \$(${TYPE}_LEVEL_$level):
-	ln -fs $dots/src/$type/$stars/lib/\$\@ \$\@
+	ln -fs $dots/src/$type/$stars/$pathlet/\$\@ \$\@
 
 ...
     }
@@ -76,7 +85,7 @@ sub make_section {
 \$(${TYPE}_LEVEL_$level):
 	\@( \\
 	cd $dummy; \\
-	lib=$dots/src/$type/$stars/lib/\$\@; \\
+	lib=$dots/src/$type/$stars/$pathlet/\$\@; \\
 	echo "ln -fs \$\$lib \$\@;"; \\
 	ln -fs \$\$lib $dots2/\$\@; \\
 	)

@@ -1,0 +1,5 @@
+name: Kwiki
+abstract: The Kwiki Wiki Building Framework
+author: Ingy döt Net
+main_module: lib/Kwiki.pm
+requires: 
