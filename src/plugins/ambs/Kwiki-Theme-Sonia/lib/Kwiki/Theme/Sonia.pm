@@ -400,7 +400,7 @@ span.toolbar_button {
 }
 
 #desna_rubrika h3 {
-	font-size: 9pt;	
+	font-size: 9pt;
 }
 
 #desna_rubrika a {
@@ -440,6 +440,7 @@ span.toolbar_button {
 
 #clanci p {
 	margin: 0;
+        margin-bottom: 5px;
 }
 
 p.new { 
@@ -454,7 +455,7 @@ p.new {
   margin: 5px 0 6px 0;
   border-top: 1px solid #eee;
   font-size: 80%;
-  text-transform: uppercase;	
+  text-transform: uppercase;
   color: #808080;
 }
 
