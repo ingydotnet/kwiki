@@ -36,7 +36,7 @@ sub doolittle_index {
 sub pages_all {
     my $hook = pop;
     grep {
-        $_->id ne '.index'
+        -l "database/" . $_->id and $_->id ne '.index'
     } $hook->returned;
 }
 
@@ -67,6 +67,7 @@ sub page_name_hook {
 
 sub extract_pod {
     my $content = shift;
+    return $content;
     $content =~ /.*\n__DATA__\n(?:.*?\n)?(=\w+.*?)(?:\n=cut|\z)(?:.*)\z/s
       or return;
     return $1;
@@ -74,6 +75,7 @@ sub extract_pod {
 }
 
 sub store_pod {
+    die "FIXME";
     my ($content, $pod) = @_;
     $content =~
       s/(.*\n__DATA__\n(?:.*?\n)?)(=\w+.*?)((?:\n=cut|\z)(?:.*)\z)/$1$pod$3/s
@@ -121,6 +123,7 @@ sub load_content {
 }
 
 sub store_content {
+    die "FIXME";
     my $hook = pop;
     $hook->cancel;
     my $local = $self->hub->doolittle;
