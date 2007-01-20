@@ -439,8 +439,10 @@ span.toolbar_button {
 }
 
 #clanci p {
-	margin: 0;
-        margin-bottom: 5px;
+  margin: 0;
+  margin-bottom: 5px;
+  text-align: justify;
+  text-indent: 20px;
 }
 
 p.new { 
