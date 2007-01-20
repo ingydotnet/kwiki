@@ -7,5 +7,5 @@ plugins: $(PLUGINS_PATHS) $(PLUGINS_DOCS)
 
 $(PLUGINS_LEVEL_2):
 	lib=../../src/plugins/*/*/src/doc/$@; \
-        link=`perl -e '$$_=shift;s!/!!g;s!\.pod$$!!;print' $@`; \
+        link=`perl -e '$$_=shift;s!/!-!g;s!\.pod$$!!;print' $@`; \
 	ln -fs $$lib $$link;

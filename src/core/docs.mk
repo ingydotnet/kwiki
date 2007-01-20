@@ -14,5 +14,5 @@ $(CORE_LEVEL_1):
 	ln -fs ../../src/core/*/src/doc/$@ $$link;
 $(CORE_LEVEL_2):
 	lib=../../src/core/*/src/doc/$@; \
-        link=`perl -e '$$_=shift;s!/!!g;s!\.pod$$!!;print' $@`; \
+        link=`perl -e '$$_=shift;s!/!-!g;s!\.pod$$!!;print' $@`; \
 	ln -fs $$lib $$link;

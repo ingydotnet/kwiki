@@ -95,7 +95,7 @@ sub make_section {
 ...
 \$(${TYPE}_LEVEL_$level):
 	lib=../../src/$type/$stars/$pathlet/\$\@; \\
-        link=`perl -e '\$\$_=shift;s!/!!g;s!\\.pod\$\$!!;print' \$\@`; \\
+        link=`perl -e '\$\$_=shift;s!/!-!g;s!\\.pod\$\$!!;print' \$\@`; \\
 	ln -fs \$\$lib \$\$link;
 ...
 }
