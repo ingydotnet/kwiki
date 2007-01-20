@@ -291,7 +291,7 @@ Ingy döt Net <ingy@cpan.org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
+Copyright (c) 2006, 2007. Ingy döt Net. All rights reserved.
 
 Copyright (c) 2004. Brian Ingerson. All rights reserved.
 
@@ -315,6 +315,6 @@ If this installation looks more mundane than you had expected after visiting Kwi
 * !Kwiki::Archive::Rcs
 * !Kwiki::Revisions
 
-These plugin modules are available as part of the [http://svn.kwiki.org/kwiki/trunk Kwiki 2 distribution]. 
+These plugin modules are available as part of the [http://svn.kwiki.org/kwiki/trunk Kwiki distribution]. 
 
 --[http://www.kwiki.org/?IngyDotNet Ingy döt Net]
