@@ -1,0 +1,69 @@
+#!/usr/bin/perl
+
+# 23:17:32 < ingy> so Kwiki-Foo-Bar/lib/Kwiki/Foo/Bar.pm => 
+#                  Kwiki-Foo-Bar/src/doc/Kwiki/Foo/Bar.pod
+#
+
+use strict;
+use warnings;
+use IO::All;
+use File::Basename;
+use Shell 'mkdir';
+
+my $list = io( "ack -l '^=\\w+' @ARGV|" ) or die $!;
+
+while (my $file = $list->chomp->readline) {
+    print "$file \n";
+
+    my $pod = 0;
+    my $f =  io $file;
+
+    my $dest = $file;
+    $dest =~ s|lib|src/doc|;
+    next if -e $dest;
+
+    print "\t=> $dest\n";
+
+    mkdir(-p => dirname($dest));
+    open my $d, ">", $dest or die $!;
+
+    while (my $l = $f->readline) {
+	if ($l =~ /^=cut/)  {
+	    $pod = 0;
+	} elsif ($l =~ /^=\w/) {
+	    $pod = 1;
+	}
+
+	print $d $l if $pod;
+    }
+    close ($d);
+}
+
+__END__
+
+=head1 NAME
+
+rippod - extract pod from a directory full of perl
+
+=head1 SYNOPSIS
+
+rippod sourcedir ...
+
+=head1 DESCRIPTION
+
+Copy pod from all the perl found in sourcedirectory and place it in equinomious files in the targetdirectory.
+  
+=head1 BUGS
+
+Probably, let me know if you find them
+
+=head1 SEE ALSO
+
+other things that make your life interesting
+
+=head1 AUTHOR
+
+Chris Fedde (c) 2007
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
