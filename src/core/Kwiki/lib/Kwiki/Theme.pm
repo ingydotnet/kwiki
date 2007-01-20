@@ -113,6 +113,9 @@ __template/tt2/kwiki_begin.html__
   <link rel="[% link.rel %]" type="[% link.type %]" href="[% link.href %]" />
 -->
 [%# END %]
+[% IF favicon != '' %]
+   <link rel="shortcut icon" href="[% favicon %]"/>
+[% END %]
 [% FOR css_file = hub.css.files -%]
   [% IF css_file -%]
     <link rel="stylesheet" type="text/css" href="[% css_file %]" />
@@ -123,7 +126,6 @@ __template/tt2/kwiki_begin.html__
     <script type="text/javascript" src="[% javascript_file %]"></script>
   [% END -%]
 [% END -%]
-  <link rel="shortcut icon" href="" />
   <link rel="start" href="[% script_name %]" title="Home" />
 </head>
 [% INCLUDE body_tag.html %]
