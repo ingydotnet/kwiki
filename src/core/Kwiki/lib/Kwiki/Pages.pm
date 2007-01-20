@@ -315,6 +315,6 @@ If this installation looks more mundane than you had expected after visiting Kwi
 * !Kwiki::Archive::Rcs
 * !Kwiki::Revisions
 
-These plugin modules are available as part of the [http://svn.2.kwiki.org/kwiki/trunk Kwiki 2 distribution]. 
+These plugin modules are available as part of the [http://svn.kwiki.org/kwiki/trunk Kwiki 2 distribution]. 
 
 --[http://www.kwiki.org/?IngyDotNet Ingy döt Net]
