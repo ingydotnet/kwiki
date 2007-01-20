@@ -38,7 +38,9 @@ See http://www.perl.com/perl/misc/Artistic.html
 =cut
 __template/tt2/toolbar_pane.html__
 <div class="toolbar">
-[% units.join(' &nbsp; ') %]
+[% FOREACH u = units %]
+  <span class="toolbar_button">[% u %]</span>
+[% END %]
 </div>
 __config/toolbar.yaml__
 toolbar_order:
@@ -52,5 +54,9 @@ toolbar_order:
 - revisions_controls
 __css/toolbar.css__
 div.toolbar {
+}
+span.toolbar_button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
