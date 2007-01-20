@@ -339,11 +339,10 @@ input[type=submit]:hover {
   width: 150px;
   margin: 0 0 3px 0;
   padding: 0;
-  font-size: 0px;
+  font-size: 13px;
 }
 
 #navigacija #menu a {
-  font-size: 13px;
   display: block;
   margin: 0px;
   margin-bottom: 4px;
@@ -357,13 +356,16 @@ input[type=submit]:hover {
   display: block;
   padding: 6px 8px 0 10px;
   background: #2489DB;
-  font-size: 13px;
 }
 
 #navigacija #menu a:hover {
   background: #A9CAEB;
   color: #286ea0;
-  font-size: 13px;
+}
+
+span.toolbar_button {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .lijevo {
