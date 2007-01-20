@@ -15,7 +15,6 @@ my $list = io( "ack -l '^=\\w+' @ARGV|" ) or die $!;
 while (my $file = $list->chomp->readline) {
     print "$file \n";
 
-    my $pod = 0;
     my $f =  io $file;
 
     my $dest = $file;
@@ -24,19 +23,30 @@ while (my $file = $list->chomp->readline) {
 
     print "\t=> $dest\n";
 
-    mkdir(-p => dirname($dest));
-    open my $d, ">", $dest or die $!;
+    my $bak = $file.".bak";
+    io($bak) < io($file);
 
+    mkdir(-p => dirname($dest));
+    my $pod  = io $dest or die $!;
+    my $code = io $file or die $!;
+    my $src  = io $bak or die $!;
+
+    my $in_pod = 0;
     while (my $l = $f->readline) {
 	if ($l =~ /^=cut/)  {
-	    $pod = 0;
+	    $in_pod = 0;
 	} elsif ($l =~ /^=\w/) {
-	    $pod = 1;
+	    $in_pod = 1;
 	}
 
-	print $d $l if $pod;
+	if($in_pod) {
+	    $pod->print($l);
+	} else {
+	    $code->print($l);
+	}
+
     }
-    close ($d);
+    $_->close for ($pod, $src, $code);
 }
 
 __END__
