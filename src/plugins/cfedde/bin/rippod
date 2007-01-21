@@ -6,6 +6,7 @@
 
 use strict;
 use warnings;
+use lib 'lib';
 use IO::All;
 use File::Basename;
 use Shell 'mkdir';
@@ -22,13 +23,17 @@ while (my $file = $list->chomp->readline) {
 
     print "\t=> $dest\n";
 
-    my $bak = $file.".bak";
+    # my $bak = $file.".bak";
+    my $bak = "bak";
     io($bak) < io($file);
 
     mkdir(-p => dirname($dest));
     my $pod  = io $dest or die $!;
     my $code = io $file or die $!;
     my $src  = io $bak or die $!;
+
+    my $c = '';
+    my $p = '';
 
     my $in_pod = 0;
     while (my $l = $src->readline) {
@@ -37,16 +42,23 @@ while (my $file = $list->chomp->readline) {
 	}
 
 	if($in_pod) {
-	    $pod->print($l);
+            $p .= $l;
 	} else {
-	    $code->print($l);
+            $c .= $l;
 	}
 
 	if ($l =~ /^=cut/ or $l =~ /^__\w+/)  {
 	    $in_pod = 0;
 	}
-
     }
+    $p =~ s/^=cut\s+\z//m;
+    $c =~ s/^__DATA__\s+\z//m;
+    $c =~ s/^__END__\s+\z//m;
+    $p =~ s/\s+\z/\n/;
+    $c =~ s/\s+\z/\n/;
+    $pod->print($p);
+    $code->print($c);
+
     $_->close for ($pod, $src, $code);
 }
 
