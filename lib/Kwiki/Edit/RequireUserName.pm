@@ -1,1 +1,1 @@
-../../../src/plugins/cpan/Kwiki-Edit-RequireUserName-0.02/lib/Kwiki/Edit/RequireUserName.pm
+../../../src/plugins/jperegrino/Kwiki-Edit-RequireUserName/lib/Kwiki/Edit/RequireUserName.pm

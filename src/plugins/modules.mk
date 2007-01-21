@@ -153,7 +153,6 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/PageInfo.pm \
 	Kwiki/ColumnBlocks.pm \
 	Kwiki/MovePage.pm \
-	Kwiki/RecentChangesRSS.pm \
 	Kwiki/SisterSites.pm \
 	Kwiki/SpamWhitelist.pm \
 
@@ -171,7 +170,6 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Edit/AdvisoryLock.pm \
 	Kwiki/Edit/BackgroundSave.pm \
 	Kwiki/Edit/ContentionManagement.pm \
-	Kwiki/Edit/RequireUserName.pm \
 	Kwiki/Formatter/CaptionedImage.pm \
 	Kwiki/Formatter/Hatena.pm \
 	Kwiki/Formatter/Note.pm \
@@ -180,7 +178,6 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Icons/Crystal.pm \
 	Kwiki/Indexer/Regex.pm \
 	Kwiki/Indexer/Swish.pm \
-	Kwiki/Notify/Mail.pm \
 	Kwiki/RecentChanges/Atom.pm \
 	Kwiki/Search/Spotlight.pm \
 	Kwiki/TableOfContents/Print.pm \
