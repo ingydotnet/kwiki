@@ -99,7 +99,7 @@ __template/tt2/display_changed_by.html__
 [% IF self.preferences.display_changed_by.value %]
 [% page = hub.pages.current %]
 <div id="changedby">
-Last changed by [% page.edit_by_link %] at [% page.edit_time %]
+Last changed by [% page.edit_by_link %] at [% page.edit_time %].
 </div>
 [% END %]
 __css/display_changed_by.css__
