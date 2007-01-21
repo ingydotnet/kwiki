@@ -5,6 +5,11 @@ use mixin 'Kwiki::Installer';
 const config_file => 'display.yaml';
 const class_id => 'display';
 const class_title => 'Page Display';
+const css_file => 'display_changed_by.css';
+
+sub init {
+    $self->hub->css->add_file($self->css_file);
+}
 
 sub register {
     my $registry = shift;
@@ -93,9 +98,15 @@ __template/tt2/display_content.html__
 __template/tt2/display_changed_by.html__
 [% IF self.preferences.display_changed_by.value %]
 [% page = hub.pages.current %]
-<div style="background-color: #eee">
-<em>
+<div id="changedby">
 Last changed by [% page.edit_by_link %] at [% page.edit_time %]
-</em>
 </div>
 [% END %]
+__css/display_changed_by.css__
+div#changedby {
+  background-color: #eee;
+  padding: 2px;
+  padding-left: 4px;
+  text-style: italic;
+}
+
