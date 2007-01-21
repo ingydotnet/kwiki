@@ -21,21 +21,3 @@ sub set_user_name {
 }
 
 package Kwiki::Users::Auth;
-
-=head1 NAME
-
-Kwiki::Users::Auth - Properl 'users_class' that works with Kwiki::UserName::Auth
-
-=head1 DESCRIPTION
-
-Please read the documentation in L<Kwiki::UserName::Auth>.
-
-=head1 COPYRIGHT
-
-Copyright 2005 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-

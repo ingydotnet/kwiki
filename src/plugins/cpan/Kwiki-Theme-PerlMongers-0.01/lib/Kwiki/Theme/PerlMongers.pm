@@ -16,44 +16,6 @@ const class_title => 'Theme for Perl Mongers groups';
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Theme::PerlMongers - A theme for Perl Mongers websites
-
-=head1 SYNOPSIS
-
-In your Kwiki's F<plugins> file simply use
-C<Kwiki::Theme::PerlMongers> instead of C<Kwiki::Theme::Basic>.  Add a
-line to your F<config.yaml> like this:
-
- group_name: My Perl Mongers
-
-That's it!
-
-=head1 DESCRIPTION
-
-I wanted to make the Minneapolis PM site a wiki, but thought it'd be
-nice to have a Perl Mongers theme.
-
-=head1 AUTHOR
-
-Dave Rolsky, <autarch@urth.org>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to
-C<bug-kwiki-theme-perlmongers@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org>.  I will be notified, and then you'll automatically be
-notified of progress on your bug as I make changes.
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2006 Dave Rolsky, All Rights Reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-=cut
 
 __theme/perl-mongers/css/kwiki.css__
 html {

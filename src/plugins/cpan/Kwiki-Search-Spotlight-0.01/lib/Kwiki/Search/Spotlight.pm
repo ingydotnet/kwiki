@@ -25,32 +25,3 @@ sub perform_search {
         $self->hub->pages->new_page($_);
     } split(/\n/,`/usr/bin/mdfind -onlyin $dir "$search"`)];
 }
-
-__END__
-
-=head1 NAME
-
-Kwiki::Search::Spotlight - Use Spotlight as Kwiki search engine
-
-=head1 DESCRIPTION
-
-This Kwiki plugin requires Mac OS 10.4 (Tiger) to work.  It use
-metadata command line executables to index your Kwiki pages and to
-performa search.
-
-=head1 SEE ALSO
-
-Spotlight: http://www.apple.com/macosx/features/spotlight/
-
-mdfind
-
-=head1 COPYRIGHT
-
-Copyright 2005 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-
-=cut

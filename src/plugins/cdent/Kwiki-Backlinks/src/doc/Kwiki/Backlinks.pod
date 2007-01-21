@@ -1,0 +1,46 @@
+=head1 NAME
+
+Kwiki::Backlinks - Maintain and display a simple database of links to the current page
+
+=head1 DESCRIPTION
+
+Kwiki::Backlinks uses the file system to keep track of which pages in 
+a wiki link to which pages in the same wiki. That data is then used
+to display on every page in the wiki. This is considered a nice
+feature by some and an absolute requirement for enabling emergent 
+understanding by others.
+
+You can see Kwiki::Backlinks in action at L<http://www.burningchrome.com/wiki/>
+
+This code also happens to demonstrate a novel use of Spoon hooks.
+
+The backlinks database may also be used as a generic database of linking
+activity in the wiki. L<Kwiki::Orphans> uses the database to reveal
+pages which have no incoming links. The backlinks for any given page 
+can be found the the following incantation:
+
+    @backlinks = $self->hub->backlinks->get_backlinks_for_page($page->id);
+
+This returns a list of page ids.
+
+=head1 AUTHORS
+
+Chris Dent, <cdent@burningchrome.com>
+Ingy döt Net, <ingy@cpan.org>
+
+=head1 CREDITS
+
+Thanks to Ricardo SIGNES for the idea and patch for showing backlinks
+on the edit page. Small price for very valuable gain.
+
+=head1 SEE ALSO
+
+L<Kwiki>
+L<Spoon::Hooks>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2005, Chris Dent
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

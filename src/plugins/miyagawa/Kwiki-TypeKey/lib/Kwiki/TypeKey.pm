@@ -72,53 +72,6 @@ package Kwiki::TypeKey;
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::TypeKey - Kwiki TypeKey integration
-
-=head1 SYNOPSIS
-
-  > $EDITOR plugins
-  # Kwiki::UserName <- If you use it, comment it out
-  Kwiki::TypeKey
-  Kwiki::Edit::TypeKeyRequired <- Optional: If you don't allow anonymous writes
-  > $EDITOR config.yaml
-  users_class: Kwiki::Users::TypeKey
-  tk_token:    YOUR_TYPEKEY_TOKEN
-  script_name: http://www.example.com/kwiki/index.cgi <- needs absURI
-  > kwiki -update
-
-=head1 DESCRIPTION
-
-Kwiki::TypeKey is a Kwiki User Authentication module to use TypeKey
-authentication. You need a valid TypeKey token registered at http://www.typekey.com/
-
-=head1 TODO
-
-=over 4
-
-=item *
-
-Now this plugin stores TypeKey response query to cookie store and verifies the data in every request to avoid spoofed cookie. It means every time it issues GET request to TypeKey servers (with If-Modified-Since) and do some crypto calculation, which should be avoided. We need a patch for Authen::TypeKey.
-
-=item *
-
-Integration with C<edit_by> link: (e.g. Kwiki::RecentChanges)
-
-=back
-
-=head1 AUTHOR
-
-Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
-
-L<Authen::TypeKey> L<Kwiki::Edit::RequireUserName> L<Kwiki::Users::Remote>
-
-=cut
 
 __css/user_name.css__
 div #user_name_title {

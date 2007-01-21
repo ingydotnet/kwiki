@@ -52,44 +52,6 @@ package Kwiki::Footnote;
 1;
 __DATA__
 
-=head1 NAME
-
-Kwiki::Footnote - Footnote plugin for Kwiki
-
-=head1 SYNOPSIS
-
-  This Wiki is powered by Kwiki {footnote: Kwiki is Spoon and Spiffy}
-
-  ....
-
-  {footnotelist}
-
-=head1 DESCRIPTION
-
-Kwiki::Footnote allows you to add footnotes with inline Wafl.
-
-=head1 WANT-TODO
-
-=over 4
-
-=item *
-
-Writing {footnotelist} by hand seems like a pain. Are there any way to automatically insert footnote listing after the page body using some hook?
-
-=back
-
-=head1 AUTHOR
-
-Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
-
-L<Kwiki::AnchorLink>
-
-=cut
 
 __css/footnote.css__
 ul.footnotelist {

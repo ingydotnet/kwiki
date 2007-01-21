@@ -1,0 +1,87 @@
+=head1 NAME
+
+Kwiki::Docsite - Wiki way doing documentation. Compile whole wiki into a directroy of HTML.
+
+=head1 VERSION
+
+Version 0.01
+
+=cut
+=head1 SYNOPSIS
+
+This is a plugin that compiles whole site to static HTML.  Which then can be
+archived and shipped as a complete documentation.
+
+  # Install this plugin
+  > kwiki -install Kwiki::Docsite
+  # Compile the whole site
+  > kwiki -docsite /path/to/output
+
+=head1 DESCRIPTION
+
+Writing documentation isn't really easy, especially when proper documentation
+writting formet is difficult to learn.  For (a bad) example, docbook. Docbook
+is purely structured SGML based documentation system, which is really
+difficult to start with.
+
+C<Kwiki::Docksite> helps doing documentation by starting a Kwiki site first,
+and write all your documentation just using Kwiki's wiki syntax. At the end,
+you use C<kwiki -docsite> shell command to compile whole wiki site into a
+directory of static HTML files. Which can then be shipped to your client.
+
+All page links are converted to point to HTML files, external image links are
+downloaded locally if possible. So nothing really breaks. So you do not have
+to remember all the SGML or XML markups. The best part of this wiki way,
+collaborative documenting is possible because you'll setup a fullly functional
+wiki site to write documents.
+
+=cut
+=head1 AUTHOR
+
+Kang-min Liu, C<< <gugod at gugod.org> >>
+
+=head1 BUGS
+
+Please report any bugs or feature requests to
+C<bug-kwiki-docsite at rt.cpan.org>, or through the web
+interface at
+L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Kwiki-Docsite>.
+I will be notified, and then you'll automatically be notified of
+progress on your bug as I make changes.
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Kwiki::Docsite
+
+You can also look for information at:
+
+=over 4
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Kwiki-Docsite>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Kwiki-Docsite>
+
+=item * RT: CPAN's request tracker
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Kwiki-Docsite>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Kwiki-Docsite>
+
+=back
+
+=head1 ACKNOWLEDGEMENTS
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2006 Kang-min Liu, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.

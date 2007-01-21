@@ -31,34 +31,6 @@ sub list_pages
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::ListPages - List all Kwiki Pages
-
-=head1 SYNOPSIS
-
- 1. Install Kwiki::ListPages
- 2. kwiki -add Kwiki::ListPages
-
-=head1 DESCRIPTION
-
-This module provides an indexed list of all the pages in a Kwiki wiki via a button on the toolbar.  At the top of the list is a navigation bar with letters or numbers which have page entries associated with them.
-
-=head1 AUTHOR
-
- Sue Spence <sue_cpan@pennine.com>
- Alexander Goller <alex@vivien.franken.de>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2005 by Sue Spence & Alexander Goller. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __css/list_pages.css__
 td.page_name {
    width: 25%
@@ -121,4 +93,3 @@ RQj6BUINWIiFsZWGGvSwrJAXkEwmiUQiOI6DaZpsh+fY+/CR1fPz4Dj4haDW+EW1/pNH6dte
 gFKKXq935AwEuHP3Hvk3r6l8P8sJOUPA78eyh3R/W5xOJLwAXddpNBrugW3bLK+s0KhUGSqF
 CPg4FY8TTcQpFAqeUZ72nX1+2Hj44P51EChnyIyc5d3O9hdnxCugDBz8AX7Y0vgtAxN8AAAA
 AElFTkSuQmCC
-

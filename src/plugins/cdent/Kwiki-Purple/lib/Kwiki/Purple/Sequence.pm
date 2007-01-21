@@ -254,39 +254,6 @@ package Kwiki::Purple::Sequence;
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Purple::Sequence - Provide the next purple number and store it
-
-=head1 DESCRIPTION
-
-A Kwiki::Purple::Sequence is a source of the next Purple Number used
-for creating nids in L<Kwiki::Purple> to ensure that no nid is used
-more than once. That's all this version does at this time.
-
-A fully implemented Sequence maintains an index of NID:PageName or
-NID:URL pairs to allow for transclusion amongst multiple wikis or
-other sources of nid identified information.
-
-Based in very large part on PurpleWiki::Sequence, which has more
-functionality.
-
-=head1 AUTHORS
-
-Chris Dent, <cdent@burningchrome.com>
-
-=head1 SEE ALSO
-
-L<Kwiki::Purple>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005, Chris Dent
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 __config/purple_sequence.yaml__
 purple_sequence_file:
 purple_sequence_index:

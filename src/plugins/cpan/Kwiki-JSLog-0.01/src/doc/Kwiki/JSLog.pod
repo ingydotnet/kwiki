@@ -1,0 +1,46 @@
+=head1 NAME
+
+Kwiki::JSLog - Provides JSLog library for Kwiki
+
+=head1 SYNOPSIS
+
+This module should be optional and only really needed for developers of your
+module. For this reason it does not load itself and therefore it is not
+automatically included in the list of javascript files. Your module must
+dynamically load the javascript file this module provides if it is needed.
+The Kwiki-TableOfContents module provides a great example code for doing this.
+The example code requires the prototype library and the scriptaculous library
+but code could easy be created that does not depend on these libraries. Below
+is the example code:
+
+        debug = Prototype.emptyFunction;
+        jslog = new Object();
+        $A(['debug', 'info', 'warning', 'error', 'text']).each(function(func) {
+                jslog[func] = Prototype.emptyFunction;
+        });
+        if (location.href.match(/jslog\=enable/)) {
+                Scriptaculous.require('javascript/jslog.js');
+        }
+
+As you can see jslog.js is not included unless jslog=enable is in the URL
+requested. Since a normal use will never request a URL with that in it then
+the library will never be used. But to enable the log simply install this module
+in the Kwiki installation and add that to your URLs. Empty functions are used
+when this library is not included allowing you to leave your logging code in
+the production modules.
+
+=head1 AUTHOR
+
+Eric Anderson, C<< <eric at cordata.com> >>
+
+=head1 ACKNOWLEDGEMENTS
+
+Andre Lewis for developing the JSLog library. Without it debugging in
+Javascript would have been much harder while working in IE.
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2006 CorData, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself. See http://www.perl.com/perl/misc/Artistic.html

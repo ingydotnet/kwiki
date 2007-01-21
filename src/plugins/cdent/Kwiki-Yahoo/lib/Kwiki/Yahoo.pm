@@ -70,43 +70,6 @@ package Kwiki::Yahoo;
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Yahoo - Wafl Phrase for including RSS feeds in a Kwiki Page
-
-=head1 DESCRIPTION
-
-  {yahoo-doc <query> |args}
-
-Kwiki::Yahoo uses the Yahoo::Search module to use the Yahoo API
-for web, video, image, news, local, spelling, and related searches.
-
-This is a simple proof of concept that probably has many roads for
-improvement. A lot of flexibility would be gained by accessing the
-Results directly rather than using the generated HTML.
-
-=head1 DEMONSTRATION
-
-There's a demonstration, with some explanatory text at
-http://www.burningchrome.com/wiki/index.cgi?KwikiYahoo
-
-=head1 AUTHORS
-
-Chris Dent <cdent@burningchrome.com>
-
-=head1 SEE ALSO
-
-L<Kwiki>
-L<Yahoo::Search>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005, Chris Dent
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __template/tt2/yahoo.html__
 <!-- BEGIN yahoo.html -->

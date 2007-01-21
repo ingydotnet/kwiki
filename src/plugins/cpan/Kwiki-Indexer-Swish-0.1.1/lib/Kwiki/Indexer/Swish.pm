@@ -40,34 +40,3 @@ sub shell {
 }
 
 1;
-__DATA__
-
-=head1 NAME
-
-Kwiki::Indexer::Swish - Kwiki Swish Indexed Search Plugin
-
-=head1 SYNOPSIS
-
-kwiki -add Kwiki::Indexer::Swish
-
-=head1 DESCRIPTION
-
-A Kwiki indexer plugin  that uses the swish-e indexing system.
-
-This plugin requires the SWISH::API module that ships with swish-e to be
-installed to function.
-
-=head1 AUTHOR
-
-Russell Heilling <chewtoy@s8n.net>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2004. Russell Heilling. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut

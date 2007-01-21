@@ -1,0 +1,43 @@
+=head1 NAME
+
+Kwiki::IRCMode - colorized IRC conversations in your Kwiki
+
+=head1 VERSION
+
+version 0.20
+
+=head1 SYNOPSIS
+
+ $ cpan Kwiki::IRCMode
+ $ cd /path/to/kwiki
+ $ kwiki -add Kwiki::IRCMode
+
+=head1 DESCRIPTION
+
+This module registers a ".irc" block, which will format IRC conversations like
+the following:
+
+ .irc
+ <rjbs> Hey, is there an IRC block for Kwiki?
+ <z00s> No.  Why don't you shut up and write one?
+ <rjbs> Maybe I will!
+ <z00s> Maybe you should!
+ <rjbs> FINE!
+ .irc
+
+=cut
+=head2 C<< $self->to_html() >>
+
+This converts IRC log messages to HTML.
+
+=cut
+=head1 TODO
+
+=head1 AUTHOR
+
+Ricardo SIGNES, <C<rjbs@cpan.org>>
+
+=head1 COPYRIGHT
+
+This code is Copyright 2004, Ricardo SIGNES.  It is licensed under the same
+terms as Perl itself.

@@ -8,41 +8,6 @@ our $VERSION = '0.10';
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Theme::CPB - Kwiki Theme of some sort
-
-=head1 SYNOPSIS
-
-  kwiki -install Kwiki::Theme::CPB
-
-=head1 DESCRIPTION
-
-A hopefully simple and clean three column Kwiki theme for use with
-Kwiki::Blog. Once it is installed you can put things in the left hand
-column by changing the template_path and adding a local path:
-
-  template_path:
-  - local
-  - template/tt2
-
-In local create theme_sidebar1.html. Fill it with whatever HTML you want
-to show up. I used it for images and such.
-
-=head1 AUTHOR
-
-Chris Dent
-
-=head1 COPYRIGHT
-
-Copyright (c) 2004. Chris Dent. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 
 __theme/cpb/template/tt2/theme_screen.html__
 
@@ -182,4 +147,3 @@ div.navigation a:visited {
 .badges img {
     border: none;
 }
-

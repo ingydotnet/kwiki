@@ -85,56 +85,6 @@ sub blocked_url {
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::URLBlock - Blocks edit based on added URLs
-
-=head1 DESCRIPTION
-
-It blocks an edit if you add too many URLs or if you enter a
-blacklisted one.
-
-=head2 Configuration
-
-The default config variables that you can override in config.yaml are:
-
- urlblock_max_allowed: 3
- urlblock_blacklist:
-
-urlblock_blacklist is a path to a blacklist file.
-
-The syntax is a list of newline separated regexps. Anything after # is
-treated as a comment. Whitespace is ignored.
-
-Example taken from L<http://wiki.mozilla.org/wiki/Spam_blacklist>:
-
- # some known "bad" domains
- ltjz2000\.com
- ticketsmyway\.com
- emmss\.com
- [0-9][0-9][0-9][0-9][0-9][0-9]*\.com # 5 or more character numeric .coms
- # some words frequently used by spammers in urls
- camgirl
- parishilton
- online-casino
-
-=head1 AUTHORS
-
-Jon Aslund L<http://jon.aslund.org>, Jooon at #kwiki on Freenode
-
-=head1 SEE ALSO
-
-L<Kwiki>
-L<URI::Find>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005, Jon Aslund
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 __template/tt2/blocked_url.html__
 <div class="error">
 <p>You were blocked from editing because your edit contains either too many

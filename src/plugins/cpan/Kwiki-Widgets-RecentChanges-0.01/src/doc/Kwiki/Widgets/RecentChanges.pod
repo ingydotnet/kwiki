@@ -1,0 +1,23 @@
+=head1 NAME
+
+  Kwiki::Widgets::RecentChanges - Widget version of RecentChaneges
+
+=head1 SYNOPSIS
+
+  # kwiki -install Kwiki::Widgets::RecentChanges
+
+=head1 DESCRIPTION
+
+This widget gives you a small recent changed page list (configurable
+from user preference) on the theme's widget pane. Hence it depends
+on L<Kwiki::Widgets> and your theme must display widgets too,
+otherwise this plugin will not change anything on your screen.
+
+=head1 COPYRIGHT
+
+Copyright 2005 by Kang-min Liu <gugod@gugod.org>.
+
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+See <http://www.perl.com/perl/misc/Artistic.html>

@@ -28,28 +28,6 @@ sub double_click {
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::DoubleClickToEdit - Double Click Starts Edit
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-=head1 AUTHOR
-
-Ingy döt Net <ingy@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 
 __javascript/double_click_to_edit.js__
 (

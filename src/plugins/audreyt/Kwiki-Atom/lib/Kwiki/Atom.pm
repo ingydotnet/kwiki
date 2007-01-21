@@ -356,58 +356,6 @@ package Kwiki::Atom;
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::Atom - Kwiki Atom Plugin
-
-=head1 VERSION
-
-This document describes version 0.15 of Kwiki::Atom, released
-April 1, 2005.
-
-=head1 SYNOPSIS
-
-    % cd /path/to/kwiki
-    % kwiki -add Kwiki::Atom
-
-=head1 DESCRIPTION
-
-This Kwiki plugin provides Atom 0.3 integration with Kwiki.
-
-If you plan to offer your Atom feeds to the public, please consider installing
-the B<Kwiki::Cache> module, which can significantly reduce the server load.
-
-For more info about this kind of integration, please refer to
-L<http://www.xml.com/pub/a/2004/04/14/atomwiki.html>.
-
-Currently, this plugin has been tested with the following AtomAPI clients:
-
-=over 4
-
-=item * wxAtomClient.py
-
-L<http://piki.bitworking.org/piki.cgi>
-
-=item * ecto
-
-L<http://ecto.kung-foo.tv/>
-
-=back
-
-=head1 AUTHOR
-
-Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
-
-=head1 COPYRIGHT
-
-Copyright 2004, 2005 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __config/atom.yaml__
 site_description: The Kwiki Wiki
 site_url: http://localhost/par/

@@ -66,44 +66,6 @@ package Kwiki::SOAP;
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::SOAP - Base class for accessing SOAP services from a WAFL phrase
-
-=head1 SYNOPSIS
-
-  {soap <wsdl file> <method> [<arg1> <arg2>]}
-
-=head1 DESCRIPTION
-
-Kwiki::SOAP provides a base class and framework for access SOAP services
-from a WAFL phrase. It can be used directly (as shown in the synopsis)
-but is designed to be subclassed for special data handling and presentation
-management.
-
-You can see Kwiki::SOAP in action at http://www.burningchrome.com/wiki/
-
-This is alpha code that needs some feedback and playing to find its
-way in life.
-
-=head1 AUTHORS
-
-Chris Dent <cdent@burningchrome.com>
-
-=head1 SEE ALSO
-
-L<Kwiki>
-L<SOAP::Lite>
-L<Kwiki::SOAP::Fortune>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005 by Chris Dent
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __css/dated_announce.css__
 div.soap { background: #dddddd; }

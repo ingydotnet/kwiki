@@ -12,42 +12,6 @@ const class_title => 'tabbed toolbar navigation';
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Theme::TabNav - A simple kwiki theme that looks beest using Kwiki::Toolbar::List
-
-=head1 SYNOPSIS
-
-     $ cpan Kwiki::Theme::TabNav
-     $ cd /path/to/kwiki
-     $ kwiki -remove Kwiki::Theme::MyCurrentTheme
-     $ kwiki -add Kwiki::Theme::TabNav
-
-=head1 DESCRIPTION
-
-A simple, minimalistic theme that provides a different look and feel to a kwiki site.
-
-This theme can be used with Kwiki::Toolbar, but looks better when used with
-Kwiki::Toolbar::List.
-
-Note that when using Kwiki::Icons::Gnome, the tabs will be offset slightly in IE - in firefox
-it looks fine.  Also, it looks like Kwiki::Revisions places uses the pipe delimiter somewhere
-in that code.
-
-=head1 AUTHOR
-
-Dave Mabe <dmabe@runningland.com>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2004. Dave Mabe. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 
 __theme/tabnav/template/tt2/kwiki_screen.html__
 [%- INCLUDE kwiki_doctype.html %]

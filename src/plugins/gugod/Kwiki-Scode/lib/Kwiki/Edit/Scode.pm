@@ -48,25 +48,6 @@ package Kwiki::Edit::Scode;
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Edit::Scode - Page editing with scode support
-
-=head1 DESCRIPTION
-
-This modules is a part of L<Kwiki::Scode>.
-For documentation, see L<Kwiki::Scode>.
-
-=head1 COPYRIGHT
-
-Copyright 2004 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-
-=cut
 
 __template/tt2/edit_button.html__
 <!-- BEGIN edit_button.html -->

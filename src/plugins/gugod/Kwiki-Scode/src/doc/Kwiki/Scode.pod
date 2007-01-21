@@ -1,0 +1,45 @@
+=head1 NAME
+
+  Kwiki::Scode - Saves you from Wiki spammer.
+
+=head1 INSTALLATION
+
+To use this plugin, you need to add this B<TWO> lines into
+your C<plugins> file:
+
+    Kwiki::Scode
+    Kwiki::Edit::Score
+
+And remove C<Kwiki::Edit> from that file.  C<Kwiki::Edit::Score> take
+places of C<Kwiki::Edit>, and only update page content when captcha
+code is verified correct.
+
+=head1 DESCRIPTION
+
+Scode (or Captcha) is a facility to prevent web spammers from posting
+abusing content to your website. Anyone who wants to edit wiki page
+are now required to input a verification code from an image. Thus make
+any spam-bot difficult to reconized that verifcation code.
+
+This plugin make use most of C<MT::Scode> plugin code, and adapt to
+C<Kwiki::Edit>, so it can help you if your site is suffered from
+annoeying wiki spammers.
+
+=head1 CREDITS
+
+C<MT::Scode> Copyright (c) 2003, James Seng. (http://james.seng.cc/)
+
+=head1 SEE ALSO
+
+MT::Scode at http://james.seng.cc/archives/000145.html
+
+For explanation of B<Captcha>, http://en.wikipedia.org/wiki/Captcha
+
+=head1 COPYRIGHT
+
+Copyright 2004 by Kang-min Liu <gugod@gugod.org>.
+
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+See <http://www.perl.com/perl/misc/Artistic.html>

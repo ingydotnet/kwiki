@@ -14,35 +14,6 @@ const class_title => 'The hatena theme';
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Theme::Hatena - Kwiki Hatena Theme
-
-=head1 SYNOPSIS
-
-In C<config.yaml>:
-
-    hatena_theme_logo_width: 60
-    hatena_theme_logo_height: 60
-
-=head1 DESCRIPTION
-
-=head1 AUTHOR
-
-Kazuhiro Osawa E<lt>ko@yappo.ne.jpE<gt>
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-But C<theme/hatena/template/tt2/kwiki_screen.html> and C<theme/hatena/css/kwiki.css> is the GPL License. 
-
-=head1 SEE ALSO
-
-L<http://d.hatena.ne.jp>
-
-=cut
 __theme/hatena/template/tt2/kwiki_screen.html__
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- BEGIN kwiki_screen.html -->

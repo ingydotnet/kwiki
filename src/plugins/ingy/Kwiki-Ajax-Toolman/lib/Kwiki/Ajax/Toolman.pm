@@ -18,33 +18,6 @@ our $VERSION = '0.10';
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Ajax::Toolman - Tool-man Javascript Libraries for Kwiki
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-=head1 AUTHOR
-
-Ingy döt Net <ingy@cpan.org>
-
-This module is just a distribution of the Tool-man Javascript framework
-by Tim Taylor tim@tool-man.org, available at http://tool-man.org/examples/
-
-=head1 COPYRIGHT
-
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
-
-Copyright (c) 2005. Brian Ingerson. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __javascript/toolman/LICENSE.txt__
 Copyright (c) 2005 Tim Taylor Consulting <http://tool-man.org/>
 

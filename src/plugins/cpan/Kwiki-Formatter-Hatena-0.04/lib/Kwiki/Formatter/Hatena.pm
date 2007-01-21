@@ -86,44 +86,7 @@ package Kwiki::Formatter::Hatena;
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::Formatter::Hatena - Kwiki Formatter with Haten Style
-
-=head1 SYNOPSIS
-
-In C<config.yaml>:
-
-    formatter_class: Kwiki::Formatter::Hatena
-    hatenaformatter_keyword_cache_root: /tmp/hatenakeyword_cache_dir
-    hatenaformatter_keyword_cache_expires: 1 day
-    hatenaformatter_keyword_score: 20
-
-=head1 DESCRIPTION
-
-The Kwiki format is invalidated and the Hatena format is made effective. 
-The Hatena format is offered by L<Hatena::Formatter>. 
-
-=head1 AUTHOR
-
-Kazuhiro Osawa E<lt>ko@yappo.ne.jpE<gt>
-
-=head1 THANKS TO
-
-TransFreeBSD, Naoya Ito, otsune, tokuhirom
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
-
-L<Hatena::Formatter>, L<Text::Hatena>, L<Hatena::Keyword>
-
-=cut
 __config/hatenaformatter.yaml__
 hatenaformatter_keyword_cache_root: /tmp/hatenaformatter_cache_root
 hatenaformatter_keyword_cache_expires: 1 day
 hatenaformatter_keyword_score: 20
-

@@ -114,41 +114,6 @@ package Kwiki::FetchRSS;
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::FetchRSS - Wafl Phrase for including RSS feeds in a Kwiki Page
-
-=head1 DESCRIPTION
-
-  {fetchrss <rss url> [full] [expire]}
-
-Kwiki::FetchRSS retrieves and caches an RSS feed from a blog, news 
-site, wiki, wherever and presents it in a Kwiki page. It can optionally
-display the description text for each item, or just the headline. Cache
-expiration times for each phrase may be set, or a default can be set
-in the configuration file fetrchrss.yaml.
-
-You can see Kwiki::FetchRSS in action at http://www.burningchrome.com/wiki/
-
-This code needs some feedback to find its way in life.
-
-=head1 AUTHORS
-
-Alex Goller
-Chris Dent <cdent@burningchrome.com>
-
-=head1 SEE ALSO
-
-L<Kwiki>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005, the authors
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __template/tt2/fetchrss.html__
 <!-- BEGIN fetchrss.html -->

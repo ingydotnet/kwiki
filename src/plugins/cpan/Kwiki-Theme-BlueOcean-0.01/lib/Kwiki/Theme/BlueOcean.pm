@@ -70,52 +70,7 @@ sub redirect_on_pref_save {
 
 __DATA__
 
-=head1 NAME
 
-Kwiki::Theme::BlueOcean - Blue Kwiki Theme
-
-=head1 VERSION
-
-Version 0.01
-
-=head1 SYNOPSIS
-
-	$ cd /path/to/kwiki
-	$ kwiki --remove Kwiki::Theme::YourCurrentTheme
-	$ kwiki --add Kwiki::Theme::BlueOcean
-
-=head1 TODO
-
-=over
-
-=item
-
-Get rid of dependency on Kwiki::TableOfContents. This would probably require
-me to get rid of the abosute positioning.
-
-=item
-
-The theme includes a link to Kwiki::TableOfContents::Print. Make this optional.
-
-=item
-
-Remove dependency on Kwiki::UserPreferences and Kwiki::Icons. This would
-probably just be a matter of doing a quick check before tweaking those modules.
-
-=cut
-
-=head1 AUTHOR
-
-Eric Anderson, C<< <eric at cordata.com> >>
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2006 CorData, all rights reserved.
-
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself. See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __theme/blueocean/css/kwiki.css__
 #title_pane, h1, h2, h3, h4, h5, h6 {
     background-color: rgb(220, 225, 235);

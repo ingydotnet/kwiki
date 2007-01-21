@@ -1,0 +1,100 @@
+=head1 NAME 
+
+Kwiki::GDGraphGenerator - put pretty graphs into your Kwiki pages
+
+=head1 SYNOPSIS
+
+ $ cd /path/to/kwiki
+ $ kwiki -add Kwiki::GDGraphGenerator
+
+In your KwikiText:
+
+ .graph
+ id: test
+ type: pie
+ data:
+   - [ bacon, eggs, ham, home fries, hash ]
+   - [ 1,     4,    2,   3,          2    ]
+ .graph
+
+=head1 DESCRIPTION
+
+This module turns C<graph> WAFL blocks into pretty graphs using L<GD::Graph>. Between the C<.graph> directives must be valid L<YAML>. Some keys are required.
+
+=head2 Keys
+
+=over 4
+
+=item * B<id> - I<REQUIRED>, must be unique for every page, must be valid characters in a filename. Examples: C<sales> or C<marmots>.
+
+=item * B<type> - I<REQUIRED>, the type of graph, will be prepended with "GD::Graph::" to determine which L<GD::Graph> module to use
+
+=item * B<data> - I<REQUIRED>, the data set. See L<"Examples"> below.
+
+=item * B<width> and B<height>, defaults are both 300 (pixels).
+
+=item * B<title>, text title of the graph
+
+=item * B<x_label> and B<y_label>, axis labels
+
+=item * ...and any other options you can find in L<GD::Graph/"OPTIONS">.
+
+=back
+
+=head2 Examples
+
+    .graph
+    id: orangejuice
+    type: bars
+    title: Gallons of OJ I Drank This Week
+    x_label: Day of Week
+    y_label: No. of Gallons
+    shadow_depth: 2
+    data:
+      - [ Sun, Mon, Tue, Wed, Thu, Fri, Sat ]
+      - [ 23,  12,  43,  3,   16,  18,  30   ]
+    .graph
+
+    .graph
+    id: lines
+    type: lines
+    line_width: 3
+    show_values: 1
+    data:
+      - [ 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 ]
+      - [ 1, 4, 2, 3, 6, 4, 2, 5, 6, 7 ]
+      - [ 3, 5, 1, 1, 6, 8, 4, 6, 2, 4 ]
+      - [ 3, 5, 9, 2, 5, 6, 3, 1, 7, 7 ]
+    .graph
+
+    .graph
+    id: test
+    type: pie
+    width: 500
+    height: 200
+    dclrs: [ red, green, blue, yellow, purple, cyan, orange ]
+    data:
+      - [ bacon, eggs, ham, home fries, hash ]
+      - [ 1,     4,    2,  3,  2 ]
+    .graph
+
+=head1 CAVEATS
+
+You might need to clean up the cache for this module every now and then. The cache is located in the F<plugin/graphgenerator> directory in your Kwiki installation directory.
+
+The "logo" key is not allowed because it would allow anyone to view any image on the filesystem that the Kwiki user could read.
+
+=head1 AUTHORS
+
+Ian Langworth <langworth.com>
+
+=head1 SEE ALSO
+
+L<Kwiki>, L<GD::Graph>, L<GD::Graph::colour>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2004 by Ian Langworth
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

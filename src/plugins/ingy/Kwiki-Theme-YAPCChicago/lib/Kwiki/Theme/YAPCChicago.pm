@@ -28,30 +28,6 @@ sub fix_html {
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::Theme::YAPCChicago - Kwiki YAPC Chicago 2006 Theme
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-This plugin requires Kwiki::Toolbar::List.
-
-=head1 AUTHOR
-
-Ingy döt Net <ingy@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 
 __theme/yapc_chicago/template/tt2/kwiki_screen.html__
 

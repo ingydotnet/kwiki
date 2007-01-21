@@ -1,0 +1,26 @@
+=head1 NAME
+
+Kwiki::Sifr - Scalable Inman Flash Replacement for Kwiki
+
+=head1 SYNOPSIS
+
+    16:26 < ingy> hola
+    16:42 < mako132_> yoyoyo
+    16:42 < ingy> hi mako
+    16:42 < ingy> working on Kwiki::Sifr
+    16:46 < ingy> so the awesome thing about Kwiki2, is the you can edit 
+                  lib/Kwiki/Anything.pm from anywhere
+    16:47 < ingy> and you're editing the svn files
+    16:47 < ingy> Kwiki 2 == Kwiki + symlinks
+    16:47 < mako132_> Sifr?
+    16:47 < ingy> symlinks++
+    16:48 < ingy> Scalable Inman Flash Replacement
+    16:48 < mako132_> ? Should I google?
+    16:48 < ingy> Sexy Implantable Font R0><0R
+    16:49 < ingy> you can google
+    16:49 < ingy> it replaces html headings with Flash Text Movies 
+    16:49 < ingy> on the fly
+    16:49 < ingy> it's very cool
+    16:50 < ingy> for custom fonts that are perfect everywhere
+    16:50 < ingy> and it degrades nicely
+    16:51 < ingy> you can even select/copy the text

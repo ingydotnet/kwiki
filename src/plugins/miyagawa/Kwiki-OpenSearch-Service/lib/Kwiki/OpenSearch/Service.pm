@@ -52,41 +52,6 @@ package Kwiki::OpenSearch::Service;
 1;
 __DATA__
 
-=head1 NAME
-
-Kwiki::OpenSearch::Service - Make your Kwiki compatible to A9 OpenSearch
-
-=head1 SYNOPSIS
-
-  > echo Kwiki::OpenSearch::Service >> plugins
-  > $EDITOR config.yaml
-  script_name: http://example.com/kwiki/
-  sample_search: iPod
-  developer: Tatsuhiko Miyagawa
-  contact: miyagawa@gmail.com
-  # followings are optional:
-  tags: foo bar baz
-  attribution: Creative Commons
-  syndication_right: limited
-  adult_content: false
-  > kwiki -update
-
-=head1 DESCRIPTION
-
-Kwiki::OpenSearch::Service is a Kwiki plugin to make your Kwiki installation compatible to A9 OpenSearch. Your description URL would be http://example.com/path/kwiki/index.cgi?action=opensearch_description
-
-=head1 AUTHOR
-
-Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
-
-L<WWW::OpenSearch>, L<Kwiki::LiveSearch>
-
-=cut
 
 __template/tt2/opensearch_rss.xml__
 <?xml version="1.0" encoding="UTF-8" ?>

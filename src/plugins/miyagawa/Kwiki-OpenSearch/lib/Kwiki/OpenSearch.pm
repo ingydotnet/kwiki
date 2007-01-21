@@ -56,35 +56,6 @@ package Kwiki::OpenSearch;
 1;
 __DATA__
 
-=head1 NAME
-
-Kwiki::OpenSearch - OpenSearch plugin for Kwiki
-
-=head1 SYNOPSIS
-
-  > echo Kwiki::OpenSearch >> plugins
-  > kwiki -update
-
-  {opensearch http://example.com/opensearch.xml Something}
-
-=head1 DESCRIPTION
-
-Kwiki::OpenSearch is a plugin to search A9's OpenSearch compatible search engines from inside Kwiki using Wafl. See http://opensearch.a9.com/ what is OpenSearch and http://opensearch.a9.com/-/search/moreColumns.jsp for available engines.
-
-=head1 AUTHOR
-
-Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
-
-This module was written during Ingy's Kwiki talk at YAPC::Taipei 2005.
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
-
-L<WWW::OpenSearch>, L<Kwiki::Yahoo>
-
-=cut
 
 __template/tt2/opensearch.html__
 <!-- BEGIN opensearch.html -->
@@ -113,4 +84,3 @@ __css/opensearch.css__
 .opensearchItem { }
 .opensearchItemTitle { }
 .opensearchItemDescription { }
-

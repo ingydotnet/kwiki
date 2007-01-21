@@ -3,23 +3,9 @@ package Kwiki::RenamePage;
 use warnings;
 use strict;
 
-=head1 NAME
-
-Kwiki::RenamePage - Better Names for Misnamed Kwiki Pages
-
-=head1 VERSION
-
-Version 0.01
-
-=cut
 
 our $VERSION = '0.01';
 
-=head1 SYNOPSIS
-
-Moves content of OldPage to NewName, replacing it with the message, "This page has moved to NewName." Text in other pages which could have been a link to OldPage is changed to link to NewName, but with the old text left parenthesized as, "(Old name: OldPage)".
-
-=cut
 
 use Kwiki::Plugin '-Base';
 use mixin 'Kwiki::NewPage';
@@ -32,15 +18,6 @@ field 'old_page_name';
 field 'old_page_content';
 # field 'page_time';
 
-=head1 METHODS
-
-=over 8
-
-=item B<register>
-
-Plug the plugin in.
-
-=cut
 
 sub register {
     my $registry = shift;
@@ -49,11 +26,6 @@ sub register {
     			template => 'rename_page_button.html' );
 }
 
-=item B<rename_page>
-
-Rename the page.
-
-=cut
 
 sub rename_page {
     my $page = $self->pages->current;
@@ -108,58 +80,6 @@ cgi 'page_time';
 
 package Kwiki::RenamePage;
 
-=back
-
-=head1 AUTHOR
-
-Dr Bean, C<< <drbean, then an at sign, cpan, a dot, and finally org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to
-C<bug-kwiki-renamepage at rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Kwiki::RenamePage>.
-I will be notified, and then you'll automatically be notified of progress on
-your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Kwiki::RenamePage
-
-You can also look for information at:
-
-=over 4
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Kwiki::RenamePage>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Kwiki::RenamePage>
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Kwiki::RenamePage>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Kwiki::RenamePage>
-
-=back
-
-=head1 ACKNOWLEDGEMENTS
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2006 Dr Bean, all rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-=cut
 
 1; # End of Kwiki::RenamePage
 

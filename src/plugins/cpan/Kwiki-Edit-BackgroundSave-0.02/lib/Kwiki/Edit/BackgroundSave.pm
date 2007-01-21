@@ -79,48 +79,6 @@ sub add_x_json_header {
 package Kwiki::Edit::BackgroundSave;
 1; # End of Kwiki::Edit::BackgroundSave
 __DATA__
-=head1 NAME
-
-Kwiki::Edit::BackgroundSave - Will allow a user to save the current page they
-are editing while contining to edit the page.
-
-=head1 SYNOPSIS
-
-=over
-
-=item
-
-Click "Edit" on a page
-
-=item
-
-Start editing
-
-=item
-
-Click "Background Save"
-
-=item
-
-Continue editing
-
-=item
-
-When finished click "Save"
-
-=back
-
-=head1 AUTHOR
-
-Eric Anderson, C<< <eric at cordata.com> >>
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2006 CorData, all rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-=cut
 __javascript/background_save.js__
 function do_background_save(page_name) {
 	var old_value = $('background_save').value;

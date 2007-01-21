@@ -43,38 +43,6 @@ sub blocked_ip {
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::DNSBL - Blocks edit from ip addresses in DNS Blackhole lists
-
-=head1 DESCRIPTION
-
-Much of the current WikiSpam comes from open proxies. This plugin
-queries a number of DNS blackhole lists to check if users are using
-an open proxy and blocks them if they do.
-
-It uses L<Net::DNSBLLookup> which also queries blackhole lists that
-report if an ip address is known to have an open e-mail relay. This
-plugin blocks these users anyway, even though WikiSpam has nothing to
-do with normal e-mail spam.
-
-=head1 AUTHORS
-
-Jon Aslund L<http://jon.aslund.org>, Jooon at #kwiki on Freenode
-
-=head1 SEE ALSO
-
-L<Kwiki>
-L<Net::DNSBLLookup>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005, Jon Aslund
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 __template/tt2/blocked_ip.html__
 <div class="error">
 <p>You were blocked from editing because your ip address exists in one

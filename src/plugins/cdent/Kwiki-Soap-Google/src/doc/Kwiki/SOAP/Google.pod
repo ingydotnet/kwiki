@@ -1,0 +1,33 @@
+=head1 NAME 
+
+Kwiki::SOAP::Google - Experiment with SOAP request to Google through wafl.
+
+=head1 SYNOPSIS
+
+  {googlesoap my search terms}
+
+=head1 DESCRIPTION
+
+This is a WAFL phrase for Kwiki that allows searches of google
+through their SOAP API. You must have your own Google API key
+to use it. If you do not have one you can get one from Google:
+
+  http://www.google.com/apis/
+
+After installation you must edit the Kwiki::SOAP::Google file
+to add your key (this will be improved at a later time).
+
+=head1 AUTHORS
+
+Chris Dent
+
+=head1 SEE ALSO
+
+L<Kwiki>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2005 by Chris Dent
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

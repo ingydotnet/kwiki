@@ -19,37 +19,6 @@ sub register {
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Prototype - Will add the Prototype javascript library to a Kwiki
-installation. It serves no purpose but to allow other modules (mainly Web 2.0
-modules) access to this javascript library without having to include it.
-
-=head1 SYNOPSIS
-
-If you are creating a Web 2.0 module add the following to your Makefile.PL.
-
-	PREREQ_PM => {
-		'Kwiki::Prototype' => 0,
-	};
-
-=head1 ACKNOWLEDGEMENTS
-
-Sam Stephenson and all the developers of prototype.js. This is a mere wrapper
-to include prototype.js in Kwiki. Their magic is what makes it all possible.
-
-=head1 AUTHOR
-
-Eric Anderson, C<< <eric at cordata.com> >>
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2006 CorData, all rights reserved.
-
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself. See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __javascript/prototype.js__
 /*  Prototype JavaScript framework, version 1.5.0_rc0
  *  (c) 2005 Sam Stephenson <sam@conio.net>

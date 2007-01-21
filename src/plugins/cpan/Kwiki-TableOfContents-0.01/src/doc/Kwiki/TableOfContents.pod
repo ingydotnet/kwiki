@@ -1,0 +1,65 @@
+=head1 NAME
+
+Kwiki::TableOfContents - Provides a Table of Contents feature that a template
+can use to make a wiki work as a manual.
+
+=head1 SYNOPSIS
+
+This module tries to be very Web 2.0/Ajax/<pick your buzzword> by using a
+Javascript-based tree to both use and edit the table of contents. All changes
+are transmitted immediately using Ajax. Most every action is based around
+drag-and-drop. To add a new link to the TOC simply drag the header of the page
+to the place in the menu you want to add it. Any link can also act as a
+category so you can place links inside it. To do this either expand the subtree
+and drag and drop inside that subtree or drop on the actual link when it
+becomes bold.
+
+To remove a link simply drag to the trash can. If you want to create a new
+category that is not a link simply drag the "New Folder" icon to the location
+you want to add the new folder. To rename any link or folder simply click the
+edit icon next to the node and a in-place editor will appear allowing you to
+edit that item.
+
+=head1 TODO
+
+This plugin is fairly complex Javascript code using libraries that have not
+been worked with extensively. Therefore it may not behave as well as desired
+although it seems to work decent. The following are known issues I would like
+to resolve:
+
+=over
+
+=item Template Interaction
+
+Right now installing the menu doesn't really do anything because whatever
+template is installed must know about it to make a place for it. So the template
+must be TOC compatible. The only TOC compatible theme is BlueOcean (a
+modification of GreenHouse). I would like establish independence between TOC
+and the themes.
+
+=item Slow Performance on Firefox
+
+Drag and drop on firefox is slow when inside a scrollable pane. This is because
+the implementation of the drag and drop features of Script.aculo.us. They do a
+great job of making drag and drop work but they are fighting an uphill battle
+since they are doing stuff I imagine the web browser developers would not
+have imagined someone would try. :)
+
+=item Stability problems
+
+Sometimes the operations are just not as stable as desired. For example if you
+delete an item sometimes the alert() dialog will throw things out of wack when
+you attempt to click ok. Or sometimes it is difficult to place an object
+where you want. It would be nice to really get this component rock solid.
+
+=cut
+=head1 AUTHOR
+
+Eric Anderson, C<< <eric at cordata.com> >>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2006 CorData, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself. See http://www.perl.com/perl/misc/Artistic.html

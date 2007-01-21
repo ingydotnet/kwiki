@@ -66,32 +66,6 @@ sub html {
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::BreadCrumbs - Kwiki Bread Crumbs Plugin
-
-=head1 SYNOPSIS
-
-Show a trail of the last 5 pages viewed.
-
-=head1 DESCRIPTION
-
-=head1 AUTHOR
-
-Ingy döt Net <ingy@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
-
-Copyright (c) 2004. Brian Ingerson. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __template/tt2/bread_crumbs.html__
 <style>
 div#bread_crumb_trail {

@@ -150,34 +150,6 @@ sub invalid_doolittle_page {
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Doolittle - Hooks For the Doolittle Project
-
-=head1 SYNOPSIS
-
- ?
-
-=head1 DESCRIPTION
-
-Doolittle is the Kwiki wiki that contains all of the documentation for the Kwiki core modules. By editing Doolittle, one edits the Kwiki documentation. In fact, right now I'm writing about Doolittle *within* Doolittle! (Makes my brain hurt.)
-
-=head1 AUTHOR
-
-Ingy döt Net <ingy@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
-
-Copyright (c) 2005. Brian Ingerson. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 
 __template/tt2/doolittle_content.html__
 <h1>Welcome to Doolittle</h1>
@@ -186,4 +158,3 @@ __template/tt2/doolittle_content.html__
 <li>[% page.kwiki_link %]</li>
 [% END %]
 </ul>
-

@@ -74,31 +74,6 @@ package Kwiki::Blog;
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Blog - Blogging for Kwiki
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-A very quick and dirty plugin for kwiki that could form the basis
-of a way to do blogging. Needs a lot of work.
-
-=head1 AUTHOR
-
-Chris Dent
-
-=head1 COPYRIGHT
-
-Copyright (c) 2005. Chris Dent. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __template/tt2/blog_content.html__
 <div class="blog">
 [% INCLUDE blog_nav.html %]

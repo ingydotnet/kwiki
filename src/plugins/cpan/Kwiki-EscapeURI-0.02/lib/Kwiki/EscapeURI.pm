@@ -51,35 +51,3 @@ sub html {
 }
 
 package Kwiki::EscapeURI;
-__DATA__
-
-=head1 NAME 
-
-Kwiki::EscapeURI - uri escape to raw UTF8 links
-
-=head1 SYNOPSIS
-
- $ cd /path/to/kwiki
- $ kwiki -add Kwiki::EscapeURI
-
-=head1 DESCRIPTION
-
-Changes the internal links that Kwiki create. Instead of
-raw UTF8 links, it will just be uri escaped.
-
-=head1 AUTHOR
-
-Kzuhiro Osawa
-
-=head1 SEE ALSO
-
-L<URI::Escape>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2006. Kazuhiro Osawa All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-=cut

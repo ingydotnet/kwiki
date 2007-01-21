@@ -92,47 +92,6 @@ cgi 'page_id';
 
 package Kwiki::Comments;
 __DATA__
-=head1 NAME
-
-Kwiki::Comments - Post comments to a page
-
-=head1 DESCRIPTION
-
-B<Kwiki::Comments> is a L<Kwiki> plugin that allow anyone to leave
-comments to a Page, just like Slash comments or MT comments. To use
-this plugin, simply install L<Kwiki>, and this module from CPAN, and
-do:
-
-    # echo 'Kwiki::Comments' >> plugins
-    # kwiki -update
-
-Currently you'll need to have L<DBD::SQLite> module installed to use
-this module. Maybe in the future, we can support more kinds of database
-back-end.
-
-And now your site is ready to have comments. But, comments
-are not shown automatically. You'll have to append this line:
-
-    {comments}
-
-To whatever pages that are allow comment.
-
-The basic idea is that, some wiki pages can be protected, only admin
-can edit them. On those protected pages, comments becomes the only way
-for anybody to give feedbacks, but sometimes you don't even want a
-feedback. That's why you'll need to clearly specify if you want
-a comment form attach to the page, or not.
-
-=head1 COPYRIGHT
-
-Copyright 2004 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-
-=cut
 __css/comments.css__
 .comments-body {
 	font-family:verdana, arial, sans-serif;

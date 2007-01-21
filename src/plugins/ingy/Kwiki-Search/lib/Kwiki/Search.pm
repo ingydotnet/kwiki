@@ -49,30 +49,6 @@ cgi search_term => -utf8;
 package Kwiki::Search;
 __DATA__
 
-=head1 NAME 
-
-Kwiki::Search - Kwiki Search Plugin
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-=head1 AUTHOR
-
-Ingy döt Net <ingy@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
-
-Copyright (c) 2004. Brian Ingerson. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __template/tt2/search_box.html__
 <form method="post" action="[% script_name %]" enctype="application/x-www-form-urlencoded" style="display: inline">
 <input type="text" name="search_term" size="8" value="Search" onfocus="this.value=''" />
@@ -107,4 +83,3 @@ table.search td.edit_by   {
 table.search td.edit_time { 
     text-align: right;
 }
-

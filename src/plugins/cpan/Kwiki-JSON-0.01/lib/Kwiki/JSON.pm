@@ -18,32 +18,6 @@ sub register {
 1; # End of Kwiki::JSON
 
 __DATA__
-=head1 NAME
-
-Kwiki::JSON - Provides the JSON javascript library for Kwiki
-
-=head1 SYNOPSIS
-
-Simply install and it will be available for your application.
-
-=head1 AUTHOR
-
-Eric Anderson, C<< <eric at cordata.com> >>
-
-=head1 ACKNOWLEDGEMENTS
-
-The developers of the JSON language as well as the many implementations of
-JSON. It is great to have data structures than can be understood by all
-languages and without JSON many of my project would be much harder.
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2006 Eric Anderson, all rights reserved.
-
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself. See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __javascript/json.js__
 /*
     json.js

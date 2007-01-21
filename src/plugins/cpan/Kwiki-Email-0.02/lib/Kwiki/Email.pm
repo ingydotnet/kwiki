@@ -34,30 +34,3 @@ sub check_email {
 }
 
 1;
-
-__DATA__
-
-=head1 NAME 
-
-Kwiki::Email - Kwiki Email Plugin
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-This module adds a email address preference for the current user.
-
-=head1 AUTHOR
-
-Alexander Goller <decay@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2004. Alexander Goller. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut

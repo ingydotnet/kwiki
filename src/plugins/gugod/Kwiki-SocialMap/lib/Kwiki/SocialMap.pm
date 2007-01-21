@@ -1,23 +1,5 @@
 package Kwiki::SocialMap;
 
-=head1 NAME
-
-Kwiki::SocialMap - Display social relation of this kwiki site
-
-=head1 DESCRIPTION
-
-Please see L<Graph::SocialMap> to know something about Social Map.
-
-=head1 COPYRIGHT
-
-Copyright 2004 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-
-=cut
 
 use Kwiki::Plugin -Base;
 use mixin 'Kwiki::Installer';

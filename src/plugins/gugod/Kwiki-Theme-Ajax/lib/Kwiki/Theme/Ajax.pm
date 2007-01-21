@@ -72,24 +72,6 @@ cgi 'operation';
 package Kwiki::Theme::Ajax;
 __DATA__
 
-=head1 NAME
-
-  Kwiki::Theme::Ajax - 
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-=head1 COPYRIGHT
-
-Copyright 2005 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-
-=cut
 
 __theme/ajax/css/kwiki.css__
 #logo_pane
@@ -189,4 +171,3 @@ __theme/ajax/template/tt2/theme_screen.html__
 
 [% INCLUDE theme_html_end.html -%]
 <!-- END theme_screen -->
-

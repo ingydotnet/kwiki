@@ -121,36 +121,6 @@ package Kwiki::Trackback;
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Trackback - Provide a trackback server within Kwiki and a place to
-display those trackbacks.
-
-=head1 DESCRIPTION
-
-Trackback is a protocol developed by Six Apart to facillitate conversation
-amongst disparate content sources. It was first used between blogs, but is
-useful for proactively telling any piece of content that something out there
-is talking about it.
-
-You can see Kwiki::Trackback in action at L<http://www.burningchrome.com/wiki/>
-
-=head1 AUTHORS
-
-Chris Dent, <cdent@burningchrome.com>
-
-=head1 SEE ALSO
-
-L<Kwiki>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005, Chris Dent
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 __template/tt2/trackbacks.html__
 <!-- BEGIN trackback -->
 <div style="font-family: Helvetica, Arial, sans-serif; overflow: hidden;"

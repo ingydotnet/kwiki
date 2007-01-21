@@ -34,68 +34,6 @@ sub update {
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::Notify::IRC - announce updates to your Kwiki on IRC channels
-
-=head1 SYNOPSIS
-
- $ cd /path/to/kwiki
- $ kwiki -add Kwiki::Notify::IRC
- $ cat config/notify_irc.yaml >> config.yaml
- $ edit config.yaml
- $ perl notify-irc.pl
-
-=head1 DESCRIPTION
-
-This module allows you to notify your IRC channel(s) of updates to Kwik pages. The bot will announce what page was updated and by whom.
-
-The module provides a F<notify-irc.pl> script that acts as a combination update daemon and IRC bot. This script must be run from your Kwiki installation directory.
-
-=head2 Configuration Directives
-
-=over 4
-
-=item * notify_irc_daemon_host
-
-=item * notify_irc_daemon_port
-
-Defines the host and port that will be used for the IRC daemon. The defaults should be fine if you're running your Kwiki and F<notify_irc.pl> on the same machine.
-
-=item * notify_irc_nickname
-
-=item * notify_irc_ircname
-
-Name settings. Note that the username is not configurable -- instead, it is set to the C<USER> environment variable.
-
-=item * notify_irc_server_host
-
-=item * notify_irc_server_port
-
-What IRC server to connect to.
-
-=item * notify_irc_server_channels
-
-A comma-delimited list of channels to connect to.
-
-=back
-
-=head1 AUTHORS
-
-Ian Langworth <ian@cpan.org>
-
-=head1 SEE ALSO
-
-L<Kwiki>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2004 by Ian Langworth
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __config/notify_irc.yaml__
 notify_irc_daemon_host:     localhost
@@ -235,4 +173,3 @@ sub bot_reconnect
     $kernel->delay( autoping => undef );
     $kernel->delay( connect  => 60 );
 }
-

@@ -58,30 +58,6 @@ package Kwiki::Emoticon;
 1;
 __DATA__
 
-=head1 NAME
-
-Kwiki::Emoticon - Emoticon phrase for Kwiki
-
-=head1 SYNOPSIS
-
-  > echo Kwiki::Emoticon >> plugins
-
-  # optionally, you can change the Emoticon class (MSN by default)
-  > $EDITOR config.yaml
-  emoticon_driver: Yahoo
-
-Now you can use emoticon like C<:-)> in your Kwiki text.
-
-=head1 AUTHORS
-
-Kang-min Liu E<lt>gugod@gugod.orgE<gt>
-
-Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __config/emoticon.yaml__
 emoticon_driver: MSN

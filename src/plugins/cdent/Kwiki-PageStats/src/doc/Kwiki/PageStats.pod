@@ -1,0 +1,36 @@
+=head1 NAME
+
+Kwiki::PageStats - Count and show page hits with a hook.
+
+=head1 DESCRIPTION
+
+Kwiki::PageStats shows a count of how many times a page has been 
+viewed since the installation of the plugin and when the last hit 
+on the page was made.
+
+=head1 CREDITS
+
+Henry Laxen provided a patch that uses the TimeZone plugin, if
+present, to show the times relative to the current users time
+zone. Henry has also provided an icon for the menu bar and some
+grammar fixes in the output.
+
+Gugod (Kang-min Liu) provided a patch to add a page_stats_list
+action that reports on the number of hits for all pages. Which
+is a nicely handy way to get an overview of how much action your
+wiki is seeing.
+
+=head1 AUTHORS
+
+Chris Dent, <cdent@burningchrome.com>
+
+=head1 SEE ALSO
+
+L<Kwiki>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2005, Chris Dent
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

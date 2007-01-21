@@ -1,0 +1,30 @@
+=head1 NAME 
+
+Kwiki::Diff::Mutual - The selection of revision of both parties of Diff is enabled.
+
+=head1 SYNOPSIS
+
+ $ cd /path/to/kwiki
+ $ kwiki -add Kwiki::Diff::Mutual
+
+=head1 DESCRIPTION
+
+This module requires that you be using L<Kwiki::Diff>. Please make sure
+L<Kwiki::Diff> is in your F<plugins> file.
+
+Working to which the function of A is enhanced of both parties of Diff. 
+
+=head1 AUTHORS
+
+Kazuhiro Osawa E<lt>ko@yappo.ne.jpE<gt>
+
+=head1 SEE ALSO
+
+L<Kwiki>, L<Kwiki::Diff>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2006 by Kazuhiro Osawa
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

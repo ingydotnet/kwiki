@@ -196,33 +196,3 @@ sub gencontent {
 
     return $content;
 }
-
-__END__
-
-=head1 NAME
-
-Kwiki::Outline2HTML - Kwiki formatter using outline2html syntax
-
-=head1 DESCRIPTION
-
-
-B<Kwiki::OutlineHTML> is a L<Kwiki> plugin that provide alternative
-formatter syntax.
-
-To use this plugin, simply install L<Kwiki> and this module from CPAN,
-and do:
-
-    # echo 'Kwiki::Outline2HTML' >> plugins
-    # kwiki -update
-
-Please visit L<http://gugod.org/outline2html> and take a look of
-POD there, for the syntax of this mode.
-
-=head1 COPYRIGHT
-
-Copyright 2004 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>

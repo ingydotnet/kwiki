@@ -128,29 +128,6 @@ package Kwiki::UserMessage;
 
 __DATA__
 
-=head1 NAME
-
-  Kwiki::UserMessage - Kwiki user message sub-system
-
-=head1 SYNOPSIS
-
-  > kwiki -add Kwiki::UserMessage
-
-=head1 DESCRIPTION
-
-This module is a Kwiki plugin that provide your kwiki site to have user message sub-system.
-It provides a simple functionality to write message to other user, and read your message.
-
-=head1 COPYRIGHT
-
-Copyright 2005 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-
-=cut
 
 __css/user_message.css__
 div.user_message { width: 100%; }

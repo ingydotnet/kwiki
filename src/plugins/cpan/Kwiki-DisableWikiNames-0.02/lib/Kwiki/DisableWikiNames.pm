@@ -36,31 +36,3 @@ sub dwn_uri_hook {   ## Adopted from Kwiki::CoolURI
 }
 
 1;
-__END__
-=head1 NAME
-
-Kwiki::DisableWikiNames - Disable Kwiki WikiNames auto markup
-
-=head1 SYNOPSIS
-
- $ cd /path/to/kwiki
- $ kwiki -add Kwiki::DisableWikiNames
-
-=head1 DESCRIPTION
-
-Disables automatic internal link creation for WikiNames
-
-=head1 AUTHOR
-
-Pavel V. Kaygorodov <pasha@inasan.ru>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2006 by root
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.5 or,
-at your option, any later version of Perl 5 you may have available.
-
-
-=cut

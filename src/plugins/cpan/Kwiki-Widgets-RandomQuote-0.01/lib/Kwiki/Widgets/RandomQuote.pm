@@ -23,25 +23,6 @@ sub show {
 
 __DATA__
 
-=head1 NAME
-
-  Kwiki::Widgets::RandomQuote - Quote a random paragraph from all pages.
-
-=head1 DESCRIPTION
-
-This Kwiki widget display a random quote on your widget_pane, which is just
-for fun.
-
-=head1 COPYRIGHT
-
-Copyright 2005 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-
-=cut
 
 __template/tt2/widgets_random_quote.html__
 <div id="widgets_random_quote">

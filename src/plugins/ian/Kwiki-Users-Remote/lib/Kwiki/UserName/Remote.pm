@@ -16,30 +16,6 @@ sub register {
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::UserName::Remote - display the remote user name
-
-=head1 DESCRIPTION
-
-See L<Kwiki::Users::Remote> for more information.
-
-=head1 AUTHORS
-
-Ian Langworth <langworth.com> 
-
-=head1 SEE ALSO
-
-L<Kwiki>, L<Kwiki::Users::Remote>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2004, 2005 by Ian Langworth
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __css/user_name.css__
 div #user_name_title {

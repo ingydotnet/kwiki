@@ -6,67 +6,6 @@ use warnings;
 use Kwiki::Edit '-Base';
 use mixin 'Kwiki::Installer';
 
-=head1 NAME
-
-Kwiki::Edit::SubEtha - SubEthaEdit Plugin for Kwiki
-
-=head1 VERSION
-
-This document describes version 0.02 of Kwiki::Edit::SubEtha, released
-July 27, 2004.
-
-=head1 SYNOPSIS
-
-A live SubEthaKwiki is available at L<http://wiki.oreillynet.com/oscon/>
-for the duration of O'Reilly Open Source Convention 2004.
-
-=head1 DESCRIPTION
-
-=head2 SubEtha Machine
-
-You need OS X 10.3 or above, with I<UI Scripting> enabled; see
-L<http://www.apple.com/applescript/uiscripting/01.html> for instructions
-on how to enable it.
-
-Tweak the configuration constants in F<script/subethakwiki.pl> and run it.
-It will do several things every 15 seconds:
-
- * force an autosave
- * svn up
- * check for each "A edits/*", set TTL
- * open the documents in SubEthaEdit and share them
- * svn ci
- * check for each "M pages/*" and refresh their TTL
- * for pages that has TTL expired, close the document, record it.
- * svn rm edits/* those pages.
- * svn ci
- * loop
-
-Note that the SubEthaEdit window will pop out constantly; currently, you
-really need a dedicated machine to do this.
-
-=head2 Kwiki Machine
-
-First, install the B<Kwiki::Archive::SVK> plugin, run F<index.cgi>
-once, then share the repository located at F<kwiki_path/plugin/archive>
-using F<svnserve> or WebDAV, and make it accessible form the SubEtha machine.
-
-Now install the B<Kwiki::Edit::SubEtha> plugin.  For nonshared (normal)
-pages, the user will see:
-
- * provides an "Edit" item as normal.
- * for OSX people, an additional "SubEthaEdit" button:
- ** shows a page explaining what's it about
- ** explain the rules
- ** offer a link that, when clicked, does "svk mkdir edits/Pagename"
- ** and redirects to see://hostname/PageName/
-
-For shared (subetha-editable) pages, the user will see:
-
- * a "Lock" item explaining it's being locked by SubEthaEdit
- * for OSX people, a "SubEthaEdit" button that just links to see://see_url.
-
-=cut
 
 const class_title => 'SubEtha Edit';
 const cgi_class => 'Kwiki::Edit::SubEtha::CGI';
@@ -152,23 +91,6 @@ package Kwiki::Edit::SubEtha;
 
 __DATA__
 
-=head1 AUTHORS
-
-Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>,
-Ingy döt Net E<lt>ingy@cpan.orgE<gt>.
-
-=head1 COPYRIGHT
-
-Copyright 2004 by
-Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>,
-Ingy döt Net E<lt>ingy@cpan.orgE<gt>.
-
-This program is free software; you can redistribute it and/or 
-modify it under the same terms as Perl itself.
-
-See L<http://www.perl.com/perl/misc/Artistic.html>
-
-=cut
 __config/edit.yaml__
 edit_save_button_text: SAVE
 edit_preview_button_text: PREVIEW

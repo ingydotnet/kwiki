@@ -85,34 +85,6 @@ sub hook_install {
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Theme::Selectable - Kwiki Preference to Select a Theme
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-This theme is really a proxy for other theme plugins. It exposes a user
-preference, that lets a user choose from a list of themes. The list
-should be specified by the Kwiki administrator in the config.yaml file.
-
-=head1 AUTHOR
-
-Ingy döt Net <ingy@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
-
-Copyright (c) 2005. Brian Ingerson. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __config/theme_selectable.yaml__
 theme_list:
 - Kwiki::Theme::Basic

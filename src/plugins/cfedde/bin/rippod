@@ -60,6 +60,7 @@ while (my $file = $list->chomp->readline) {
     $code->print($c);
 
     $_->close for ($pod, $src, $code);
+    unlink($bak);
 }
 
 __END__

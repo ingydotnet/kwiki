@@ -1,0 +1,36 @@
+=head1 NAME
+
+Kwiki::Technorati - Wafl Phrase for including Technorati Cosmos in a Kwiki Page
+
+=head1 DESCRIPTION
+
+  {technorati <query url>}
+
+Kwiki::Technorati uses Kwiki::FetchRSS to retrieve the Technorati cosmos
+for the given url. The cosmos provides a list of other web pages that 
+have recently mentioned the website at the url.
+
+To use this wafl, you must have technorati_key set in your config.yaml.
+You can obtain a key from L<http://www.technorati.com/>
+
+You can see Kwiki::Technorati in action at L<http://www.burningchrome.com/wiki/>
+
+This code needs some feedback to find its way in life.
+
+=head1 AUTHORS
+
+Adina Levin
+
+Chris Dent, E<lt>cdent@burningchrome.comE<gt>
+
+=head1 SEE ALSO
+
+L<Kwiki>
+L<Kwiki::FetchRSS>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2005, Socialtext, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

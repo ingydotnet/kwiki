@@ -477,66 +477,6 @@ package Kwiki::Purple;
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Purple - Support Purple Numbers in Kwiki
-
-=head1 DESCRIPTION
-
-Kwiki::Purple adds support for granular addressability and transclusion
-of content in Kwiki pages, based (somewhat loosely) on the PurpleWiki model.
-
-When this plugin is installed and a page is saved, each heading, paragraph
-or list item has a nid appended to its saved text. That looks like this:
-
-   Some text in a paragraph {nid 1}
-
-When the page is formatted to html, this nid will be presented as
-a clickable anchor pointing directly to the identified paragraph.
-
-When editing the paragraph, do not remove the {nid} wafl unless
-you remove the paragraph outright. If you are just making an edit, 
-leave the nid in place. Doing so allows continued granular access
-to the chunk of text identified by the nid.
-
-Any section of text which is identified by a nid may be transcluded
-elsewhere in the wiki. Transclusion is a sort of reuse by reference
-rather than copy. Transclusion has its own wafl:
-
-  This will transclude nid 1 {t 1} into this paragraph
-
-When formatted the output will look similar to:
-
-  This will transclude nid 1 Some text in a paragraph into this paragraph
-
-Some care it taken to prevent loops. 
-
-With experience, this system can become very handy for reusing
-or pointing to information that you store in your wiki. 
-
-For more information on Purple Numbers see L<http://purple.blueoxen.net/>,
-L<http://purplewiki.blueoxen.net/> and L<http://www.burningchrome.com/~cdent/mt/archives/cat_purple.html>.
-
-=head1 AUTHORS
-
-Chris Dent, <cdent@burningchrome.com>
-
-Many thanks to Ingy döt Net, Matthew O'Connor and Eugene Eric Kim
-for various bits of help and inspiration.
-
-=head1 SEE ALSO
-
-L<Kwiki>
-L<Spoon::Hooks>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005, Chris Dent
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 __config/purple.yaml__
 purple_retrieval_url:
 __css/purple.css__

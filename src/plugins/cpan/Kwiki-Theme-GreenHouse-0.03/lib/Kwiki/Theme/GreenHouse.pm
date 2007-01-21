@@ -11,39 +11,6 @@ const class_title => 'The greenhouse theme';
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::Theme::GreenHouse - Green Kwiki Theme
-
-=head1 SYNOPSIS
-
- $ cd /path/to/kwiki
- $ vim plugins # (Replace your current Kwiki::Theme::Xyz
-               # with Kwiki::Theme::GreenHouse)
- $ kwiki -update
-
-=head1 DESCRIPTION
-
-Designed to make you feel like you're eating Lime Sherbet.  Mmmm.
-
-=head2 Configuration
-
-  None needed, currently.
-
-=head1 AUTHOR
-
-Ryan King <rking@panoptic.com>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2005. Ryan King. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __theme/greenhouse/template/tt2/kwiki_screen.html__
 <!-- BEGIN kwiki_screen -->
 [%- INCLUDE kwiki_doctype.html %]

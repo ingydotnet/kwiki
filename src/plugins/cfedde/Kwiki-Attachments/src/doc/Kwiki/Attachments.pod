@@ -1,0 +1,90 @@
+=head1 NAME 
+
+Kwiki::Attachments - Kwiki Page Attachments Plugin
+
+=head1 SYNOPSIS
+
+=over 4
+
+=item 1.
+Install Kwiki::Attachments
+
+=item 2.
+Run 'kwiki -add Kwiki::Attachments'
+
+=back
+
+=head1 DESCRIPTION
+
+=head3 B<General>
+
+Kwiki::Attachments gives a Kwiki wiki the ability to upload, store and manage
+file attachments on any page. By default, if you have an image creation module 
+such as Imager or Image::Magick installed, then a thumbnail will be created for 
+every supported image file type that is uploaded. Thumbnails are displayed on 
+the attachments page, and can also be displayed on wiki pages via the wafl
+directives described in the next paragraph. The thumbnail files have "thumb_"
+prepended to the original filename and are not displayed separately  in the 
+attachment page or widget. For this reason, you cannot upload files beginning
+with "thumb_".
+
+=head3 B<WAFL>
+
+This module provides 3 wafl tags which can be used to link to or display
+attachments in a Kwiki page.
+
+=over 4
+
+=item *
+C<{file:[page/]filename}> creates a link to attachment I<filename>.
+
+=item *
+C<{img:[page/]filename}> displays attachment I<filename>.
+
+=item *
+C<{thumb:[page/]filename}> displays the thumbnail for attachment I<filename>.
+
+=back
+
+=head3 B<Configuration Options> 
+
+[kwiki_base_dir]/config/attachments.yaml
+
+=over 4
+
+=item * 
+attachments_skip: [regular_expression]
+
+Kwiki::Attachments may be configured to reject the upload of files with names
+matched by the given regular expression.  By default, it is set to reject files
+beginning with "thumb_" or "." and those ending with "~" or ".bak".
+
+=item *  make_thumbnails: [on|off]
+
+This flag controls whether thumbnails are created from uploaded image files.
+It is set to 'on' by default. 
+
+=item *  im_override: [on|off]
+
+If both Imager.pm and Image::Magick.pm are available, Kwiki::Attachments uses
+Imager, unless im_override is set to 'on'. This parameter has no effect if only
+one of the two image manipulation modules is installed. It is set to 'off' by
+default.
+
+=head1 AUTHOR
+
+Sue Spence <sue_cpan@pennine.com>
+
+This module is based almost entirely on work by
+Eric Lowry <eric@clubyo.com> and Ingy döt Net <ingy@cpan.org>
+
+Hacked for IE client file names by Chris Fedde <cfedde@cpan.org>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2005. Sue Spence. All rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See http://www.perl.com/perl/misc/Artistic.html

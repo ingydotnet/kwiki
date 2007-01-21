@@ -1,0 +1,27 @@
+=head1 NAME
+
+Kwiki::Export - export Kwiki content into other Wiki formats
+
+=head1 SYNOPSIS
+
+  % echo Kwiki::Export >> plugins
+  % kwiki -update
+
+=head1 DESCRIPTION
+
+Kwiki::Export is a Kwiki plugin to export Kwiki saved page into other
+Wiki formats like MediaWiki, using L<HTML::WikiConverter> modules. You
+can export all the pages on your Wiki into a single zip file, too, in
+an original Kwiki format or other Wiki dialects supported by
+HTML::WikiConveter.
+
+=head1 AUTHOR
+
+Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+L<HTML::WikiConverter>, L<Kwiki::Edit>

@@ -44,49 +44,6 @@ sub set_user_name {
 package Kwiki::Users::Cookie;    
 __DATA__
 
-=head1 NAME 
-
-Kwiki::Users::Cookie - automatically set Kwiki user name from a cookie based lookup
-
-=head1 SYNOPSIS
-
- $ cd /path/to/kwiki
- $ echo "users_class: Kwiki::Users::Cookie" >> config.yaml
- $ echo "users_cookie_name: user_cookie_name"    >> config.yaml
-
-Optionally, to display the user name:
-
- $ cd /path/to/kwiki
- $ kwiki -add Kwiki::UserName::Cookie
- $ echo "login_url: /login.html"    >> config.yaml
-
-=head1 DESCRIPTION
-
-This module will set the user's name from a cookie's value.  Optionally,
-that value could be used to lookup session info, etc, to set the user's name.
-
-You might also want to use L<Kwiki::UserName::Cookie>.
-
-=head1 AUTHORS
-
-John Cappiello <jcap@cpan.org>
-
-=head1 BASED ON
-
-L<Kwiki::Users::Remote> by Ian Langworth <langworth.com> 
-
-=head1 SEE ALSO
-
-L<Kwiki>, L<Kwiki::UserName::Cookie>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005 by John Cappiello
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __config/user_cookie.yaml__
 user_default_cookie_name: username 

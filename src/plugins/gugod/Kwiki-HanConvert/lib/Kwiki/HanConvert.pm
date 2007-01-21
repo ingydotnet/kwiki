@@ -38,31 +38,6 @@ package Kwiki::HanConvert;
 
 __DATA__
 
-=head1 NAME
-
-  Kwiki::HanConvert - Trad./Simp. Chinese convertor
-
-=head1 INSTALLATION
-
-    kwiki -install Kwiki::HanConvert
-
-=head1 DESCRIPTION
-
-This Kwiki plugin adds [Simp] and [Trad] on your toolbar, which conver
-your page display to Simplified Chinese or Traditional Chinese on the
-fly. The conversion is accomplished after page rendering, so the page
-content is not changed.
-
-=head1 COPYRIGHT
-
-Copyright 2004 by Kang-min Liu <gugod@gugod.org>.
-
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-
-=cut
 
 __template/tt2/han_convert_button.html__
 <a href="[% script_name %]?[% page_uri %]&mode=simp" title="Convert To Simplified Chinese">Simp</a>,

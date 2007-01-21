@@ -114,22 +114,3 @@ complete:
   next: end
 ...
 }
-
-=head1 NAME
-
-  Kwiki::Configure
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-=head1 COPYRIGHT
-
-Copyright 2006 by Ingy döt Net <ingy@cpan.org>
-
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
-
-=cut

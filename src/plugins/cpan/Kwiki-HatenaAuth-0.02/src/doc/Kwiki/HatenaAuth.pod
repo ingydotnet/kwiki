@@ -1,0 +1,35 @@
+=head1 NAME
+
+Kwiki::HatenaAuth - Kwiki HatenaAuth integration
+
+=head1 SYNOPSIS
+
+  > $EDITOR plugins
+  # Kwiki::UserName <- If you use it, comment it out
+  Kwiki::HatenaAuth
+  Kwiki::Edit::HatenaAuthRequired <- Optional: If you don't allow anonymous writes
+  > $EDITOR config.yaml
+  users_class: Kwiki::Users::HatenaAuth
+  hatenaauth_key: PUT YOUR KEY HERE
+  hatenaauth_secret: PUT YOUR SECRET KEY HEAR
+  > kwiki -update
+
+=head1 DESCRIPTION
+
+Kwiki::HatenaAuth is a Kwiki User Authentication module to use HatenaAuth
+authentication. You need a valid HatenaAuth API KEY registered at http://auth.hatena.ne.jp/
+
+CallBack URL is 'BASE_URL'?action=return_hatenaauth
+
+=head1 AUTHOR
+
+Kazuhiro Osawa E<lt>ko@yappo.ne.jpE<gt>
+
+inspired by L<Kwiki::TypeKey>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+L<Hatena::API::Auth> L<Kwiki::Edit::RequireUserName> L<Kwiki::Users::Remote>

@@ -201,50 +201,6 @@ package Kwiki::Keywords;
 
 __DATA__
 
-=head1 NAME
-
-Kwiki::Keywords - Keywords for Kwiki
-
-=head1 SYNOPSIS
-
-  kwiki -add Kwiki::Keywords
-
-=head1 DESCRIPTION
-
-Kwiki::Keywords provides keywords (or tags) for each Kwiki Page. You
-can then browse by keyword. If a page is edited by someone with
-a Kwiki UserName, the name will be added as a keyword. This feature
-can be turned off by setting
-
-  keywords_no_automatic: 1
-
-in config.yaml.
-
-=head1 AUTHOR
-
-YAPC::NA, Chris Dent, Ingy döt Net
-
-=head1 CREDITS
-
-This module was created on the fly at YAPC::NA 2005 in Toronto by
-everyone at the Kwiki presentation.
-
-Ricardo SIGNES provided the keywords_no_auto patch, made it
-so keywords are only written to writable pages, and added support
-for related tags and display of tag intersections.
-
-=head1 COPYRIGHT
-
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
-
-Copyright (c) 2005. Brian Ingerson. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __template/tt2/keywords_content.html__
 <table class="keywords">
 [% FOR page = pages %]
@@ -348,4 +304,3 @@ __template/tt2/keywords_button_icon.html__
 Keywords
 __config/keywords.yaml__
 keywords_no_automatic: 0
-

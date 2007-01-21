@@ -1,0 +1,61 @@
+=head1 NAME 
+
+Kwiki::LaTeXMath - formats mathematical equations written in LaTeX
+
+=head1 SYNOPSIS
+
+ $ cp LaTeXMath.pm /path/to/kwiki/modules
+ $ cpan Digest::MD5
+ $ cd /path/to/kwiki
+ $ echo "Kwiki::LaTeXMath" >> plugins
+ $ mkdir plugin/latex_images
+ $ kwiki -update
+
+=head1 DESCRIPTION
+
+This module makes it easy to include mathematical equations in your Kwiki.  
+The equations are expressed in LaTeX and translated by the plugin into 
+PNG images that are then displayed.  The LaTeX is contained in a WAFL Block 
+that begins and ends with .latexmath like so:
+
+.latexmath
+\int H(x,x')\psi(x')dx' = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}
+                          \psi(x)+V(x)\psi(x)
+.latexmath
+
+The images are generated using the following programs, which must be 
+installed for this plugin to work:
+
+   TeX         3.14159 (Web2C 7.3.1)
+   LaTeX2e     <2000/06/01> (Included with most TeX distributions)
+   dvips       dvipsk 5.86 (Included with most TeX distributions)
+   Ghostscript 6.52 (2001-10-20)
+   Netpbm      9.24
+
+These are invoked as a series of system calls, so generating equation images
+can be computationally expensive.  To reduce that expense, the images are 
+stored in a name that is generated as an MD5 digest of the equation text.  
+The plugin checks to see whether the image already exists and does not 
+generate a new one otherwise.
+
+=head1 LIMITATIONS
+
+The images are never deleted, but this is only a minor problem since they 
+are fairly small.  In addition, the directory caould be periodically
+purged of old images since they will be automatically regenerated
+if the page is ever viewed again.   
+
+=head1 AUTHORS
+
+Phil Windley <http://www.windley.com>
+
+=head1 SEE ALSO
+
+L<Kwiki>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2005 by Phil Windley
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

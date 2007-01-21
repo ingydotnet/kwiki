@@ -1,0 +1,21 @@
+=head1 NAME
+
+Kwiki::TableOfContents::Print - Provides ability to print entire sections of
+the kwiki website based on the table of contents information.
+
+=head1 SYNOPSIS
+
+Install this module and have your theme provide a button that will call the
+JSTree.print() method when clicked and it will print the current page and
+all child pages. If you are on the home page it will print the entire site.
+
+=head1 AUTHOR
+
+Eric Anderson, C<< <eric at cordata.com> >>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2006 CorData, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself. See http://www.perl.com/perl/misc/Artistic.html

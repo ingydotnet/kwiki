@@ -1,0 +1,42 @@
+=head1 NAME 
+
+Kwiki::Diff - display differences between the current wiki page and older revisions
+
+=head1 SYNOPSIS
+
+ $ cd /path/to/kwiki
+ $ kwiki -add Kwiki::Diff
+
+=head1 DESCRIPTION
+
+This module requires that you be using L<Kwiki::Revisions>. Please make sure
+L<Kwiki::Revisions> is in your F<plugins> file.
+
+This module adds a toolbar item, "Differences," when viewing past revisions of
+wiki pages. When clicked, the user is shown a colorful side-by-side comparison
+of that revision and the current revision.
+
+=head1 TODO
+
+=over 4
+
+=item * Alternate diff styles, such as showing *only* the lines that have changed at the top or inline with the text.
+
+=item * Faster access to the differences of the current page.
+
+=back
+
+=head1 AUTHORS
+
+Ian Langworth <langworth.com>
+
+=head1 SEE ALSO
+
+L<Kwiki>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2004 by Ian Langworth
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

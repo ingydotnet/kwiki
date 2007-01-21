@@ -67,27 +67,3 @@ sub html {
 }
 
 package Kwiki::Spaces;
-__DATA__
-
-=head1 NAME
-
-Kwiki::Spaces - Allows spaces in titles and links
-
-=head1 DESCRIPTION
-
-=head1 AUTHORS
-
-Jon Aslund L<http://jon.aslund.org>, Jooon at #kwiki on Freenode
-
-=head1 SEE ALSO
-
-L<Kwiki>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2005, Jon Aslund
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut

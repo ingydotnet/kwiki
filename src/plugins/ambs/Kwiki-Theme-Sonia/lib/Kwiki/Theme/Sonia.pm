@@ -7,29 +7,6 @@ const class_title => 'Sonia Theme';
 
 __DATA__
 
-=head1 NAME 
-
-Kwiki::Theme::Sonia - Kwiki Sonia Theme
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
-
-=head1 AUTHOR
-
-Based on Sonia Template at http://www.oswd.org/ by LanVacation.
-Adaptation by Alberto Simoes <ambs@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2007. Alberto Simoes. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See http://www.perl.com/perl/misc/Artistic.html
-
-=cut
 __theme/sonia/css/clanak.gif__
 R0lGODlhFwAnAMQAAN3d3ezs7O3t7e7u7u/v7/Dw8PLy8vPz8/T09PX19fb29vf39/j4+Pn5+fr6
 +vv7+/z8/P39/f7+/v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAA

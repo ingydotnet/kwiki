@@ -1,0 +1,59 @@
+=head1 NAME 
+
+Kwiki::Command - Kwiki Command Line Tool Module
+
+=head1 SYNOPSIS
+
+    > kwiki -new mykwiki
+    > cd mykwiki
+    > kwiki -install Kwiki::RecentChanges Kwiki::Archive::Rcs Kwiki::Revisions
+    > vim config.yaml
+    > kwiki -update
+    > kwiki -remove RecentChanges
+    > kwiki -new_view admin
+
+=head1 DESCRIPTION
+
+Kwiki::Command is the module that does all the work of the C<kwiki>
+command line tool. You can use C<kwiki> to install a new Kwiki, to
+update a Kwiki configuration, to add and remove Kwiki plugins and to
+download Kwiki plugins from CPAN. When you download the CPAN modules
+they can either be installed in the system Perl libraries or locally
+right in your kwiki dist. This is useful if you don't have root
+permissions for your installation.
+
+=head1 USAGES
+
+There are many different commands you can do with the C<kwiki> command line
+tool.
+
+=over 4
+
+=item * -new
+
+Create a new kwiki with the command:
+
+    kwiki -new
+
+You must be inside an empty directory. Alternatively you can say:
+
+    kwiki -new path/to/kwiki
+
+The target directory must be empty or must not exist yet.
+
+=back
+
+=head1 AUTHOR
+
+Ingy döt Net <ingy@cpan.org>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2006. Ingy döt Net. All rights reserved.
+
+Copyright (c) 2004. Brian Ingerson. All rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See http://www.perl.com/perl/misc/Artistic.html

@@ -110,21 +110,3 @@ sub format_time {
 }
 
 1; # End of Kwiki::Edit::AdvisoryLock
-__DATA__
-
-=head1 NAME
-
-Kwiki::Edit::AdvisoryLock - Will warn the user if someone else might be editing
-this page.
-
-=head1 AUTHOR
-
-Eric Anderson, C<< <eric at cordata.com> >>
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2006 Eric Anderson, all rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-

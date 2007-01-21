@@ -1,0 +1,43 @@
+=head1 NAME 
+
+Kwiki::ForeignLinkGlyphs - display an image after links that aren't local
+
+=head1 SYNOPSIS
+
+ $ cd /path/to/kwiki
+ $ kwiki -add Kwiki::ForeignLinkGlyphs
+
+=head1 DESCRIPTION
+
+L<AxKit::XSP::Wiki> has a nifty feature where it places a tiny little arrow after non-wiki links. The arrow is useful for identifying links that would direct the user off the wiki.
+
+=head2 Configuration Directives
+
+=over 4
+
+=item * foreignlinkglyph_image
+
+This will be the contents of the C<src> attribute in the C<E<lt>imgE<gt>> tag placed after foreign links. The image F<foreignlinkglyph.png> included with this distribution is the default.
+
+=item * foreignlinkglyph_new_window
+
+Set this to "yes" if you would like foreign links to open in a new browser window.
+
+=back
+
+=head1 AUTHORS
+
+Ian Langworth <ian@cpan.org>
+
+=head1 SEE ALSO
+
+L<Kwiki>, L<AxKit::XSP::Wiki> used by L<http://www.axkit.org/wiki/>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2004 by Ian Langworth
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+The file F<foreignlinkglyph.png>, included with this distribution, is copyright its respective author.

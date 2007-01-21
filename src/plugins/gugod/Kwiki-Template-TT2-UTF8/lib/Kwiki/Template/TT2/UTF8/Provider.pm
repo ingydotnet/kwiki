@@ -17,23 +17,3 @@ sub _load {
 }
 
 1;
-
-
-__DATA__
-
-=head1 NAME
-
-Kwiki::Template::TT2::UTF8::Provider - UTF8 Template Provider
-
-=head1 DESCRIPTION
-
-See L<Kwiki::Template::TT2::UTF8> for everything.
-
-=head1 AUTHOR
-
-Kang-min Liu <gugod@gugod.org>
-
-=head1 COPYRIGHT
-
-=cut
-

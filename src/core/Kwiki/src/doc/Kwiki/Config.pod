@@ -1,0 +1,33 @@
+=head1 NAME 
+
+Kwiki::Config - Kwiki Configuration Base Class
+
+=head1 SYNOPSIS
+
+    $self->hub->config->main_page;
+    $self->config->site_title;
+
+In templates:
+
+    [% hub.config.script_name %]
+
+=head1 DESCRIPTION
+
+This class defines a singleton object that contains all the various
+configuration values in your kwiki system. The configuration values come
+from many different places.
+
+=head1 AUTHOR
+
+Ingy döt Net <ingy@cpan.org>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2006. Ingy döt Net. All rights reserved.
+
+Copyright (c) 2004. Brian Ingerson. All rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See http://www.perl.com/perl/misc/Artistic.html
