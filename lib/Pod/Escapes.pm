@@ -1,0 +1,1 @@
+../../src/cpan/Pod-Escapes-1.04/lib/Pod/Escapes.pm

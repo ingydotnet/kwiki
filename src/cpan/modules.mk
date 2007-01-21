@@ -1,5 +1,7 @@
 CPAN_PATHS = \
 	Date \
+	Pod \
+	Pod/Simple \
 	URI \
 	URI/file \
 	URI/urn \
@@ -9,6 +11,8 @@ CPAN_LEVEL_1 = \
 
 CPAN_LEVEL_2 = \
 	Date/Manip.pm \
+	Pod/Escapes.pm \
+	Pod/Simple.pm \
 	URI/data.pm \
 	URI/Escape.pm \
 	URI/file.pm \
@@ -50,6 +54,32 @@ CPAN_LEVEL_2 = \
 	URI/WithBase.pm \
 
 CPAN_LEVEL_3 = \
+	Pod/Simple/BlackBox.pm \
+	Pod/Simple/Checker.pm \
+	Pod/Simple/Debug.pm \
+	Pod/Simple/DumpAsText.pm \
+	Pod/Simple/DumpAsXML.pm \
+	Pod/Simple/HTMLBatch.pm \
+	Pod/Simple/HTMLLegacy.pm \
+	Pod/Simple/HTML.pm \
+	Pod/Simple/LinkSection.pm \
+	Pod/Simple/Methody.pm \
+	Pod/Simple/Progress.pm \
+	Pod/Simple/PullParserEndToken.pm \
+	Pod/Simple/PullParser.pm \
+	Pod/Simple/PullParserStartToken.pm \
+	Pod/Simple/PullParserTextToken.pm \
+	Pod/Simple/PullParserToken.pm \
+	Pod/Simple/RTF.pm \
+	Pod/Simple/Search.pm \
+	Pod/Simple/SimpleTree.pm \
+	Pod/Simple/TextContent.pm \
+	Pod/Simple/Text.pm \
+	Pod/Simple/TiedOutFH.pm \
+	Pod/Simple/TranscodeDumb.pm \
+	Pod/Simple/Transcode.pm \
+	Pod/Simple/TranscodeSmart.pm \
+	Pod/Simple/XMLOutStream.pm \
 	URI/file/Base.pm \
 	URI/file/FAT.pm \
 	URI/file/Mac.pm \
