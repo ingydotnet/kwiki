@@ -147,7 +147,7 @@ __theme/sonia/template/tt2/kwiki_screen.html__
 
   <div id="bg">
     <div id="sadrzaj">
-     <div id="toplinks"><a href="mailto:[% theme_contact_email %]">Contacts</a></div>
+     <div id="toplinks">[% IF theme_contact_email %]<a href="mailto:[% theme_contact_email %]">Contacts</a>[% END %]</div>
      <div id="zaglavlje">
 	<div id="title"><font size="-1">[% theme_small_title %]</font><br/>
                         [% screen_title || self.class_title %]</div>
