@@ -293,7 +293,7 @@ __theme/aqua/template/tt2/kwiki_screen.html__
     <div id="content">
       <div id="leftpanel">
          <div class="table_top"><div align="center"><span class="title_panel">&nbsp;</span></div></div>
-         <div class="table_content"><div class="table_text">
+         <div class="table_content"><div class="table_text"><br/>
            [% IF hub.have_plugin('user_name') %][% INCLUDE user_name_title.html %][% END %]
            <div id="widgets_pane">[% hub.widgets.html %]</div>
            <div id="status_pane"> [% hub.status.html %] </div>
@@ -314,6 +314,14 @@ __theme/aqua/template/tt2/kwiki_screen.html__
 [% INCLUDE kwiki_end.html -%]
 
 __theme/aqua/css/kwiki.css__
+
+div#widgets_pane {
+ overflow: hidden
+}
+
+div#status_pane {
+ overflow: hidden
+}
 
 div#user_name_title {
  float: none;
