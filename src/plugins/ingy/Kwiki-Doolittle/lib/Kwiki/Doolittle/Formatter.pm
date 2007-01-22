@@ -16,5 +16,5 @@ sub pattern_start { qr/\[([$WORD\-]+)\]/ }
 
 package Kwiki::Formatter::WikiLink;
 our $pattern =
-    qr/[$UPPER\-](?=[$WORD\-]*[$UPPER\-])(?=[$WORD\-]*[$LOWER\-])[$WORD\-]+/;
+    qr/[$UPPER](?=[$WORD\-]*[$UPPER])(?=[$WORD\-]*[$LOWER])[$WORD\-]+/;
 sub pattern_start { qr/$pattern|!$pattern/ }
