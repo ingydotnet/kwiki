@@ -110,3 +110,4 @@ __template/tt2/user_preferences_content.html__
 </table>
 <input type="hidden" name="action" value="user_preferences" />
 </form>
+</div>
