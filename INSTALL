@@ -1,11 +1,17 @@
-= SYNOPSIS
+= FAST START
 
 Basically just do these commands:
 
-  > svk checkout http://svn.2.kwiki.org/kwiki /usr/local/kwiki
+  > svn checkout http://svn.kwiki.org/kwiki/trunk /usr/local/kwiki
   > export PATH=/usr/local/kwiki/bin:$PATH
   > kwiki -new /path/to/cgi/kwiki-01
+
+If you want to use the builtin web server:
+
   > kwiki -start /path/to/cgi/kwiki-01 --port=8080
+
+Point your browser at the new Kwiki:
+
   > open http://localhost:8080/index.cgi
 
 = INSTALLATION DETAILS
@@ -21,18 +27,18 @@ Ready? You only need to do a few simple steps:
 Odds are, that since you are reading this, you already have done this
 step. If not, you can get the software using one of these methods:
 
-  A) svn checkout http://svn.2.kwiki.org/kwiki /usr/local/kwiki
+  A) svn checkout http://svn.kwiki.org/kwiki/trunk /usr/local/kwiki
 
      This is the preferred way to get the sources, since it makes
      getting updates as easy as `svn update`.
 
-  B) svk checkout http://svn.2.kwiki.org/kwiki /usr/local/kwiki
+  B) svk checkout http://svn.kwiki.org/kwiki/trunk /usr/local/kwiki
 
      SVK is even better than SVN, but takes a little bit more time to
      get used to. It is the Hacker's Choice for version control.
 
   C) Download the latest Kwiki tarball from
-     http://downloads.2.kwiki.org/ and untar it.
+     http://downloads.kwiki.org/ and untar it.
 
 Kwiki does not have an install procedure. Once you have the software, it
 is "installed". Just put it some nice, safe place like `/usr/local/kwiki`.
@@ -62,7 +68,7 @@ You can either create a new directory, or specify the directory name in
 the command.
 
     cd /path/to/cgi/
-    mkdir kwikii-01
+    mkdir kwiki-01
     cd kwiki-01
     kwiki -new
 
@@ -76,11 +82,11 @@ Kwiki comes with its own lightweight web server. To start running your new
 Kwiki instance, go into its directory and run `kwiki -start`. Or optionally
 specify the directory on the command:
 
-    kwiki -start /path/to/cgi/kwiki-01
+    kwiki -start /path/to/cgi/kwiki-01 --port=8080
 
 This is the easy way to get going, but for a real wiki on the Web,
 you'll probably want to use a "real" web server. In this case, just make
-sure your webserver is running and knows about your Kwiki.
+sure your web server is running and knows about your Kwiki.
 
 You can use any CGI enabled web server to run Kwiki. Apache and Lighttpd
 are popular choices. Just put your new Kwiki instance directory in a
