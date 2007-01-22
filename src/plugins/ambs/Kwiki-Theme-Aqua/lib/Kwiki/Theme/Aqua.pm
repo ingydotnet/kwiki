@@ -454,12 +454,14 @@ body {
 	font-size: 10px;
 }
 
-.subtitle_gray {	font-family:Verdana, Arial, Helvetica, sans-serif;	
+h3 {	font-family:Verdana, Arial, Helvetica, sans-serif;	
 	font-weight: bold;
 	font-size: 14px;
 	color: #CCCCCC;
 }
-.title_blue {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; font-size: 26px; color: #7DA5E0; }
+
+h2 {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; font-size: 26px; color: #7DA5E0; }
+
 .title_panel {	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
