@@ -1,0 +1,16 @@
+= Welcome to Doolittle -- The Kwiki Documentation Wiki
+
+Doolittle is a documentation wiki with a twist. All the pages in this wiki are actually the files distributed with Kwiki. Kwiki is made up of Perl modules. Perl modules are documented with POD. So learn POD and help document Kwiki today!
+
+== Installation Documents
+
+== Plugin Documents
+
+=== Kwiki Theme Plugins
+
+| Kwiki-Theme-Sonia | The Theme currently used by http://2.kwiki.org |
+| Kwiki-Theme-Aqua | ... |
+
+=== Kwiki Widget Plugins
+
+== Development Documents

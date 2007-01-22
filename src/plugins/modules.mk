@@ -6,6 +6,7 @@ PLUGINS_PATHS = \
 	Kwiki/Command \
 	Kwiki/DB \
 	Kwiki/Diff \
+	Kwiki/Doolittle \
 	Kwiki/Edit \
 	Kwiki/Formatter \
 	Kwiki/Icons \
@@ -209,6 +210,7 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Users/Remote.pm \
 	Kwiki/Ajax/Toolman.pm \
 	Kwiki/Archive/Rcs.pm \
+	Kwiki/Doolittle/Formatter.pm \
 	Kwiki/Formatter/Pod.pm \
 	Kwiki/Pages/Perldoc.pm \
 	Kwiki/Theme/Klassik.pm \

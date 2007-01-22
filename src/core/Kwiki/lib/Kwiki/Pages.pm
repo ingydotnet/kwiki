@@ -21,14 +21,7 @@ sub all {
 
 sub all_ids_newest_first {
     my $path = $self->hub->config->database_directory;
-    if($^O eq "MSWin32") {
-	# ~30 times slower then `ls -lt`
-	# broken if $path is a symlink
-	my $io = io($path);
-	map {$_->filename} sort {$b->mtime <=> $a->mtime} $io->all;
-    } else {
-	map {chomp; $_} `ls -1t $path`;
-    }
+    grep { not(-d "$path/$_") } map {chomp; $_} `ls -1t $path`;
 }
 
 sub recent_by_count {
@@ -183,7 +176,12 @@ sub format_time {
 #XXX This is a bad idea. io is the IO::All constructor. Making it into a
 # method is problematic
 sub io {
-    Kwiki::io($self->file_path)->file;
+    my $r;
+    eval {
+        $r = Kwiki::io($self->file_path)->file;
+    };
+    die "Problem ($@) " . $self->file_path if $@;
+    return $r;
 }
 
 sub modified_time {
