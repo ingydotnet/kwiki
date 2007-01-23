@@ -291,6 +291,7 @@ __theme/aqua/template/tt2/kwiki_screen.html__
     </div>
     <br/>
     <div id="content">
+      [% IF hub.action != 'edit' %]
       <div id="leftpanel">
          <div class="table_top"><div align="center"><span class="title_panel">&nbsp;</span></div></div>
          <div class="table_content"><div class="table_text"><br/>
@@ -300,8 +301,11 @@ __theme/aqua/template/tt2/kwiki_screen.html__
          </div></div>
          <div class="table_bottom"><img src="theme/aqua/images/table_bottom.jpg" width="204" height="23" border="0" alt="" /></div>
       </div>
+
       <div id="contenttext">
-<!-- <span class="title_blue">Welcome to Aqua!</span><br /><span class="subtitle_gray">Some info here</span><br /> -->
+      [% ELSE %]
+      <div id="contenttextS">
+      [% END %]
         [% INCLUDE $content_pane %]
       </div>
       <br/><br/>
@@ -389,6 +393,14 @@ body {
         text-align: justify;
 	float:right;
 	width: 540px;
+}
+textarea {
+        border: solid 1px #9999dd;
+        padding: 4px;
+}
+#contenttextS{
+        text-align: justify;
+	width: 600px;
 }
 
 /*FOOTER*/
