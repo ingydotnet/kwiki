@@ -108,33 +108,11 @@ blockquote span {
 	top : 0.25em;
 }
 
-/*
-form button {
-	background : #ffffff;
-	border : 1px solid #cfcfcf;
-	padding : 0.25em;
-	margin : 0 0 0 0.75em;
-}
-form input {
-	border : none;
-	width : 100%;
-}
 form textarea {
-	border : none;
+	border : solid 1px #dfdfdf;
 	width : 100%;
 	height : 10em;
 }
-form p.button {
-	text-align : right;
-}
-form p.input,
-form p.text {
-	background : #ffffff;
-	border : 1px solid #cfcfcf;
-	padding : 0.25em;
-	margin : 0.25em 1em 0 1em;
-}
-*/
 
 p {
 	padding : 1em 1em 0 1em;
