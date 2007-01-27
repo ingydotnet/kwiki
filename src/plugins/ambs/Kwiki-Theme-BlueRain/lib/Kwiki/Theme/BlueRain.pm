@@ -46,7 +46,7 @@ __theme/bluerain/template/tt2/kwiki_screen.html__
 [% INCLUDE kwiki_end.html -%]
 
 __theme/bluerain/css/kwiki.css__
-* {
+h1,body {
 	margin : 0;
 	padding : 0;
 }
@@ -57,10 +57,10 @@ a {
 }
 a:visited {
 	color : #437fda;
-	text-decoration : underline;
 }
 a:hover {
 	color : #ba8f43;
+	text-decoration : underline;
 }
 
 h2 {
@@ -70,11 +70,11 @@ h2 {
 }
 h3 {
 	color : #343434;
-	font : italic 160% sans-serif;
+	font : italic 130% sans-serif;
 }
 h4 {
 	color : #343434;
-	font : bold italic 120% sans-serif;
+	font : bold italic 110% sans-serif;
 	padding : 1em 1em 0 1em;
 }
 
@@ -153,6 +153,7 @@ ol {
 	display : inline;
 }
 #menu span a {
+	text-decoration : underline;
 	color : #ffffff;
 	padding : 0.75em 1.5em;
 }
@@ -178,7 +179,7 @@ ol {
 	padding : 2em 0 0 0;
         font : 120% sans-serif;
 }
-#content div {
+#content > div {
 	padding : 0 4em 2em 4em;
 }
 
@@ -190,11 +191,11 @@ ol {
 	height : auto !important;
 	height : 1%;
 	overflow : hidden;
-	padding : 0 5em 2em 5em;
 }
-#panel div {
-	padding : 2em 0 0 0;
+
+#panel > div {
 }
+
 div.left {
 	left : -1em;
 	float : left;
@@ -227,6 +228,10 @@ div.toolbar {
 }
 
 div#user_name_title {
-        float: none;
-        margin: 0px;
+ float: none;
+margin: 0px;
+}
+
+.article {
+   line-height: 110%;
 }
