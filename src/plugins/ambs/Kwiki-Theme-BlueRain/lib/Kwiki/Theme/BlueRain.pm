@@ -122,7 +122,7 @@ p {
 
 ul,
 ol {
-	padding : 1em 1em 0 3em;
+	padding : 0 1em 0 3em;
 }
 
 #main {
