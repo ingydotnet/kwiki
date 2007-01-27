@@ -65,6 +65,7 @@ a:hover {
 
 h2 {
 	color : #343434;
+        margin-top: 5px;
 	font : italic 200% sans-serif;
 }
 h3 {
@@ -79,7 +80,7 @@ h4 {
 
 html {
 	color : #565656;
-	font : 70%/170% sans-serif;
+	font : sans-serif;
 	text-align : justify;
 }
 
