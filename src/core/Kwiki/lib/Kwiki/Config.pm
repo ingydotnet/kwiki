@@ -1,3 +1,4 @@
+
 package Kwiki::Config;
 use Spoon::Config -Base;
 use mixin 'Kwiki::Installer';
@@ -191,6 +192,8 @@ Kwiki::Widgets
 # Kwiki::Theme::ColumnLayout
 # Kwiki::Theme::HLB
 # Kwiki::Theme::TabNav
+# Kwiki::Theme::Sonia
+# Kwiki::Theme::Aqua
 
 # Icon Set plugins:
 # Kwiki::Icons::Gnome
