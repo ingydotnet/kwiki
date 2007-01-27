@@ -111,7 +111,7 @@ blockquote span {
 form textarea {
 	border : solid 1px #dfdfdf;
 	width : 100%;
-	height : 10em;
+	height : 20em;
 }
 
 p {
