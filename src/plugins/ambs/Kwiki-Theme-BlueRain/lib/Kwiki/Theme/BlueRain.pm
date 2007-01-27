@@ -66,6 +66,7 @@ a:hover {
 h2 {
 	color : #343434;
         margin-top: 5px;
+        margin-bottom: 2px;
 	font : italic 200% sans-serif;
 }
 h3 {
