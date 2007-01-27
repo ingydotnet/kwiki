@@ -74,7 +74,7 @@ h3 {
 }
 h4 {
 	color : #343434;
-	font : bold italic 110% sans-serif;
+	font : bold italic 120% sans-serif;
 	padding : 1em 1em 0 1em;
 }
 
@@ -176,7 +176,7 @@ ol {
 	height : 1%;
 	overflow : hidden;
 	padding : 2em 0 0 0;
-        font : 100% sans-serif;
+        font : 120% sans-serif;
 }
 #content div {
 	padding : 0 4em 2em 4em;
@@ -227,5 +227,6 @@ div.toolbar {
 }
 
 div#user_name_title {
+        float: none;
         margin: 0px;
 }
