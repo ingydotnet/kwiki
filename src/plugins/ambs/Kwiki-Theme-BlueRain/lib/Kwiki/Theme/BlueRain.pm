@@ -169,6 +169,7 @@ blockquote span {
 	top : 0.25em;
 }
 
+/*
 form button {
 	background : #ffffff;
 	border : 1px solid #cfcfcf;
@@ -194,6 +195,7 @@ form p.text {
 	padding : 0.25em;
 	margin : 0.25em 1em 0 1em;
 }
+*/
 
 p {
 	padding : 1em 1em 0 1em;
@@ -293,4 +295,14 @@ div.right {
 	padding : 1em 0 3em 0;
 	text-align : center;
 	width : 65%;
+}
+
+#toolbar_button {
+        margin: 0px;
+        padding: 0px;
+}
+
+#toolbar {
+        margin: 0px;
+        padding: 0px;
 }
