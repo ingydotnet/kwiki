@@ -80,7 +80,7 @@ h4 {
 
 html {
 	color : #565656;
-	font : sans-serif;
+	font : 70%/170% sans-serif;
 	text-align : justify;
 }
 
@@ -176,6 +176,7 @@ ol {
 	height : 1%;
 	overflow : hidden;
 	padding : 2em 0 0 0;
+        font : 100% sans-serif;
 }
 #content div {
 	padding : 0 4em 2em 4em;
