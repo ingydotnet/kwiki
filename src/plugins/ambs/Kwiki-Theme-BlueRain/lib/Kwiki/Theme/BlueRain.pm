@@ -85,9 +85,7 @@ __theme/bluerain/template/tt2/kwiki_screen.html__
   <div id="header">
    <h1>[% screen_title || self.class_title %]</h1>
   </div>
-  <div id="menu">
-    <div>[% hub.toolbar.html %]</div>
-  </div>
+  <div id="menu">[% hub.toolbar.html %]</div>
   <div id="content">
    <div class="article">
     [% INCLUDE $content_pane %]
@@ -297,12 +295,12 @@ div.right {
 	width : 65%;
 }
 
-#toolbar_button {
+span.toolbar_button {
         margin: 0px;
         padding: 0px;
 }
 
-#toolbar {
+div.toolbar {
         margin: 0px;
         padding: 0px;
 }
