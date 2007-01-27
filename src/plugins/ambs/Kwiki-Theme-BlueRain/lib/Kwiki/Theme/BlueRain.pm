@@ -86,8 +86,7 @@ __theme/bluerain/template/tt2/kwiki_screen.html__
    <h1>[% screen_title || self.class_title %]</h1>
   </div>
   <div id="menu">
-    <!--  <ul><li class="selected"><a href="./index.html">Home</a></li></ul> -->
-    [% hub.toolbar.html %]
+    <div>[% hub.toolbar.html %]</div>
   </div>
   <div id="content">
    <div class="article">
@@ -96,10 +95,10 @@ __theme/bluerain/template/tt2/kwiki_screen.html__
   </div>
   <div id="panel">
    <div class="left">
-    [% IF hub.have_plugin('user_name') %][% INCLUDE user_name_title.html %][% END %]
     <div id="widgets_pane">[% hub.widgets.html %]</div>
    </div>
    <div class="right">
+    [% IF hub.have_plugin('user_name') %][% INCLUDE user_name_title.html %][% END %]
     <div id="status_pane"> [% hub.status.html %] </div>
    </div>
   </div>
@@ -214,7 +213,7 @@ ol {
 }
 
 #header {
-	background : #2b548c url('../images/header_bg.png') repeat-x bottom left;
+	background : #2b548c url('header_bg.png') repeat-x bottom left;
 	padding : 6em 4em 1em 4em;
 }
 #header h1 {
@@ -227,26 +226,26 @@ ol {
 	border-bottom : 1px solid #2b548c;
 	font : 100% sans-serif;
 }
-#menu ul {
+#menu div {
 	padding : 0.75em 4em;
 }
-#menu li {
+#menu span {
 	display : inline;
 }
-#menu li a {
+#menu span a {
 	color : #ffffff;
 	padding : 0.75em 1.5em;
 }
-#menu li a:hover {
+#menu span a:hover {
 	background : #2b548c;
 }
-#menu li.selected a {
+#menu span.selected a {
 	background : #ffffff;
 	border : 1px solid #2b548c;
 	border-bottom : 1px solid #ffffff;
 	color : #437fda;
 }
-#menu li.selected a:hover {
+#menu span.selected a:hover {
 	background : #ffffff;
 	color : #ba8f43;
 }
