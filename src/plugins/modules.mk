@@ -3,6 +3,7 @@ PLUGINS_PATHS = \
 	Kwiki/Ajax \
 	Kwiki/Archive \
 	Kwiki/Atom \
+	Kwiki/Cache \
 	Kwiki/Command \
 	Kwiki/DB \
 	Kwiki/Diff \
@@ -211,6 +212,7 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Users/Remote.pm \
 	Kwiki/Ajax/Toolman.pm \
 	Kwiki/Archive/Rcs.pm \
+	Kwiki/Cache/Formatter.pm \
 	Kwiki/Doolittle/Formatter.pm \
 	Kwiki/Formatter/Pod.pm \
 	Kwiki/Pages/Perldoc.pm \
