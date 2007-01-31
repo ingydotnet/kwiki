@@ -31,12 +31,17 @@ sub post_process {}
 sub process {
     $self->preload;
     my $action = $self->action;
-    die "No plugin for action '$action'"
+    return $self->unknown_action($action)
       unless defined $self->registry->lookup->action->{$action};
     my ($class_id, $method) = 
       @{$self->registry->lookup->action->{$action}};
     $method ||= $action;
     return $self->$class_id->$method;
+}
+
+sub unknown_action {
+    my $action = shift;
+    die "No plugin for action '$action'";
 }
 
 sub preload {
