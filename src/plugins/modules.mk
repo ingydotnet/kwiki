@@ -1,4 +1,5 @@
 PLUGINS_PATHS = \
+	HTTP/Server/Simple \
 	Kwiki \
 	Kwiki/Ajax \
 	Kwiki/Archive \
@@ -231,6 +232,7 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Theme/OSCON.pm \
 
 PLUGINS_LEVEL_4 = \
+	HTTP/Server/Simple/Kwiki.pm \
 	Kwiki/Simple/Server/HTTP.pm \
 	Kwiki/Template/TT2/UTF8.pm \
 	Kwiki/Users/Cookie/SQL.pm \

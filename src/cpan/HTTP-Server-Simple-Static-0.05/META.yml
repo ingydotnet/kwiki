@@ -1,0 +1,28 @@
+---
+name: HTTP-Server-Simple-Static
+version: 0.05
+author:
+  - 'Stephen Quinney C<sjq-perl@jadevine.org.uk>'
+  - |-
+    Thanks to Marcus Ramberg C<marcus@thefeed.no> and Simon Cozens for
+    initial implementation.
+abstract: Serve static files with HTTP::Server::Simple
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
+  Exporter: 0
+  File::MMagic: 0
+  File::Spec::Functions: 0
+  HTTP::Server::Simple: 0.01
+  IO::File: 0
+  MIME::Types: 0
+  URI::Escape: 0
+provides:
+  HTTP::Server::Simple::Static:
+    file: lib/HTTP/Server/Simple/Static.pm
+    version: 0.05
+generated_by: Module::Build version 0.2805
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2

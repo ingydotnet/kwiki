@@ -1,5 +1,11 @@
 CPAN_PATHS = \
 	Date \
+	File \
+	HTTP/Server \
+	HTTP/Server/Simple \
+	HTTP/Server/Simple/CGI \
+	IO \
+	IO/Capture \
 	Pod \
 	Pod/Simple \
 	URI \
@@ -11,6 +17,8 @@ CPAN_LEVEL_1 = \
 
 CPAN_LEVEL_2 = \
 	Date/Manip.pm \
+	File/MMagic.pm \
+	IO/Capture.pm \
 	Pod/Escapes.pm \
 	Pod/Simple.pm \
 	URI/data.pm \
@@ -54,6 +62,10 @@ CPAN_LEVEL_2 = \
 	URI/WithBase.pm \
 
 CPAN_LEVEL_3 = \
+	HTTP/Server/Simple.pm \
+	IO/Capture/Stderr.pm \
+	IO/Capture/Stdout.pm \
+	IO/Capture/Tie_STDx.pm \
 	Pod/Simple/BlackBox.pm \
 	Pod/Simple/Checker.pm \
 	Pod/Simple/Debug.pm \
@@ -90,7 +102,14 @@ CPAN_LEVEL_3 = \
 	URI/urn/isbn.pm \
 	URI/urn/oid.pm \
 
-CPAN_MODULES = $(CPAN_LEVEL_1) $(CPAN_LEVEL_2) $(CPAN_LEVEL_3) 
+CPAN_LEVEL_4 = \
+	HTTP/Server/Simple/CGI.pm \
+	HTTP/Server/Simple/Static.pm \
+
+CPAN_LEVEL_5 = \
+	HTTP/Server/Simple/CGI/Environment.pm \
+
+CPAN_MODULES = $(CPAN_LEVEL_1) $(CPAN_LEVEL_2) $(CPAN_LEVEL_3) $(CPAN_LEVEL_4) $(CPAN_LEVEL_5) 
 
 cpan: $(CPAN_PATHS) $(CPAN_MODULES)
 
@@ -104,3 +123,11 @@ $(CPAN_LEVEL_3):
 	cd dummy/dummy; \
 	lib=../../../src/cpan/*/lib/$@; \
 	ln -fs $$lib ../../$@;
+$(CPAN_LEVEL_4):
+	cd dummy/dummy/dummy; \
+	lib=../../../../src/cpan/*/lib/$@; \
+	ln -fs $$lib ../../../$@;
+$(CPAN_LEVEL_5):
+	cd dummy/dummy/dummy/dummy; \
+	lib=../../../../../src/cpan/*/lib/$@; \
+	ln -fs $$lib ../../../../$@;

@@ -12,4 +12,4 @@ help:
 all_links:
 	make -C src
 	make -C lib
-	make -C doc/pod
+	#make -C doc/pod

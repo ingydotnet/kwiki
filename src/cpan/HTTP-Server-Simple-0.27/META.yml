@@ -1,0 +1,13 @@
+distribution_type: module
+generated_by: Module::Install version 0.64
+license: perl
+name: HTTP-Server-Simple
+no_index: 
+  directory: 
+    - inc
+    - t
+requires: 
+  CGI: 0
+  Socket: 0
+  Test::More: 0
+version: 0.27
