@@ -312,3 +312,8 @@ div#footerright {
 #footerleft span {
   padding-right: 20px;
 }
+
+hr {
+ border: none;
+  border-top: solid 1px #afafaf;
+}
