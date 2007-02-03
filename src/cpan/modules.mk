@@ -1,4 +1,5 @@
 CPAN_PATHS = \
+	Class \
 	Date \
 	File \
 	HTTP/Server \
@@ -16,6 +17,7 @@ CPAN_LEVEL_1 = \
 	URI.pm \
 
 CPAN_LEVEL_2 = \
+	Class/Field.pm \
 	Date/Manip.pm \
 	File/MMagic.pm \
 	IO/Capture.pm \

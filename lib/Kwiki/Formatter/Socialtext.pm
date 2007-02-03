@@ -1,0 +1,1 @@
+../../../src/plugins/share/Kwiki-Formatter-Socialtext/lib/Kwiki/Formatter/Socialtext.pm
