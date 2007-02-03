@@ -324,3 +324,14 @@ hr {
   border: none;
   border-top: dotted 1px #afafaf;
 }
+
+textarea {
+  border: dotted 1px #afafaf;
+  padding: 3px;
+  width: 100%;
+}
+
+form {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
