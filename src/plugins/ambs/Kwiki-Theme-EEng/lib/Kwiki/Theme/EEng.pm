@@ -286,6 +286,7 @@ a:hover {
   margin-left: 5%;
   margin-right: 5%;
   border-bottom: dotted 1px #afafaf;
+  font-family: sans-serif;
 }
 
 div#footerright { 
@@ -320,6 +321,6 @@ div#footerright {
 }
 
 hr {
- border: none;
-  border-top: dooted 1px #afafaf;
+  border: none;
+  border-top: dotted 1px #afafaf;
 }
