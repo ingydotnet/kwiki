@@ -248,6 +248,7 @@ div#header {
   background-repeat: repeat-y;
   height: 69px;
   margin: 0px;
+  font-family: sans-serif;
 }
 
 div#header h1 {
@@ -304,7 +305,12 @@ div#footerright {
  width: 100%;
 }
 
-#footerleft { 
+#user_name_title a {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+#footerleft {
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -315,5 +321,5 @@ div#footerright {
 
 hr {
  border: none;
-  border-top: solid 1px #afafaf;
+  border-top: dooted 1px #afafaf;
 }
