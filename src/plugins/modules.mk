@@ -162,6 +162,7 @@ PLUGINS_LEVEL_2 = \
 PLUGINS_LEVEL_3 = \
 	Kwiki/Theme/Aqua.pm \
 	Kwiki/Theme/BlueRain.pm \
+	Kwiki/Theme/EEng.pm \
 	Kwiki/Theme/Sonia.pm \
 	Kwiki/Atom/Server.pm \
 	Kwiki/Edit/SubEtha.pm \
