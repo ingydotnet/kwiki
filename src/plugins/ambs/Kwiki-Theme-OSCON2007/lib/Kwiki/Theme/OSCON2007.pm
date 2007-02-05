@@ -5063,12 +5063,22 @@ span.toolbar_button a:hover {
    font-weight: bold;
 }
 
+#content div#h3 a:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+#content div#h3 a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
 #content div#h3 {
    padding: 10px 0 10px 35px;
    margin: 0;
    display: block;
    background: #224875 url(title_corner.gif) bottom right no-repeat;
    font-size: 1.3em;
+   font-weight: bold;
    color: #fff;
 }
 
