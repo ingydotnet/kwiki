@@ -339,6 +339,7 @@ div#header h1 {
   background-image: url(logo.png);
   background-repeat: no-repeat;
   height: 50px;
+  font-size: 40px;
   color: #ffffff;
   padding-left: 120px;
   padding-top: 5px;
