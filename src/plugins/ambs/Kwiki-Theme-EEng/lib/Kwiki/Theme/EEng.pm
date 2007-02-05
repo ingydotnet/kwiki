@@ -335,14 +335,23 @@ div#header {
   font-family: sans-serif;
 }
 
+div#header h1 a {
+  color: #ffffff;
+}
+
+div#header h1 a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 div#header h1 {
   background-image: url(logo.png);
   background-repeat: no-repeat;
   height: 50px;
-  font-size: 40px;
+  font-size: 30px;
   color: #ffffff;
   padding-left: 120px;
-  padding-top: 5px;
+  padding-top: 10px;
   margin: 0px;
 }
 
