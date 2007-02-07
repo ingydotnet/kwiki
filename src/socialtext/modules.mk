@@ -3,11 +3,9 @@ SOCIALTEXT_PATHS = \
 	Socialtext/Formatter \
 
 SOCIALTEXT_LEVEL_2 = \
-	Socialtext/AppConfig.pm \
 	Socialtext/Base.pm \
 	Socialtext/Formatter.pm \
-	Socialtext/Log.pm \
-	Socialtext/Statistics.pm \
+	Socialtext/Mock.pm \
 
 SOCIALTEXT_LEVEL_3 = \
 	Socialtext/Formatter/AbsoluteLinkDictionary.pm \
