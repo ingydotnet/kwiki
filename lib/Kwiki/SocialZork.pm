@@ -1,0 +1,1 @@
+../../src/plugins/ingy/Kwiki-SocialZork/lib/Kwiki/SocialZork.pm

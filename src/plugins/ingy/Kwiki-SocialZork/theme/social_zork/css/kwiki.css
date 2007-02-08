@@ -1,0 +1,38 @@
+table.theme_table {
+    border-collapse: collapse;
+}
+
+#zork_content {
+    vertical-align: top;
+    padding: 1em;
+}
+
+#zork_content_div {
+    overflow: auto;
+    width: 675px;
+    height: 475px;
+}
+
+#zork_edit_area {
+    vertical-align: top;
+    padding: 1em;
+    width: 590px;
+    height: 380px;
+}
+
+td.theme_box {
+    width: 100px;
+    height: 100px;
+    border: 2px solid lightgray;
+    text-align: center;
+    font-size: 400%;
+}
+
+td.theme_box a {
+    text-decoration: none;
+    color: blue;
+}
+
+body {
+    background:#fff;        
+}

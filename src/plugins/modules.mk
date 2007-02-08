@@ -131,6 +131,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/Revisions.pm \
 	Kwiki/Search.pm \
 	Kwiki/Sifr.pm \
+	Kwiki/SocialZork.pm \
 	Kwiki/Spork.pm \
 	Kwiki/TimeZone.pm \
 	Kwiki/Transclude.pm \
