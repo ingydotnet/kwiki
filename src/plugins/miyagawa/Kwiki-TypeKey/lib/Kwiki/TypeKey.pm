@@ -3,6 +3,7 @@ use strict;
 
 use Kwiki::UserName '-Base';
 use mixin 'Kwiki::Installer';
+use LWP::UserAgent;
 
 our $VERSION = 0.08;
 
