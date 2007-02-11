@@ -37,8 +37,12 @@ sub set_file_content {
     my $content = shift;
     $content = $self->base64_decode($content)
       if $self->file_is_binary($path);
-    $content = $self->fix_hashbang($content)
-      if $self->file_is_executable($path);
+    if ($self->file_is_executable($path)) {
+        $content = $self->fix_hashbang($content);
+        my $umask = umask 0000;
+        chmod 0755, $path;
+        umask $umask;
+    }
     $content = $self->wrap_html($content, $path)
       if $self->file_is_html($path);
     return $content;

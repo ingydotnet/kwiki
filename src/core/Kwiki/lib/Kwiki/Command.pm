@@ -247,7 +247,6 @@ sub set_permissions {
     my $umask = umask 0000;
     chmod 0777, qw(database plugin);
     chmod 0666, qw(database/HomePage);
-    chmod 0755, qw(index.cgi);
     umask $umask;
 }
 
