@@ -22,7 +22,7 @@ sub add_plugins_files {
 }
 
 sub add_default_classes {
-    $self->config->add_config({
+    my %default = (
         cgi_class => 'Kwiki::CGI',
         command_class => 'Kwiki::Command',
         config_class => 'Kwiki::Config',
@@ -39,6 +39,11 @@ sub add_default_classes {
         registry_class => 'Kwiki::Registry',
         template_class => 'Kwiki::Template::TT2',
         users_class => 'Kwiki::Users',
-    });
+    );
+    while (my($key, $val) = each %default) {
+        unless (defined $self->config->{$key}) {
+            $self->config->add_config({ $key => $val });
+        }
+    }
 }
 
