@@ -51,7 +51,7 @@ sub file_is_binary {
 
 sub file_is_executable {
     my $path = shift;
-    $path =~ /\.(pl|cgi)$/;
+    $path =~ /\.(pl|f?cgi)$/;
 }
 
 sub file_is_html {
