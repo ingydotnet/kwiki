@@ -11,7 +11,7 @@ __index.cgi__
 #!/usr/bin/perl
 use lib 'lib';
 use Kwiki::Boot;
-Kwiki::Boot->class->new->kwiki->debug->process;
+Kwiki::Boot->debug->class->new->kwiki->process;
 __README__
 A Kwiki Welcome
 ===============
