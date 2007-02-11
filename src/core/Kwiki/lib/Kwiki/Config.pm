@@ -43,27 +43,6 @@ sub read_plugins {
     } @plugins;
 }
 
-sub default_classes {
-    (
-        cgi_class => 'Kwiki::CGI',
-        command_class => 'Kwiki::Command',
-        config_class => 'Kwiki::Config',
-        cookie_class => 'Kwiki::Cookie',
-        css_class => 'Kwiki::CSS',
-        files_class => 'Kwiki::Files',
-        formatter_class => 'Kwiki::Formatter',
-        headers_class => 'Spoon::Headers',
-        hooks_class => 'Spoon::Hooks',
-        hub_class => 'Kwiki::Hub',
-        javascript_class => 'Kwiki::Javascript',
-        pages_class => 'Kwiki::Pages',
-        preferences_class => 'Kwiki::Preferences',
-        registry_class => 'Kwiki::Registry',
-        template_class => 'Kwiki::Template::TT2',
-        users_class => 'Kwiki::Users',
-    )
-}
-
 sub add_plugin {
     push @{$self->plugin_classes}, shift;
 }

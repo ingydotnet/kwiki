@@ -15,7 +15,7 @@ sub new() {
     my (@configs) = map {
         /\*/ ? (sort glob) : ($_)
     } @_ ? @_ : $self->default_configs;
-    $self->add_config($self->default_config, 1);
+    $self->add_config($self->default_config);
     for my $config (@configs) {
         $self->rebless($self->add_config($config));
     }
@@ -86,23 +86,8 @@ sub parse_yaml {
 
 sub default_config {
     +{
-        $self->default_classes,
         plugin_classes => [$self->default_plugin_classes],
     }
-}
-
-sub default_classes {
-    (
-        cgi_class => 'Spoon::CGI',
-        config_class => 'Spoon::Config',
-        formatter_class => 'Spoon::Formatter',
-        headers_class => 'Spoon::Headers',
-        hooks_class => 'Spoon::Hooks',
-        hub_class => 'Spoon::Hub',
-        main_class => 'Spoon',
-        registry_class => 'Spoon::Registry',
-        template_class => 'Spoon::Template',
-    )
 }
 
 sub default_plugin_classes { () }
