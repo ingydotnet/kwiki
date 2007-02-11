@@ -2,6 +2,8 @@ package Kwiki::FastCGI;
 use Kwiki::Plugin -Base;
 use mixin 'Kwiki::Installer';
 
+const class_id => 'fastcgi';
+
 1;
 
 =head1 NAME
