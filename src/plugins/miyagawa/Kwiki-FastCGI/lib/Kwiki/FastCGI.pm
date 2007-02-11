@@ -1,21 +1,8 @@
 package Kwiki::FastCGI;
-use Kwiki::Files -Base;
+use Kwiki::Plugin -Base;
+use mixin 'Kwiki::Installer';
 
 1;
-
-__DATA__
-
-__index.fcgi__
-#!/usr/bin/perl
-use lib 'lib';
-use Kwiki::Boot;
-use CGI::Fast;
-
-while ( my $cgi = CGI::Fast->new ) {
-    Kwiki::Boot->debug->class->new->kwiki->process;
-}
-
-__END__
 
 =head1 NAME
 
@@ -46,3 +33,15 @@ it under the same terms as Perl itself.
 L<CGI::Fast>, L<Kwiki>
 
 =cut
+
+__DATA__
+
+__index.fcgi__
+#!/usr/bin/perl
+use lib 'lib';
+use Kwiki::Boot;
+use CGI::Fast;
+
+while ( my $cgi = CGI::Fast->new ) {
+    Kwiki::Boot->debug->class->new->kwiki->process;
+}
