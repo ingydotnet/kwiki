@@ -52,7 +52,8 @@ sub validate_sig {
 
     # Kwiki::CGI adds utf-8 flags to all the values
     for my $key (keys %$data) {
-        utf8::encode($data->{$key}) if defined $data->{$key};
+        utf8::encode($data->{$key})
+            if defined $data->{$key} && utf8::is_utf8($data->{$key});
     }
 
     require CGI;
