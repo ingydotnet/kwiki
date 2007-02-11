@@ -10,7 +10,9 @@ Kwiki::FastCGI - FastCGI bootstrap file template for Kwiki
 
 =head1 SYNOPSIS
 
-  > kwiki -add Kwiki::FastCGI
+  > echo Kwiki::FastCGI >> plugins
+  > echo "script_name: index.fcgi" >> config.yaml
+  > kwiki -update
 
   # httpd.conf or .htaccess
   AddHandler fastcgi-script .fcgi
