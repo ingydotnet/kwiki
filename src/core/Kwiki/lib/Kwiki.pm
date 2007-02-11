@@ -5,7 +5,7 @@ our $VERSION = '0.38';
 const config_class => 'Kwiki::Config';
 
 sub process {
-    my $hub = $self->load_hub(@_);
+    my $hub = $self->hub;
     $hub->registry->load;
     $hub->add_hooks;
     $hub->pre_process;
@@ -19,7 +19,6 @@ sub process {
           ? Apache->request->print($html)
           : print $html;
     }
-#     close STDOUT unless $self->using_debug;
     $hub->post_process;
     $self->destroy_hub;
     undef $hub;

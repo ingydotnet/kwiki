@@ -7,10 +7,13 @@ field action => '_default_';
 field main => -weak;
 field config_files => [];
 field all_hooks => [];
+field 'config';
 
 sub new {
     $self = $self->SUPER::new(@_);
     $self->init;
+    die "Hub already created"
+      if defined $Spoon::Base::HUB;
     $Spoon::Base::HUB = $self;
 }
 

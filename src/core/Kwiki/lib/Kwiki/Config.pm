@@ -1,31 +1,11 @@
-
 package Kwiki::Config;
 use Spoon::Config -Base;
 use mixin 'Kwiki::Installer';
 
 const class_id => 'config';
 const class_title => 'Kwiki Configuration';
-const config_file => 'config.yaml';
 field script_name => '';
-const default_path => [ 'config' ];
 field path => [];
-field plugins_file => '';
-
-sub init {
-    $self->add_path(@{$self->default_path});
-    $self->add_file($self->config_file);
-}
-
-sub paired_arguments { qw(-plugins) }
-sub new {
-    my ($args, @configs) = $self->parse_arguments(@_);
-    $self = $self->SUPER::new(@configs);
-    if (my $plugins_file = $args->{-plugins}) {
-        $self->add_plugins_file($plugins_file);
-        $self->plugins_file($plugins_file);
-    }
-    return $self;
-}
 
 sub add_plugins_file {
     my $plugins_file = shift;

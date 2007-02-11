@@ -14,29 +14,7 @@ field using_debug => 0;
 field config_class => 'Spoon::Config';
 
 sub hub {
-    return $Spoon::Base::HUB 
-      if defined($Spoon::Base::HUB) and not @_;
-    Carp::confess "Too late to create a new hub. One already exists"
-      if defined $Spoon::Base::HUB;
-    
-    my ($args, @config_files);
-    {
-        no warnings;
-        local *paired_arguments = sub { qw(-config_class) };
-        ($args, @config_files) = $self->parse_arguments(@_);
-    }
-    my $config_class = $args->{-config_class} || 
-      $self->can('config_class')
-      ? $self->config_class
-      : 'Spoon::Config';
-    eval "require $config_class"; die $@ if $@;
-    my $config = $config_class->new(@config_files);
-    my $hub_class = $config->hub_class;
-    eval "require $hub_class";
-    my $hub = $hub_class->new(
-        config => $config,
-        config_files => \@config_files,
-    );
+    return $Spoon::Base::HUB;
 }
 
 sub destroy_hub {

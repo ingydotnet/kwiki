@@ -3,6 +3,7 @@ CORE_PATHS = \
 	IO/All \
 	Kwiki \
 	Kwiki/Archive \
+	Kwiki/Boot \
 	Kwiki/Template \
 	Kwiki/Theme \
 	Script \
@@ -33,6 +34,7 @@ CORE_LEVEL_2 = \
 	IO/All.pm \
 	Kwiki/Archive.pm \
 	Kwiki/Base.pm \
+	Kwiki/Boot.pm \
 	Kwiki/BrowserDetect.pm \
 	Kwiki/CGI.pm \
 	Kwiki/Command.pm \
@@ -124,6 +126,7 @@ CORE_LEVEL_3 = \
 	IO/All/String.pm \
 	IO/All/Temp.pm \
 	Kwiki/Archive/Simple.pm \
+	Kwiki/Boot/V010.pm \
 	Kwiki/Template/TT2.pm \
 	Kwiki/Theme/Basic.pm \
 	Spoon/Template/TT2.pm \

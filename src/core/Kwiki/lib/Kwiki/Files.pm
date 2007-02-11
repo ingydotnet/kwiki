@@ -10,8 +10,8 @@ __DATA__
 __index.cgi__
 #!/usr/bin/perl
 use lib 'lib';
-use Kwiki;
-Kwiki->new->debug->process('config*.*', -plugins => 'plugins');
+use Kwiki::Boot;
+Kwiki::Boot->class->new->kwiki->debug->process;
 __README__
 A Kwiki Welcome
 ===============
