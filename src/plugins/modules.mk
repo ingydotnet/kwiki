@@ -146,6 +146,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/URLBlock.pm \
 	Kwiki/RecentChangesRSS.pm \
 	Kwiki/Export.pm \
+	Kwiki/FastCGI.pm \
 	Kwiki/Footnote.pm \
 	Kwiki/OpenSearch.pm \
 	Kwiki/TypeKey.pm \

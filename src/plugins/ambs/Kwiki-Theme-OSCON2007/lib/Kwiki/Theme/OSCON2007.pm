@@ -4784,7 +4784,6 @@ __theme/oscon2007/template/tt2/kwiki_screen.html__
        <span class="nav_rule"></span>
        <ul>
 	<li><a href="http://conferences.oreillynet.com/os2007/">OSCON 2007</a></li>
-	<li><a href="http://conferences.oreillynet.com/cs/os2007/create/e_sess">Submit a Proposal</a></li>
 	<li><a href="http://conferences.oreillynet.com/pub/w/58/about.html">About OSCON</a></li>
        </ul>
        <span class="nav_rule"></span>

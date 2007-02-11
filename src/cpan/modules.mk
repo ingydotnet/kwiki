@@ -1,4 +1,5 @@
 CPAN_PATHS = \
+	Algorithm \
 	Class \
 	Date \
 	File \
@@ -9,6 +10,7 @@ CPAN_PATHS = \
 	IO/Capture \
 	Pod \
 	Pod/Simple \
+	String \
 	URI \
 	URI/file \
 	URI/urn \
@@ -17,12 +19,15 @@ CPAN_LEVEL_1 = \
 	URI.pm \
 
 CPAN_LEVEL_2 = \
+	Algorithm/DiffOld.pm \
+	Algorithm/Diff.pm \
 	Class/Field.pm \
 	Date/Manip.pm \
 	File/MMagic.pm \
 	IO/Capture.pm \
 	Pod/Escapes.pm \
 	Pod/Simple.pm \
+	String/Diff.pm \
 	URI/data.pm \
 	URI/Escape.pm \
 	URI/file.pm \

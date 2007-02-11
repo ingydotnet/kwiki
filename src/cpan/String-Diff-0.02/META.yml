@@ -1,0 +1,15 @@
+abstract: Simple diff to String
+author: Kazuhiro Osawa <ko@yappo.ne.jp>
+build_requires: 
+  Test::More: 0
+distribution_type: module
+generated_by: Module::Install version 0.64
+license: perl
+name: String-Diff
+no_index: 
+  directory: 
+    - inc
+    - t
+requires: 
+  Algorithm::Diff: 0
+version: 0.02

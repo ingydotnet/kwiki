@@ -1,0 +1,1 @@
+../../src/cpan/Algorithm-Diff-1.1902/lib/Algorithm/DiffOld.pm
