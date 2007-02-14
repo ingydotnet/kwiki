@@ -34,7 +34,7 @@ sub boot {
 }
 
 sub class {
-    my $type = $ENV{KWIKI_BOOT} || 'V010';
+    my $type = $ENV{KWIKI_BOOT} || 'V1';
     my $class = "Kwiki::Boot::$type";
     eval "use $class";
     die $@ if $@;

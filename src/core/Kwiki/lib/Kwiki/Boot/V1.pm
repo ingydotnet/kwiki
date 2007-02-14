@@ -1,4 +1,4 @@
-package Kwiki::Boot::V010;
+package Kwiki::Boot::V1;
 use Kwiki::Boot -Base;
 
 const main_class => 'Kwiki';
