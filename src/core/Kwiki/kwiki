@@ -1,14 +1,13 @@
 #!/usr/bin/env perl
 use 5.008003;
 use strict;
-use warnings;
 our $VERSION = '0.40';
 use Cwd 'cwd', 'abs_path';
 use FindBin;
 use Config;
 
 sub find_base {
-    return if defined $ENV{KWIKI_BASE};
+    return $ENV{KWIKI_BASE} if defined $ENV{KWIKI_BASE};
 
     my $base = $FindBin::Bin;
     my $bin = $0;
@@ -27,24 +26,29 @@ sub find_base {
     die "*ERROR*: Can't locate Kwiki base repository."
         unless -d "$base/lib/Kwiki" and -d "$base/src/core/Kwiki";
     $ENV{KWIKI_BASE} = $base;
+    return $base;
 } 
 
-# Add $KWIKI_BASE/lib to @INC;
 BEGIN {
-    # $ENV{KWIKI_TEST} = 1;
-    if ($ENV{KWIKI_TEST}) {
+    my @env_files = qw(kwiki.env .ht-kwiki.env);
+    push @env_files, "$ENV{HOME}/.kwiki/kwiki.env" if defined $ENV{HOME};
+    my $fh;
+    for (@env_files) { open $fh, $_ and last }
+    do { $ENV{$1} = $2 if /^(\w+)\s*=\s*['"]?(.*?)['"]?\s*$/ } for <$fh>;
+
+    if ($ENV{KWIKI_TEST_CLEAN}) {
         @INC = (
             $Config::Config{archlib},
             $Config::Config{privlib},
         ); 
     }
 
-    find_base();
-    eval "use lib '$ENV{KWIKI_BASE}/lib'; 1" or die $@;
+    $ENV{KWIKI_LIB_PATH} ||= find_base() . "/lib";
 }
 
+use lib grep { -e } split /:/, $ENV{KWIKI_LIB_PATH} || 'lib';
 use Kwiki::Boot;
-Kwiki::Boot->class->new->kwiki->hub->command->process(@ARGV)->hub->remove_hooks;
+Kwiki::Boot->boot->kwiki->hub->command->process(@ARGV)->hub->remove_hooks;
 
 __END__
 
@@ -77,7 +81,7 @@ Ingy döt Net <ingy@cpan.org>
 
 Copyright (c) 2004-2005. Brian Ingerson. All rights reserved.
 
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
+Copyright (c) 2006-2007. Ingy döt Net. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

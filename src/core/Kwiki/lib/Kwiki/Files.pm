@@ -9,9 +9,15 @@ __DATA__
 
 __index.cgi__
 #!/usr/bin/perl
-use lib 'lib';
+use strict;
+BEGIN {
+    my $fh;
+    for (qw(kwiki.env .ht-kwiki.env)) { open $fh, $_ and last }
+    do { $ENV{$1} = $2 if /^(\w+)\s*=\s*['"]?(.*?)['"]?\s*$/ } for <$fh>;
+}
+use lib grep { -e } split /:/, $ENV{KWIKI_LIB_PATH} || 'lib';
 use Kwiki::Boot;
-Kwiki::Boot->debug->class->new->kwiki->process;
+Kwiki::Boot->debug->boot->kwiki->process;
 __README__
 A Kwiki Welcome
 ===============

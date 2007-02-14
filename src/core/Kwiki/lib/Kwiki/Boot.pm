@@ -29,8 +29,13 @@ sub init {
     $self->kwiki($main);
 }
 
+sub boot {
+    return $self->class->new;
+}
+
 sub class {
-    my $class = 'Kwiki::Boot::V010';
+    my $type = $ENV{KWIKI_BOOT} || 'V010';
+    my $class = "Kwiki::Boot::$type";
     eval "use $class";
     die $@ if $@;
     return $class;
