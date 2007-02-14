@@ -122,6 +122,7 @@ __template/tt2/recent_changes_options.html__
       name="recent_changes_options"
       action="[% script_name %]">
 <input type="hidden" name="action" value="recent_changes" />
+[% IF hub.config.recent_changes_selector %]
 <span>In</span>
 <select name="depth">
 [%- FOREACH c = choices.keys.nsort -%]
@@ -132,6 +133,7 @@ __template/tt2/recent_changes_options.html__
             value="[% c %]">[% choices.$c %]</option>
 [%- END -%]
 </select>
+[% END %]
 </form>
 __template/tt2/recent_changes_ajax_list.xml__
 <?xml version="1.0" encoding="UTF-8"?>
