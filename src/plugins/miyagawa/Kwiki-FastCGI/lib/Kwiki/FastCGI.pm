@@ -52,7 +52,6 @@ use lib grep { -e } split /:/, $ENV{KWIKI_LIB_PATH} || 'lib';
 use Kwiki::Boot;
 use CGI::Fast;
 
-my $boot = Kwiki::Boot->debug->boot;
 while ( my $cgi = CGI::Fast->new ) {
-    $boot->kwiki->process;
+    Kwiki::Boot->debug->boot->kwiki->process;
 }
