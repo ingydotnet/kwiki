@@ -1,0 +1,4 @@
+
+foo=`perl -le ' print join ":", grep {$_ ne /$ARGV[1]/} split /:/, $ARGV[0]' $PATH $PWD`
+foo=$PWD/bin:$foo
+PATH=$foo

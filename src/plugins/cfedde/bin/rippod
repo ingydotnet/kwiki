@@ -75,7 +75,8 @@ rippod sourcedir ...
 
 =head1 DESCRIPTION
 
-Copy pod from all the perl found in sourcedirectory and place it in equinomious files in the targetdirectory.
+remove pod from all the perl found in lib  and place it in src/doc in the target
+directory.
   
 =head1 BUGS
 
@@ -87,7 +88,9 @@ other things that make your life interesting
 
 =head1 AUTHOR
 
-Chris Fedde (c) 2007
+(c) 2007
+Chris Fedde <cfedde at cpan.org>
+Ingy döt Net <ing at cpan.org 
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
