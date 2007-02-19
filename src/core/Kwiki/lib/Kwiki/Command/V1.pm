@@ -1,4 +1,4 @@
-package Kwiki::Command;
+package Kwiki::Command::V1;
 use Spoon::Command -Base;
 
 sub process {

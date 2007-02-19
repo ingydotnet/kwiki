@@ -24,7 +24,7 @@ sub add_plugins_files {
 sub add_default_classes {
     my %default = (
         cgi_class => 'Kwiki::CGI',
-        command_class => 'Kwiki::Command',
+        command_class => 'Kwiki::Command::V1',
         config_class => 'Kwiki::Config',
         cookie_class => 'Kwiki::Cookie',
         css_class => 'Kwiki::CSS',
