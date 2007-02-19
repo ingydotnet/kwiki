@@ -83,9 +83,16 @@ sub wrap_html {
 }
 
 sub get_packed_files {
+    return $self->get_packed_files_from_classes(
+        @{Spiffy::all_my_bases(ref $self)}
+    );
+}
+
+sub get_packed_files_from_classes {
+    my @classes = @_;
     my %seen;
     my @return;
-    for my $class (@{Spiffy::all_my_bases(ref $self)}) {
+    for my $class (@classes) {
         next if $class =~ /-/;
         last if $class =~ /^Spoon/;
         my $data = $self->data($class)

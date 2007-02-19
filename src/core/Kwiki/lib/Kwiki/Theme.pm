@@ -3,6 +3,7 @@ use Kwiki::Plugin -Base;
 use mixin 'Kwiki::Installer';
 
 const class_id => 'theme';
+const theme_id => '__theme__';
 
 sub register {
     my $register = shift;

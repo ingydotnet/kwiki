@@ -1,0 +1,16 @@
+=== Welcome to Your New Kwiki!
+
+You have successfully installed a new Kwiki. Now you should /edit this page/ and start adding NewPages. For help on Kwiki syntax and other Kwiki issues, visit http://www.kwiki.org/?KwikiHelpIndex.
+
+If this installation looks more mundane than you had expected after visiting Kwiki sites like http://www.kwiki.org, you need to install some *Kwiki plugins*. Some of the basic plugins you might want are:
+
+* !Kwiki::RecentChanges
+* !Kwiki::Search
+* !Kwiki::UserPreferences
+* !Kwiki::UserName
+* !Kwiki::Archive::Rcs
+* !Kwiki::Revisions
+
+These plugin modules are available as part of the [http://svn.kwiki.org/kwiki/trunk Kwiki distribution]. 
+
+--[http://www.kwiki.org/?IngyDotNet Ingy döt Net]

@@ -1,0 +1,38 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use lib 'lib';
+use IO::All;
+
+@ARGV == 1 or die usage();
+my $dist_path = shift;
+$dist_path =~ s/\/*$//;
+my $lib = io("$dist_path/lib");
+$lib->is_dir or die usage();
+my @modules = grep {$_->name =~ /\.pm$/} $lib->All_Files;
+
+for my $module (@modules) {
+    my $module_name = $module->name;
+    $module_name =~ s/.*\/lib\/(.*)\.pm$/$1/ or die $module_name;
+    $module_name =~ s/\//::/g;
+    print ">> $module_name\n";
+    eval "require $module_name";
+    die $@ if $@ and $@ !~ /HTTP\/BrowserDetect/;
+    next unless $module_name->can('get_packed_files_from_classes');
+    my $instance = $module_name->new;
+    my @data = $instance->get_packed_files_from_classes($module_name);
+    while (my ($file_name, $file_contents) = splice(@data, 0, 2)) {
+        $file_name =~ s/!//;
+        io("$dist_path/src/$file_name")->assert->print($file_contents);
+    }
+}
+
+sub usage {
+    <<'...';
+usage: k2-make-src module-path
+
+examples:
+    k2-make-src src/plugins/ingy/Kwiki-BreadCrumbs
+...
+}
