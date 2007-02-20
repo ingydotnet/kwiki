@@ -28,7 +28,6 @@ sub add_default_classes {
         config_class => 'Kwiki::Config',
         cookie_class => 'Kwiki::Cookie',
         css_class => 'Kwiki::CSS',
-        files_class => 'Kwiki::Files',
         formatter_class => 'Kwiki::Formatter',
         headers_class => 'Spoon::Headers',
         hooks_class => 'Spoon::Hooks',
