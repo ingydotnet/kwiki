@@ -34,7 +34,7 @@ BEGIN {
     push @env_files, "$ENV{HOME}/.kwiki/_kwiki" if defined $ENV{HOME};
     my $fh;
     for (@env_files) { open $fh, $_ and last }
-    do { $ENV{$1} = $2 if /^(\w+)\s*=\s*['"]?(.*?)['"]?\s*$/ } for <$fh>;
+    do { $ENV{$1} ||= $2 if /^(\w+)\s*=\s*['"]?(.*?)['"]?\s*$/ } for <$fh>;
 
     if ($ENV{KWIKI_TEST_CLEAN}) {
         @INC = (
