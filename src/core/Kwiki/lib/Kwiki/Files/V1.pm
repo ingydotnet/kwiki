@@ -1,4 +1,4 @@
-package Kwiki::Files;
+package Kwiki::Files::V1;
 use Kwiki::Base -Base;
 use mixin 'Kwiki::Installer';
 

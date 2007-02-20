@@ -77,7 +77,7 @@ sub add_new_default_config {
         {
             display_class => 'Kwiki::Display',
             edit_class => 'Kwiki::Edit',
-            files_class => 'Kwiki::Files',
+            files_class => 'Kwiki::Files::V1',
             theme_class => 'Kwiki::Theme::Basic',
             toolbar_class => 'Kwiki::Toolbar',
             status_class => 'Kwiki::Status',
