@@ -127,7 +127,9 @@ CORE_LEVEL_3 = \
 	IO/All/Temp.pm \
 	Kwiki/Archive/Simple.pm \
 	Kwiki/Boot/V1.pm \
+	Kwiki/Boot/V2.pm \
 	Kwiki/Command/V1.pm \
+	Kwiki/Command/V2.pm \
 	Kwiki/Template/TT2.pm \
 	Kwiki/Theme/Basic.pm \
 	Spoon/Template/TT2.pm \

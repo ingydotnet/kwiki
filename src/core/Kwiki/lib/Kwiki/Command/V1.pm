@@ -1,12 +1,5 @@
 package Kwiki::Command::V1;
-use Spoon::Command -Base;
-
-sub process {
-    if (defined $ENV{KWIKI_BASE}) {
-        $self->hub->config->add_plugin('Kwiki::Configure');
-    }
-    $self->SUPER::process(@_);
-}
+use Kwiki::Command::Base -Base;
 
 sub handle_new {
     $self->assert_directory(shift, 'Kwiki');
@@ -29,7 +22,7 @@ sub handle_new {
     io->link('lib')->symlink("$ENV{KWIKI_BASE}/lib")
       if defined $ENV{KWIKI_BASE};
     $self->set_permissions;
-    warn "\nKwiki software installed! Point your browser at this location.\n\n";
+    $self->finished_msg;
 }
 
 sub handle_new_view {
@@ -79,14 +72,6 @@ sub create_new_view_plugins {
 END
 }
 
-sub assert_directory {
-    chdir io->dir(shift || '.')->assert->open->name;
-    my $noun = shift;
-    my @all_files = grep { not /^\.[\\\/]?(lib|Makefile|\.svn)$/ } io('.')->all;
-    die "Can't make new $noun in a non-empty directory\n"
-      if @all_files;
-}
-
 sub add_new_default_config {
     $self->hub->config->add_config(
         {
@@ -99,18 +84,6 @@ sub add_new_default_config {
             widgets_class => 'Kwiki::Widgets',
         }
     );
-}
-
-sub install {
-    my $class_id = shift;
-    my $object = $self->hub->$class_id
-      or return;
-    return unless $object->can('extract_files');
-    my $class_title = $self->hub->$class_id->class_title;
-    $self->msg("Extracting files for $class_title:\n");
-    $self->hub->$class_id->quiet($self->quiet);
-    $self->hub->$class_id->extract_files;
-    $self->msg("\n");
 }
 
 sub is_kwiki_dir {
@@ -137,26 +110,6 @@ sub handle_update_all {
         $dir->chdir;
         system("kwiki -quiet -update");
     }
-}
-
-sub all_class_ids {
-    my @all_modules;
-    for my $key (keys %{$self->hub->config}) {
-        push @all_modules, $self->hub->config->{$key}
-          if $key =~ /_class/;
-    }
-    push @all_modules, @{$self->hub->config->{plugin_classes} || []};
-    map {
-        eval "require $_; 1"
-        ? $_->can('extract_files')
-          ? do {
-              my $class_id = $_->class_id;
-              $self->hub->config->add_config({"${class_id}_class" => $_});
-              ($_->class_id)
-          }
-          : ()
-        : ();
-    } @all_modules;
 }
 
 sub handle_add {
@@ -236,11 +189,6 @@ sub fake_install {
     my $file = io->catfile('lib', $module);
     $file->assert->touch
       unless -f $file->name;
-}
-
-sub handle_compress {
-    require Spoon::Installer;
-    Spoon::Installer->new->compress_lib(@_);
 }
 
 sub set_permissions {
