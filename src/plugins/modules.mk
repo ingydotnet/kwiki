@@ -138,6 +138,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/UniUI.pm \
 	Kwiki/UserName.pm \
 	Kwiki/UserPreferences.pm \
+	Kwiki/UserTracker.pm \
 	Kwiki/Wikiwyg.pm \
 	Kwiki/Zipcode.pm \
 	Kwiki/CoolURI.pm \
