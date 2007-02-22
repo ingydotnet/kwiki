@@ -4,12 +4,14 @@
 # Read INSTALL for help installing Kwiki.
 #
 
-.PHONY: help all_links
+.PHONY: help lib doc
 
 help:
 	@cat doc/make.help
 
-all_links:
+lib:
 	make -C src
 	make -C lib
-	#make -C doc/pod
+
+doc:
+	make -C doc/pod
