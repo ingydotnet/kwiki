@@ -7,5 +7,6 @@ document for help with that.
 Avalable Makefile targets are:
 
     help - This file
-    all_links - Generate all the symlink trees
+    lib - Generate the 'lib' symlink tree
+    doc - Generate the 'doc' symlink tree
 
