@@ -1,0 +1,1 @@
+../../../src/core/Spork/lib/Spork/Formatter/Autringy.pm
