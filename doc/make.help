@@ -4,7 +4,7 @@ symlink trees when adding new stuff to Kwiki.
 This Makefile is not needed for installation of Kwiki. Read the INSTALL
 document for help with that.
 
-Avalable Makefile targets are:
+Available Makefile targets are:
 
     help - This file
     lib - Generate the 'lib' symlink tree
