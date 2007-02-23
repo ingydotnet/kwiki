@@ -8,6 +8,23 @@ sub all {
     return %$self;
 }
 
+sub add_file {
+    my $file = shift;
+    for my $dir ($self->hub->paths->all_filepaths('config')) {
+        my $filepath = "$dir/$file";
+        $self->add_filepath($filepath)
+          if -f $filepath;
+    }
+}
+
+sub add_filepath {
+    my $filepath = shift;
+    my $hash = $self->hash_from_file($filepath);
+    for my $key (keys %$hash) {
+        $self->add_field($key, $hash->{$key});
+    }
+}
+
 sub add_field {
     my ($field, $value) = @_;
     field $field;
@@ -60,4 +77,21 @@ sub parse_yaml {
         }
     }
     return $hash;
+}
+
+sub add_plugin {
+    push @{$self->plugin_classes}, shift;
+}
+
+sub change_plugin {
+    my ($new_class, $old_class) = @_;
+    my $pattern = $old_class || do {
+        my $temp = $new_class;
+        $temp =~ s/^\w+:://;
+        '\w+::' . $temp;
+    };
+    my $plugins = $self->plugin_classes;
+    for (@$plugins) {
+        last if s/$pattern/$new_class/;
+    }
 }
