@@ -6,12 +6,17 @@ CORE_PATHS = \
 	Kwiki/Boot \
 	Kwiki/Command \
 	Kwiki/Files \
+	Kwiki/Paths \
 	Kwiki/Template \
 	Kwiki/Theme \
 	Script \
 	Spiffy \
 	Spoon \
 	Spoon/Template \
+	Spork \
+	Spork/Config \
+	Spork/Formatter \
+	Spork/Template \
 	Template \
 	Template/Namespace \
 	Template/Plugin \
@@ -29,6 +34,7 @@ CORE_LEVEL_1 = \
 	Kwiki.pm \
 	Spiffy.pm \
 	Spoon.pm \
+	Spork.pm \
 	Template.pm \
 	YAML.pm \
 
@@ -84,6 +90,13 @@ CORE_LEVEL_2 = \
 	Spoon/Template.pm \
 	Spoon/Trace.pm \
 	Spoon/Utils.pm \
+	Spork/Command.pm \
+	Spork/Config.pm \
+	Spork/Formatter.pm \
+	Spork/Hub.pm \
+	Spork/Plugin.pm \
+	Spork/Registry.pm \
+	Spork/Slides.pm \
 	Template/Base.pm \
 	Template/Config.pm \
 	Template/Constants.pm \
@@ -126,15 +139,21 @@ CORE_LEVEL_3 = \
 	IO/All/String.pm \
 	IO/All/Temp.pm \
 	Kwiki/Archive/Simple.pm \
+	Kwiki/Boot/Base.pm \
 	Kwiki/Boot/V1.pm \
 	Kwiki/Boot/V2.pm \
 	Kwiki/Command/V1.pm \
 	Kwiki/Command/V2.pm \
 	Kwiki/Files/V1.pm \
 	Kwiki/Files/V2.pm \
+	Kwiki/Paths/V1.pm \
+	Kwiki/Paths/V2.pm \
 	Kwiki/Template/TT2.pm \
 	Kwiki/Theme/Basic.pm \
 	Spoon/Template/TT2.pm \
+	Spork/Config/Default.pm \
+	Spork/Formatter/Autringy.pm \
+	Spork/Template/TT2.pm \
 	Template/Namespace/Constants.pm \
 	Template/Plugin/Autoformat.pm \
 	Template/Plugin/CGI.pm \

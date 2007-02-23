@@ -49,6 +49,7 @@ sub handle_new_view {
 # Example:
 #
 # privacy_group:
+END
 
     $self->create_new_view_plugins;
     $self->handle_update;

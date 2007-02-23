@@ -1,0 +1,1 @@
+../../../src/core/Kwiki/lib/Kwiki/Boot/Base.pm

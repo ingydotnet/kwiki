@@ -2,30 +2,16 @@ package Spoon::Config;
 use Spoon::Base -Base;
 
 const class_id => 'config';
+field plugin_classes => [];
 
 sub all {
     return %$self;
 }
 
-sub default_configs { return }
-
-sub new() {
-    my $class = shift;
-    my $self = bless {}, $class;
-    my (@configs) = map {
-        /\*/ ? (sort glob) : ($_)
-    } @_ ? @_ : $self->default_configs;
-    $self->add_config($self->default_config);
-    for my $config (@configs) {
-        $self->rebless($self->add_config($config));
-    }
-    $self->init;
-    return $self;
-}
-
 sub add_field {
-    my ($field, $default) = @_;
-    field $field => $default;
+    my ($field, $value) = @_;
+    field $field;
+    $self->{$field} = $value;
 }
 
 sub add_config {
@@ -38,14 +24,6 @@ sub add_config {
         $self->{$key} = $hash->{$key};
     }
     return $hash;
-}
-
-sub rebless {
-    my $hash = shift;
-    if (defined (my $config_class = $hash->{config_class})) {
-        eval qq{ require $config_class }; die $@ if $@;
-        bless $self, $config_class;
-    }
 }
 
 sub hash_from_file {
@@ -83,11 +61,3 @@ sub parse_yaml {
     }
     return $hash;
 }
-
-sub default_config {
-    +{
-        plugin_classes => [$self->default_plugin_classes],
-    }
-}
-
-sub default_plugin_classes { () }

@@ -5,7 +5,6 @@ use mixin 'Kwiki::Installer';
 const class_id => 'config';
 const class_title => 'Kwiki Configuration';
 field script_name => '';
-field path => [];
 
 sub add_plugins_file {
     my $plugins_file = shift;
@@ -61,24 +60,21 @@ sub change_plugin {
 }
 
 sub add_file {
-    my $file = shift
-      or return;
-    my $file_path = '';
-    for (@{$self->path}) {
-        $file_path = "$_/$file", last
-          if -f "$_/$file";
-    }
-    return unless $file_path;
-    my $hash = $self->hash_from_file($file_path);
-    for my $key (keys %$hash) {
-        next if defined $self->{$key};
-        field $key;
-        $self->{$key} = $hash->{$key};
+    my $file = shift;
+    my $config_path = $self->hub->paths->lookup_path('config');
+    for my $dir (@$config_path) {
+        my $filepath = "$dir/$file";
+        $self->add_filepath($filepath)
+          if -f $filepath;
     }
 }
 
-sub add_path {
-    splice @{$self->path}, 0, 0, @_;
+sub add_filepath {
+    my $filepath = shift;
+    my $hash = $self->hash_from_file($filepath);
+    for my $key (keys %$hash) {
+        $self->add_field($key, $hash->{$key});
+    }
 }
 
 sub get_packed_files {
