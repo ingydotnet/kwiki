@@ -33,6 +33,8 @@ sub display_html {
 }
 
 sub display {
+#     $self->hub->users;
+#     XXX $self->hub->config;
     my $page = $self->pages->current;
     return $self->redirect('')
       unless $page;

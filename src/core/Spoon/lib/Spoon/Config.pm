@@ -3,9 +3,18 @@ use Spoon::Base -Base;
 
 const class_id => 'config';
 field plugin_classes => [];
+field overrides => {};
 
 sub all {
     return %$self;
+}
+
+sub add_override_filepath {
+    my $filepath = shift;
+    my $hash = $self->hash_from_file($filepath);
+    my $overrides = $self->overrides;
+    $overrides->{$_} = $hash->{$_} for keys %$hash;
+    $self->add_config($hash);
 }
 
 sub add_file {
@@ -20,16 +29,15 @@ sub add_file {
 sub add_filepath {
     my $filepath = shift;
     my $hash = $self->hash_from_file($filepath);
-    for my $key (keys %$hash) {
-        $self->add_field($key, $hash->{$key});
-    }
+    $self->add_config($hash);
+    $self->add_config($self->overrides);
 }
 
-sub add_field {
-    my ($field, $value) = @_;
-    field $field;
-    $self->{$field} = $value;
-}
+# sub add_field {
+#     my ($field, $value) = @_;
+#     field $field;
+#     $self->{$field} = $value;
+# }
 
 sub add_config {
     my $config = shift;
