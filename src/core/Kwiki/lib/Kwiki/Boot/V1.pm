@@ -15,7 +15,7 @@ sub init {
 sub add_configs_files {
     $self->config->add_file('config.yaml');
     for my $filepath (glob 'config*.*') {
-        $self->config->add_override_filepath($filepath);
+        $self->config->add_config($filepath, 1);
     }
 }
 
