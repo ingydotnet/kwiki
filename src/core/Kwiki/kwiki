@@ -30,11 +30,17 @@ sub find_base {
 } 
 
 BEGIN {
-    my @env_files = qw(_kwiki .ht_kwiki);
-    push @env_files, "$ENV{HOME}/.kwiki/_kwiki" if defined $ENV{HOME};
+    my @env_files = qw(kwiki.env .ht-kwiki.env);
+    push @env_files, "$ENV{HOME}/.kwiki/kwiki.env" if defined $ENV{HOME};
     my $fh;
-    for (@env_files) { open $fh, $_ and last }
-    do { $ENV{$1} ||= $2 if /^(\w+)\s*=\s*['"]?(.*?)['"]?\s*$/ } for <$fh>;
+    for (@env_files) {
+        if (open $fh, $_) {
+            do {
+                $ENV{$1} ||= $2 if /^(\w+)\s*=\s*['"]?(.*?)['"]?\s*$/;
+            } for <$fh>;
+            last;
+        }
+    }
 
     if ($ENV{KWIKI_TEST_CLEAN}) {
         @INC = (

@@ -29,6 +29,13 @@ sub init {
     $hub->config($config);
 
     $self->kwiki($main);
+    $self->setup;
+}
+
+sub setup {
+    $self->add_default_classes;
+    $self->add_configs_files;
+    $self->add_plugins_files;
 }
 
 sub add_default_classes {
@@ -37,5 +44,11 @@ sub add_default_classes {
         unless (defined $self->config->{$key}) {
             $self->config->add_config({ $key => $val });
         }
+    }
+}
+
+sub add_plugins_files {
+    for my $file ($self->hub->paths->all_filepaths('plugins')) {
+        $self->config->add_plugins_file($file);
     }
 }

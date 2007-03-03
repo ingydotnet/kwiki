@@ -68,19 +68,31 @@ sub parse_yaml {
     return $hash;
 }
 
-sub add_plugin {
-    push @{$self->plugin_classes}, shift;
-}
+sub add_plugins_file {
+    my $file = shift;
+    my $used = {};
+    my $classes = $self->plugin_classes;
+    $used->{$_} = 1 for @$classes;
+    
+    my @plugins = grep {
+        s/^([\+\-]?[\w\:]+)\s*$/$1/;
+    } io($file)->slurp;
 
-sub change_plugin {
-    my ($new_class, $old_class) = @_;
-    my $pattern = $old_class || do {
-        my $temp = $new_class;
-        $temp =~ s/^\w+:://;
-        '\w+::' . $temp;
-    };
-    my $plugins = $self->plugin_classes;
-    for (@$plugins) {
-        last if s/$pattern/$new_class/;
+    for my $class (@plugins) {
+        if ($class =~ s/^\-//) {
+            if ($used->{$class}) {
+                delete $used->{$class};
+                @$classes = grep { $_ ne $class } @$classes;
+            }
+        }
+        else {
+            $class =~ s/^\+//;
+            unless ($used->{$class}) {
+                push @$classes, $class;
+                $used->{$class} = 1;
+            }
+        }
     }
+
+    $self->plugin_classes($classes);
 }

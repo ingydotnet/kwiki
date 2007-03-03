@@ -5,21 +5,12 @@ const main_class => 'Kwiki';
 const config_class => 'Kwiki::Config';
 const hub_class => 'Kwiki::Hub';
 
-sub init {
-    $self->add_default_classes;
-    $self->add_configs_files;
-    $self->add_plugins_files;
-}
-
 sub add_configs_files {
     # TODO Get all config locations from hub->paths
-    $self->config->add_path('config');
     $self->config->add_file('config.yaml');
-}
-
-sub add_plugins_files {
-    # TODO Get all plugins files from hub->paths
-    $self->config->add_plugins_file('plugins');
+    my $config = $ENV{KWIKI_LOCAL_CONFIG_LOCATION};
+    $self->config->add_config($config, 1)
+        if $config and -f $config;
 }
 
 sub add_default_classes {

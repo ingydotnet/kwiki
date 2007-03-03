@@ -24,7 +24,7 @@ sub install {
     $self->msg("Extracting files for $class_title:\n");
     $self->hub->$class_id->quiet($self->quiet);
     $self->hub->$class_id->extract_files;
-    $self->msg("\n");
+    $self->msg(" \n");
 }
 
 sub all_class_ids {

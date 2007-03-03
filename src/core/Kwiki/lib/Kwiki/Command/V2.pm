@@ -7,6 +7,7 @@ sub handle_new {
     $self->apply_kwiki_env_file;
     $self->create_www_link;
     $self->add_new_default_config;
+#     XXX $self->hub->files;
     $self->install('files');
     $self->create_database;
     $self->create_plugin_scratch;
@@ -15,18 +16,24 @@ sub handle_new {
 }
 
 sub create_plugin_scratch {
-    $ENV{KWIKI_PLUGIN_SCRATCH_FILEPATH} or return;
-    my $plugin = io($ENV{KWIKI_PLUGIN_SCRATCH_FILEPATH}) or return;
+    $ENV{KWIKI_PLUGIN_SCRATCH_LOCATION} or return;
+    my $plugin = io($ENV{KWIKI_PLUGIN_SCRATCH_LOCATION}) or return;
     $plugin->mkpath unless $plugin->exists;
 }
 
 sub create_database {
-    my $target = $ENV{KWIKI_DATABASE_FILEPATH} or return;
-    my $source = $self->hub->paths->find_first_filepath('database');
-    unless (-d $target) {
-        mkdir $target or die;
+    my @source_dirs = $self->hub->paths->all_filepaths('database');
+    my $target_path = $ENV{KWIKI_DATABASE_LOCATION} or return;
+    my $target = io($target_path);
+    $target->mkpath unless $target->exists;
+    
+    for my $source_dir (reverse @source_dirs) {
+        for my $source_file (io($source_dir)->all_files) {
+            my $target_file = $target_path . '/' . $source_file->filename;
+            $source_file > io($target_file)
+                unless -e $target_file;
+        }
     }
-    system("cp $source/* $target") == 0 or die;
 }
 
 sub apply_kwiki_env_file {
@@ -41,7 +48,7 @@ sub create_www_link {
     my $flavor_path = $ENV{KWIKI_BASE} . '/flavor/' . $ENV{KWIKI_FLAVOR};
     die "No such directory '$flavor_path'"
         unless -d $flavor_path and -d "$flavor_path/www";
-    my $www = $ENV{KWIKI_WWW_FILEPATH} or die;
+    my $www = $ENV{KWIKI_WWW_LOCATION} or die;
     io->link("$www/__")->assert->symlink("$flavor_path/www");
 }
 
@@ -61,10 +68,10 @@ sub update_kwiki_env_file {
 }
 
 sub kwiki_env_path {
-    for (qw(_kwiki .ht_kwiki)) {
+    for (qw(kwiki.env .ht-kwiki.env)) {
         return $_ if -e $_;
     }
-    return '_kwiki';
+    return 'kwiki.env';
 }
 
 sub parse_env {
@@ -79,13 +86,14 @@ sub parse_env {
 sub default_kwiki_env {
     return <<'...';
 KWIKI_BOOT=V2
-KWIKI_LIB_PATH=lib
 KWIKI_BASE=
+KWIKI_LIB_PATH=lib
 KWIKI_FLAVOR=Vanilla
 KWIKI_TEST_CLEAN=0
-KWIKI_PLUGIN_SCRATCH_FILEPATH=plugin
-KWIKI_DATABASE_FILEPATH=database
-KWIKI_WWW_FILEPATH=www
+KWIKI_PLUGIN_SCRATCH_LOCATION=plugin
+KWIKI_DATABASE_LOCATION=database
+KWIKI_WWW_LOCATION=www
+KWIKI_LOCAL_CONFIG_LOCATION=config.yaml
 ...
 }
 
@@ -174,8 +182,8 @@ sub handle_update_all {
 }
 
 sub set_permissions {
-    my $database = $ENV{KWIKI_DATABASE_FILEPATH} or die;
-    my $plugin = $ENV{KWIKI_PLUGIN_SCRATCH_FILEPATH} or die;
+    my $database = $ENV{KWIKI_DATABASE_LOCATION} or die;
+    my $plugin = $ENV{KWIKI_PLUGIN_SCRATCH_LOCATION} or die;
     my $umask = umask 0000;
     chmod 0777, $database, $plugin;
     chmod 0666, glob "$database/*";
