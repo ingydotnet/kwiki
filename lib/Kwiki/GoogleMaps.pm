@@ -1,0 +1,1 @@
+../../src/plugins/miyagawa/Kwiki-GoogleMaps/lib/Kwiki/GoogleMaps.pm
