@@ -1,6 +1,8 @@
+<!-- BEGIN display_changed_by -->
 [% IF self.preferences.display_changed_by.value %]
 [% page = hub.pages.current %]
 <div id="changedby">
 Last changed by [% page.edit_by_link %] at [% page.edit_time %].
 </div>
 [% END %]
+<!-- END display_changed_by -->

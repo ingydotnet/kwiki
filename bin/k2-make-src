@@ -2,7 +2,8 @@
 
 use strict;
 use warnings;
-use lib 'lib';
+use Cwd qw(abs_path);
+use lib abs_path('lib');
 use IO::All;
 
 @ARGV == 1 or die usage();
@@ -11,6 +12,8 @@ $dist_path =~ s/\/*$//;
 my $lib = io("$dist_path/lib");
 $lib->is_dir or die usage();
 my @modules = grep {$_->name =~ /\.pm$/} $lib->All_Files;
+
+my $dist = io->dir("$dist_path/src")->assert->chdir;
 
 for my $module (@modules) {
     my $module_name = $module->name;
@@ -21,11 +24,12 @@ for my $module (@modules) {
     die $@ if $@ and $@ !~ /HTTP\/BrowserDetect/;
     next unless $module_name->can('get_packed_files_from_classes');
     my $instance = $module_name->new;
-    my @data = $instance->get_packed_files_from_classes($module_name);
-    while (my ($file_name, $file_contents) = splice(@data, 0, 2)) {
-        $file_name =~ s/!//;
-        io("$dist_path/src/$file_name")->assert->print($file_contents);
-    }
+    $instance->extract_files;
+#     my @data = $instance->get_packed_files_from_classes($module_name);
+#     while (my ($file_name, $file_contents) = splice(@data, 0, 2)) {
+#         $file_name =~ s/!//;
+#         io("$dist_path/src/$file_name")->assert->print($file_contents);
+#     }
 }
 
 sub usage {
