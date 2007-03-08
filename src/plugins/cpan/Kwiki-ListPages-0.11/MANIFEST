@@ -1,7 +1,0 @@
-Changes
-Makefile.PL
-MANIFEST
-README
-t/Kwiki-ListPages.t
-lib/Kwiki/ListPages.pm
-META.yml                                 Module meta-data (added by MakeMaker)

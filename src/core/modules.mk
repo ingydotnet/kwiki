@@ -7,12 +7,10 @@ CORE_PATHS = \
 	Kwiki/Command \
 	Kwiki/Files \
 	Kwiki/Paths \
-	Kwiki/Template \
 	Kwiki/Theme \
 	Script \
 	Spiffy \
 	Spoon \
-	Spoon/Template \
 	Spork \
 	Spork/Config \
 	Spork/Formatter \
@@ -63,7 +61,6 @@ CORE_LEVEL_2 = \
 	Kwiki/Preferences.pm \
 	Kwiki/Registry.pm \
 	Kwiki/Status.pm \
-	Kwiki/Template.pm \
 	Kwiki/Theme.pm \
 	Kwiki/Toolbar.pm \
 	Kwiki/Users.pm \
@@ -148,9 +145,7 @@ CORE_LEVEL_3 = \
 	Kwiki/Files/V2.pm \
 	Kwiki/Paths/V1.pm \
 	Kwiki/Paths/V2.pm \
-	Kwiki/Template/TT2.pm \
 	Kwiki/Theme/Basic.pm \
-	Spoon/Template/TT2.pm \
 	Spork/Config/Default.pm \
 	Spork/Formatter/Autringy.pm \
 	Spork/Template/TT2.pm \

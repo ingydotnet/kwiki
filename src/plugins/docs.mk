@@ -177,13 +177,9 @@ PLUGINS_LEVEL_3 = \
 
 PLUGINS_LEVEL_4 = \
 	Kwiki/Simple/Server/HTTP.pod \
-	Kwiki/Template/TT2/UTF8.pod \
 	Kwiki/Users/Cookie/SQL.pod \
 
-PLUGINS_LEVEL_5 = \
-	Kwiki/Template/TT2/UTF8/Provider.pod \
-
-PLUGINS_DOCS = $(PLUGINS_LEVEL_2) $(PLUGINS_LEVEL_3) $(PLUGINS_LEVEL_4) $(PLUGINS_LEVEL_5) 
+PLUGINS_DOCS = $(PLUGINS_LEVEL_2) $(PLUGINS_LEVEL_3) $(PLUGINS_LEVEL_4) 
 
 plugins: $(PLUGINS_PATHS) $(PLUGINS_DOCS)
 
@@ -196,10 +192,6 @@ $(PLUGINS_LEVEL_3):
         link=`perl -e '$$_=shift;s!/!-!g;s!\.pod$$!!;print' $@`; \
 	ln -fs $$lib $$link;
 $(PLUGINS_LEVEL_4):
-	lib=../../src/plugins/*/*/src/doc/$@; \
-        link=`perl -e '$$_=shift;s!/!-!g;s!\.pod$$!!;print' $@`; \
-	ln -fs $$lib $$link;
-$(PLUGINS_LEVEL_5):
 	lib=../../src/plugins/*/*/src/doc/$@; \
         link=`perl -e '$$_=shift;s!/!-!g;s!\.pod$$!!;print' $@`; \
 	ln -fs $$lib $$link;

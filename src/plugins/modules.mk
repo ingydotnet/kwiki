@@ -22,8 +22,6 @@ PLUGINS_PATHS = \
 	Kwiki/Search \
 	Kwiki/Simple/Server \
 	Kwiki/TableOfContents \
-	Kwiki/Template/TT2 \
-	Kwiki/Template/TT2/UTF8 \
 	Kwiki/Theme \
 	Kwiki/Toolbar \
 	Kwiki/UniUI \
@@ -242,13 +240,9 @@ PLUGINS_LEVEL_3 = \
 PLUGINS_LEVEL_4 = \
 	HTTP/Server/Simple/Kwiki.pm \
 	Kwiki/Simple/Server/HTTP.pm \
-	Kwiki/Template/TT2/UTF8.pm \
 	Kwiki/Users/Cookie/SQL.pm \
 
-PLUGINS_LEVEL_5 = \
-	Kwiki/Template/TT2/UTF8/Provider.pm \
-
-PLUGINS_MODULES = $(PLUGINS_LEVEL_2) $(PLUGINS_LEVEL_3) $(PLUGINS_LEVEL_4) $(PLUGINS_LEVEL_5) 
+PLUGINS_MODULES = $(PLUGINS_LEVEL_2) $(PLUGINS_LEVEL_3) $(PLUGINS_LEVEL_4) 
 
 plugins: $(PLUGINS_PATHS) $(PLUGINS_MODULES)
 
@@ -264,7 +258,3 @@ $(PLUGINS_LEVEL_4):
 	cd dummy/dummy/dummy; \
 	lib=../../../../src/plugins/*/*/lib/$@; \
 	ln -fs $$lib ../../../$@;
-$(PLUGINS_LEVEL_5):
-	cd dummy/dummy/dummy/dummy; \
-	lib=../../../../../src/plugins/*/*/lib/$@; \
-	ln -fs $$lib ../../../../$@;
