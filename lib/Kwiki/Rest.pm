@@ -1,0 +1,1 @@
+../../src/plugins/share/Kwiki-Rest/lib/Kwiki/Rest.pm

@@ -1,6 +1,7 @@
 package Spoon::Headers;
 use Spoon::Base -Base;
 
+field status => '200 OK';
 field content_type => 'text/html';
 field charset => 'UTF-8';
 field expires => 'now';
@@ -12,6 +13,17 @@ sub print {
     my $headers = $self->get;
     $self->utf8_encode($headers);
     print $headers;
+}
+
+sub set_headers {
+    my $headers = shift;
+    for my $key (keys %$headers) {
+        my $method = $key;
+        $method =~ s/^-//;
+        $method = 'content_type' if $method eq 'type';
+        $self->$method($headers->{$key})
+          if $self->can($method);
+    }
 }
 
 sub get {
@@ -29,6 +41,7 @@ sub redirect_value {
 
 sub value {
     (
+        -status => $self->status,
         $self->hub->cookie->set_cookie_headers,
         -charset => $self->charset,
         -type => $self->content_type,

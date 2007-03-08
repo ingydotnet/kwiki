@@ -149,10 +149,12 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/Export.pm \
 	Kwiki/FastCGI.pm \
 	Kwiki/Footnote.pm \
+	Kwiki/GoogleMaps.pm \
 	Kwiki/OpenSearch.pm \
 	Kwiki/TypeKey.pm \
 	Kwiki/URLBL.pm \
 	Kwiki/IRCMode.pm \
+	Kwiki/Rest.pm \
 	Kwiki/AccessBlacklist.pm \
 	Kwiki/BabelTest.pm \
 	Kwiki/Htaccess.pm \
