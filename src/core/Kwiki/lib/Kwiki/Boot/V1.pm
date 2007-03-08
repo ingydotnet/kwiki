@@ -26,7 +26,7 @@ sub add_default_classes {
         paths_class => 'Kwiki::Paths::V1',
         preferences_class => 'Kwiki::Preferences',
         registry_class => 'Kwiki::Registry',
-        template_class => 'Kwiki::Template::TT2',
+        template_class => 'Spoon::Template',
         users_class => 'Kwiki::Users',
     };
     $self->SUPER::add_default_classes($default);
