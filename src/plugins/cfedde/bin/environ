@@ -1,4 +1,6 @@
 
 foo=`perl -le ' print join ":", grep {$_ ne /$ARGV[1]/} split /:/, $ARGV[0]' $PATH $PWD`
+umask 0002
 foo=$PWD/bin:$foo
 PATH=$foo
+PERL5LIB=$PERL5LIB:$PWD/lib
