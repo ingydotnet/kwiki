@@ -447,5 +447,5 @@ pre {
 
 h2 {
 	padding-bottom: 2px;
-	border: dotted 1px #d1521c;
+	border-bottom: dashed 1px #d1521c;
 }
