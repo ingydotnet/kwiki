@@ -438,3 +438,9 @@ form {
 li {
   list-style: url(arrow.gif);
 }
+
+pre {
+	padding: 3px;
+	border: solid 1px #900;
+	background-color: #eee;
+}
