@@ -441,6 +441,11 @@ li {
 
 pre {
 	padding: 3px;
-	border: solid 1px #900;
-	background-color: #eee;
+	border: solid 1px #d1521c;
+	background-color: #fefefe;
+}
+
+h2 {
+	padding-bottom: 2px;
+	border: dotted 1px #d1521c;
 }
