@@ -7,6 +7,11 @@ const class_title => 'EEng Theme';
 
 __DATA__
 
+
+__theme/eeng/css/arrow.gif__
+R0lGODlhCwAJAMQQAKYSIqsgL64oN+vKzq0mNPv09frx8vLe4Nyjqchrdd+prtKHj6gYJ9iYn9GE
+jbc/TP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEA
+ABAALAAAAAALAAkAAAUfICSOZGmai3GKAYGsAQA8gxnLQFPegmIzjsIpcSCFAAA7
 __theme/eeng/css/back.png__
 iVBORw0KGgoAAAANSUhEUgAAAyAAAAAKCAIAAADDza3yAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
 B3RJTUUH1wIDDxc2av8siwAAAB10RVh0Q29tbWVudABDcmVhdGVkIHdpdGggVGhlIEdJTVDvZCVu
@@ -428,4 +433,8 @@ textarea {
 form {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+li {
+  list-style: url(arrow.gif);
 }
