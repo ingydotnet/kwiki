@@ -1,17 +1,19 @@
 package Kwiki::Paths::V2;
-use Kwiki::Base -Base;
+use Kwiki::Paths -Base;
 use Cwd qw(cwd abs_path);
 
 field 'all_paths_cache';
 
+sub path_values_init {
+    my $values = {};
+
+    return $values;
+}
+
 # All directories in the config chain (starting at root).
-sub all_paths {
+sub lookup_chain_init {
     my $paths;
-#     delete $self->{all_paths_cache} if @_;
-#     $paths = $self->all_paths_cache;
-#     return @$paths if ref $paths;
     $paths = [];
-#     $self->all_paths_cache($paths);
     my $seen = {};
     
     my $dir = cwd();
@@ -39,17 +41,5 @@ sub all_paths {
         $seen->{$updir} = 1;
     }
 
-    return @$paths;
-}
-
-# All filepaths in the chain ending with the given file
-sub all_filepaths {
-    my $file = shift;
-    return grep { -e $_ } map "$_/$file", $self->all_paths(@_);
-}
-
-# First filepath in the chain ending with the given file
-sub first_filepath {
-    my @all = $self->all_paths(@_);
-    return $all[-1];
+    return $paths;
 }

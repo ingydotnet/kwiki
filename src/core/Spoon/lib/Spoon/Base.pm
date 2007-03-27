@@ -159,6 +159,11 @@ sub utf8_encode {
     return $_[0];
 }
 
+sub utf8_upgrade {
+    my @list = map pack('U*', unpack 'U0U*', $_), @_;
+    return wantarray ? @list : $list[0];
+}
+
 sub uri_escape {
     require CGI::Util;
     my $data = shift;

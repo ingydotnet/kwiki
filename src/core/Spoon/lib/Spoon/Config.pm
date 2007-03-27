@@ -10,7 +10,7 @@ sub all {
 
 sub add_file {
     my $file = shift;
-    for my $dir ($self->hub->paths->all_filepaths('config')) {
+    for my $dir ($self->hub->paths->all_files('config')) {
         my $filepath = "$dir/$file";
         $self->add_config($filepath, @_)
           if -f $filepath;

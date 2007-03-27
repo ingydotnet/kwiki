@@ -48,7 +48,7 @@ sub add_default_classes {
 }
 
 sub add_plugins_files {
-    for my $file ($self->hub->paths->all_filepaths('plugins')) {
+    for my $file ($self->hub->paths->all_files('plugins')) {
         $self->config->add_plugins_file($file);
     }
 }

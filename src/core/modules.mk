@@ -57,6 +57,7 @@ CORE_LEVEL_2 = \
 	Kwiki/Javascript.pm \
 	Kwiki/Pages.pm \
 	Kwiki/Pane.pm \
+	Kwiki/Paths.pm \
 	Kwiki/Plugin.pm \
 	Kwiki/Preferences.pm \
 	Kwiki/Registry.pm \
