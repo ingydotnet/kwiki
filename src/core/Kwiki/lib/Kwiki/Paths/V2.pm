@@ -21,6 +21,11 @@ sub path_values_init {
             $self->all_ending('javascript'),
             $self->all_ending('theme/__theme__/javascript'),
         ];
+    $values->{images} =
+        [
+            $self->all_ending('images'),
+            $self->all_ending('theme/__theme__/images'),
+        ];
     return $values;
 }
 

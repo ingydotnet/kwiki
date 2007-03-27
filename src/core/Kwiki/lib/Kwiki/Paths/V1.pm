@@ -12,6 +12,9 @@ sub path_values_init {
     $values->{template} = 
         $self->hub->config->{template_path} ||
         [ './template/tt2' ];
+    $values->{images} = 
+        $self->hub->config->{image} ||
+        [ '.' ];
     return $values;
 }
 

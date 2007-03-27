@@ -53,6 +53,7 @@ CORE_LEVEL_2 = \
 	Kwiki/Formatter.pm \
 	Kwiki/Hub.pm \
 	Kwiki/Icons.pm \
+	Kwiki/Images.pm \
 	Kwiki/Installer.pm \
 	Kwiki/Javascript.pm \
 	Kwiki/Pages.pm \

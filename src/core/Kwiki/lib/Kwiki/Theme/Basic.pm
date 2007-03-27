@@ -21,10 +21,6 @@ __theme/basic/template/tt2/theme_screen.html__
 <hr />
 [% INCLUDE theme_content_pane.html %]
 <hr />
-
-<div class="navigation">
-[% INCLUDE theme_toolbar2_pane.html %]
-</div>
 </td>
 
 <td id="group_2">

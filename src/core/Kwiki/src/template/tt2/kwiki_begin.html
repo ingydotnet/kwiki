@@ -18,8 +18,9 @@
   <link rel="[% link.rel %]" type="[% link.type %]" href="[% link.href %]" />
 -->
 [%# END %]
-[% IF favicon != '' %]
-   <link rel="shortcut icon" href="[% favicon %]"/>
+[% url = hub.images.get_url(favicon) %]
+[% IF url %]
+   <link rel="shortcut icon" href="[% url %]"/>
 [% END %]
 [% FOR css_file = hub.css.files -%]
   [% IF css_file -%]

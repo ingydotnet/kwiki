@@ -22,6 +22,7 @@ sub add_default_classes {
         formatter_class => 'Kwiki::Formatter',
         headers_class => 'Spoon::Headers',
         hooks_class => 'Spoon::Hooks',
+        images_class => 'Kwiki::Images',
         javascript_class => 'Kwiki::Javascript',
         pages_class => 'Kwiki::Pages',
         paths_class => 'Kwiki::Paths::V2',

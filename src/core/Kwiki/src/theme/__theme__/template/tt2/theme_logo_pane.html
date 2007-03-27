@@ -1,5 +1,9 @@
 <!-- BEGIN theme_logo_pane -->
+[% url = hub.images.get_url(logo_image) %]
+[% IF url %]
 <div id="logo_pane">
-<img src="[% logo_image %]" align="center" alt="Kwiki Logo" title="[% site_title %]" />
+    <img src="[% url %]"
+         align="center" alt="Kwiki Logo" title="[% site_title %]" />
 </div>
+[% END %]
 <!-- END theme_logo_pane -->

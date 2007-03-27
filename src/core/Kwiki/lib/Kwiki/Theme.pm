@@ -90,8 +90,9 @@ __template/tt2/kwiki_begin.html__
   <link rel="[% link.rel %]" type="[% link.type %]" href="[% link.href %]" />
 -->
 [%# END %]
-[% IF favicon != '' %]
-   <link rel="shortcut icon" href="[% favicon %]"/>
+[% url = hub.images.get_url(favicon) %]
+[% IF url %]
+   <link rel="shortcut icon" href="[% url %]"/>
 [% END %]
 [% FOR css_file = hub.css.files -%]
   [% IF css_file -%]
@@ -126,9 +127,13 @@ __theme/%s/template/tt2/theme_html_end.html__
 [% INCLUDE kwiki_end.html -%]
 
 __theme/%s/template/tt2/theme_logo_pane.html__
+[% url = hub.images.get_url(logo_image) %]
+[% IF url %]
 <div id="logo_pane">
-<img src="[% logo_image %]" align="center" alt="Kwiki Logo" title="[% site_title %]" />
+    <img src="[% url %]"
+         align="center" alt="Kwiki Logo" title="[% site_title %]" />
 </div>
+[% END %]
 __theme/%s/template/tt2/theme_title_pane.html__
 <div id="title_pane">
 <h1>
