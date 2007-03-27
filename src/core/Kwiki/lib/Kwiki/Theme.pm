@@ -24,11 +24,13 @@ const default_javascript_file => '';
 
 sub init {
     $self->SUPER::init(@_);
+
+    my $paths = $self->hub->paths;
+    
     my $theme_id = $self->theme_id;
     my $template_path = 
       sprintf $self->default_template_path, $theme_id;
-    $self->template->append_path($template_path)
-      if -e $template_path;
+    $paths->add_path(template => $paths->all_files($template_path));
 
     my $css_path = 
       sprintf $self->default_css_path, $theme_id;

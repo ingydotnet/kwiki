@@ -10,7 +10,6 @@ sub path_values_init {
     return $values;
 }
 
-# All directories in the config chain (starting at root).
 sub lookup_chain_init {
     my $dir = cwd();
     my $paths = [$dir];
@@ -26,10 +25,8 @@ sub lookup_chain_init {
     return $paths;
 }
 
-# All filepaths in the chain ending with the given file
 sub all_files {
     my $file = shift;
     return ('./config') if $file eq 'config';
     return grep { -e } map "$_/$file", @{$self->lookup_chain};
 }
-

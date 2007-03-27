@@ -1,5 +1,5 @@
 package Spoon::Template;
-use Spoon::Base -Base, 'conf';
+use Spoon::Base -Base;
 use Template;
 
 const class_id => 'template';

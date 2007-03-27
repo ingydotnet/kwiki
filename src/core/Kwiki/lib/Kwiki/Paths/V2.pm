@@ -6,7 +6,12 @@ field 'all_paths_cache';
 
 sub path_values_init {
     my $values = {};
-
+    $values->{template} =
+        [
+            $self->all_files('template'),
+            $self->all_files('template/tt2'),
+            $self->all_files('theme/__theme__/template/tt2'),
+        ];
     return $values;
 }
 
