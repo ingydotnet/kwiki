@@ -1,5 +1,5 @@
 package Kwiki::Paths::V2;
-use Kwiki::Paths -Base;
+use Spoon::Paths -Base;
 
 field 'all_paths_cache';
 

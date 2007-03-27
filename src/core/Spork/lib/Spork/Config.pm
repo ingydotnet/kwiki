@@ -18,22 +18,23 @@ sub default_configs {
 
 sub default_classes {
     (
-        config_class => 'Spork::Config',
-        registry_class => 'Spork::Registry',
-        hub_class => 'Spork::Hub',
-        formatter_class => 'Spork::Formatter',
-        template_class => 'Spork::Template::TT2',
         command_class => 'Spork::Command',
-        slides_class => 'Spork::Slides',
+        config_class => 'Spork::Config',
+        formatter_class => 'Spork::Formatter',
         hooks_class => 'Spoon::Hooks',
+        hub_class => 'Spork::Hub',
+        registry_class => 'Spork::Registry',
+        slides_class => 'Spork::Slides',
+        template_class => 'Spork::Template::TT2',
+
         # For Kwiki Plugins:
+        cache_class => 'Kwiki::Cache',
         cgi_class => 'Kwiki::CGI',
-        pages_class => 'Kwiki::Pages',
-        preferences_class => 'Kwiki::Preferences',
         css_class => 'Kwiki::CSS',
         javascript_class => 'Kwiki::Javascript',
-        cache_class => 'Kwiki::Cache',
         kwiki_command_class => 'Kwiki::Command',
+        pages_class => 'Kwiki::Pages',
+        preferences_class => 'Kwiki::Preferences',
     )
 }
 

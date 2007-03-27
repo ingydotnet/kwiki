@@ -1,10 +1,8 @@
-# This should move to Spoon::Boot::Base
-package Kwiki::Boot::Base;
-use Kwiki::Base -Base;
+package Spoon::Boot::Base;
+use Spoon::Base -Base;
 
 field 'config';
-# Consider changing this field to 'main'
-field 'kwiki';
+field 'main';
 
 sub new {
     $self = $self->SUPER::new(@_);
@@ -28,7 +26,7 @@ sub init {
     $hub->main($main);
     $hub->config($config);
 
-    $self->kwiki($main);
+    $self->main($main);
     $self->setup;
 }
 

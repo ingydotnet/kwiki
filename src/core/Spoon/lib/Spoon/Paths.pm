@@ -1,5 +1,5 @@
-package Kwiki::Paths;
-use Kwiki::Base -Base;
+package Spoon::Paths;
+use Spoon::Base -Base;
 
 # All the different types of paths
 field path_values => -init => '$self->path_values_init';

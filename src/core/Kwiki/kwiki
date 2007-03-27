@@ -54,7 +54,7 @@ BEGIN {
 
 use lib grep { -e } split /:/, $ENV{KWIKI_LIB_PATH} || 'lib';
 use Kwiki::Boot;
-Kwiki::Boot->boot->kwiki->hub->command->process(@ARGV)->hub->remove_hooks;
+Kwiki::Boot->boot->main->hub->command->process(@ARGV)->hub->remove_hooks;
 
 __END__
 

@@ -1,4 +1,4 @@
-package Kwiki::Paths::V1;
+package Spork::Paths;
 use Spoon::Paths -Base;
 
 sub path_values_init {

@@ -1,9 +1,11 @@
 package Kwiki::Boot::V2;
-use Kwiki::Boot::Base -Base;
+use Spoon::Boot::Base -Base;
 
 const main_class => 'Kwiki';
 const config_class => 'Kwiki::Config';
 const hub_class => 'Kwiki::Hub';
+
+sub kwiki { $self->main(@_) }
 
 sub add_configs_files {
     # TODO Get all config locations from hub->paths
