@@ -6,6 +6,16 @@ use Cwd qw(abs_path);
 use lib abs_path('lib');
 use IO::All;
 
+# Get a list of all dists in system.
+# For each dist, find all modules in dist
+# For each module:
+#   Extract doc into src/docs
+#   Extract files into src/
+#   Extract a template version of the module into src/lib
+#   Create a src/Makefile to rebuild modules
+#   Link all src files into the base/ tree
+#   Report all collisions
+
 @ARGV == 1 or die usage();
 my $dist_path = shift;
 $dist_path =~ s/\/*$//;
@@ -25,11 +35,6 @@ for my $module (@modules) {
     next unless $module_name->can('get_packed_files_from_classes');
     my $instance = $module_name->new;
     $instance->extract_files;
-#     my @data = $instance->get_packed_files_from_classes($module_name);
-#     while (my ($file_name, $file_contents) = splice(@data, 0, 2)) {
-#         $file_name =~ s/!//;
-#         io("$dist_path/src/$file_name")->assert->print($file_contents);
-#     }
 }
 
 sub usage {
