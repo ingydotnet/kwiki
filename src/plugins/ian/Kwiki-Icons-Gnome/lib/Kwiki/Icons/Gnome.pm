@@ -10,33 +10,30 @@ const icons_path  => 'icons/gnome/template';
 
 __DATA__
 
-
 __icons/gnome/template/recent_changes_button_icon.html__
-<img src="icons/gnome/image/recent_changes.png" alt="Changes" />
+<img src="[% hub.images.get_url('icons/gnome/image/recent_changes.png') %]" alt="Changes" />
 __icons/gnome/template/edit_button_icon.html__
-<img src="icons/gnome/image/edit.png" alt="Edit" />
+<img src="[% hub.images.get_url('icons/gnome/image/edit.png') %]" alt="Edit" />
 __icons/gnome/template/favorites_button_icon.html__
-<img src="icons/gnome/image/favorites.png" alt="Favorites" />
+<img src="[% hub.images.get_url('icons/gnome/image/favorites.png') %]" alt="Favorites" />
 __icons/gnome/template/guest_book_button_icon.html__
-<img src="icons/gnome/image/guest_book.png" alt="Guests" />
+<img src="[% hub.images.get_url('icons/gnome/image/guest_book.png') %]" alt="Guests" />
 __icons/gnome/template/home_button_icon.html__
-<img src="icons/gnome/image/home.png" alt="Home" />
+<img src="[% hub.images.get_url('icons/gnome/image/home.png') %]" alt="Home" />
 __icons/gnome/template/new_page_button_icon.html__
-<img src="icons/gnome/image/new_page.png" alt="New" />
+<img src="[% hub.images.get_url('icons/gnome/image/new_page.png') %]" alt="New" />
 __icons/gnome/template/revisions_button_icon.html__
-<img src="icons/gnome/image/revisions_previous.png" alt="[% hub.pages.current.revision_number %]&nbsp;Revisions" />
+<img src="[% hub.images.get_url('icons/gnome/image/revisions_previous.png') %]" alt="[% hub.pages.current.revision_number %]&nbsp;Revisions" />
 __icons/gnome/template/revisions_controls_current_icon.html__
-<img src="icons/gnome/image/revisions_current.png" alt="Current" />
+<img src="[% hub.images.get_url('icons/gnome/image/revisions_current.png') %]" alt="Current" />
 __icons/gnome/template/revisions_controls_next_icon.html__
-<img src="icons/gnome/image/revisions_next.png" alt="Next" />
+<img src="[% hub.images.get_url('icons/gnome/image/revisions_next.png') %]" alt="Next" />
 __icons/gnome/template/revisions_controls_previous_icon.html__
-<img src="icons/gnome/image/revisions_previous.png" alt="Previous" />
+<img src="[% hub.images.get_url('icons/gnome/image/revisions_previous.png') %]" alt="Previous" />
 __icons/gnome/template/user_preferences_button_icon.html__
-<img src="icons/gnome/image/user_preferences.png" alt="Preferences" />
+<img src="[% hub.images.get_url('icons/gnome/image/user_preferences.png') %]" alt="Preferences" />
 __icons/gnome/template/weather_button_icon.html__
-<img src="icons/gnome/image/weather.png" alt="Weather" />
-__icons/gnome/image/.htaccess__
-Allow from all
+<img src="[% hub.images.get_url('icons/gnome/image/weather.png') %]" alt="Weather" />
 __icons/gnome/image/recent_changes.png__
 iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACTUlEQVR42o2TT0iTARjGf845m9WX
 IaQkalmodahrp04euw68efFW28lZICT9EzvYQSEPChUd+kLpapHRArNkQhn4hzDInEunElvf9mlu
