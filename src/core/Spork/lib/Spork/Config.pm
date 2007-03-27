@@ -172,11 +172,12 @@ A list of template directories to be used by the template processing class.
 
 =head1 AUTHOR
 
-Brian Ingerson <INGY@cpan.org>
+Ingy döt Net <ingy@cpan.org>
 
 =head1 COPYRIGHT
 
 Copyright (c) 2004, 2005. Brian Ingerson. All rights reserved.
+Copyright (c) 2007. Ingy döt Net. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
@@ -200,45 +201,42 @@ __config.yaml__
 
 # These will be guessed using getpwuid on the real uid
 
-# author_name: Brian Ingerson
-# author_email: ingy@cpan.org
-# author_webpage: http://search.cpan.org/~ingy/
-# copyright_string: Copyright &copy; 2005 Brian Ingerson
-
-
-
+author_name: Ingy döt Net
+author_email: ingy@cpan.org
+author_webpage: http://search.cpan.org/~ingy/
+copyright_string: Copyright &copy; 2007 Ingy döt Net
 
 # Some styling:
 
-# banner_bgcolor: hotpink
-# logo_image: logo.png
-# image_width: 350
-# auto_scrolldown: 1
-# show_controls: 1
-# mouse_controls: 0
-# link_previous: &lt; &lt; Previous
-# link_next: Next &gt;&gt;
-# link_index: Index
+banner_bgcolor: orange
+logo_image: logo.png
+image_width: 350
+auto_scrolldown: 1
+show_controls: 0
+mouse_controls: 0
+link_previous: &lt; &lt; Previous
+link_next: Next &gt;&gt;
+link_index: Index
 
 
 # Some paths:
 
-# slides_file: Spork.slides
-# template_directory: template/tt2
-# template_path: 
-# - ./template/tt2
-# slides_directory: slides
+slides_file: Spork.slides
+template_directory: template/tt2
+template_path: 
+- ./template/tt2
+slides_directory: slides
 
 # This one defaults to CWD, and will vary each time you run 'spork -make'
-# file_base: /Users/ingy/dev/cpan/Spork/
+# file_base: /Users/ingy/src/
 
 
 # These should probably go in ~/.sporkrc/config.yaml if they're wrong
 
-# download_method: wget
-# start_command: open slides/start.html
+download_method: wget
+start_command: open slides/start.html
 
-# character_encoding: utf-8
+character_encoding: utf-8
 
 
 

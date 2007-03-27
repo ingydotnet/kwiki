@@ -105,11 +105,12 @@ Spork::Command - Slide Presentations (Only Really Kwiki)
 
 =head1 AUTHOR
 
-Brian Ingerson <INGY@cpan.org>
+Ingy döt Net <ingy@cpan.org>
 
 =head1 COPYRIGHT
 
 Copyright (c) 2004, 2005. Brian Ingerson. All rights reserved.
+Copyright (c) 2007. Ingy döt Net. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
