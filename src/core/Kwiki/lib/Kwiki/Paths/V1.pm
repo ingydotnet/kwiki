@@ -1,9 +1,14 @@
 package Kwiki::Paths::V1;
 use Kwiki::Paths -Base;
-use Cwd qw(cwd abs_path);
 
 sub path_values_init {
     my $values = {};
+    $values->{css} = 
+        $self->hub->config->{css_path} ||
+        [ 'css' ];
+    $values->{javascript} = 
+        $self->hub->config->{javascript_path} ||
+        [ 'javascript' ];
     $values->{template} = 
         $self->hub->config->{template_path} ||
         [ './template/tt2' ];
@@ -11,12 +16,10 @@ sub path_values_init {
 }
 
 sub lookup_chain_init {
-    my $dir = cwd();
+    my $dir = '.';
     my $paths = [$dir];
     while (1) {
-        my $updir = abs_path("$dir/..") or last;
-        last if $dir eq $updir;
-        $dir = $updir;
+        $dir = "$dir/..";
         last unless -e "$dir/config.yaml";
         last unless -e "$dir/plugins";
         unshift @$paths, $dir;
@@ -25,8 +28,7 @@ sub lookup_chain_init {
     return $paths;
 }
 
-sub all_files {
-    my $file = shift;
-    return ('./config') if $file eq 'config';
-    return grep { -e } map "$_/$file", @{$self->lookup_chain};
+sub all_ending {
+    return ('./config') if $_[0] eq 'config';
+    $self->SUPER::all_ending(@_);
 }

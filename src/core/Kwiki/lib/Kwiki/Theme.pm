@@ -30,12 +30,11 @@ sub init {
     my $theme_id = $self->theme_id;
     my $template_path = 
       sprintf $self->default_template_path, $theme_id;
-    $paths->add_path(template => $paths->all_files($template_path));
+    $paths->add_path(template => $paths->all_ending($template_path));
 
     my $css_path = 
       sprintf $self->default_css_path, $theme_id;
-    $self->hub->css->add_path($css_path)
-      if -e $css_path;
+    $paths->add_path(css => $paths->all_ending($css_path));
     $self->hub->css->add_file
       (ref $self->default_css_file
           ? @{$self->default_css_file}
@@ -43,8 +42,7 @@ sub init {
 
     my $javascript_path = 
       sprintf $self->default_javascript_path, $theme_id;
-    $self->hub->javascript->add_path($javascript_path)
-      if -e $javascript_path;
+    $paths->add_path(javascript => $paths->all_ending($javascript_path));
     $self->hub->javascript->add_file
       (ref $self->default_javascript_file
           ? @{$self->default_javascript_file}

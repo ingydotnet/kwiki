@@ -22,7 +22,7 @@ sub create_plugin_scratch {
 }
 
 sub create_database {
-    my @source_dirs = $self->hub->paths->all_files('database');
+    my @source_dirs = $self->hub->paths->all_ending('database');
     my $target_path = $ENV{KWIKI_DATABASE_LOCATION} or return;
     my $target = io($target_path);
     $target->mkpath unless $target->exists;
