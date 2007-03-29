@@ -97,6 +97,7 @@ sub handle_update {
     die "Can't update non Kwiki directory!\n"
       unless -d 'plugin';
     $self->create_registry;
+    $self->add_new_default_config;
     $self->install($_) for $self->all_class_ids;
     io->link('lib')->symlink("$ENV{KWIKI_BASE}/lib")
       if defined $ENV{KWIKI_BASE} and not -e 'lib';

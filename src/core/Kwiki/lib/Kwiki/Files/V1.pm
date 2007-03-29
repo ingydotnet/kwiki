@@ -19,7 +19,7 @@ sub get_packed_files {
 
 __DATA__
 
-__index.cgi__
+__!index.cgi__
 #!/usr/bin/perl
 use lib 'lib';
 use Kwiki::Boot;
