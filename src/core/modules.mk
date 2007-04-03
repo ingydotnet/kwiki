@@ -15,6 +15,7 @@ CORE_PATHS = \
 	Spork \
 	Spork/Boot \
 	Spork/Config \
+	Spork/Emitter \
 	Spork/Formatter \
 	Spork/Template \
 	Template \
@@ -96,6 +97,7 @@ CORE_LEVEL_2 = \
 	Spork/Config.pm \
 	Spork/Formatter.pm \
 	Spork/Hub.pm \
+	Spork/Parser.pm \
 	Spork/Paths.pm \
 	Spork/Plugin.pm \
 	Spork/Registry.pm \
@@ -154,6 +156,7 @@ CORE_LEVEL_3 = \
 	Spoon/Boot/Base.pm \
 	Spork/Boot/V1.pm \
 	Spork/Config/Default.pm \
+	Spork/Emitter/HTML.pm \
 	Spork/Formatter/Autringy.pm \
 	Spork/Template/TT2.pm \
 	Template/Namespace/Constants.pm \

@@ -1,4 +1,5 @@
 PLUGINS_PATHS = \
+	Document \
 	HTTP/Server/Simple \
 	Kwiki \
 	Kwiki/Ajax \
@@ -107,6 +108,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/GDGraphGenerator.pm \
 	Kwiki/VimMode.pm \
 	Kwiki/Weather.pm \
+	Document/Parser.pm \
 	Kwiki/AdSense.pm \
 	Kwiki/BreadCrumbs.pm \
 	Kwiki/Cache.pm \

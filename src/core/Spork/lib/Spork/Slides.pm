@@ -30,8 +30,7 @@ sub make_slides {
           ? $self->make_link($slides[$i + 1]{slide_name}) : '';
         $self->slide_heading('');
         $self->image_url('');
-        my $parsed = $self->hub->formatter->text_to_parsed($content);
-        my $html = $parsed->to_html;
+        my $html = $self->slide_to_html($content);
         $slide->{slide_heading} = $self->slide_heading;
         $slide->{image_html} = $self->get_image_html;
         my $output = $self->hub->template->process('slide.html',
@@ -48,6 +47,11 @@ sub make_slides {
           if $slide->{slide_name} =~ /^slide\d+a?\.html$/;
     }
     $self->make_index;
+}
+
+sub slide_to_html {
+    my $content = shift;
+    return $self->hub->formatter->text_to_parsed($content)->to_html;
 }
 
 sub make_link {
