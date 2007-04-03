@@ -19,6 +19,14 @@ my %tags = (
     '-b' => "</b>", 
     '+i' => "<i>", 
     '-i' => "</i>", 
+    '+tt' => "<tt>", 
+    '-tt' => "</tt>", 
+    '+center' => qq{<div class="center-outer"><div class="center-inner">\n},
+    '-center' => "</div></div>\n",
+    '+indent' => "<blockquote>\n",
+    '-indent' => "</blockquote>\n",
+    '+hilite' => qq{<span class="hilite">},
+    '-hilite' => "</span>",
 );
 
 sub emit {
@@ -27,15 +35,20 @@ sub emit {
     for my $node (@$ast) {
         if (ref $node) {
             my ($key) = keys %$node;
-            print $tags{"+$key"};
+            $self->{output} .= $tags{"+$key"};
+            $self->{parent} = $key;
             $self->emit($node->{$key});
-            print $tags{"-$key"};
+            $self->{output} .= $tags{"-$key"};
             next;
         }
-        print $node;
+        my $text = $node;
+        unless ($self->{parent} eq 'pre') {
+            $text =~ s/^( *)/"&nbsp;" x length($1)/gem;
+            $text =~ s/\n/<br \/>\n/g;
+        }
+        $self->{output} .= $text;
     }
     return $self->{output};
 }
-
 
 1;

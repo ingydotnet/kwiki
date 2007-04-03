@@ -95,6 +95,7 @@ CORE_LEVEL_2 = \
 	Spork/Boot.pm \
 	Spork/Command.pm \
 	Spork/Config.pm \
+	Spork/Formatter2.pm \
 	Spork/Formatter.pm \
 	Spork/Hub.pm \
 	Spork/Parser.pm \

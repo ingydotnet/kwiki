@@ -30,7 +30,10 @@ sub make_slides {
           ? $self->make_link($slides[$i + 1]{slide_name}) : '';
         $self->slide_heading('');
         $self->image_url('');
-        my $html = $self->slide_to_html($content);
+
+        my ($html, $translate, $image) = $self->divide_content($content);
+
+#         my $html = $self->slide_to_html($content);
         $slide->{slide_heading} = $self->slide_heading;
         $slide->{image_html} = $self->get_image_html;
         my $output = $self->hub->template->process('slide.html',
@@ -38,6 +41,8 @@ sub make_slides {
             hub => $self->hub,
             index_slide => 'index.html',
             slide_content => $html,
+            translation => $translate,
+            image => $image,
             spork_version => "Spork v$Spork::VERSION",
         );
         my $file_name = $self->config->slides_directory . '/' . 
@@ -49,9 +54,33 @@ sub make_slides {
     $self->make_index;
 }
 
+sub divide_content {
+    my $content = shift;
+    my $translate = '';
+    my $image_line;
+    while ($content =~ s/^# ?(.*\n)//m) {
+        $translate .= $1;
+    }
+    while ($content =~ s/^\.image:(.*\n)//m) {
+        $image_line = $1;
+    }
+    my ($html, $thtml, $image);
+    if ($translate) {
+        $thtml = $self->hub->formatter->text_to_html($translate);
+    }
+    if ($image_line) {
+        $image = {};
+        ($image->{src}, $image->{width}) = split /\s+/, $image_line;
+    }
+    if ($content) {
+        $html = $self->hub->formatter->text_to_html($content);
+    }
+    return ($html, $thtml, $image);
+}
+
 sub slide_to_html {
     my $content = shift;
-    return $self->hub->formatter->text_to_parsed($content)->to_html;
+    return $self->hub->formatter->text_to_html($content);
 }
 
 sub make_link {

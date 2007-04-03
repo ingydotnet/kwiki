@@ -2,7 +2,7 @@ package Spork::Parser;
 use strict;
 use warnings;
 use base 'Document::Parser';
-# use XXX;
+use XXX;
 
 my $ALPHANUM = '\p{Letter}\p{Number}\pM';
 
@@ -18,12 +18,17 @@ sub parse {
 
 sub set_grammar {
     my $self = shift;
-    my $all_phrases = [qw(b i)];
+    my $all_phrases = [qw(b i tt hilite)];
+    my $all_blocks = [qw(indent center h2 ul pre p)];
     $self->{grammar} = +{
-        top => [qw(h2 ul pre p)],
+        top => $all_blocks,
+        center => $all_blocks,
+        indent => $all_blocks,
         p => $all_phrases,
         ul => [qw(ul li)],
         li => $all_phrases,
+        h2 => $all_phrases,
+        b => $all_phrases,
     };
 }
 
@@ -39,6 +44,20 @@ sub set_ast {
 # is a match and undef otherwise. The matched_block and matched_phrase methods
 # generate the match-objects.
 #-------------------------------------------------------------------------------
+sub match_indent {
+    my $self = shift;
+    $self->{input} =~ /^((?m:^>+.*\n)+\n?)/
+      or return;
+    return $self->matched_block;
+}
+
+sub match_center {
+    my $self = shift;
+    $self->{input} =~ /^\.center\n(.*?\n)(?:.center\n|\z)/s
+      or return;
+    return $self->matched_block;
+}
+
 sub match_ul {
     my $self = shift;
     $self->{input} =~ /^((?m:^\*+ .*\n)+)\n*/
@@ -65,9 +84,20 @@ sub match_h2 {
 sub match_p {
     my $self = shift;
     $self->{input} =~
-      qr/^((.*\S.*\n)+)(?m:^\s*\n)*/
+      qr/^(((?!>).*\S.*\n)+)(?m:^\s*\n)*/
         or return;
     return $self->matched_block;
+}
+
+sub match_tt {
+    my $self = shift;
+    return $self->matched_phrase
+      if $self->{input} =~
+        qr/((?:^|(?<=[^${ALPHANUM}`]))`\S[^`]*`(?=[^{$ALPHANUM}`]|\z))/;
+    return $self->matched_phrase
+      if $self->{input} =~
+        qr/(\{`.*?`\})/;
+    return;
 }
 
 sub match_b {
@@ -81,6 +111,17 @@ sub match_b {
     return;
 }
 
+sub match_hilite {
+    my $self = shift;
+    return $self->matched_phrase
+      if $self->{input} =~
+        qr/((?:^|(?<=[^${ALPHANUM}\|]))\|\S[^\|]*\|(?=[^{$ALPHANUM}\|]|\z))/;
+    return $self->matched_phrase
+      if $self->{input} =~
+        qr/(\{\|.*?\|\})/;
+    return;
+}
+
 sub match_i {
     my $self = shift;
     return $self->matched_phrase
@@ -88,14 +129,14 @@ sub match_i {
         qr/((?:^|(?<=[^${ALPHANUM}\/]))\/\S[^\/]*\/(?=[^{$ALPHANUM}\/]|\z))/;
     return $self->matched_phrase
       if $self->{input} =~
-        qr/(\{_.*?_\})/;
+        qr/(\{\/.*?\/\})/;
     return;
 }
 
 sub match_pre {
     my $self = shift;
     $self->{input} =~
-      qr/^((\s+.*\S.*\n)+)(?m:^\s*\n)*/
+      qr/^(( +.*\S.*\n)+)(?m:^ *\n)*/
         or return;
     return $self->matched_block;
 }
@@ -107,6 +148,19 @@ sub match_pre {
 # end events, and controls how the innards are subparsed. Many times the
 # handler will mutate the matched text before it is reparsed.
 #-------------------------------------------------------------------------------
+sub handle_indent {
+    my $self = shift;
+    $self->subparse(indent => parse_blocks => @_, sub {
+        s/^> *//mg;
+        s/\n+\z/\n/;
+    });
+}
+
+sub handle_center {
+    my $self = shift;
+    $self->subparse(center => parse_blocks => @_);
+}
+
 sub handle_h2 {
     my $self = shift;
     $self->subparse(h2 => parse_phrases => @_);
@@ -139,10 +193,24 @@ sub handle_li {
     $self->subparse(li => parse_phrases => @_);
 }
 
+sub handle_hilite {
+    my $self = shift;
+    $self->subparse(hilite => parse_phrases => @_, sub {
+        s/^\{?\|(.*)\|\}?$/$1/s;
+    });
+}
+
 sub handle_b {
     my $self = shift;
     $self->subparse(b => parse_phrases => @_, sub {
         s/^\{?\*(.*)\*\}?$/$1/s;
+    });
+}
+
+sub handle_tt {
+    my $self = shift;
+    $self->subparse(tt => parse_phrases => @_, sub {
+        s/^\{?`(.*)`\}?$/$1/s;
     });
 }
 

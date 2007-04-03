@@ -150,6 +150,14 @@ div p {
     margin-right: 6pt;
 }
 
+.center-outer {
+    width: 100%;
+}
+
+.center-inner {
+    align: center;
+}
+
 small {
     font-size: 9pt;
     font-style: italic;

@@ -13,11 +13,19 @@ print $html;
 __END__
 == This is a test
 
+.center
 * foo
 ** 123
 * *hello*
+.center
 
 Cool *stuff* is /here/.
+
+xxx
+xxx
+  yyy
+  yyy
+xxx
 
     sub foo {
        ...
