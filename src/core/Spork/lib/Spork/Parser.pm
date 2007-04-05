@@ -20,7 +20,8 @@ sub set_grammar {
     my $self = shift;
     my $all_phrases = [qw(b i tt hilite)];
     my $all_blocks = [qw(indent center h2 ul pre p)];
-    $self->{grammar} = +{
+    $self->{grammar} = 
+    {
         top => $all_blocks,
         center => $all_blocks,
         indent => $all_blocks,
@@ -53,7 +54,7 @@ sub match_indent {
 
 sub match_center {
     my $self = shift;
-    $self->{input} =~ /^\.center\n(.*?\n)(?:.center\n|\z)/s
+    $self->{input} =~ /^\.center\n(.*?\n)(?:.center\n|\z)\n?/s
       or return;
     return $self->matched_block;
 }
@@ -74,11 +75,9 @@ sub match_li {
 
 sub match_h2 {
     my $self = shift;
-    $self->{input} =~ /^(={2})\s+(.*?)\s*\n+/
+    $self->{input} =~ /^={2}\s+(.*?)\s*\n+/
       or return;
-    my $match = $self->matched_block($2);
-    $match->{level} = length($1);
-    return $match;
+    $self->matched_block;
 }
 
 sub match_p {
