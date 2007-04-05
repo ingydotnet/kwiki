@@ -39,9 +39,9 @@ sub lookup_chain_init {
     push @$paths, $dir;
     $seen->{$dir} = 1;
 
-    $dir = $ENV{KWIKI_WWW_LOCATION} or return @$paths;
-    return @$paths unless -d $dir;
-    return @$paths if $seen->{$dir};
+    $dir = $ENV{KWIKI_WWW_LOCATION} or return $paths;
+    return $paths unless -d $dir;
+    return $paths if $seen->{$dir};
     push @$paths, $dir;
     $seen->{$dir} = 1;
 
