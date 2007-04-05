@@ -29,7 +29,7 @@ sub add_default_classes {
         cgi_class => 'Kwiki::CGI',
         css_class => 'Kwiki::CSS',
         javascript_class => 'Kwiki::Javascript',
-        kwiki_command_class => 'Kwiki::Command',
+        kwiki_command_class => 'Kwiki::Command::V1',
         pages_class => 'Kwiki::Pages',
         preferences_class => 'Kwiki::Preferences',
     };
