@@ -5,8 +5,16 @@ use warnings;
 use Cwd qw(abs_path);
 use lib abs_path('lib');
 use IO::All;
+use XXX;
 
 # Get a list of all dists in system.
+XXX my @dists = map {
+    $_->name;
+} grep {
+    -e "$_/lib";
+} io('src')->All_Dirs;
+
+
 # For each dist, find all modules in dist
 # For each module:
 #   Extract doc into src/docs
@@ -15,6 +23,8 @@ use IO::All;
 #   Create a src/Makefile to rebuild modules
 #   Link all src files into the base/ tree
 #   Report all collisions
+
+__END__
 
 @ARGV == 1 or die usage();
 my $dist_path = shift;

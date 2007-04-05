@@ -34,8 +34,7 @@ sub parse_blocks {
         for my $type (@$types) {
             my $matched = $self->find_match(matched_block => $type) or next;
             substr($self->{input}, 0, $matched->{end}, '');
-            my $func = "handle_$type";
-            $self->$func($matched);
+            $self->handle_match($type, $matched);
             last;
         }
         die $self->reduction_error
@@ -74,8 +73,7 @@ sub parse_phrases {
           unless $begin == 0;
         substr($self->{input}, 0, $end, '');
         $type = $match->{type};
-        my $func = "handle_$type";
-        $self->$func($match);
+        $self->handle_match($type, $match);
     }
     return;
 }
@@ -104,6 +102,12 @@ sub find_match {
         $matched = $self->$func or return;
     }
     return $matched;
+}
+
+sub handle_match {
+    my ($self, $type, $match) = @_;
+    my $func = "handle_$type";
+    $self->$func($match);
 }
 
 sub subparse {
