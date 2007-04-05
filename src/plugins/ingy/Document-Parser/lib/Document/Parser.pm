@@ -1,6 +1,7 @@
 package Document::Parser;
 use strict;
 use warnings;
+use XXX;
 
 #-------------------------------------------------------------------------------
 # Parser object constructor/initializer
@@ -28,18 +29,14 @@ sub parse {
 sub parse_blocks {
     my $self = shift;
     my $container_type = shift;
-    my $types = $self->{grammar}->{$container_type};
+    my $types = $self->{grammar}{$container_type}{contains};
     while (my $length = length $self->{input}) {
         for my $type (@$types) {
-            my $func = "match_$type";
-            next unless $self->can($func);
-            my $matched = $self->$func;
-            if (defined $matched) {
-                substr($self->{input}, 0, $matched->{end}, '');
-                my $func = "handle_$type";
-                $self->$func($matched);
-                last;
-            }
+            my $matched = $self->find_match(matched_block => $type) or next;
+            substr($self->{input}, 0, $matched->{end}, '');
+            my $func = "handle_$type";
+            $self->$func($matched);
+            last;
         }
         die $self->reduction_error
             unless length($self->{input}) < $length;
@@ -57,14 +54,11 @@ sub parse_blocks {
 sub parse_phrases {
     my $self = shift;
     my $container_type = shift;
-    my $types = $self->{grammar}->{$container_type};
+    my $types = $self->{grammar}{$container_type}{contains};
     while (length $self->{input}) {
         my $match;
         for my $type (@$types) {
-            my $func = "match_$type";
-            next unless $self->can($func);
-            my $matched;
-            next unless $matched = $self->$func;
+            my $matched = $self->find_match(matched_phrase => $type) or next;
             if (not defined $match or $matched->{begin} < $match->{begin}) {
                 $match = $matched;
                 $match->{type} = $type;
@@ -84,6 +78,32 @@ sub parse_phrases {
         $self->$func($match);
     }
     return;
+}
+
+sub find_match {
+    my ($self, $matched_func, $type) = @_;
+    my $matched;
+    if (my $regexp = $self->{grammar}{$type}{match}) {
+        if (ref($regexp) eq 'ARRAY') {
+            for my $re (@$regexp) {
+                if ($self->{input} =~ $re) {
+                    $matched = $self->$matched_func;
+                    last;
+                }
+            }
+            return unless $matched;
+        }
+        else {
+            return unless $self->{input} =~ $regexp;
+            $matched = $self->$matched_func;
+        }
+    }
+    else {
+        my $func = "match_$type";
+        next unless $self->can($func);
+        $matched = $self->$func or return;
+    }
+    return $matched;
 }
 
 sub subparse {

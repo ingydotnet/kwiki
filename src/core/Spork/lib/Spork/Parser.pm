@@ -22,122 +22,67 @@ sub set_grammar {
     my $all_blocks = [qw(indent center h2 ul pre p)];
     $self->{grammar} = 
     {
-        top => $all_blocks,
-        center => $all_blocks,
-        indent => $all_blocks,
-        p => $all_phrases,
-        ul => [qw(ul li)],
-        li => $all_phrases,
-        h2 => $all_phrases,
-        b => $all_phrases,
+        top => {
+            contains => $all_blocks,
+        },
+        center => {
+            contains => $all_blocks,
+            match => qr/^\.center\n(.*?\n)(?:.center\n|\z)\n?/s,
+        },
+        indent => {
+            contains => $all_blocks,
+            match => qr/^((?m:^>+.*\n)+\n?)/,
+        },
+        pre => {
+            match => qr/^(( +.*\S.*\n)+)(?m:^ *\n)*/,
+        },
+        p => {
+            contains => $all_phrases,
+            match => qr/^(((?!>).*\S.*\n)+)(?m:^\s*\n)*/,
+        },
+        ul => {
+            contains => [qw(ul li)],
+            match => qr/^((?m:^\*+ .*\n)+)\n*/,
+        },
+        li => {
+            contains => $all_phrases,
+            match => qr/(.*)\n/,
+        },
+        h2 => {
+            contains => $all_phrases,
+            match => qr/^={2}\s+(.*?)\s*\n+/,
+        },
+        b => {
+            contains => $all_phrases,
+            match => [
+        qr/((?:^|(?<=[^${ALPHANUM}\*]))\*\S[^\*]*\*(?=[^{$ALPHANUM}\*]|\z))/,
+                qr/(\{\*.*?\*\})/,
+            ],
+        },
+        i => {
+            match => [
+        qr/((?:^|(?<=[^${ALPHANUM}\/]))\/\S[^\/]*\/(?=[^{$ALPHANUM}\/]|\z))/,
+                qr/(\{\/.*?\/\})/,
+            ],
+        },
+        tt => {
+            match => [
+        qr/((?:^|(?<=[^${ALPHANUM}`]))`\S[^`]*`(?=[^{$ALPHANUM}`]|\z))/,
+                qr/(\{`.*?`\})/,
+            ],
+        },
+        hilite => {
+            match => [
+        qr/((?:^|(?<=[^${ALPHANUM}\|]))\|\S[^\|]*\|(?=[^{$ALPHANUM}\|]|\z))/,
+                qr/(\{\|.*?\|\})/,
+            ],
+        },
     };
 }
 
 sub set_ast {
     my $self = shift;
     $self->{ast} = Spork::AST->new;
-}
-
-#-------------------------------------------------------------------------------
-# Match functions
-#
-# Each element type has a match subroutine. It returns a match-object if there
-# is a match and undef otherwise. The matched_block and matched_phrase methods
-# generate the match-objects.
-#-------------------------------------------------------------------------------
-sub match_indent {
-    my $self = shift;
-    $self->{input} =~ /^((?m:^>+.*\n)+\n?)/
-      or return;
-    return $self->matched_block;
-}
-
-sub match_center {
-    my $self = shift;
-    $self->{input} =~ /^\.center\n(.*?\n)(?:.center\n|\z)\n?/s
-      or return;
-    return $self->matched_block;
-}
-
-sub match_ul {
-    my $self = shift;
-    $self->{input} =~ /^((?m:^\*+ .*\n)+)\n*/
-      or return;
-    return $self->matched_block;
-}
-
-sub match_li {
-    my $self = shift;
-    $self->{input} =~ /(.*)\n/
-      or return;
-    return $self->matched_block;
-}
-
-sub match_h2 {
-    my $self = shift;
-    $self->{input} =~ /^={2}\s+(.*?)\s*\n+/
-      or return;
-    $self->matched_block;
-}
-
-sub match_p {
-    my $self = shift;
-    $self->{input} =~
-      qr/^(((?!>).*\S.*\n)+)(?m:^\s*\n)*/
-        or return;
-    return $self->matched_block;
-}
-
-sub match_tt {
-    my $self = shift;
-    return $self->matched_phrase
-      if $self->{input} =~
-        qr/((?:^|(?<=[^${ALPHANUM}`]))`\S[^`]*`(?=[^{$ALPHANUM}`]|\z))/;
-    return $self->matched_phrase
-      if $self->{input} =~
-        qr/(\{`.*?`\})/;
-    return;
-}
-
-sub match_b {
-    my $self = shift;
-    return $self->matched_phrase
-      if $self->{input} =~
-        qr/((?:^|(?<=[^${ALPHANUM}\*]))\*\S[^\*]*\*(?=[^{$ALPHANUM}\*]|\z))/;
-    return $self->matched_phrase
-      if $self->{input} =~
-        qr/(\{\*.*?\*\})/;
-    return;
-}
-
-sub match_hilite {
-    my $self = shift;
-    return $self->matched_phrase
-      if $self->{input} =~
-        qr/((?:^|(?<=[^${ALPHANUM}\|]))\|\S[^\|]*\|(?=[^{$ALPHANUM}\|]|\z))/;
-    return $self->matched_phrase
-      if $self->{input} =~
-        qr/(\{\|.*?\|\})/;
-    return;
-}
-
-sub match_i {
-    my $self = shift;
-    return $self->matched_phrase
-      if $self->{input} =~
-        qr/((?:^|(?<=[^${ALPHANUM}\/]))\/\S[^\/]*\/(?=[^{$ALPHANUM}\/]|\z))/;
-    return $self->matched_phrase
-      if $self->{input} =~
-        qr/(\{\/.*?\/\})/;
-    return;
-}
-
-sub match_pre {
-    my $self = shift;
-    $self->{input} =~
-      qr/^(( +.*\S.*\n)+)(?m:^ *\n)*/
-        or return;
-    return $self->matched_block;
 }
 
 #-------------------------------------------------------------------------------
