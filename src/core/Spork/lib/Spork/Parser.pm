@@ -3,6 +3,12 @@ use strict;
 use warnings;
 use base 'Document::Parser';
 
+sub set_ast {
+    require Document::AST::Tree;
+    my $self = shift;
+    $self->{ast} = Document::AST::Tree->new;
+}
+
 sub set_grammar {
     my $self = shift;
     my $all_phrases = [qw(b i tt hilite)];
@@ -59,6 +65,7 @@ sub set_grammar {
     };
 }
 
+# Fancy Regexp Generators
 my $ALPHANUM = '\p{Letter}\p{Number}\pM';
 
 sub re_huggy {
@@ -70,36 +77,6 @@ sub re_huggy {
         ${brace2}(\S[^${brace2}]*)${brace2}
         (?=[^{$ALPHANUM}${brace2}]|\z)
     /x;
-}
-
-sub set_ast {
-    my $self = shift;
-    $self->{ast} = Spork::AST->new;
-}
-
-package Spork::AST;
-use base 'Document::AST';
-
-sub insert {
-    my $self = shift;
-    my $ast = shift;
-    my $new = $ast->{output};
-    my $current = $self->{output}[-1];
-    my ($key) = keys %$current;
-    push @{$current->{$key}}, @$new;
-}
-
-sub begin_node {
-    my $self = shift;
-    push @{$self->{output}}, {shift, []};
-}
-
-sub text_node {
-    my $self = shift;
-    push @{$self->{output}}, shift;
-}
-
-sub end_node {
 }
 
 1;

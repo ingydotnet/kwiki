@@ -17,6 +17,7 @@ CPAN_PATHS = \
 
 CPAN_LEVEL_1 = \
 	URI.pm \
+	XXX.pm \
 
 CPAN_LEVEL_2 = \
 	Algorithm/DiffOld.pm \
