@@ -15,7 +15,9 @@ sub new {
 #-------------------------------------------------------------------------------
 sub parse {
     my $self = shift;
-    $self->{input} = shift;
+    $self->{input} ||= shift;
+    $self->{grammar} or $self->set_grammar;
+    $self->{ast} or $self->set_grammar;
     $self->parse_blocks('top');
     return $self->{ast}->content;
 }
@@ -183,8 +185,9 @@ sub begin_node {
 sub end_node {
     my $self = shift;
     my $tag = shift;
-    $tag =~ s/-.*//;
-    $self->{output} .= "-$tag\n";
+    die;
+    # $tag =~ s/-.*//;
+    # $self->{output} .= "-$tag\n";
 }
 
 sub text_node {

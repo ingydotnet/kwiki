@@ -1,5 +1,6 @@
 package Spork::Parser;
 use base 'Document::Parser';
+use XXX;
 
 my $ALPHANUM = '\p{Letter}\p{Number}\pM';
 
@@ -51,46 +52,29 @@ sub set_grammar {
         },
         b => {
             phrases => $all_phrases,
-            match => [
-                qr/(
-                    (?:^|(?<=[^${ALPHANUM}\*]))
-                    \*\S[^\*]*\*
-                    (?=[^{$ALPHANUM}\*]|\z)
-                   )/x,
-                qr/(\{\*.*?\*\})/,
-            ],
+            match => [re_huggy('\*'), qr/(\{\*.*?\*\})/ ],
         },
         i => {
-            match => [
-                qr/(
-                    (?:^|(?<=[^${ALPHANUM}\/]))
-                    \/\S[^\/]*\/
-                    (?=[^{$ALPHANUM}\/]|\z)
-                   )/x,
-                qr/(\{\/.*?\/\})/,
-            ],
+            match => [re_huggy('\/'), qr/(\{\/.*?\/\})/ ],
         },
         tt => {
-            match => [
-                qr/(
-                    (?:^|(?<=[^${ALPHANUM}`]))
-                    `\S[^`]*`
-                    (?=[^{$ALPHANUM}`]|\z)
-                   )/x,
-                qr/(\{`.*?`\})/,
-            ],
+            match => [re_huggy('`'), qr/(\{`.*?`\})/ ],
         },
         hilite => {
-            match => [
-                qr/(
-                    (?:^|(?<=[^${ALPHANUM}\|]))
-                    \|\S[^\|]*\|
-                    (?=[^{$ALPHANUM}\|]|\z)
-                   )/x,
-                qr/(\{\|.*?\|\})/,
-            ],
+            match => [re_huggy('\|'), qr/(\{\|.*?\|\})/ ],
         },
     };
+}
+
+sub re_huggy {
+    my $brace1 = shift;
+    my $brace2 = shift || $brace1;
+
+    return qr/
+        (?:^|(?<=[^${ALPHANUM}${brace1}]))
+        ${brace2}(\S[^${brace2}]*)${brace2}
+        (?=[^{$ALPHANUM}${brace2}]|\z)
+    /x;
 }
 
 sub set_ast {
@@ -98,13 +82,6 @@ sub set_ast {
     $self->{ast} = Spork::AST->new;
 }
 
-#-------------------------------------------------------------------------------
-# Handler functions
-#
-# Each element type has a handler too. The handler writes out the begin and
-# end events, and controls how the innards are subparsed. Many times the
-# handler will mutate the matched text before it is reparsed.
-#-------------------------------------------------------------------------------
 sub handle_indent {
     my $self = shift;
     $self->subparse(indent => parse_blocks => @_, sub {
@@ -152,30 +129,22 @@ sub handle_li {
 
 sub handle_hilite {
     my $self = shift;
-    $self->subparse(hilite => parse_phrases => @_, sub {
-        s/^\{?\|(.*)\|\}?$/$1/s;
-    });
+    $self->subparse(hilite => parse_phrases => @_);
 }
 
 sub handle_b {
     my $self = shift;
-    $self->subparse(b => parse_phrases => @_, sub {
-        s/^\{?\*(.*)\*\}?$/$1/s;
-    });
+    $self->subparse(b => parse_phrases => @_);
 }
 
 sub handle_tt {
     my $self = shift;
-    $self->subparse(tt => parse_phrases => @_, sub {
-        s/^\{?`(.*)`\}?$/$1/s;
-    });
+    $self->subparse(tt => parse_phrases => @_);
 }
 
 sub handle_i {
     my $self = shift;
-    $self->subparse(i => parse_phrases => @_, sub {
-        s/^\{?\/(.*)\/\}?$/$1/s;
-    });
+    $self->subparse(i => parse_phrases => @_);
 }
 
 package Spork::AST;
