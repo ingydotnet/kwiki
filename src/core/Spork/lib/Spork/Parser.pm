@@ -1,17 +1,7 @@
 package Spork::Parser;
+use strict;
+use warnings;
 use base 'Document::Parser';
-
-my $ALPHANUM = '\p{Letter}\p{Number}\pM';
-
-#-------------------------------------------------------------------------------
-# Public - $parsed = $parser->parse($wikitext);
-#-------------------------------------------------------------------------------
-sub parse {
-    my $self = shift;
-    $self->set_grammar;
-    $self->set_ast;
-    return $self->SUPER::parse(@_);
-}
 
 sub set_grammar {
     my $self = shift;
@@ -29,17 +19,21 @@ sub set_grammar {
         indent => {
             blocks => $all_blocks,
             match => qr/^((?m:^>+.*\n)+\n?)/,
+            filter => sub { s/^> *//mg; s/\n+\z/\n/ },
         },
         pre => {
             match => qr/^(( +.*\S.*\n)+)(?m:^ *\n)*/,
+            filter => sub { while (not /^\S/m) { s/^ //gm } },
         },
         p => {
             phrases => $all_phrases,
             match => qr/^(((?!>).*\S.*\n)+)(?m:^\s*\n)*/,
+            filter => sub { s/\n+\z// },
         },
         ul => {
             blocks => [qw(ul li)],
             match => qr/^((?m:^\*+ .*\n)+)\n*/,
+            filter => sub { s/^\* *//mg; s/\n+\z/\n/; },
         },
         li => {
             phrases => $all_phrases,
@@ -65,6 +59,8 @@ sub set_grammar {
     };
 }
 
+my $ALPHANUM = '\p{Letter}\p{Number}\pM';
+
 sub re_huggy {
     my $brace1 = shift;
     my $brace2 = shift || $brace1;
@@ -79,71 +75,6 @@ sub re_huggy {
 sub set_ast {
     my $self = shift;
     $self->{ast} = Spork::AST->new;
-}
-
-sub handle_indent {
-    my $self = shift;
-    $self->subparse(parse_blocks => @_, sub {
-        s/^> *//mg;
-        s/\n+\z/\n/;
-    });
-}
-
-sub handle_center {
-    my $self = shift;
-    $self->subparse(parse_blocks => @_);
-}
-
-sub handle_h2 {
-    my $self = shift;
-    $self->subparse(parse_phrases => @_);
-}
-
-sub handle_p {
-    my $self = shift;
-    $self->subparse(parse_phrases => @_, sub { s/\n+\z// });
-}
-
-sub handle_pre {
-    my $self = shift;
-    $self->subparse(parse_phrases => @_, sub {
-        while (not /^\S/m) {
-            s/^ //gm;
-        }
-    });
-}
-
-sub handle_ul {
-    my $self = shift;
-    $self->subparse(parse_blocks => @_, sub {
-        s/^\* *//mg;
-        s/\n+\z/\n/;
-    });
-}
-
-sub handle_li {
-    my $self = shift;
-    $self->subparse(parse_phrases => @_);
-}
-
-sub handle_hilite {
-    my $self = shift;
-    $self->subparse(parse_phrases => @_);
-}
-
-sub handle_b {
-    my $self = shift;
-    $self->subparse(parse_phrases => @_);
-}
-
-sub handle_tt {
-    my $self = shift;
-    $self->subparse(parse_phrases => @_);
-}
-
-sub handle_i {
-    my $self = shift;
-    $self->subparse(parse_phrases => @_);
 }
 
 package Spork::AST;

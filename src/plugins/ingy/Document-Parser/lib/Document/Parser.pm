@@ -17,7 +17,7 @@ sub parse {
     my $self = shift;
     $self->{input} ||= shift;
     $self->{grammar} or $self->set_grammar;
-    $self->{ast} or $self->set_grammar;
+    $self->{ast} or $self->set_ast;
     $self->parse_blocks('top');
     return $self->{ast}->content;
 }
@@ -108,14 +108,20 @@ sub find_match {
 sub handle_match {
     my ($self, $type, $match) = @_;
     my $func = "handle_$type";
-    $self->$func($match, $type);
+    if ($self->can($func)) {
+        $self->$func($match, $type);
+    }
+    else {
+        my $grammar = $self->{grammar}{$type};
+        my $parse = $grammar->{blocks}
+        ? 'parse_blocks'
+        : 'parse_phrases';
+        my @filter = $grammar->{filter}
+        ? ($grammar->{filter})
+        : ();
+        $self->subparse($parse, $match, $type, @filter);
+    }
 }
-
-# sub handle_p {
-#     my $self = shift;
-#     $self->subparse(p => parse_phrases => @_, sub { s/\n+\z// });
-# }
-
 
 sub subparse {
     my ($self, $func, $match, $type, $filter) = @_;
