@@ -1,7 +1,7 @@
 use lib 't', 'lib';
 use strict;
 use warnings;
-use Test::More tests => 22;
+use Test::More tests => 28;
 use IO::All;
 use IO_All_Test;
 
@@ -34,3 +34,11 @@ is(join('+', @dirs), 'foo+bar+baz');
 test_file_contents(io->catpath('', qw(t mystuff))->scalar, 't/mystuff');
 is(io('/foo/bar/baz')->abs2rel('/foo'), f 'bar/baz');
 is(io('foo/bar/baz')->rel2abs('/moo'), f '/moo/foo/bar/baz');
+
+is(io->dir('doo/foo')->catdir('goo', 'hoo'), f 'doo/foo/goo/hoo');
+is(io->dir->catdir('goo', 'hoo'), f 'goo/hoo');
+is(io->catdir('goo', 'hoo'), f 'goo/hoo');
+
+is(io->file('doo/foo')->catfile('goo', 'hoo'), f 'doo/foo/goo/hoo');
+is(io->file->catfile('goo', 'hoo'), f 'goo/hoo');
+is(io->catfile('goo', 'hoo'), f 'goo/hoo');

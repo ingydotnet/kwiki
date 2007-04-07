@@ -6,7 +6,7 @@ require Carp;
 # So one can use Carp::carp "$message" - without the parenthesis.
 sub Carp::carp;
 use IO::All::Base -base;
-our $VERSION = '0.36';
+our $VERSION = '0.37';
 use File::Spec();
 use Symbol();
 use Fcntl;
@@ -412,8 +412,16 @@ proxy_open 'getc';
 # File::Spec Interface
 #===============================================================================
 sub canonpath {my $self = shift; File::Spec->canonpath($self->pathname) } 
-sub catdir {my $self = shift; $self->new->dir(File::Spec->catdir(@_)) } 
-sub catfile {my $self = shift; $self->new->file(File::Spec->catfile(@_)) } 
+sub catdir {
+    my $self = shift;
+    my @args = grep defined, $self->name, @_;
+    io->dir(File::Spec->catdir(@args));
+} 
+sub catfile {
+    my $self = shift;
+    my @args = grep defined, $self->name, @_;
+    io->file(File::Spec->catfile(@args));
+} 
 sub join {my $self = shift; $self->catfile(@_) } 
 sub curdir {my $self = shift; $self->new->dir(File::Spec->curdir) } 
 sub devnull {my $self = shift; $self->new->file(File::Spec->devnull) } 
