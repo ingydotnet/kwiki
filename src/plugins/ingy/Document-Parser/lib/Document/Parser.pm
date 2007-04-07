@@ -108,11 +108,17 @@ sub find_match {
 sub handle_match {
     my ($self, $type, $match) = @_;
     my $func = "handle_$type";
-    $self->$func($match);
+    $self->$func($match, $type);
 }
 
+# sub handle_p {
+#     my $self = shift;
+#     $self->subparse(p => parse_phrases => @_, sub { s/\n+\z// });
+# }
+
+
 sub subparse {
-    my ($self, $type, $func, $match, $filter) = @_;
+    my ($self, $func, $match, $type, $filter) = @_;
     $self->{ast}->begin_node($type);
     my $parser = $self->new(
         grammar => $self->{grammar},

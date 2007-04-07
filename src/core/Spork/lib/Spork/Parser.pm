@@ -1,6 +1,5 @@
 package Spork::Parser;
 use base 'Document::Parser';
-use XXX;
 
 my $ALPHANUM = '\p{Letter}\p{Number}\pM';
 
@@ -84,7 +83,7 @@ sub set_ast {
 
 sub handle_indent {
     my $self = shift;
-    $self->subparse(indent => parse_blocks => @_, sub {
+    $self->subparse(parse_blocks => @_, sub {
         s/^> *//mg;
         s/\n+\z/\n/;
     });
@@ -92,22 +91,22 @@ sub handle_indent {
 
 sub handle_center {
     my $self = shift;
-    $self->subparse(center => parse_blocks => @_);
+    $self->subparse(parse_blocks => @_);
 }
 
 sub handle_h2 {
     my $self = shift;
-    $self->subparse(h2 => parse_phrases => @_);
+    $self->subparse(parse_phrases => @_);
 }
 
 sub handle_p {
     my $self = shift;
-    $self->subparse(p => parse_phrases => @_, sub { s/\n+\z// });
+    $self->subparse(parse_phrases => @_, sub { s/\n+\z// });
 }
 
 sub handle_pre {
     my $self = shift;
-    $self->subparse(pre => parse_phrases => @_, sub {
+    $self->subparse(parse_phrases => @_, sub {
         while (not /^\S/m) {
             s/^ //gm;
         }
@@ -116,7 +115,7 @@ sub handle_pre {
 
 sub handle_ul {
     my $self = shift;
-    $self->subparse(ul => parse_blocks => @_, sub {
+    $self->subparse(parse_blocks => @_, sub {
         s/^\* *//mg;
         s/\n+\z/\n/;
     });
@@ -124,27 +123,27 @@ sub handle_ul {
 
 sub handle_li {
     my $self = shift;
-    $self->subparse(li => parse_phrases => @_);
+    $self->subparse(parse_phrases => @_);
 }
 
 sub handle_hilite {
     my $self = shift;
-    $self->subparse(hilite => parse_phrases => @_);
+    $self->subparse(parse_phrases => @_);
 }
 
 sub handle_b {
     my $self = shift;
-    $self->subparse(b => parse_phrases => @_);
+    $self->subparse(parse_phrases => @_);
 }
 
 sub handle_tt {
     my $self = shift;
-    $self->subparse(tt => parse_phrases => @_);
+    $self->subparse(parse_phrases => @_);
 }
 
 sub handle_i {
     my $self = shift;
-    $self->subparse(i => parse_phrases => @_);
+    $self->subparse(parse_phrases => @_);
 }
 
 package Spork::AST;
