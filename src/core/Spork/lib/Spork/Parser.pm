@@ -33,7 +33,7 @@ sub set_grammar {
         ul => {
             blocks => [qw(ul li)],
             match => qr/^((?m:^\*+ .*\n)+)\n*/,
-            filter => sub { s/^\* *//mg; s/\n+\z/\n/; },
+            filter => sub { s/^\* *//mg; s/\n+\z/\n/ },
         },
         li => {
             phrases => $all_phrases,
@@ -45,16 +45,16 @@ sub set_grammar {
         },
         b => {
             phrases => $all_phrases,
-            match => [re_huggy('\*'), qr/(\{\*.*?\*\})/ ],
+            match => [re_huggy('\*'), qr/\{\*(.*?)\*\}/ ],
         },
         i => {
-            match => [re_huggy('\/'), qr/(\{\/.*?\/\})/ ],
+            match => [re_huggy('\/'), qr/\{\/(.*?)\/\}/ ],
         },
         tt => {
-            match => [re_huggy('`'), qr/(\{`.*?`\})/ ],
+            match => [re_huggy('`'), qr/\{`(.*?)`\}/ ],
         },
         hilite => {
-            match => [re_huggy('\|'), qr/(\{\|.*?\|\})/ ],
+            match => [re_huggy('\|'), qr/\{\|(.*?)\|\}/ ],
         },
     };
 }
