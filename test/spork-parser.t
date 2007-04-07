@@ -3,7 +3,6 @@ use Test::Base tests => 1;
 use lib 'lib';
 use Spork::Parser;
 use Spork::Emitter::HTML;
-use XXX;
 
 run_is spork => 'html';
 

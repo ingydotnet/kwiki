@@ -1,7 +1,6 @@
 package Document::Parser;
 use strict;
 use warnings;
-use XXX;
 
 #-------------------------------------------------------------------------------
 # Parser object constructor/initializer
@@ -29,7 +28,7 @@ sub parse {
 sub parse_blocks {
     my $self = shift;
     my $container_type = shift;
-    my $types = $self->{grammar}{$container_type}{contains};
+    my $types = $self->{grammar}{$container_type}{blocks};
     while (my $length = length $self->{input}) {
         for my $type (@$types) {
             my $matched = $self->find_match(matched_block => $type) or next;
@@ -53,7 +52,7 @@ sub parse_blocks {
 sub parse_phrases {
     my $self = shift;
     my $container_type = shift;
-    my $types = $self->{grammar}{$container_type}{contains};
+    my $types = $self->{grammar}{$container_type}{phrases};
     while (length $self->{input}) {
         my $match;
         for my $type (@$types) {
@@ -196,3 +195,5 @@ sub text_node {
 }
 
 1;
+
+=head1

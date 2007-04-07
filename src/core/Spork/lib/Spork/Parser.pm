@@ -1,8 +1,5 @@
 package Spork::Parser;
-use strict;
-use warnings;
 use base 'Document::Parser';
-use XXX;
 
 my $ALPHANUM = '\p{Letter}\p{Number}\pM';
 
@@ -23,57 +20,73 @@ sub set_grammar {
     $self->{grammar} = 
     {
         top => {
-            contains => $all_blocks,
+            blocks => $all_blocks,
         },
         center => {
-            contains => $all_blocks,
+            blocks => $all_blocks,
             match => qr/^\.center\n(.*?\n)(?:.center\n|\z)\n?/s,
         },
         indent => {
-            contains => $all_blocks,
+            blocks => $all_blocks,
             match => qr/^((?m:^>+.*\n)+\n?)/,
         },
         pre => {
             match => qr/^(( +.*\S.*\n)+)(?m:^ *\n)*/,
         },
         p => {
-            contains => $all_phrases,
+            phrases => $all_phrases,
             match => qr/^(((?!>).*\S.*\n)+)(?m:^\s*\n)*/,
         },
         ul => {
-            contains => [qw(ul li)],
+            blocks => [qw(ul li)],
             match => qr/^((?m:^\*+ .*\n)+)\n*/,
         },
         li => {
-            contains => $all_phrases,
+            phrases => $all_phrases,
             match => qr/(.*)\n/,
         },
         h2 => {
-            contains => $all_phrases,
+            phrases => $all_phrases,
             match => qr/^={2}\s+(.*?)\s*\n+/,
         },
         b => {
-            contains => $all_phrases,
+            phrases => $all_phrases,
             match => [
-        qr/((?:^|(?<=[^${ALPHANUM}\*]))\*\S[^\*]*\*(?=[^{$ALPHANUM}\*]|\z))/,
+                qr/(
+                    (?:^|(?<=[^${ALPHANUM}\*]))
+                    \*\S[^\*]*\*
+                    (?=[^{$ALPHANUM}\*]|\z)
+                   )/x,
                 qr/(\{\*.*?\*\})/,
             ],
         },
         i => {
             match => [
-        qr/((?:^|(?<=[^${ALPHANUM}\/]))\/\S[^\/]*\/(?=[^{$ALPHANUM}\/]|\z))/,
+                qr/(
+                    (?:^|(?<=[^${ALPHANUM}\/]))
+                    \/\S[^\/]*\/
+                    (?=[^{$ALPHANUM}\/]|\z)
+                   )/x,
                 qr/(\{\/.*?\/\})/,
             ],
         },
         tt => {
             match => [
-        qr/((?:^|(?<=[^${ALPHANUM}`]))`\S[^`]*`(?=[^{$ALPHANUM}`]|\z))/,
+                qr/(
+                    (?:^|(?<=[^${ALPHANUM}`]))
+                    `\S[^`]*`
+                    (?=[^{$ALPHANUM}`]|\z)
+                   )/x,
                 qr/(\{`.*?`\})/,
             ],
         },
         hilite => {
             match => [
-        qr/((?:^|(?<=[^${ALPHANUM}\|]))\|\S[^\|]*\|(?=[^{$ALPHANUM}\|]|\z))/,
+                qr/(
+                    (?:^|(?<=[^${ALPHANUM}\|]))
+                    \|\S[^\|]*\|
+                    (?=[^{$ALPHANUM}\|]|\z)
+                   )/x,
                 qr/(\{\|.*?\|\})/,
             ],
         },
@@ -167,7 +180,6 @@ sub handle_i {
 
 package Spork::AST;
 use base 'Document::AST';
-use XXX;
 
 sub insert {
     my $self = shift;
