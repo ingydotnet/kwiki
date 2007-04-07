@@ -1,6 +1,6 @@
 #!/usr/bin/perl
-use Test::Base tests => 1;
 use lib 'lib';
+use Test::Base tests => 1;
 use Spork::Parser;
 use Spork::Emitter::HTML;
 

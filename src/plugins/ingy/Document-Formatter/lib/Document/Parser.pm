@@ -99,7 +99,6 @@ sub find_match {
     }
     else {
         my $func = "match_$type";
-        next unless $self->can($func);
         $matched = $self->$func or return;
     }
     return $matched;
