@@ -16,10 +16,22 @@ sub new {
 sub parse {
     my $self = shift;
     $self->{input} ||= shift;
-    $self->{grammar} or $self->set_grammar;
-    $self->{ast} or $self->set_ast;
+    $self->{ast} ||= $self->set_ast;
+    $self->{grammar} ||= $self->set_grammar;
     $self->parse_blocks('top');
-    return $self->{ast}->content;
+    my $ast = $self->{ast}->content;
+    delete $self->{ast};
+    return $ast;
+}
+
+sub set_ast {
+    my $self = shift;
+    $self->{ast} = shift || $self->create_ast;
+}
+
+sub set_grammar {
+    my $self = shift;
+    $self->{grammar} = shift || $self->create_grammar;
 }
 
 #-------------------------------------------------------------------------------
@@ -169,6 +181,42 @@ sub matched_phrase {
 
 1;
 
-=head1
+=head1 NAME
 
-=cut
+Document::Parser - Base Class for Creating Text Format Parsers
+
+=head1 SYNOPSIS
+
+    package MyParser;
+    use base 'Document::Parser';
+
+    sub create_grammar { 
+        return {
+            # ... define a grammar hash here ...
+        };
+    }
+=head1 DESCRIPTION
+
+Document::Parser is a base class that you can use to easily generate a parse
+for text document markups (like Wiki or POD markups).
+
+See this parser as an example:
+
+    http://svn.kwiki.org/kwiki/trunk/src/core/Spork/lib/Spork/Parser.pm
+
+And this module for usage of the parser:
+
+    http://svn.kwiki.org/kwiki/trunk/src/core/Spork/lib/Spork/Formatter2.pm
+
+=head1 AUTHOR
+
+Ingy döt Net <ingy@cpan.org>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2007. Ingy döt Net. All rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See http://www.perl.com/perl/misc/Artistic.html

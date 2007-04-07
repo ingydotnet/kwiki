@@ -113,6 +113,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/Weather.pm \
 	Document/AST.pm \
 	Document/Parser.pm \
+	Document/Tools.pm \
 	Kwiki/AdSense.pm \
 	Kwiki/BreadCrumbs.pm \
 	Kwiki/Cache.pm \

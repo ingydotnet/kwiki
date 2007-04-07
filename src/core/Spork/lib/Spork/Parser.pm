@@ -3,18 +3,15 @@ use strict;
 use warnings;
 use base 'Document::Parser';
 
-sub set_ast {
+sub create_ast {
     require Document::AST::Tree;
-    my $self = shift;
-    $self->{ast} = Document::AST::Tree->new;
+    return Document::AST::Tree->new;
 }
 
-sub set_grammar {
-    my $self = shift;
+sub create_grammar {
     my $all_phrases = [qw(b i tt hilite)];
     my $all_blocks = [qw(indent center h2 ul pre p)];
-    $self->{grammar} = 
-    {
+    return {
         top => {
             blocks => $all_blocks,
         },
