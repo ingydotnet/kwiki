@@ -16,12 +16,11 @@ sub new {
 sub parse {
     my $self = shift;
     $self->{input} ||= shift;
-    $self->{ast} ||= $self->set_ast;
     $self->{grammar} ||= $self->set_grammar;
+    $self->{ast} ||= $self->set_ast;
+    $self->{ast}->init;
     $self->parse_blocks('top');
-    my $ast = $self->{ast}->content;
-    delete $self->{ast};
-    return $ast;
+    return $self->{ast}->content;
 }
 
 sub set_ast {

@@ -1,23 +1,21 @@
 package Document::AST::Tree;
 use base 'Document::AST';
 
-sub insert {
+sub init {
     my $self = shift;
-    my $ast = shift;
-    my $new = $ast->{output};
-    my $current = $self->{output}[-1];
-    my ($key) = keys %$current;
-    push @{$current->{$key}}, @$new;
+    $self->{output} = [];
+}
+
+sub insert {
+    push @{$_[0]{output}[-1][-1]}, @{$_[1]->{output}};
 }
 
 sub begin_node {
-    my $self = shift;
-    push @{$self->{output}}, {shift, []};
+    push @{$_[0]->{output}}, [$_[1], []];
 }
 
 sub text_node {
-    my $self = shift;
-    push @{$self->{output}}, shift;
+    push @{$_[0]->{output}}, $_[1];
 }
 
 sub end_node {

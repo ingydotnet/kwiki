@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 use lib 'lib';
-use Test::Base tests => 1;
+use Test::Base tests => 2;
 use Spork::Parser;
 use Spork::Emitter::HTML;
 
@@ -13,7 +13,7 @@ sub format {
 }
 
 __DATA__
-=== Parse Spork Slide
+=== Format Spork Slide
 --- spork format
 == This is a test
 
@@ -45,7 +45,7 @@ xxx
 <li><b>hello</b></li>
 </ul>
 </div></div>
-<p>Cool <b>stuff</b>&nbsp;is <i>here</i>.</p>
+<p>Cool <b>stuff</b> is <i>here</i>.</p>
 <p>xxx<br />
 xxx</p>
 <blockquote>
@@ -58,3 +58,15 @@ sub foo {
    ...
 }
 </pre>
+=== Format Another Spork Slide
+--- spork format
+This is *bold*
+
+This *bold* is
+
+*Bold* is this
+--- html
+<p>This is <b>bold</b></p>
+<p>This <b>bold</b> is</p>
+<p><b>Bold</b> is this</p>
+

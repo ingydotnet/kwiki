@@ -1,6 +1,6 @@
 package Spork::Emitter::HTML;
 use strict;
-# use XXX;
+use XXX;
 
 sub new { bless { output => '' }, shift }
 
@@ -34,16 +34,16 @@ sub emit {
     my $ast = shift;
     for my $node (@$ast) {
         if (ref $node) {
-            my ($key) = keys %$node;
+            my ($key, $value) = @$node;
             $self->{output} .= $tags{"+$key"};
             $self->{parent} = $key;
-            $self->emit($node->{$key});
+            $self->emit($value);
             $self->{output} .= $tags{"-$key"};
             next;
         }
         my $text = $node;
         unless ($self->{parent} eq 'pre') {
-            $text =~ s/^( *)/"&nbsp;" x length($1)/gem;
+            $text =~ s/^(  +)/"&nbsp;" x length($1)/gem;
             $text =~ s/\n/<br \/>\n/g;
         }
         $self->{output} .= $text;
