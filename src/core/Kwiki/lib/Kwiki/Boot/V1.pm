@@ -34,3 +34,8 @@ sub add_default_classes {
     };
     $self->SUPER::add_default_classes($default);
 }
+
+sub cli_config {
+    push @{$self->config->plugin_classes}, 'Kwiki::Simple::Server::HTTP';
+    return $self;
+}

@@ -8,6 +8,7 @@ CPAN_PATHS = \
 	HTTP/Server/Simple/CGI \
 	IO \
 	IO/Capture \
+	MIME \
 	Pod \
 	Pod/Simple \
 	String \
@@ -25,6 +26,8 @@ CPAN_LEVEL_2 = \
 	Date/Manip.pm \
 	File/MMagic.pm \
 	IO/Capture.pm \
+	MIME/Type.pm \
+	MIME/Types.pm \
 	Pod/Escapes.pm \
 	Pod/Simple.pm \
 	String/Diff.pm \

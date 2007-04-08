@@ -1,12 +1,13 @@
 package HTTP::Server::Simple::Kwiki;
 
+use lib 'lib';
+use strict;
+use warnings;
 use HTTP::Server::Simple::CGI;
 use HTTP::Server::Simple::Static;
 use IO::Capture::Stdout;
 use base qw(HTTP::Server::Simple::CGI HTTP::Server::Simple::Static);
-use strict;
-use warnings;
-use Kwiki;
+use Kwiki::Boot;
 our $VERSION = 0.29;
 
 sub handle_request {
@@ -14,20 +15,20 @@ sub handle_request {
 
   my $url = "http://localhost" . $ENV{REQUEST_URI};
 
-  if ($url =~ /\.(gif|png|css)/) {
+  if ($url =~ /\.(jpg|gif|png|css|javascript)$/) {
     $self->serve_static($cgi, ".");
   } else {
     my $capture = IO::Capture::Stdout->new();
     $capture->start();
-    Kwiki->new->debug->process('config*.*', -plugins => 'plugins');
+    Kwiki::Boot->debug->boot->kwiki->process;
     $capture->stop();
     my $output = join '', $capture->read;
 
     if ($output =~ m{^Status: 302}) {
-        warn "302\n$output\n";
+#         warn "302\n$output\n";
       $output = "HTTP/1.0 302 OK\r\n$output";
     } else {
-        warn "2002\n$output\n";
+#         warn "200\n$output\n";
       $output = "HTTP/1.0 200 OK\r\n$output";
     }
 
