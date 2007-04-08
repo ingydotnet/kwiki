@@ -1,1 +1,1 @@
-../src/cpan/XXX-0.10/lib/XXX.pm
+../src/ingy/XXX/lib/XXX.pm
