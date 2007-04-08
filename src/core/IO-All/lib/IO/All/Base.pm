@@ -5,7 +5,7 @@ use Fcntl;
 
 sub import {
     my $class = shift;
-    my $flag = shift || '';
+    my $flag = $_[0] || '';
     my $package = caller;
     no strict 'refs';
     if ($flag eq '-base') {
@@ -17,8 +17,26 @@ sub import {
         mixin_import(scalar(caller(0)), $class, @_);
     }
     else {
-        *{$package . "::$_"} = \&{$class . "::$_"}
-          for @{$class . '::EXPORT'};
+        my @flags = @_;
+        for my $export (@{$class . '::EXPORT'}) {
+            *{$package . "::$export"} = $export eq 'io' 
+            ? $class->generate_constructor(@flags)
+            : \&{$class . "::$export"};
+        }
+    }
+}
+
+sub generate_constructor {
+    my $class = shift;
+    my @flags = grep { s/^-// } @_;
+    my $constructor;
+    $constructor = sub {
+        my $self = $class->new(@_);
+        for my $flag (@flags) {
+            $self->$flag;
+        }
+        $self->constructor($constructor);
+        return $self;
     }
 }
 

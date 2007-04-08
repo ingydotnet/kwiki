@@ -4,6 +4,7 @@ date:    Fri Apr  6 18:04:27 JST 2007
 changes:
 - make catdir work with current dir in addition to other args.
 - make catfile work with current dir in addition to other args.
+- Add support for import flags like -strict and -utf8
 ---
 version: 0.36
 date:    Mon Oct 16 14:48:58 PDT 2006

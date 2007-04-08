@@ -43,6 +43,7 @@ t/error1.t
 t/file_spec.t
 t/file_subclass.t
 t/fileno.t
+t/import_flags.t
 t/inline_subclass.t
 t/input.t
 t/IO_All_Test.pm

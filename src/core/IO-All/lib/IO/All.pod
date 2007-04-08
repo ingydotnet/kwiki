@@ -30,6 +30,11 @@ IO::All - IO::All of it to Graham and Damian!
     io('file.txt') > io('copy.txt');            # Invokes File::Copy
     io('more.txt') >> io('all.txt');            # Add on to a file
 
+    # UTF-8 Support
+    $contents = io('file.txt')->utf8->all;      # Turn on utf8
+    use IO::All -utf8;                          # Turn on utf8 for all io
+    $contents = io('file.txt')->all;            #   by default in this package.
+
     # Print the path name of a file:
     print $io->name;                            # The direct method
     print "$io";                                # Object stringifies to name
@@ -153,6 +158,28 @@ with this:
 
 And that is a B<good thing>!
 
+=head1 USAGE
+
+Normally just say:
+
+    use IO::All;
+
+and IO::All will export a single function called C<io>, which contructs all IO
+objects.
+
+You can also pass global flags like this:
+
+    use IO::All -strict -utf8 -foobar;
+
+Which automatically makes those method calls on every new IO object. In other
+words this:
+
+    my $io = io('lalala.txt');
+
+becomes this:
+
+    my $io = io('lalala.txt')->strict->utf8->foobar;
+
 =head1 METHOD ROLE CALL
 
 Here is an alphabetical list of all the public methods that you can call
@@ -181,10 +208,10 @@ C<readlink>, C<recv>, C<rel2abs>, C<relative>, C<rename>, C<request>,
 C<response>, C<rmdir>, C<rmtree>, C<rootdir>, C<scalar>, C<seek>,
 C<send>, C<separator>, C<shutdown>, C<size>, C<slurp>, C<socket>,
 C<sort>, C<splitdir>, C<splitpath>, C<stat>, C<stdio>, C<stderr>,
-C<stdin>, C<stdout>, C<string>, C<string_ref>, C<subject>, C<sysread>,
-C<syswrite>, C<tail>, C<tell>, C<temp>, C<tie>, C<tmpdir>, C<to>,
-C<touch>, C<truncate>, C<type>, C<user>, C<uid>, C<unlink>, C<unlock>,
-C<updir>, C<uri>, C<utf8>, C<utime> and C<write>.
+C<stdin>, C<stdout>, C<strict>, C<string>, C<string_ref>, C<subject>,
+C<sysread>, C<syswrite>, C<tail>, C<tell>, C<temp>, C<tie>, C<tmpdir>,
+C<to>, C<touch>, C<truncate>, C<type>, C<user>, C<uid>, C<unlink>,
+C<unlock>, C<updir>, C<uri>, C<utf8>, C<utime> and C<write>.
 
 Each method is documented further below.
 
@@ -743,6 +770,13 @@ Indicates that the C<pathname> for the object should be made relative.
 
 Indicates whether objects returned from one of the C<all> methods will
 be in sorted order by name. True by default.
+
+=item * strict
+
+Check the return codes of every single system call. To turn this on for all
+calls in your module, use:
+
+    use IO::All -strict;
 
 =item * tie
 

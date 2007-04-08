@@ -1,4 +1,3 @@
-use IO::All;
 use lib 't', 'lib';
 use strict;
 use warnings;

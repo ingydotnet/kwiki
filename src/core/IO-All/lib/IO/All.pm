@@ -12,8 +12,6 @@ use Symbol();
 use Fcntl;
 our @EXPORT = qw(io);
 
-sub io { IO::All->new(@_) }
-
 #===============================================================================
 # Object creation and setup methods
 #===============================================================================
@@ -54,7 +52,8 @@ sub mldbm {my $self = shift; require IO::All::MLDBM; IO::All::MLDBM::mldbm($self
 
 sub autoload {my $self = shift; $autoload }
 
-sub AUTOLOAD {my $self = shift;
+sub AUTOLOAD {
+    my $self = shift;
     my $method = $IO::All::AUTOLOAD;
     $method =~ s/.*:://;
     my $pkg = ref($self) || $self;
@@ -359,12 +358,14 @@ sub overload_scalar_to_any {
 field 'package';
 field _binary => undef;
 field _binmode => undef;
+field _strict => undef;
 field _utf8 => undef;
 field _handle => undef;
 
 #===============================================================================
 # Public Accessors
 #===============================================================================
+field constructor => undef;
 chain block_size => 1024;
 chain errors => undef;
 field io_handle => undef;
@@ -387,6 +388,7 @@ option 'confess';
 option 'lock';
 option 'rdonly';
 option 'rdwr';
+option 'strict';
 
 #===============================================================================
 # IO::Handle proxy methods
@@ -415,27 +417,66 @@ sub canonpath {my $self = shift; File::Spec->canonpath($self->pathname) }
 sub catdir {
     my $self = shift;
     my @args = grep defined, $self->name, @_;
-    io->dir(File::Spec->catdir(@args));
+    $self->constructor->()->dir(File::Spec->catdir(@args));
 } 
 sub catfile {
     my $self = shift;
     my @args = grep defined, $self->name, @_;
-    io->file(File::Spec->catfile(@args));
+    $self->constructor->()->file(File::Spec->catfile(@args));
 } 
 sub join {my $self = shift; $self->catfile(@_) } 
-sub curdir {my $self = shift; $self->new->dir(File::Spec->curdir) } 
-sub devnull {my $self = shift; $self->new->file(File::Spec->devnull) } 
-sub rootdir {my $self = shift; $self->new->dir(File::Spec->rootdir) } 
-sub tmpdir {my $self = shift; $self->new->dir(File::Spec->tmpdir) } 
-sub updir {my $self = shift; $self->new->dir(File::Spec->updir) } 
-sub case_tolerant {my $self = shift; File::Spec->case_tolerant } 
-sub is_absolute {my $self = shift; File::Spec->file_name_is_absolute($self->pathname) }
-sub path {my $self = shift; map { $self->new->dir($_) } File::Spec->path } 
-sub splitpath {my $self = shift; File::Spec->splitpath($self->pathname) } 
-sub splitdir {my $self = shift; File::Spec->splitdir($self->pathname) } 
-sub catpath {my $self = shift; $self->new(File::Spec->catpath(@_)) } 
-sub abs2rel {my $self = shift; File::Spec->abs2rel($self->pathname, @_) } 
-sub rel2abs {my $self = shift; File::Spec->rel2abs($self->pathname, @_) }
+sub curdir {
+    my $self = shift;
+    $self->constructor->()->dir(File::Spec->curdir);
+} 
+sub devnull {
+    my $self = shift;
+    $self->constructor->()->file(File::Spec->devnull);
+} 
+sub rootdir {
+    my $self = shift;
+    $self->constructor->()->dir(File::Spec->rootdir);
+} 
+sub tmpdir {
+    my $self = shift;
+    $self->constructor->()->dir(File::Spec->tmpdir);
+} 
+sub updir {
+    my $self = shift;
+    $self->constructor->()->dir(File::Spec->updir);
+} 
+sub case_tolerant {
+    my $self = shift;
+    File::Spec->case_tolerant;
+} 
+sub is_absolute {
+    my $self = shift;
+    File::Spec->file_name_is_absolute($self->pathname);
+}
+sub path {
+    my $self = shift;
+    map { $self->constructor->()->dir($_) } File::Spec->path;
+} 
+sub splitpath {
+    my $self = shift;
+    File::Spec->splitpath($self->pathname);
+} 
+sub splitdir {
+    my $self = shift;
+    File::Spec->splitdir($self->pathname);
+} 
+sub catpath {
+    my $self = shift;
+    $self->constructor->(File::Spec->catpath(@_));
+} 
+sub abs2rel {
+    my $self = shift;
+    File::Spec->abs2rel($self->pathname, @_);
+} 
+sub rel2abs {
+    my $self = shift;
+    File::Spec->rel2abs($self->pathname, @_);
+}
 
 #===============================================================================
 # Public IO Action Methods

@@ -1,7 +1,7 @@
 use lib 't', 'lib';
 use strict;
 use warnings;
-use Test::More tests => 28;
+use Test::More tests => 27;
 use IO::All;
 use IO_All_Test;
 
@@ -12,7 +12,8 @@ test_file_contents(io->catfile(qw(t mystuff))->scalar, 't/mystuff');
 test_file_contents(io->join(qw(t mystuff))->scalar, 't/mystuff');
 is(ref(io->devnull), 'IO::All::File');
 ok(io->devnull->print('IO::All'));
-ok(IO::All->devnull->print('IO::All'));
+# Not supporting class calls anymore. Objects only.
+# ok(IO::All->devnull->print('IO::All'));
 ok(io->rootdir->is_dir);
 ok(io->tmpdir->is_dir);
 ok(io->updir->is_dir);

@@ -144,7 +144,7 @@ sub next {
     $self->assert_open;
     my $name = $self->readdir;
     return unless defined $name;
-    my $io = IO::All->new(File::Spec->catfile($self->pathname, $name));
+    my $io = $self->constructor->(File::Spec->catfile($self->pathname, $name));
     $io->absolute if $self->is_absolute;
     return $io;
 }
