@@ -1,1 +1,1 @@
-../../../src/core/IO-All/lib/IO/All/Pipe.pm
+../../../src/ingy/IO-All/lib/IO/All/Pipe.pm

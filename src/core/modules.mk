@@ -1,6 +1,4 @@
 CORE_PATHS = \
-	IO \
-	IO/All \
 	Kwiki \
 	Kwiki/Archive \
 	Kwiki/Boot \
@@ -8,7 +6,6 @@ CORE_PATHS = \
 	Kwiki/Files \
 	Kwiki/Paths \
 	Kwiki/Theme \
-	Script \
 	Spiffy \
 	Spoon \
 	Spoon/Boot \
@@ -26,10 +23,6 @@ CORE_PATHS = \
 	Template/Plugin/GD/Text \
 	Template/Plugin/XML \
 	Template/Stash \
-	Test \
-	YAML \
-	YAML/Dumper \
-	YAML/Loader \
 
 CORE_LEVEL_1 = \
 	Kwiki.pm \
@@ -37,10 +30,8 @@ CORE_LEVEL_1 = \
 	Spoon.pm \
 	Spork.pm \
 	Template.pm \
-	YAML.pm \
 
 CORE_LEVEL_2 = \
-	IO/All.pm \
 	Kwiki/Archive.pm \
 	Kwiki/Base.pm \
 	Kwiki/Boot.pm \
@@ -70,7 +61,6 @@ CORE_LEVEL_2 = \
 	Kwiki/Users.pm \
 	Kwiki/WebFile.pm \
 	Kwiki/Widgets.pm \
-	Script/Hater.pm \
 	Spiffy/mixin.pm \
 	Spoon/Base.pm \
 	Spoon/CGI.pm \
@@ -121,29 +111,8 @@ CORE_LEVEL_2 = \
 	Template/Stash.pm \
 	Template/Test.pm \
 	Template/View.pm \
-	Test/YAML.pm \
-	YAML/Base.pm \
-	YAML/Dumper.pm \
-	YAML/Error.pm \
-	YAML/Loader.pm \
-	YAML/Marshall.pm \
-	YAML/Node.pm \
-	YAML/Tag.pm \
-	YAML/Types.pm \
 
 CORE_LEVEL_3 = \
-	IO/All/Base.pm \
-	IO/All/DBM.pm \
-	IO/All/Dir.pm \
-	IO/All/File.pm \
-	IO/All/Filesys.pm \
-	IO/All/Link.pm \
-	IO/All/MLDBM.pm \
-	IO/All/Pipe.pm \
-	IO/All/Socket.pm \
-	IO/All/STDIO.pm \
-	IO/All/String.pm \
-	IO/All/Temp.pm \
 	Kwiki/Archive/Simple.pm \
 	Kwiki/Boot/V1.pm \
 	Kwiki/Boot/V2.pm \
@@ -183,8 +152,6 @@ CORE_LEVEL_3 = \
 	Template/Plugin/Wrap.pm \
 	Template/Stash/Context.pm \
 	Template/Stash/XS.pm \
-	YAML/Dumper/Base.pm \
-	YAML/Loader/Base.pm \
 
 CORE_LEVEL_4 = \
 	Template/Plugin/GD/Constants.pm \

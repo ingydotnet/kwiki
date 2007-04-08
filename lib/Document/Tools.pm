@@ -1,1 +1,1 @@
-../../src/plugins/ingy/Document-Formatter/lib/Document/Tools.pm
+../../src/ingy/Document-Formatter/lib/Document/Tools.pm

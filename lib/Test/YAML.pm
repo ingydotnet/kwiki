@@ -1,1 +1,1 @@
-../../src/core/YAML/lib/Test/YAML.pm
+../../src/ingy/YAML/lib/Test/YAML.pm

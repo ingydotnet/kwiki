@@ -1,1 +1,1 @@
-../../src/plugins/ingy/Module-Make/lib/Module/Make.pm
+../../src/ingy/Module-Make/lib/Module/Make.pm

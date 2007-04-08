@@ -1,1 +1,1 @@
-../../../src/core/IO-All/lib/IO/All/Base.pm
+../../../src/ingy/IO-All/lib/IO/All/Base.pm

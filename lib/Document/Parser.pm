@@ -1,1 +1,1 @@
-../../src/plugins/ingy/Document-Formatter/lib/Document/Parser.pm
+../../src/ingy/Document-Formatter/lib/Document/Parser.pm

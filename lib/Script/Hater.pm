@@ -1,1 +1,1 @@
-../../src/core/Script-Hater/lib/Script/Hater.pm
+../../src/ingy/Script-Hater/lib/Script/Hater.pm

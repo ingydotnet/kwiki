@@ -1,6 +1,4 @@
 PLUGINS_PATHS = \
-	Document \
-	Document/AST \
 	HTTP/Server/Simple \
 	Kwiki \
 	Kwiki/Ajax \
@@ -32,8 +30,6 @@ PLUGINS_PATHS = \
 	Kwiki/Users \
 	Kwiki/Users/Cookie \
 	Kwiki/Widgets \
-	Module \
-	Module/Make \
 
 PLUGINS_LEVEL_2 = \
 	Kwiki/LaTeXMath.pm \
@@ -111,9 +107,6 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/GDGraphGenerator.pm \
 	Kwiki/VimMode.pm \
 	Kwiki/Weather.pm \
-	Document/AST.pm \
-	Document/Parser.pm \
-	Document/Tools.pm \
 	Kwiki/AdSense.pm \
 	Kwiki/BreadCrumbs.pm \
 	Kwiki/Cache.pm \
@@ -146,7 +139,6 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/UserTracker.pm \
 	Kwiki/Wikiwyg.pm \
 	Kwiki/Zipcode.pm \
-	Module/Make.pm \
 	Kwiki/CoolURI.pm \
 	Kwiki/DNSBL.pm \
 	Kwiki/Spaces.pm \
@@ -224,7 +216,6 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Notify/IRC.pm \
 	Kwiki/UserName/Remote.pm \
 	Kwiki/Users/Remote.pm \
-	Document/AST/Tree.pm \
 	Kwiki/Ajax/Toolman.pm \
 	Kwiki/Archive/Rcs.pm \
 	Kwiki/Cache/Formatter.pm \
@@ -235,9 +226,6 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Theme/Selectable.pm \
 	Kwiki/Theme/YAPCChicago.pm \
 	Kwiki/UniUI/Theme.pm \
-	Module/Make/Base.pm \
-	Module/Make/Config.pm \
-	Module/Make/Maker.pm \
 	Kwiki/UserName/Cookie.pm \
 	Kwiki/Users/Cookie.pm \
 	Kwiki/Theme/Bluepole.pm \

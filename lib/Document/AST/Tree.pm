@@ -1,1 +1,1 @@
-../../../src/plugins/ingy/Document-Formatter/lib/Document/AST/Tree.pm
+../../../src/ingy/Document-Formatter/lib/Document/AST/Tree.pm
