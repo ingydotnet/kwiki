@@ -1,0 +1,37 @@
+Strawman Layout Scheme:
+
+    base/
+      config/
+      config.yaml
+      plugins
+      template/
+      theme/
+        %s/
+          template/
+      www/
+        css/
+        images/
+          icons/
+            %s/
+        javascript/
+        swf/
+        theme/
+          %s/
+            css/
+            images/
+            javascript/
+        video/
+
+    lib/
+    database/
+    plugin/
+
+Problems:
+* Collisions when one plugin wants to override another
+
+Solutions:
+* See how bad this problem is (run a full extract)
+* Deal with it in a minimal way if possible
+* Rearrange some plugins paths and file names (not too many please)
+
+* Put modules name in every path (too big of a hammer)
