@@ -1,4 +1,5 @@
 INGY_PATHS = \
+	Class \
 	Document \
 	Document/AST \
 	IO \
@@ -8,17 +9,24 @@ INGY_PATHS = \
 	Module/Install \
 	Module/Install/Admin \
 	Module/Make \
+	Perldoc \
+	Perldoc/Emitter \
+	Perldoc/Parser \
 	Script \
 	Test \
+	Test/Base \
 	YAML \
 	YAML/Dumper \
 	YAML/Loader \
 
 INGY_LEVEL_1 = \
+	Perldoc.pm \
+	WikiByte.pm \
 	XXX.pm \
 	YAML.pm \
 
 INGY_LEVEL_2 = \
+	Class/Field.pm \
 	Document/AST.pm \
 	Document/Parser.pm \
 	Document/Tools.pm \
@@ -26,7 +34,11 @@ INGY_LEVEL_2 = \
 	Module/Compile.pm \
 	Module/Optimize.pm \
 	Module/Make.pm \
+	Perldoc/Base.pm \
+	Perldoc/Convert.pm \
+	Perldoc/Dom.pm \
 	Script/Hater.pm \
+	Test/Base.pm \
 	Test/YAML.pm \
 	YAML/Base.pm \
 	YAML/Dumper.pm \
@@ -56,6 +68,11 @@ INGY_LEVEL_3 = \
 	Module/Make/Base.pm \
 	Module/Make/Config.pm \
 	Module/Make/Maker.pm \
+	Perldoc/Emitter/HTML.pm \
+	Perldoc/Emitter/Pod.pm \
+	Perldoc/Parser/Kwid.pm \
+	Module/Install/TestBase.pm \
+	Test/Base/Filter.pm \
 	YAML/Dumper/Base.pm \
 	YAML/Loader/Base.pm \
 
