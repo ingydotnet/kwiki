@@ -30,6 +30,8 @@ PLUGINS_PATHS = \
 	Kwiki/Users \
 	Kwiki/Users/Cookie \
 	Kwiki/Widgets \
+	Spork \
+	Spork/Formatter \
 
 PLUGINS_LEVEL_2 = \
 	Kwiki/LaTeXMath.pm \
@@ -139,6 +141,9 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/UserTracker.pm \
 	Kwiki/Wikiwyg.pm \
 	Kwiki/Zipcode.pm \
+	Spork/Hilite.pm \
+	Spork/S5ThemeFlower.pm \
+	Spork/S5ThemePugs.pm \
 	Kwiki/CoolURI.pm \
 	Kwiki/DNSBL.pm \
 	Kwiki/Spaces.pm \
@@ -226,6 +231,7 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Theme/Selectable.pm \
 	Kwiki/Theme/YAPCChicago.pm \
 	Kwiki/UniUI/Theme.pm \
+	Spork/Formatter/Kwid.pm \
 	Kwiki/UserName/Cookie.pm \
 	Kwiki/Users/Cookie.pm \
 	Kwiki/Theme/Bluepole.pm \
