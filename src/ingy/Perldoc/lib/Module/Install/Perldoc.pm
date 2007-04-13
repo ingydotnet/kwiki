@@ -4,11 +4,9 @@
 # This means that `make perldoc` will create `.pod` files from every
 # `.pm` file with *Perldoc* style documentation.
 #
-# Synopsis:
-# 
-#     > make perldoc
-#
-# Copyright (c) 2007. Ingy döt Net. All rights reserved.
+# Copyright (c) 2007.
+# Ingy döt Net <ingy@ingy.net>.
+# All rights reserved.
 #
 # Licensed under the same terms as Perl itself.
 
@@ -17,6 +15,11 @@ package Module::Install::Perldoc;
 use strict;
 use Module::Install::Base;
 use File::Basename ();
+
+## Synopsis:
+# 
+#     > make perldoc
+#
 
 use vars qw{$VERSION @ISA};
 BEGIN {
@@ -61,19 +64,19 @@ DO NOT EDIT. Your changes will be lost.
 
 Module::Install::Perldoc - Support for Perldoc POD Generation
 
+=head1 SYNOPSIS
+
+    > make perldoc
+
 =head1 DESCRIPTION
 
 This module adds a C<perldoc> target to the C<Makefile> for authors.
 This means that C<make perldoc> will create C<.pod> files from every
 C<.pm> file with B<Perldoc> style documentation.
 
-Synopsis:
-
-    > make perldoc
-
 =head1 AUTHOR
 
-Ingy döt Net
+Ingy döt Net <ingy@ingy.net>
 
 =head1 COPYRIGHT
 
