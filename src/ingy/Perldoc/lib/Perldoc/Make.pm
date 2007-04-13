@@ -34,11 +34,14 @@ sub handle_pm_into_pod {
     my $pod = $self->convert_pm_to_pod($pm_file_path)
       or return;
     warn "Generating new documentation for '$pm_file_path'\n";
-    my $pm_file = io($pm_file_path);
-    my $pm_text = $pm_file->all;
-    $pm_text =~ s/^=for perldoc\n.*?\n=cut\n/$pod/sm or
-        do { $pm_text .= $pod };
-    $pm_file->print($pm_text);
+    my $pm_text = io($pm_file_path)->all;
+    if ($pm_text =~ /^=for perldoc\n/m) {
+        $pm_text =~ s/^=for perldoc\n.*?\n=cut\n/$pod/sm;
+    }
+    else {
+        $pm_text .= $pod;
+    }
+    io($pm_file_path)->print($pm_text);
 }
 
 sub convert_pm_to_pod {
