@@ -1,0 +1,64 @@
+= NAME
+
+Math::Barbie - Math is *Hard*
+
+= SYNOPSIS
+
+    use Math::Barbie;
+
+    print "2 + 4 = ", add(2, 4);
+    print "2 / 4 = ", divide(2, 4);
+
+= DESCRIPTION
+
+As *Arithmetic Barbie* has taught us: "/Math is Hard!/".  `Math::Barbie` changes all that. It makes doing math as easy as pulling a string.
+
+= FUNCTIONS
+
+The following functions are exported by `Math::Barbie`:
+
+.dlist
+
+- add()
+
+Add two arguments and return the result.
+
+Arguments:
+
+  $x - First number
+  $y - Second number
+
+- divide()
+
+Divide the first number by the second number and return the result.
+
+Arguments:
+
+  $x - Numerator
+  $y - Divisor
+
+!dlist
+
+= BUGS
+
+Math::Barbie currently only supports half of the mathematical functions.
+`subtract` and `multiply` are /coming real soon now/.
+
+= SEE ALSO
+
+[Math::Ken]
+
+= AUTHOR
+
+Ingy döt Net <ingy@cpan.org>
+
+= COPYRIGHT
+
+Copyright (c) 2007. Ingy döt Net. All rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See http://www.perl.com/perl/misc/Artistic.html
+
+=cut
