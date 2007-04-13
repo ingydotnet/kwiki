@@ -1,31 +1,62 @@
+## Base Class for Creating Text Format Parsers
+# 
+# Document::Parser is a base class that you can use to easily generate a
+# parser for text document markups (like Wiki or POD markups).
+# 
+# See this parser as an example:
+# 
+#     http://svn.kwiki.org/kwiki/trunk/src/core/Spork/lib/Spork/Parser.pm
+# 
+# And this module for usage of the parser:
+# 
+#     http://svn.kwiki.org/kwiki/trunk/src/core/Spork/lib/Spork/Formatter2.pm
+#
+# Copyright (c) 2007. Ingy döt Net. All rights reserved.
+#
+# Licensed under the same terms as Perl itself.
+##
 package Document::Parser;
 use strict;
 use warnings;
 
-#-------------------------------------------------------------------------------
+## Synopsis:
+#
+#     package MyParser;
+#     use base 'Document::Parser';
+# 
+#     sub create_grammar { 
+#         return {
+#             # ... define a grammar hash here ...
+#         };
+#     }
+##
+
+##------------------------------------------------------------------------------
 # Parser object constructor/initializer
-#-------------------------------------------------------------------------------
+##------------------------------------------------------------------------------
 sub new {
     my $class = shift;
     return bless { @_ }, ref($class) || $class;
 }
 
-#-------------------------------------------------------------------------------
-# Public - $parsed = $parser->parse($wikitext);
-#-------------------------------------------------------------------------------
+##------------------------------------------------------------------------------
+# $parsed = $parser->parse($wikitext);
+##------------------------------------------------------------------------------
 sub parse {
     my $self = shift;
     $self->{input} ||= shift;
     $self->{grammar} ||= $self->set_grammar;
-    $self->{ast} ||= $self->set_ast;
-    $self->{ast}->init;
+    $self->{receiver} ||= $self->set_receiver;
+    $self->{receiver}->init;
     $self->parse_blocks('top');
-    return $self->{ast}->content;
+    return $self->{receiver}->content;
 }
 
-sub set_ast {
+##
+# Call `set_receiver` to reset the receiver for a new parse.
+sub set_receiver {
     my $self = shift;
-    $self->{ast} = shift || $self->create_ast;
+    $self->{receiver} = shift || $self->create_receiver;
 }
 
 sub set_grammar {
@@ -77,11 +108,11 @@ sub parse_phrases {
             }
         }
         if (! $match) {
-            $self->{ast}->text_node($self->{input});
+            $self->{receiver}->text_node($self->{input});
             last;
         }
         my ($begin, $end, $type) = @{$match}{qw(begin end type)};
-        $self->{ast}->text_node(substr($self->{input}, 0, $begin))
+        $self->{receiver}->text_node(substr($self->{input}, 0, $begin))
           unless $begin == 0;
         substr($self->{input}, 0, $end, '');
         $type = $match->{type};
@@ -135,17 +166,17 @@ sub handle_match {
 
 sub subparse {
     my ($self, $func, $match, $type, $filter) = @_;
-    $self->{ast}->begin_node($type);
+    $self->{receiver}->begin_node($type);
     my $parser = $self->new(
         grammar => $self->{grammar},
-        ast => $self->{ast}->new,
+        receiver => $self->{receiver}->new,
         input => $filter
         ? do { $_ = $match->{text}; &$filter(); $_ }
         : $match->{text},
     );
     $parser->$func($type);
-    $self->{ast}->insert($parser->{ast});
-    $self->{ast}->end_node($type);
+    $self->{receiver}->insert($parser->{receiver});
+    $self->{receiver}->end_node($type);
 }
 
 #-------------------------------------------------------------------------------
@@ -194,6 +225,7 @@ Document::Parser - Base Class for Creating Text Format Parsers
             # ... define a grammar hash here ...
         };
     }
+
 =head1 DESCRIPTION
 
 Document::Parser is a base class that you can use to easily generate a parse

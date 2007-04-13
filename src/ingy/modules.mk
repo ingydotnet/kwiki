@@ -9,6 +9,7 @@ INGY_PATHS = \
 	Module/Install \
 	Module/Install/Admin \
 	Module/Make \
+	Perl \
 	Perldoc \
 	Perldoc/Emitter \
 	Perldoc/Parser \
@@ -36,7 +37,10 @@ INGY_LEVEL_2 = \
 	Module/Make.pm \
 	Perldoc/Base.pm \
 	Perldoc/Convert.pm \
+	Perldoc/Document.pm \
 	Perldoc/Dom.pm \
+	Perldoc/Make.pm \
+	Perl/Folder.pm \
 	Script/Hater.pm \
 	Test/Base.pm \
 	Test/YAML.pm \
@@ -68,9 +72,11 @@ INGY_LEVEL_3 = \
 	Module/Make/Base.pm \
 	Module/Make/Config.pm \
 	Module/Make/Maker.pm \
+	Module/Install/Perldoc.pm \
 	Perldoc/Emitter/HTML.pm \
 	Perldoc/Emitter/Pod.pm \
 	Perldoc/Parser/Kwid.pm \
+	Perldoc/Parser/Perldoc.pm \
 	Module/Install/TestBase.pm \
 	Test/Base/Filter.pm \
 	YAML/Dumper/Base.pm \

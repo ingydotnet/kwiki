@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use base 'Document::Parser';
 
-sub create_ast {
+sub create_receiver {
     require Document::AST::Tree;
     return Document::AST::Tree->new;
 }
