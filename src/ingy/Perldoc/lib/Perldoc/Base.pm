@@ -1,13 +1,7 @@
 ## Base Class for Perldoc Classes
 #
 # Perldoc is Spiffy.
-
-## Synopsis:
-# 
-#     package Perldoc::Foo;
-#     use Perldoc::Base -Base;
-
-##
+#
 # Copyright (c) 2007. Ingy döt Net. All rights reserved.
 #
 # Licensed under the same terms as Perl itself.
@@ -18,6 +12,11 @@ use warnings;
 use IO::All -utf8;
 use Class::Field 0.10 qw'field const';
 use XXX;
+
+## Synopsis:
+# 
+#     package Perldoc::Foo;
+#     use Perldoc::Base -Base;
 
 sub import {
     my $class = shift;

@@ -36,13 +36,25 @@ $inner=cut
 sub handle_h1 {
     my $self = shift;
     my $inner = $self->emit(shift);
-    return "=head1 $inner\n\n"
+    return "=head1 $inner\n\n";
 }
 
 sub handle_p {
     my $self = shift;
     my $inner = $self->emit(shift);
-    return "$inner\n\n"
+    return "$inner\n\n";
+}
+
+sub handle_tt {
+    my $self = shift;
+    my $inner = $self->emit(shift);
+    return "C<$inner>";
+}
+
+sub handle_b {
+    my $self = shift;
+    my $inner = $self->emit(shift);
+    return "B<$inner>";
 }
 
 sub handle_pre {
@@ -50,7 +62,7 @@ sub handle_pre {
     my $array = shift;
     my $text = shift @$array;
     $text =~ s/^/    /gm;
-    return "$text\n"
+    return "$text\n";
 }
 
 1;

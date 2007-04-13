@@ -34,7 +34,7 @@ sub parse {
         $self->parse_class_header or
         $self->parse_named_block or
         $self->parse_sub_header or
-        die "Can't parse the following block:\n$self->{block}";
+        die "Can't parse the following block:\n${$self->{block}}";
     }
     return $self->stash;
 }
