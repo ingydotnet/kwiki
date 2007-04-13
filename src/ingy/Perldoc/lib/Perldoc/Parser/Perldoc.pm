@@ -11,7 +11,7 @@ package Perldoc::Parser::Perldoc;
 use strict;
 use warnings;
 use Perldoc::Base -base;
-use Perldoc::Fold;
+use Perl::Folder;
 
 field 'input_file';
 field 'input_buffer';
@@ -155,8 +155,8 @@ sub get_next_block {
 sub fold_blocks {
     my $self = shift;
     my $text = $self->input_buffer;
-    Perldoc::Fold->fold_blocks($text);
-    Perldoc::Fold->unfold_comment_blocks($text);
+    Perl::Folder->fold_blocks($text);
+    Perl::Folder->unfold_comment_blocks($text);
 }
 
 1;
