@@ -44,7 +44,7 @@ perldoc ::
     # Add actions for `make perldoc`
     for my $pm (@pms) {
         $postamble .= <<".";
-\t\$(PERL) -Ilib -MPerldoc::Make=pm_into_pod - $pm
+\t\@\$(PERL) -Ilib -MPerldoc::Make=pm_into_pod - $pm
 .
     }
 
