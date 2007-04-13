@@ -51,12 +51,7 @@ sub generate_kwid {
 sub get_template {
     my $self = shift;
     local $/;
-    return <DATA>;
-}
-
-1;
-
-__DATA__
+    return <<TEMPLATE;
 = NAME
 
 [% module.name %] - [% module.title %]
@@ -87,3 +82,7 @@ under the same terms as Perl itself.
 
 See http://www.perl.com/perl/misc/Artistic.html
 [% END -%]
+TEMPLATE
+}
+
+1;
