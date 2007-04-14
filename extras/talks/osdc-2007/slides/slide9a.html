@@ -1,0 +1,319 @@
+<!-- BEGIN slide -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta name="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Spork v0.20" />
+<link rel='icon' href='favicon.png' />
+  <link rel="stylesheet" type="text/css" href="css/hilite.css" />
+<style type="text/css"><!--
+/* BEGIN index.css */
+h2 {
+    text-align: center;
+}
+
+hr {
+    color: #202040;
+    height: 0px;
+    border-top: 0px;
+    border-bottom: 3px #202040 ridge;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.translation {
+    background-color: black;
+    color: white;
+}
+
+.hilite {
+    color: darkred;
+    text-decoration: underline;
+}
+
+a:link {
+    color: #123422;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #123333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    font-size: 24pt;
+    margin: 6pt;
+}
+
+div p {
+    font-size: 18pt;
+    margin-top: 12pt;
+    margin-bottom: 12pt;
+    margin-left: 6pt;
+    margin-right: 6pt;
+}
+
+.center-outer {
+    width: 100%;
+}
+
+.center-inner {
+    align: center;
+}
+
+small {
+    font-size: 9pt;
+    font-style: italic;
+}
+
+#topbar {
+    background: orange;
+    color: blue;
+    position:absolute;
+    right: 5px;
+    left: 5px;
+    top: 5px;
+    height: 50px;
+}
+
+#bottombar {
+    background: orange;
+    color: blue;
+    position: fixed;
+    right: 5px;
+    left: 5px;
+    bottom: 5px;
+    height: 50px;
+    z-index: 0;
+}
+
+.top_spacer {
+    height: 0px;
+    margin: 0px 0px 0px 0px;
+    padding: 1px 0px 0px 0px;
+}
+
+.spacer {
+    bottom: 5px;
+    height: 50px;
+}
+
+#content {
+    background:#fff;
+    margin-left: 20px;
+    margin-right:20px;
+    margin-top: 80px;
+}
+
+
+#logo {
+    position: fixed;
+    right: 40px;
+    bottom: 51px;
+    width: 130px;
+    height: 150px;
+    z-index:3;
+    background-image: url(/logo.png);
+    background-repeat: no-repeat;
+}
+/* END index.css */
+
+--></style>
+<script type="text/javascript">
+// BEGIN controls.js
+function nextSlide() {
+    window.location = 'slide9b.html#end';
+}
+
+function prevSlide() {
+    window.location = 'slide8.html';
+}
+
+function indexSlide() {
+    window.location = 'index.html';
+}
+
+function startSlide() {
+    window.location = 'start.html';
+}
+
+function closeSlide() {
+    window.close();
+}
+
+function handleKey(e) {
+    var key;
+    if (e == null) {
+        // IE
+        key = event.keyCode
+    } 
+    else {
+        // Mozilla
+        if (e.altKey || e.ctrlKey) {
+            return true
+        }
+        key = e.which
+    }
+    switch(key) {
+        case 8: prevSlide(); break
+        case 13: nextSlide(); break
+        case 32: nextSlide(); break
+        case 81: closeSlide(); break
+        case 105: indexSlide(); break
+        case 110: nextSlide(); break
+        case 112: prevSlide(); break
+        case 115: startSlide(); break
+        default: //xxx(e.which)
+    }
+}
+
+document.onkeypress = handleKey
+// END controls.js
+
+</script>
+</head>
+<body>
+<div id="topbar">
+<table width='100%'>
+<tr>
+<td width="13%">Perldoc</td>
+<td align="center" width="73%">
+    <a accesskey="s" href="start.html">Perldoc - A New Documentation System for Perl</a>
+</td>
+<td align="right" width="13%">
+
+<a href="slide9a.html">#9</a>
+
+</td>
+</tr>
+</table>
+</div>
+<!-- END top -->
+
+<div id="content">
+<div class="top_spacer"></div>
+
+<h2>A Sample Module - Separated Code and Pod</h2>
+<pre><pre>
+<span class="hilite_blue">package Math::Barbie;</span>
+<span class="hilite_blue">use base &#39;Exporter&#39;;</span>
+<span class="hilite_blue">our @EXPORT = qw(add divide);</span>
+
+<span class="hilite_blue">sub add {</span>
+<span class="hilite_blue">    my $x = shift;</span>
+<span class="hilite_blue">    my $y = shift;</span>
+<span class="hilite_blue">    return $x + $y;</span>
+<span class="hilite_blue">}</span>
+
+<span class="hilite_blue">sub divide {</span>
+<span class="hilite_blue">    my $x = shift;</span>
+<span class="hilite_blue">    my $y = shift</span>
+<span class="hilite_blue">      or die &quot;Can&#39;t divide by zero&quot;;</span>
+<span class="hilite_blue">    return $x / $y;</span>
+<span class="hilite_blue">}</span>
+
+<span class="hilite_blue">1;</span>
+
+<span class="hilite_red">=head1 NAME</span>
+
+<span class="hilite_red">Math::Barbie - Math is B&lt;Hard&gt;</span>
+
+<span class="hilite_red">=head1 SYNOPSIS</span>
+
+<span class="hilite_red">    use Math::Barbie;</span>
+
+<span class="hilite_red">    print &quot;2 + 4 = &quot;, add(2, 4);</span>
+<span class="hilite_red">    print &quot;2 / 4 = &quot;, divide(2, 4);</span>
+
+<span class="hilite_red">=head1 DESCRIPTION</span>
+
+<span class="hilite_red">As B&lt;Arithmetic Barbie&gt; has taught us: &quot;I&lt;Math is Hard!&gt;&quot;.</span>
+<span class="hilite_red">C&lt;Math::Barbie&gt; changes all that. It makes doing math as easy as</span>
+<span class="hilite_red">pulling a string.</span>
+
+<span class="hilite_red">=head1 FUNCTIONS</span>
+
+<span class="hilite_red">The following functions are exported by C&lt;Math::Barbie&gt;:</span>
+
+<span class="hilite_red">=over</span>
+
+<span class="hilite_red">=item add()</span>
+
+<span class="hilite_red">Add two arguments and return the result.</span>
+
+<span class="hilite_red">Arguments:</span>
+
+<span class="hilite_red">  $x - First number</span>
+<span class="hilite_red">  $y - Second number</span>
+
+<span class="hilite_red">=item divide()</span>
+
+<span class="hilite_red">Divide the first number by the second number and return the result.</span>
+
+<span class="hilite_red">Arguments:</span>
+
+<span class="hilite_red">  $x - Numerator</span>
+<span class="hilite_red">  $y - Divisor</span>
+
+<span class="hilite_red">=back</span>
+
+<span class="hilite_red">=head1 BUGS</span>
+
+<span class="hilite_red">Math::Barbie currently only supports half of the mathematical functions.</span>
+<span class="hilite_red">C&lt;subtract&gt; and C&lt;multiply&gt; are I&lt;coming real soon now&gt;.</span>
+
+<span class="hilite_red">=head1 SEE ALSO</span>
+
+<span class="hilite_red">L&lt;Math::Ken&gt;</span>
+
+<span class="hilite_red">=head1 AUTHOR</span>
+
+<span class="hilite_red">Ingy döt Net &lt;ingy@cpan.org&gt;</span>
+
+<span class="hilite_red">=head1 COPYRIGHT</span>
+
+<span class="hilite_red">Copyright (c) 2005. Ingy döt Net. All rights reserved.</span>
+
+<span class="hilite_red">This program is free software; you can redistribute it and/or modify it</span>
+<span class="hilite_red">under the same terms as Perl itself.</span>
+
+<span class="hilite_red">See L&lt;http://www.perl.com/perl/misc/Artistic.html&gt;</span>
+
+<span class="hilite_red">=cut</span>
+</pre>
+</pre><small>continued...</small>
+
+</div>
+<!-- BEGIN bottom -->
+<div id="bottombar">
+<table width="100%">
+<tr>
+<td align="left" valign="middle">
+    <div style="display:none">
+    <a accesskey='p' href="slide8.html">&lt; &lt; Previous</a> |
+    <a accesskey='i' href="index.html">Index</a> |
+    <a accesskey='n' href="slide9b.html#end">Next &gt;&gt;</a>
+    </div>
+</td>
+<td align="right" valign="middle">
+    Copyright &copy; 2007 Ingy döt Net
+</td>
+</tr>
+</table>
+</div> 
+<div id="logo"></div>
+<div class="spacer">
+<a name="end"></a>
+</div>
+</body>
+</html>
+
+
+<!-- END slide -->

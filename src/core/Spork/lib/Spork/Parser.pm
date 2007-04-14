@@ -10,14 +10,17 @@ sub create_receiver {
 
 sub create_grammar {
     my $all_phrases = [qw(b i tt hilite)];
-    my $all_blocks = [qw(indent center h2 ul pre p)];
+    my $all_blocks = [qw(color indent center h2 ul pre p)];
     return {
         top => {
             blocks => $all_blocks,
         },
+        color => {
+            match => qr/^\.hilite\n(.*?\n)(?:\.hilite\n|\z)\n?/s,
+        },
         center => {
             blocks => $all_blocks,
-            match => qr/^\.center\n(.*?\n)(?:.center\n|\z)\n?/s,
+            match => qr/^\.center\n(.*?\n)(?:\.center\n|\z)\n?/s,
         },
         indent => {
             blocks => $all_blocks,
@@ -25,7 +28,7 @@ sub create_grammar {
             filter => sub { s/^> *//mg; s/\n+\z/\n/ },
         },
         pre => {
-            match => qr/^(( +.*\S.*\n)+)(?m:^ *\n)*/,
+            match => qr/^(( +.*\n)+)(?m:^ *\n)*/,
             filter => sub { while (not /^\S/m) { s/^ //gm } },
         },
         p => {

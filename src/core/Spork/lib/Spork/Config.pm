@@ -6,6 +6,12 @@ use mixin 'Spoon::Installer';
 
 const class_id => 'config';
 
+sub parse_yaml_file {
+    my $file = shift;
+#     $self->parse_yaml(io($file)->utf8->all);
+    $self->parse_yaml(io($file)->all);
+}
+
 sub default_configs {
     my @configs;
 # 	push @configs, Spork::Config::Default->hash_ref; # first the guesses

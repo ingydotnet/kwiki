@@ -58,8 +58,10 @@ sub divide_content {
     my $content = shift;
     my $translate = '';
     my $image_line;
-    while ($content =~ s/^# ?(.*\n)//m) {
-        $translate .= $1;
+    unless ($self->config->{no_translate}) {
+        while ($content =~ s/^# ?(.*\n)//m) {
+            $translate .= $1;
+        }
     }
     while ($content =~ s/^\.image:(.*\n)//m) {
         $image_line = $1;

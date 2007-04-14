@@ -1,0 +1,33 @@
+<!-- BEGIN slide -->
+[% INCLUDE top.html %]
+<div id="content">
+<div class="top_spacer"></div>
+[% IF translation %]
+<table width="100%" height="400px"><tr>
+<td>
+[% slide_content -%]
+</td>
+<td class="translation">
+[% translation -%]
+</td>
+</tr></table>
+[% ELSIF image %]
+<table width="100%" height="400px"><tr>
+[% IF slide_content %]
+<td>
+[% slide_content -%]
+</td>
+[% END %]
+<td align="center">
+<img src="images/[% image.src %]" [% IF image.width %]width="[% image.width %]px"[% END %]>
+</td>
+</tr></table>
+[% ELSE %]
+[% slide_content -%]
+[% END %]
+[%- UNLESS last -%]
+<small>continued...</small>
+[% END %]
+</div>
+[% INCLUDE bottom.html %]
+<!-- END slide -->
