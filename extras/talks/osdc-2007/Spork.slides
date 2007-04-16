@@ -197,17 +197,17 @@ as |Perl| is to Programming
 ----
 == Kwiki Wiki Creation Instructions
 
-    > kwiki -new ~/Sites/my-wiki
+    > kwiki -new my-wiki
 
-    > vim ~/Sites/my-wiki/plugins
-    > kwiki -update ~/Sites/my-wiki
+    > vim plugins
+    > kwiki -update
 
-    > kwiki -start ~/Sites/my-wiki
+    > kwiki -start
 
 ----
 == Kwiki Software Upgrade Instructions
     > svn up
-
++== Yay!
 ----
 == The Great Kwiki Source Code Reorg
 
@@ -254,24 +254,36 @@ as |Perl| is to Programming
 |index.cgi|
 
     use Kwiki::Boot;
-    Kwiki::Boot->debug->boot->kwiki->process;
+    Kwiki::Boot->boot->kwiki->process;
 
 +|index.fcgi|
 
     use Kwiki::Boot;
     use CGI::Fast;
     while ( my $cgi = CGI::Fast->new ) {
-        Kwiki::Boot->debug->boot->kwiki->process;
+        Kwiki::Boot->boot->kwiki->process;
     }
 
 ----
 == Kwiki Documentation - Doolittle
 
+* Introducing |Doolittle|
+* Let the Community Write the Doc
+* So Ingy can |do little| work
+----
+== Kwiki Documentation - Doolittle
+
 * http://doolittle.kwiki.org
 * Kwiki::Doolittle::Formatter
-** Kwiki::Formatter:Pod
-+* |Pull all POD| out of each module
-+* Symlink into a big Kwiki |database of documentation|
+** Kwiki::Formatter::Pod
+* |Pull all POD| out of each module
+* Symlink into a big Kwiki |database of documentation|
+
+----
+== Kwiki Documentation - Doolittle
+
+* This idea could work for Perl doc itself
++* Or even Plagger
 
 ----
 == Future Kwiki Plans
@@ -295,22 +307,41 @@ as |Perl| is to Programming
 +* Spork is now |moved| into K2
 +* So if you install Kwiki 2.0, then:
 
-    spork -new KwikiAndTheSymlink
+    cd kwiki/trunk/extras/talks/osdc-2007
+    spork -make
+    spork -start
 
 ----
 == Spork::Formatter2
 
-    package Spork::Formatter2;
-    use Spoon::Base -Base;
-    use Spork::Parser;
-    use Spork::Emitter::HTML;
+.hilite
+package Spork::Formatter2;
+use Spoon::Base -Base;
+use Spork::Parser;
+use Spork::Emitter::HTML;
 
-    sub text_to_html {
-        my $text = shift;
-        my $ast = Spork::Parser->new->parse($text);
-        return Spork::Emitter::HTML->new->emit($ast);
-    }
+sub text_to_html {
+    my $text = shift;
+    my $ast = Spork::Parser->new->parse($text);
+    return Spork::Emitter::HTML->new->emit($ast);
+}
 
+        bbbbbbbbbbbbbbbbb 1
+r+ 3-4
+                                  ggggg 8
+                                      gggg 9
++
+r+ 6-10
++
+g+ 6-10
++
+b+ 6-10
+.hilite
+
+----
+* 一
++* 二
++* 茶
 ----
 == Perldoc 2.0
 .image:perldoc2_logo.gif 400
@@ -749,61 +780,11 @@ ggb+ 29
        rr            ggb+ 31-32
 ggb+ 37-41
 ----
-== Kwid for Plain Old Dummies
-.image:dumdum1953.jpg
-
-Pod:
-
-    =head2 Cool Stuff
-    
-    B<This> piece of code for C<Foo::Bar> is I<way cool>.
-    
-        sub way_cool {
-            ...
-        }
-    
-    It is everything you need:
-    
-    =over
-    
-    =item *
-    
-    Fast
-    
-    =item *
-    
-    Quick
-    
-    =item *
-    
-    Speedy
-    
-    =back
-
-----
-== Kwid for Plain Old Dummies
-.image:foo_large.gif
-
-Kwid:
-
-    == Cool Stuff
-    
-    *This* piece of code for `Foo::Bar` is /way cool/.
-    
-        sub way_cool {
-            ...
-        }
-    
-    It is everything you need:
-    
-    * Fast
-    * Quick
-    * Speedy
-
-----
 == Perldoc In Action
 
 * Module Install Does It All
+* Perldoc is self hosting
+* On CPAN Now
 * Perldoc Live Demo
 
 ----
