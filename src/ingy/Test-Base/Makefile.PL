@@ -10,3 +10,4 @@ requires    Test::More => '0.62';
 clean_files 't/output';
 
 WriteAll;
+
