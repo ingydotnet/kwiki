@@ -7,9 +7,9 @@ SYNOPSIS
         # lib/MyProject/Test.pm
         package MyProject::Test;
         use Test::Base -Base;
-    
+
         use MyProject;
-    
+
         package MyProject::Test::Filter;
         use Test::Base::Filter -base;
 
@@ -21,17 +21,17 @@ SYNOPSIS
 
         # t/sample.t
         use MyProject::Test;
-    
+
         plan tests => 1 * blocks;
-    
+
         run_is input => 'expected';
 
         sub local_filter {
             s/my/your/;
         }
-    
+
         __END__
-    
+
         === Test one (the name of the test)
         --- input my_filter local_filter
         my
