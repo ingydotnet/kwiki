@@ -7,7 +7,7 @@ sub new {
 
 sub init {
     my $self = shift;
-    die "You need to override Document::AST::insert";
+    die "You need to override Document::AST::init";
     # $self->{output} = [];
 }
 
