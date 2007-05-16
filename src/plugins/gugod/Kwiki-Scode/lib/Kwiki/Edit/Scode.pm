@@ -13,7 +13,7 @@ sub save {
     $page->content($self->cgi->page_content);
     if ($page->modified_time != $self->cgi->page_time) {
         my $page_uri = $page->uri;
-        return $self->redirect("action=edit_contention&page_id=$page_uri");
+        return $self->redirect("action=edit_contention&page_name=$page_uri");
     }
     $page->update->store if $self->scode_granted;
     return $self->redirect($page->uri);
@@ -52,7 +52,8 @@ __DATA__
 __template/tt2/edit_button.html__
 <!-- BEGIN edit_button.html -->
 [% rev_id = hub.revisions.revision_id %]
-<a href="[% script_name %]?action=edit&page_id=[% page_uri %][% IF rev_id %]&revision_id=[% rev_id %][% END %]" accesskey="e" title="Edit This Page">
+<a href="[% script_name %]?action=edit&page_name=[% page_uri %][% IF rev_id %]&revision_id=[% rev_id %][% END %]" accesskey="e" title="Edit This Page">    
+
 [% INCLUDE edit_button_icon.html %]
 </a>
 <!-- END edit_button.html -->
@@ -85,7 +86,7 @@ function clear_default_content(content_box) {
 
 <br />
 <input type="hidden" name="action" value="edit" />
-<input type="hidden" name="page_id" value="[% page_uri %]" />
+<input type="hidden" name="page_name" value="[% page_uri %]" />
 <input type="hidden" name="page_time" value="[% page_time %]" />
 <textarea name="page_content" rows="25" cols="80" onfocus="clear_default_content(this)">
 [%- page_content -%]
