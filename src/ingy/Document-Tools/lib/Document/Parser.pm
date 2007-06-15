@@ -166,7 +166,12 @@ sub handle_match {
 
 sub subparse {
     my ($self, $func, $match, $type, $filter) = @_;
-    $self->{receiver}->begin_node($type);
+    my $node_type = 
+        exists $self->{grammar}{$type}{type} 
+        ? $self->{grammar}{$type}{type}
+        : $type;
+    $self->{receiver}->begin_node($node_type)
+      if $node_type;
     my $parser = $self->new(
         grammar => $self->{grammar},
         receiver => $self->{receiver}->new,
@@ -176,7 +181,8 @@ sub subparse {
     );
     $parser->$func($type);
     $self->{receiver}->insert($parser->{receiver});
-    $self->{receiver}->end_node($type);
+    $self->{receiver}->end_node($node_type)
+      if $node_type;
 }
 
 #-------------------------------------------------------------------------------

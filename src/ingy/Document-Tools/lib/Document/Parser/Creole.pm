@@ -3,16 +3,11 @@ use base 'Document::Parser';
 
 sub create_grammar {
     my $all_blocks = [
-#         'wafl_block', 'hr',
         'h6', 'h5', 'h4', 'h3', 'h2', 'h1',
-#         'wafl_p',
-        'ul', 'ol', 'in', 'tb', 'p',
-#         'empty_p',
+        'ul', 'ol', 'in', 'p',
     ];
 
     my $all_phrases = [
-#         'wafl_phrase', 'asis', 'wl', 'hl', 'im', 'b_hyper',
-#         'mail', 'b_mail', 'file',
         'tt', 'b', 'i', 's',
     ];
 
@@ -69,54 +64,41 @@ sub create_grammar {
         },
         ul => {
             match => re_list('\*'),
-            blocks => [qw(ul ol li)],
+            blocks => [qw(ul ol subl li)],
             filter => sub { s/^[\*\#] *//mg },
         }, 
         ol => {
             match => re_list('\#'),
-            blocks =>[qw(ul ol li)],
+            blocks => [qw(ul ol subl li)],
             filter => sub { s/^[\*\#] *//mg },
+        },
+        subl => {
+            type => 'li',
+
+            match => qr/^(          # Block must start at beginning
+                                    # Capture everything in $1
+                (.*)\n              # Capture the whole first line
+                [\*\#]+\ .*\n      # Line starting with one or more bullet
+                (?:[\*\#]+\ .*\n)*  # Lines starting with '*' or '#'
+            )(?:\s*\n)?/x,          # Eat trailing lines
+            blocks => [qw(ul ol li2)],
         },
         li => {
             match => qr/(.*)\n/,    # Capture the whole line
             phrases =>$all_phrases,
         },
+        li2 => {
+            type => '',
+            match => qr/(.*)\n/,    # Capture the whole line
+            phrases =>$all_phrases,
+        },
+        
         in => {
             match => qr/^(          # Block must start at beginning
                 (?:>+.*\n)+         # Capture lines starting with '>'
             )(?:\s*\n)?/x,          # Eat trailing empty lines
             blocks => $all_blocks,
             filter => sub { s/^> *//mg },
-        },
-        tb => {
-            match => qr/^           # Block must start at beginning
-            (                       # Capture table in $1
-                (?:\|.*?\|\n)+      # Lines begin & end with '|'
-            )
-            (?:\s*\n)?              # Eat trailing newlines
-            /xs,
-            blocks => ['tr'],
-        },
-        tr => {
-            match => qr/^           # Block must start at beginning
-                (\|.*?\|)\n         # Capture single table row content
-            /xs,
-            blocks => ['td'],
-        },
-        td => {
-            match => qr/^           # Block must match at beginning
-                \|?                 # Possible leading '|'
-                \ *                 # Skip spaces
-                (.*?)               # Capture content
-                \ *                 # Skip trailing spaces
-                \|                  # To ending pipe
-            /xs,
-        },
-        'td-b' => {
-            blocks => $all_blocks,
-        },
-        'td-p' => {
-            phrases => $all_phrases,
         },
         b => {
             phrases => $all_phrases,

@@ -3,7 +3,7 @@ use t::TestDocumentTools tests => 2;
 use Document::Parser::Creole;
 use Document::AST::WikiByte;
 
-no_diff;
+# no_diff;
 filters {
     creole => 'parse_creole',
 };
@@ -19,6 +19,21 @@ run_is creole => 'wikibyte';
 
 
 __DATA__
+=== Sublists are well formed XHTML - Small version
+--- creole
+* Item one.
+** Subitem one.
+--- wikibyte
++ul
++li
+ Item one.
++ul
++li
+ Subitem one.
+-li
+-ul
+-li
+-ul
 === Sublists are well formed XHTML
 --- creole
 = Unordered =
