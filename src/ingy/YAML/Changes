@@ -1,9 +1,10 @@
 ---
 version: 0.63
-date:    Mon Jul 30 04:56:59 IDT 2006
+date:    Wed Jun 20 16:03:22 PDT 2007
 changes:
 - Don't emit nodes blessed into '' in the new tag scheme, and improve semantics
   of loading such nodes.
+- New support for dumping/loading regexps.
 
 ---
 version: 0.62

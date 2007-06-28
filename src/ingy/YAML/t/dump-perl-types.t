@@ -1,4 +1,4 @@
-use t::TestYAML tests => 15;
+use t::TestYAML tests => 16;
 
 filters { perl => ['eval', 'yaml_dump'] };
 
@@ -49,8 +49,14 @@ sub { print "Hello, world\n"; }
 === Regular Expression
 +++ perl: qr{perfect match};
 +++ yaml
---- !!perl/regexp:
-REGEXP: perfect match
+--- !!perl/regexp (?-xism:perfect match)
+
+=== Regular Expression with newline
++++ perl
+qr{perfect
+match}x;
++++ yaml
+--- !!perl/regexp "(?x-ism:perfect\nmatch)"
 
 === Scalar Glob
 +++ perl
@@ -132,8 +138,7 @@ foo: bar
 +++ SKIP
 +++ perl: bless qr{perfect match}, 'A::B::C';
 +++ yaml
---- !!perl/regexp:
-REGEXP: perfect match
+--- !!perl/regexp:A::B::C perfect match
 
 === Blessed Glob
 +++ SKIP

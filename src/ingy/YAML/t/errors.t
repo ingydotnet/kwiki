@@ -1,4 +1,4 @@
-use t::TestYAML tests => 37;
+use t::TestYAML tests => 35;
 $^W = 1;
 
 use YAML::Error;
@@ -327,20 +327,20 @@ foo: bar
 #    ---
 #    foo: *bar
 
-=== YAML_LOAD_WARN_NO_REGEXP_IN_REGEXP 
-+++ error: YAML_LOAD_WARN_NO_REGEXP_IN_REGEXP 
-+++ yaml
----
-- !perl/regexp:
-  foo: bar
-
-=== YAML_LOAD_WARN_BAD_REGEXP_ELEM 
-+++ error: YAML_LOAD_WARN_BAD_REGEXP_ELEM 
-+++ yaml
----
-- !perl/regexp:
-  REGEXP: foo
-  foo: bar
+# === YAML_LOAD_WARN_NO_REGEXP_IN_REGEXP 
+# +++ error: YAML_LOAD_WARN_NO_REGEXP_IN_REGEXP 
+# +++ yaml
+# ---
+# - !perl/regexp:
+#   foo: bar
+# 
+# === YAML_LOAD_WARN_BAD_REGEXP_ELEM 
+# +++ error: YAML_LOAD_WARN_BAD_REGEXP_ELEM 
+# +++ yaml
+# ---
+# - !perl/regexp:
+#   REGEXP: foo
+#   foo: bar
 
 === YAML_LOAD_WARN_GLOB_NAME 
 +++ error: YAML_LOAD_WARN_GLOB_NAME 

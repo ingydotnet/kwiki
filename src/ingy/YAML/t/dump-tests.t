@@ -311,9 +311,7 @@ sake) this test doesn't roundtrip even though the values are equivalent.
 [qr{bozo$}i]
 +++ yaml
 ---
-- !!perl/regexp:
-  REGEXP: bozo$
-  MODIFIERS: i
+- !!perl/regexp (?i-xsm:bozo$)
 
 ===
 +++ perl
