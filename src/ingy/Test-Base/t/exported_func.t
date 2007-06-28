@@ -5,7 +5,7 @@ BEGIN {
     our @EXPORT = qw(func_with_args);
 }
 
-sub func_with_args {
+sub func_with_args() {
     (my ($self), @_) = find_my_self(@_);
     return @_;
 }

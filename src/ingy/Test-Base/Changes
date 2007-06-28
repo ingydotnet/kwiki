@@ -1,4 +1,10 @@
 ---
+version: 0.54
+date:    Wed Nov 29 15:21:02 PST 2006
+changes:
+- Make dependency on Filter::Util::Call explicit in Makefile.PL
+  Thanks to Adriano Ferreira
+---
 version: 0.53
 date:    Wed Nov 29 15:21:02 PST 2006
 changes:
