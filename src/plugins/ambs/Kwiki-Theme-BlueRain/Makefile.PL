@@ -2,7 +2,7 @@ use inc::Module::Install;
 
 name('Kwiki-Theme-BlueRain');
 author('Alberto Simoes');
-abstract('A blue theme.);
+abstract('A blue theme.');
 license('perl');
 version_from('lib/Kwiki/Theme/BlueRain.pm');
 
