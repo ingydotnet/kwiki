@@ -50,3 +50,8 @@ sub add_plugins_files {
         $self->config->add_plugins_file($file);
     }
 }
+
+sub cli_config {
+    push @{$self->config->plugin_classes}, 'Kwiki::Simple::Server::HTTP';
+    return $self;
+}

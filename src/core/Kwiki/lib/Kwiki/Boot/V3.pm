@@ -1,4 +1,4 @@
-package Kwiki::Boot::V1;
+package Kwiki::Boot::V3;
 use Spoon::Boot::Base -Base;
 
 const main_class => 'Kwiki';
@@ -8,16 +8,17 @@ const hub_class => 'Kwiki::Hub';
 sub kwiki { $self->main(@_) }
 
 sub add_configs_files {
+    # TODO Get all config locations from hub->paths
     $self->config->add_file('config.yaml');
-    for my $filepath (glob 'config*.*') {
-        $self->config->add_config($filepath, 1);
-    }
+    my $config = $ENV{KWIKI_LOCAL_CONFIG_LOCATION};
+    $self->config->add_config($config, 1)
+        if $config and -f $config;
 }
 
 sub add_default_classes {
     my $default = {
         cgi_class => 'Kwiki::CGI',
-        command_class => 'Kwiki::Command::V1',
+        command_class => 'Kwiki::Command::V2',
         cookie_class => 'Kwiki::Cookie',
         css_class => 'Kwiki::CSS',
         formatter_class => 'Kwiki::Formatter',
@@ -26,7 +27,7 @@ sub add_default_classes {
         images_class => 'Kwiki::Images',
         javascript_class => 'Kwiki::Javascript',
         pages_class => 'Kwiki::Pages',
-        paths_class => 'Kwiki::Paths::V1',
+        paths_class => 'Kwiki::Paths::V2',
         preferences_class => 'Kwiki::Preferences',
         registry_class => 'Kwiki::Registry',
         template_class => 'Spoon::Template',

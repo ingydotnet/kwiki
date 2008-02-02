@@ -116,6 +116,7 @@ CORE_LEVEL_3 = \
 	Kwiki/Archive/Simple.pm \
 	Kwiki/Boot/V1.pm \
 	Kwiki/Boot/V2.pm \
+	Kwiki/Boot/V3.pm \
 	Kwiki/Command/V1.pm \
 	Kwiki/Command/V2.pm \
 	Kwiki/Files/V1.pm \

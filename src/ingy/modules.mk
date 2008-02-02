@@ -2,6 +2,7 @@ INGY_PATHS = \
 	Class \
 	Document \
 	Document/AST \
+	Document/Parser \
 	IO \
 	IO/All \
 	Module \
@@ -55,6 +56,8 @@ INGY_LEVEL_2 = \
 
 INGY_LEVEL_3 = \
 	Document/AST/Tree.pm \
+	Document/AST/Wikibyte.pm \
+	Document/Parser/Creole.pm \
 	IO/All/Base.pm \
 	IO/All/DBM.pm \
 	IO/All/Dir.pm \
