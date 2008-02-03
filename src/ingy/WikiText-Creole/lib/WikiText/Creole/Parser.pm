@@ -3,7 +3,7 @@ use base 'Document::Parser';
 
 sub create_grammar {
     my $all_blocks = [
-        'h6', 'h5', 'h4', 'h3', 'h2', 'h1',
+         'pre','h6', 'h5', 'h4', 'h3', 'h2', 'h1',
         'ul', 'ol', 'hr', 'p',
     ];
 
@@ -37,6 +37,9 @@ sub create_grammar {
             /x,
             phrases => $all_phrases,
             filter => sub { chomp },
+        },
+        pre => {
+            match => qr/^\{\{\{\n(.*?\n)\}\}\}\n+/s,
         },
         h1 => {
             match => re_header(1),
