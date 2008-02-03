@@ -1,7 +1,7 @@
-use t::TestDocumentTools tests => 2;
+use t::TestDocumentTools tests => 1;
 
 use Document::Parser::Creole;
-use Document::AST::WikiByte;
+use Document::Viewer::HTML;;
 
 # no_diff;
 spec_file 't/lists.data';
@@ -12,9 +12,9 @@ filters {
 
 sub parse_creole {
     my $parser = Document::Parser::Creole->new(
-        receiver => Document::AST::WikiByte->new,
+        receiver => Document::Viewer::HTML->new,
     );
     $parser->parse($_);
 }
 
-run_is creole => 'wikibyte';
+run_is creole => 'html';
