@@ -1,6 +1,5 @@
 package Document::Parser::Creole;
 use base 'Document::Parser';
-use XXX;
 
 sub create_grammar {
     my $all_blocks = [
@@ -112,13 +111,11 @@ sub create_grammar {
             match => qr/\\\\/,
         },
         wikilink => {
-            type => 'a',
+#            type => 'a',
             match => qr/\[\[(.*?)\]\]/,
             filter => sub {
-                my $match = shift;
-                if (s/(.*?)\s*\|\s*(.*)/$2/) {
-                    $match->{href} = $1;
-                }
+                $_[0]->{attributes}{target} =
+                    s/(.*?)\s*\|\s*(.*)/$2/ ? $1 : $_;
             },
         },
 

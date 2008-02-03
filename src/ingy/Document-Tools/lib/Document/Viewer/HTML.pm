@@ -38,12 +38,12 @@ sub uri_escape {
 
 sub begin_node {
     my $self = shift;
-    my $tag = shift;
     my $node = shift;
-    if ($tag eq "a") {
+    my $tag = $node->{type};
+    if ($tag eq "wikilink") {
         $self->{output} .=
             '<a href="' .
-            CGI::Util::escape($node->{href}) .
+            CGI::Util::escape($node->{attributes}{target}) .
             '">';
         return;
     }
@@ -56,9 +56,14 @@ sub begin_node {
 
 sub end_node {
     my $self = shift;
-    my $tag = shift;
+    my $node = shift;
+    my $tag = $node->{type};
     $tag =~ s/-.*//;
     return if ($tag =~ /^(br|hr)$/);
+    if ($tag eq "wikilink") {
+        $self->{output} .= '</a>';
+        return;
+    }
     $self->{output} .= "</$tag>" .
         ($tag =~ /^(p|hr|table|ul|ol|h\d)$/ ? "\n" : "");
 }

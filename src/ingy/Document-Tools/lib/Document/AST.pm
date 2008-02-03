@@ -1,4 +1,6 @@
 package Document::AST;
+use strict;
+use warnings;
 
 sub new {
     my $class = shift;

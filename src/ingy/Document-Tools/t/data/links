@@ -1,5 +1,22 @@
 === Simple Wiki Link
 --- creole
+This is a [[Foo Bar]].
+
+--- html
+<p>This is a <a href="Foo%20Bar">Foo Bar</a>.</p>
+
+--- wikibyte
++p
+ This is a 
++wikilink target="Foo Bar"
+ Foo Bar
+-wikilink
+ .
+-p
+
+
+=== Simple Wiki Link With Label
+--- creole
 This is a [[Link Name|Link Text]].
 
 --- html
@@ -8,7 +25,10 @@ This is a [[Link Name|Link Text]].
 --- wikibyte
 +p
  This is a 
-+wikilink href="Link%20Name"
++wikilink target="Link Name"
  Link Text
 -wikilink
+ .
 -p
+
+

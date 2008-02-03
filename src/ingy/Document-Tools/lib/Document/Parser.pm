@@ -166,7 +166,7 @@ sub handle_match {
 
 sub subparse {
     my ($self, $func, $match, $type, $filter) = @_;
-    my $node_type = 
+    $match->{type} = 
         exists $self->{grammar}{$type}{type} 
         ? $self->{grammar}{$type}{type}
         : $type;
@@ -177,7 +177,6 @@ sub subparse {
     # WikiText, where the link text is passed as $_ and additional
     # attributes are passed as fields in $match.
 
-    # TODO: Modify Makefile.PL to indicate change in API
     my $parser = $self->new(
         grammar => $self->{grammar},
         receiver => $self->{receiver}->new,
@@ -185,12 +184,12 @@ sub subparse {
         ? do { $_ = $match->{text}; &$filter($match); $_ }
         : $match->{text},
     );
-    $self->{receiver}->begin_node($node_type, $match)
-      if $node_type;
+    $self->{receiver}->begin_node($match)
+      if $match->{type};
     $parser->$func($type);
     $self->{receiver}->insert($parser->{receiver});
-    $self->{receiver}->end_node($node_type)
-      if $node_type;
+    $self->{receiver}->end_node($match)
+      if $match->{type};
 }
 
 #-------------------------------------------------------------------------------
