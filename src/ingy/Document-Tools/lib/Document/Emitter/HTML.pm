@@ -2,17 +2,8 @@ package Document::Emitter::HTML;
 use strict;
 use warnings;
 
-use base 'Document::AST';
+use base 'Document::Receiver';
 use CGI::Util;
-
-#sub view {
-#    my ($self, $ast) = @_;
-#}
-
-#sub new {
-#    my $class = shift;
-#    return bless { @_ }, ref($class) || $class;
-#}
 
 sub init {
     my $self = shift;
@@ -40,18 +31,25 @@ sub begin_node {
     my $self = shift;
     my $node = shift;
     my $tag = $node->{type};
-    if ($tag eq "wikilink") {
-        $self->{output} .=
-            '<a href="' .
-            CGI::Util::escape($node->{attributes}{target}) .
-            '">';
-        return;
-    }
-# XXX For tables.
+# XXX For tables maybe...
 #    $tag =~ s/-.*//;
-    $self->{output} .= ($tag =~ /^(br|hr)$/)
-        ? "<$tag />\n"
-        : "<$tag>";
+    $self->{output} .=
+      ($tag =~ /^(br|hr)$/)
+        ? "<$tag />\n" 
+        : ($tag eq "wikilink")
+          ?  $self->begin_wikilink($node)
+          : "<$tag>";
+}
+
+sub begin_wikilink {
+    my $self = shift;
+    my $node = shift;
+    my $tag = $node->{type};
+
+    my $link = $self->{callbacks}{wikilink}
+        ? $self->{callbacks}{wikilink}->($node)
+        : CGI::Util::escape($node->{attributes}{target});
+    return qq{<a href="$link">};
 }
 
 sub end_node {

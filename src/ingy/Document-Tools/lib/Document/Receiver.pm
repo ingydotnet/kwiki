@@ -4,7 +4,10 @@ use warnings;
 
 sub new {
     my $class = shift;
-    my $self = bless { @_ }, ref($class) || $class;
+    my $self = bless {
+        callbacks => ref($class) ? $class->{callbacks} : {},
+        @_
+    }, ref($class) || $class;
 }
 
 sub content {

@@ -52,6 +52,7 @@ INGY_LEVEL_2 = \
 	Script/Hater.pm \
 	Test/Base.pm \
 	WikiText/Creole.pm \
+	WikiText/Creole.pm \
 	Test/YAML.pm \
 	YAML/Base.pm \
 	YAML/Dumper.pm \
@@ -94,6 +95,7 @@ INGY_LEVEL_3 = \
 	Perldoc/Parser/Perldoc.pm \
 	Module/Install/TestBase.pm \
 	Test/Base/Filter.pm \
+	WikiText/Creole/Parser.pm \
 	WikiText/Creole/Parser.pm \
 	YAML/Dumper/Base.pm \
 	YAML/Loader/Base.pm \

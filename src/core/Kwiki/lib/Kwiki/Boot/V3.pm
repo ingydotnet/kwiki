@@ -21,7 +21,7 @@ sub add_default_classes {
         command_class => 'Kwiki::Command::V2',
         cookie_class => 'Kwiki::Cookie',
         css_class => 'Kwiki::CSS',
-        formatter_class => 'Kwiki::Formatter',
+        formatter_class => 'Kwiki::Formatter::V3',
         headers_class => 'Spoon::Headers',
         hooks_class => 'Spoon::Hooks',
         images_class => 'Kwiki::Images',
