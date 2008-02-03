@@ -1,0 +1,34 @@
+=== Simple HR between two paragraphs.
+--- creole
+Hello world.
+
+----
+
+Hello again.
+--- html
+<p>Hello world.</p>
+<hr />
+<p>Hello again.</p>
+
+=== Simple HR between two paragraphs without blank lines.
+--- creole
+Hello world.
+----
+Hello again.
+--- html
+<p>Hello world.
+----
+Hello again.</p>
+
+=== No blank line after HR
+--- creole
+Hello world.
+
+----
+Hello again.
+--- html
+<p>Hello world.</p>
+<hr />
+<p>Hello again.</p>
+
+

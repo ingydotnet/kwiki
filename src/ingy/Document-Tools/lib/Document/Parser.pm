@@ -97,7 +97,7 @@ sub parse_phrases {
     my $self = shift;
     my $container_type = shift;
     my $types = $self->{grammar}{$container_type}{phrases};
-    while (length $self->{input}) {
+    while ($self->{input} and length $self->{input}) {
         my $match;
         for my $type (@$types) {
             my $matched = $self->find_match(matched_phrase => $type) or next;
@@ -170,15 +170,23 @@ sub subparse {
         exists $self->{grammar}{$type}{type} 
         ? $self->{grammar}{$type}{type}
         : $type;
-    $self->{receiver}->begin_node($node_type)
-      if $node_type;
+    # The matched text gets passed to &$filter as $_.  In most cases,
+    # this will be enough. However, $match is also passed as a parameter
+    # to &$filter. This allows us to pass more structured data to the
+    # receiver. For example, you might use this when parsing links in
+    # WikiText, where the link text is passed as $_ and additional
+    # attributes are passed as fields in $match.
+
+    # TODO: Modify Makefile.PL to indicate change in API
     my $parser = $self->new(
         grammar => $self->{grammar},
         receiver => $self->{receiver}->new,
         input => $filter
-        ? do { $_ = $match->{text}; &$filter(); $_ }
+        ? do { $_ = $match->{text}; &$filter($match); $_ }
         : $match->{text},
     );
+    $self->{receiver}->begin_node($node_type, $match)
+      if $node_type;
     $parser->$func($type);
     $self->{receiver}->insert($parser->{receiver});
     $self->{receiver}->end_node($node_type)

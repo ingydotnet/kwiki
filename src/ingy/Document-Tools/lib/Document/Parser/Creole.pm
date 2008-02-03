@@ -1,5 +1,6 @@
 package Document::Parser::Creole;
 use base 'Document::Parser';
+use XXX;
 
 sub create_grammar {
     my $all_blocks = [
@@ -8,7 +9,7 @@ sub create_grammar {
     ];
 
     my $all_phrases = [
-        'b', 'i', 'tt', 'br',
+        'b', 'i', 'tt', 'br', 'wikilink',
     ];
 
     return {
@@ -93,7 +94,7 @@ sub create_grammar {
             phrases =>$all_phrases,
         },
         hr => {
-            match => qr/\ *----\ *\n/,
+            match => qr/^ *----\s*\n/,
         },
         
         b => {
@@ -110,6 +111,17 @@ sub create_grammar {
         br => {
             match => qr/\\\\/,
         },
+        wikilink => {
+            type => 'a',
+            match => qr/\[\[(.*?)\]\]/,
+            filter => sub {
+                my $match = shift;
+                if (s/(.*?)\s*\|\s*(.*)/$2/) {
+                    $match->{href} = $1;
+                }
+            },
+        },
+
     };
 }
 

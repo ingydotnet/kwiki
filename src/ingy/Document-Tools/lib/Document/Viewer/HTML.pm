@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use base 'Document::AST';
+use CGI::Util;
 
 #sub view {
 #    my ($self, $ast) = @_;
@@ -29,24 +30,42 @@ sub insert {
     $self->{output} .= $ast->{output} || '';
 }
 
+sub uri_escape {
+    $_ = shift;
+    s/ /\%20/g;
+    return $_;
+}
+
 sub begin_node {
     my $self = shift;
     my $tag = shift;
-    $tag =~ s/-.*//;
-    $self->{output} .= "<$tag>";
+    my $node = shift;
+    if ($tag eq "a") {
+        $self->{output} .=
+            '<a href="' .
+            CGI::Util::escape($node->{href}) .
+            '">';
+        return;
+    }
+# XXX For tables.
+#    $tag =~ s/-.*//;
+    $self->{output} .= ($tag =~ /^(br|hr)$/)
+        ? "<$tag />\n"
+        : "<$tag>";
 }
 
 sub end_node {
     my $self = shift;
     my $tag = shift;
     $tag =~ s/-.*//;
-    $self->{output} .= "</$tag>";
+    return if ($tag =~ /^(br|hr)$/);
+    $self->{output} .= "</$tag>" .
+        ($tag =~ /^(p|hr|table|ul|ol|h\d)$/ ? "\n" : "");
 }
 
 sub text_node {
     my $self = shift;
     my $text = shift;
-    $text =~ s/\n/\n /g;
     $self->{output} .= "$text";
 }
 

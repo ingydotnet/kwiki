@@ -1,0 +1,14 @@
+=== Simple Wiki Link
+--- creole
+This is a [[Link Name|Link Text]].
+
+--- html
+<p>This is a <a href="Link%20Name">Link Text</a>.</p>
+
+--- wikibyte
++p
+ This is a 
++wikilink href="Link%20Name"
+ Link Text
+-wikilink
+-p
