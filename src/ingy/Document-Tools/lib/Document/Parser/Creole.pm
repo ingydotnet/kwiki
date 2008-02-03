@@ -4,11 +4,11 @@ use base 'Document::Parser';
 sub create_grammar {
     my $all_blocks = [
         'h6', 'h5', 'h4', 'h3', 'h2', 'h1',
-        'ul', 'ol', 'in', 'p',
+        'ul', 'ol', 'hr', 'table', 'p',
     ];
 
     my $all_phrases = [
-        'tt', 'b', 'i', 's',
+        'b', 'i', 'tt', 'br',
     ];
 
     return {
@@ -92,29 +92,23 @@ sub create_grammar {
             match => qr/(.*)\n/,    # Capture the whole line
             phrases =>$all_phrases,
         },
-        
-        in => {
-            match => qr/^(          # Block must start at beginning
-                (?:>+.*\n)+         # Capture lines starting with '>'
-            )(?:\s*\n)?/x,          # Eat trailing empty lines
-            blocks => $all_blocks,
-            filter => sub { s/^> *//mg },
+        hr => {
+            match => qr/\ *----\ *\n/,
         },
+        
         b => {
             phrases => $all_phrases,
-            match => [re_huggy('\*'), re_bracket('\*')],
+            match => regexp('\*\*'),
         },
         i => {
             phrases => $all_phrases,
-            match => [re_huggy('_'), re_bracket('_')],
-        },
-        s => {
-            phrases => $all_phrases,
-            match => [re_huggy('-'), re_bracket('-')],
+            match => regexp('\/\/'),
         },
         tt => {
-            phrases => $all_phrases,
-            match => [re_huggy('`'), re_bracket('`')],
+            match => regexp('{{{', '}}}'),
+        },
+        br => {
+            match => qr/\\\\/,
         },
     };
 }
