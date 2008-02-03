@@ -4,7 +4,7 @@ use base 'Document::Parser';
 sub create_grammar {
     my $all_blocks = [
         'h6', 'h5', 'h4', 'h3', 'h2', 'h1',
-        'ul', 'ol', 'hr', 'table', 'p',
+        'ul', 'ol', 'hr', 'p',
     ];
 
     my $all_phrases = [
@@ -116,26 +116,15 @@ sub create_grammar {
 # Reusable regexp generators used by the grammar
 my $ALPHANUM = '\p{Letter}\p{Number}\pM';
 
-sub re_huggy {
+sub regexp {
     my $brace1 = shift;
     my $brace2 = shift || $brace1;
 
     return qr/
-        (?:^|(?<=[^${ALPHANUM}${brace1}]))  # Start or non-alpha to the left
-        ${brace1}                           # Opening phrase markup
-        (\S[^${brace2}]*)                   # Capture phrase content in $1
-        ${brace2}                           # Closing phrase markup
-        (?=[^{$ALPHANUM}${brace2}]|\z)      # End or non-alpha to the right
-    /x;
-}
-
-sub re_bracket {
-    my $markup = shift;
-    return qr/
-        \{$markup       # Open curly + markup-char
+        ${brace1}       # Opening phrase markup
         (.*?)           # Capture content in $1
-        $markup\}       # Markup-char + closed curly
-    /xs;
+        ${brace2}       # Closing phrase markup
+    /x;
 }
 
 sub re_header {
