@@ -4,6 +4,7 @@ CORE_PATHS = \
 	Kwiki/Boot \
 	Kwiki/Command \
 	Kwiki/Files \
+	Kwiki/Parser \
 	Kwiki/Paths \
 	Kwiki/Theme \
 	Spiffy \
@@ -121,6 +122,7 @@ CORE_LEVEL_3 = \
 	Kwiki/Command/V2.pm \
 	Kwiki/Files/V1.pm \
 	Kwiki/Files/V2.pm \
+	Kwiki/Parser/Creole.pm \
 	Kwiki/Paths/V1.pm \
 	Kwiki/Paths/V2.pm \
 	Kwiki/Theme/Basic.pm \

@@ -1,4 +1,4 @@
-package Document::Viewer::HTML;
+package Document::Emitter::HTML;
 use strict;
 use warnings;
 

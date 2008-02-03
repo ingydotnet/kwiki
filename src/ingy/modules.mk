@@ -2,7 +2,9 @@ INGY_PATHS = \
 	Class \
 	Document \
 	Document/AST \
+	Document/Emitter \
 	Document/Parser \
+	Document/Viewer \
 	IO \
 	IO/All \
 	Module \
@@ -17,6 +19,8 @@ INGY_PATHS = \
 	Script \
 	Test \
 	Test/Base \
+	WikiText \
+	WikiText/Creole \
 	YAML \
 	YAML/Dumper \
 	YAML/Loader \
@@ -29,8 +33,11 @@ INGY_LEVEL_1 = \
 
 INGY_LEVEL_2 = \
 	Class/Field.pm \
-	Document/AST.pm \
 	Document/Parser.pm \
+	Document/Receiver.pm \
+	Document/Tools.pm \
+	Document/Parser.pm \
+	Document/Receiver.pm \
 	Document/Tools.pm \
 	IO/All.pm \
 	Module/Compile.pm \
@@ -44,6 +51,7 @@ INGY_LEVEL_2 = \
 	Perl/Folder.pm \
 	Script/Hater.pm \
 	Test/Base.pm \
+	WikiText/Creole.pm \
 	Test/YAML.pm \
 	YAML/Base.pm \
 	YAML/Dumper.pm \
@@ -58,6 +66,10 @@ INGY_LEVEL_3 = \
 	Document/AST/Tree.pm \
 	Document/AST/Wikibyte.pm \
 	Document/Parser/Creole.pm \
+	Document/Viewer/HTML.pm \
+	Document/AST/Tree.pm \
+	Document/Emitter/HTML.pm \
+	Document/Emitter/Wikibyte.pm \
 	IO/All/Base.pm \
 	IO/All/DBM.pm \
 	IO/All/Dir.pm \
@@ -82,6 +94,7 @@ INGY_LEVEL_3 = \
 	Perldoc/Parser/Perldoc.pm \
 	Module/Install/TestBase.pm \
 	Test/Base/Filter.pm \
+	WikiText/Creole/Parser.pm \
 	YAML/Dumper/Base.pm \
 	YAML/Loader/Base.pm \
 

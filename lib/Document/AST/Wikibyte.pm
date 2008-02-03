@@ -1,1 +1,1 @@
-../../../src/ingy/Document-Tools/lib/Document/AST/Wikibyte.pm
+../../../src/ingy/*/lib/Document/AST/Wikibyte.pm

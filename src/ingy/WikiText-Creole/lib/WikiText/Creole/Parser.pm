@@ -1,4 +1,4 @@
-package Document::Parser::Creole;
+package WikiText::Creole::Parser;
 use base 'Document::Parser';
 
 sub create_grammar {

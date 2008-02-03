@@ -1,4 +1,4 @@
-package Document::AST::WikiByte;
+package Document::Emitter::WikiByte;
 use strict;
 use warnings;
 

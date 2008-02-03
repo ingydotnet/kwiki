@@ -1,1 +1,1 @@
-../../../src/ingy/Document-Tools/lib/Document/Parser/Creole.pm
+../../../src/ingy/*/lib/Document/Parser/Creole.pm
