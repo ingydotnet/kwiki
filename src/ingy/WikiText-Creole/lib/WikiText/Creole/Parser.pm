@@ -41,11 +41,11 @@ sub create_grammar {
             match => qr/^\{\{\{\n(.*?\n)\}\}\}\n+/s,
         },
         table => {
-            match => qr/^((\|.*\n)+)\n*/m,
+            match => qr/^((\|.*\n)+)\n*/,
             blocks => ['tr'],
         },
         tr => {
-            match => qr/^(\|.*\n)/m,
+            match => qr/^(\|.*\n)/,
             blocks => ['td'],
             filter => sub { s/\|\s*$// },
         },
