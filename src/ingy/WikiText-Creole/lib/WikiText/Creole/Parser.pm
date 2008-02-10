@@ -3,7 +3,8 @@ use base 'Document::Parser';
 
 sub create_grammar {
     my $all_blocks = [
-         'pre','h6', 'h5', 'h4', 'h3', 'h2', 'h1',
+        'pre', 'table',
+        'h6', 'h5', 'h4', 'h3', 'h2', 'h1',
         'ul', 'ol', 'hr', 'p',
     ];
 
@@ -27,10 +28,8 @@ sub create_grammar {
                 ((?!(               # Stop at certain blocks
                     ?:[\#\-\*]+\    #   Lists
                 |
-                    [\^\|\>]        # Headings and indents
-                |
-                    \.\w+\s*\n)     # Wafl blocks
-                )
+                    [\=\|]          # Headings and tables
+                ))
                 .*\S.*\n)+          # Otherwise, collect non-empty lines
             )
             (?:\s*\n)?              # Eat trailing newlines
@@ -41,29 +40,37 @@ sub create_grammar {
         pre => {
             match => qr/^\{\{\{\n(.*?\n)\}\}\}\n+/s,
         },
+        table => {
+            match => qr/^((\|.*\n)+)\n*/m,
+            blocks => ['tr'],
+        },
+        tr => {
+            match => qr/^(\|.*\n)/m,
+            blocks => ['td'],
+            filter => sub { s/\|\s*$// },
+        },
+        td => {
+            match => qr/^\|([^\|]*)/,
+            phrases => $all_phrases,
+            filter => sub { s/^\s*(.*?)\s*$/$1/ },
+        },
         h1 => {
             match => re_header(1),
-            phrases => $all_phrases,
         },
         h2 => {
             match => re_header(2),
-            phrases => $all_phrases,
         },
         h3 => {
             match => re_header(3),
-            phrases => $all_phrases,
         },
         h4 => {
             match => re_header(4),
-            phrases => $all_phrases,
         },
         h5 => {
             match => re_header(5),
-            phrases => $all_phrases,
         },
         h6 => {
             match => re_header(6),
-            phrases => $all_phrases,
         },
         ul => {
             match => re_list('\*'),

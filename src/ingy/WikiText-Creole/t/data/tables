@@ -1,0 +1,16 @@
+=== Simple Table
+--- creole
+| X | Y |
+| 1 | 2 |
+
+--- html
+<table>
+<tr>
+<td>X</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+</table>

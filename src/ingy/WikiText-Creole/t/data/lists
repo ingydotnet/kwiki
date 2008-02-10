@@ -14,8 +14,12 @@
 -li
 -ul
 --- html
-<ul><li>Item one.<ul><li>Subitem one.</li></ul>
-</li></ul>
+<ul>
+<li>Item one.<ul>
+<li>Subitem one.</li>
+</ul>
+</li>
+</ul>
 === Sublists are well formed XHTML
 --- creole
 = Unordered =

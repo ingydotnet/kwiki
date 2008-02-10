@@ -1,0 +1,26 @@
+=== Bold
+--- creole
+I **like** Mike.
+--- html
+<p>I <strong>like</strong> Mike.</p>
+
+=== Bold and whitespace
+--- creole
+I** like    **Mike.
+--- html
+<p>I<strong> like    </strong>Mike.</p>
+
+=== Bold in a list
+--- creole
+* **foo**
+--- html
+<ul>
+<li><strong>foo</strong></li>
+</ul>
+
+=== Bold not in a header
+--- creole
+= **foo**
+--- html
+<h1>**foo**</h1>
+

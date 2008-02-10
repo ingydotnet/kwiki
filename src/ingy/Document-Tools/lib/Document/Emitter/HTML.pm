@@ -5,6 +5,12 @@ use warnings;
 use base 'Document::Receiver';
 use CGI::Util;
 
+my $type_tags = {
+    b => 'strong',
+    i => 'em',
+    wikilink => 'a',
+};
+
 sub init {
     my $self = shift;
     $self->{output} = '';
@@ -30,15 +36,17 @@ sub uri_escape {
 sub begin_node {
     my $self = shift;
     my $node = shift;
-    my $tag = $node->{type};
+    my $type = $node->{type};
+    my $tag = $type_tags->{$type} || $type;
 # XXX For tables maybe...
 #    $tag =~ s/-.*//;
     $self->{output} .=
       ($tag =~ /^(br|hr)$/)
         ? "<$tag />\n" 
-        : ($tag eq "wikilink")
+        : ($type eq "wikilink")
           ?  $self->begin_wikilink($node)
-          : "<$tag>";
+          : "<$tag>" .
+            ($tag =~ /^(ul|ol|table|tr)$/ ? "\n" : "");
 }
 
 sub begin_wikilink {
@@ -55,7 +63,8 @@ sub begin_wikilink {
 sub end_node {
     my $self = shift;
     my $node = shift;
-    my $tag = $node->{type};
+    my $type = $node->{type};
+    my $tag = $type_tags->{$type} || $type;
     $tag =~ s/-.*//;
     return if ($tag =~ /^(br|hr)$/);
     if ($tag eq "wikilink") {
@@ -63,7 +72,7 @@ sub end_node {
         return;
     }
     $self->{output} .= "</$tag>" .
-        ($tag =~ /^(p|hr|table|ul|ol|h\d)$/ ? "\n" : "");
+        ($tag =~ /^(p|hr|ul|ol|li|h\d|table|tr|td)$/ ? "\n" : "");
 }
 
 sub text_node {
