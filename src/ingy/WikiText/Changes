@@ -1,4 +1,8 @@
 ---
-version: 0.10
+version: 0.06
+date:    Wed Feb 13 01:47:51 PST 2008
+changes: Turn WikiText.pm into a base class
+---
+version: 0.05
 date:    Mon Feb 11 23:44:02 PST 2008
 changes: Maiden voyage
