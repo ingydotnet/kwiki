@@ -1,7 +1,7 @@
 use lib '../WikiText/lib';
 use t::TestWikiText;
 
-plan tests => 5;
+plan tests => 11;
 
 #no_diff;
 
@@ -13,7 +13,26 @@ filters({wikitext => 'parse_wikitext'});
 run_is 'wikitext' => 'wikibyte';
 
 __DATA__
-=== First Test
+=== Multiline Paragraphs
+
+--- wikitext
+this is a multiline blob of
+text that should be in a
+single paragraph
+
+but this should be alone
+
+--- wikibyte
++p
+ this is a multiline blob of
+ text that should be in a
+ single paragraph
+-p
++p
+ but this should be alone
+-p
+
+=== H1 and Bold
 --- wikitext
 ^ Hello
 
@@ -31,7 +50,7 @@ We are *Devo*.
  .
 -p
 
-=== Second Test
+=== H4 and Bold
 --- wikitext
 ^^^^ Goodbye
 
@@ -72,6 +91,8 @@ this is -strikeout- text, and `monospace` text.
 | *one*|1|
 |two|2|
 
+Some text.
+
 --- wikibyte
 +table
 +tr
@@ -101,6 +122,9 @@ this is -strikeout- text, and `monospace` text.
 -td
 -tr
 -table
++p
+ Some text.
+-p
 
 === Unordered and Ordered Lists
 --- wikitext
@@ -137,4 +161,88 @@ this is -strikeout- text, and `monospace` text.
 -ol
 -li
 -ul
+
+=== Italics and Indented
+--- wikitext
+> This is _italic_ indented text
+> that has more indents
+
+--- wikibyte
++blockquote
++p
+ This is 
++i
+ italic
+-i
+  indented text
+ that has more indents
+-p
+-blockquote
+
+=== Links and Named Links
+--- wikitext
+[Link to a page]
+"other page"[Second link]
+
+--- wikibyte
++p
++a target="Link to a page"
+ Link to a page
+-a
+ 
+ 
++a target="Second link"
+ other page
+-a
+-p
+
+=== pre text
+--- wikitext
+.pre
+no *bold* here
+.pre
+but *bold* here
+
+--- wikibyte
++pre
+ no *bold* here
+ 
+-pre
++p
+ but 
++b
+ bold
+-b
+  here
+-p
+
+=== WAFL Paragraph
+--- wikitext
+{foo: bar}
+
+some text
+--- wikibyte
++waflparagraph function="foo" options="bar"
+-waflparagraph
++p
+ some text
+-p
+
+=== Horizonal Rule
+--- wikitext
+line
+
+----
+
+goes here
+
+--- wikibyte
++p
+ line
+-p
++hr
+-hr
++p
+ goes here
+-p
 

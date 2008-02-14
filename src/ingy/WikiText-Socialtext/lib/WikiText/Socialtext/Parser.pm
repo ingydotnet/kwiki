@@ -3,14 +3,17 @@ use strict;
 use warnings;
 use base 'WikiText::Parser';
 
+# Reusable regexp generators used by the grammar
+my $ALPHANUM = '\p{Letter}\p{Number}\pM';
+
 sub create_grammar {
     my $all_phrases = [
 #        qw(wafl_phrase asis wiki hyper im b_hyper mail b_mail),
-        qw(tt b i del)
+        qw(wikilink tt b i del)
     ];
     my $all_blocks = [
 #        qw(wafl_block hr hx wafl_p ul ol indent table p empty_p)
-        qw(wafl_block hr hx ul ol table p)
+        qw(pre wafl_block hr hx waflparagraph ul ol blockquote table p)
     ];
 
     return {
@@ -26,23 +29,49 @@ sub create_grammar {
         }, 
 
         p => {
-           match =>  qr/(            # Capture whole thing
-                (?:
-                ^(?!        # All consecutive lines *not* starting with
-                (?:
-                    [\#\-\*]+[\ ] |
-                    [\^\|\>] |
-                    \.\w+\s*\n |
-                    \{[^\}]+\}\s*\n
-                )
-                )
-                .*\S.*\n
+           match =>  qr/^(            # Capture whole thing
+                (?m:
+                    ^(?!        # All consecutive lines *not* starting with
+                    (?:
+                        [\#\-\*]+[\ ] |
+                        [\^\|\>] |
+                        \.\w+\s*\n |
+                        \{[^\}]+\}\s*\n
+                    )
+                    )
+                    .*\S.*\n
                 )+
+                )
                 (\s*\n)*   # and all blank lines after
-                )/x,
+            /x,
             phrases => $all_phrases,
             filter => sub { chomp },
         },
+
+        pre => {
+            match => qr/^(?m:^\.pre\ *\n)((?:.*\n)*?)(?m:^\.pre\ *\n)(?:\s*\n)?/,
+        },
+
+        blockquote => {
+            match => qr/^((?m:^>.*\n)+)/,
+            blocks => $all_blocks,
+            filter => sub {
+                s/^>\ //gm;
+            },
+        },
+
+        waflparagraph => {
+            match => qr/^\{(.*)\}[\ \t]*\n(?:\s*\n)?/,
+            filter => sub {
+                my $node = shift;
+                my ($function, $options) = split /[: ]/, $node->{text}, 2;
+                $options =~ s/\s*(.*?)\s*/$1/;
+                $node->{attributes}{function} = $function;
+                $node->{attributes}{options} = $options;
+                undef $_;
+            },
+        },
+
         hx => {
             match => qr/^(\^+) +(.*?)(\s+=+)?\s*?\n+/,
             filter => sub {
@@ -51,16 +80,19 @@ sub create_grammar {
                 $_ = $node->{2};
             },
         },
+
         ul => {
             match => re_list('\*'),
             blocks => [qw(ul ol subl li)],
             filter => sub { s/^[\*\#] *//mg },
         }, 
+
         ol => {
             match => re_list('\#'),
             blocks => [qw(ul ol subl li)],
             filter => sub { s/^[\*\#] *//mg },
         },
+
         subl => {
             type => 'li',
 
@@ -72,18 +104,22 @@ sub create_grammar {
             )(?:\s*\n)?/x,          # Eat trailing lines
             blocks => [qw(ul ol li2)],
         },
+
         li => {
             match => qr/(.*)\n/,    # Capture the whole line
             phrases => $all_phrases,
         },
+
         li2 => {
             type => '',
             match => qr/(.*)\n/,    # Capture the whole line
             phrases => $all_phrases,
         },
+
         hr => {
-            match => qr/^(--+)\s*\n/,
+            match => qr/^--+(?:\s*\n)?/,
         },
+
         table => {
             match => qr/^(
                 (
@@ -93,35 +129,51 @@ sub create_grammar {
                     |
                     (?ms:^\|.*?\|\n)
                 )+
-            )/x,
+            )(?:\s*\n)?/x,
             blocks => ['tr'],
         },
+
         tr => {
             match => qr/^((?m:^\|.*?\|(?:\n| \n(?=\|)|  +\n)))/s,
             blocks => ['td'],
         },
+
         td => {
             match => qr/\|?\s*(.*?)\s*\|\n?/s,
             phrases => $all_phrases,
         },
 
+        wikilink => {
+            type => 'a',
+            match => qr/
+                (?:"([^"]*)"\s*)?(?:^|(?<=[^$ALPHANUM]))\[(?=[^\s\[\]])
+                (.*?)
+                \](?=[^$ALPHANUM]|\z)
+            /x,
+            filter => sub {
+                my $node = shift;
+                $node->{attributes}{target} = $node->{2};
+                $_ = $node->{1} || $node->{2};
+            },
+        },
+
         b => {
             match => re_huggy(q{\*}),
         },
+
         tt => {
             match => re_huggy(q{\`}),
         },
+
         i => {
-            match => re_huggy(q{\/}),
+            match => WikiText::Socialtext::Parser::re_huggy(q{\_}),
         },
+
         del => {
             match => re_huggy(q{\-}),
         },
     };
 }
-
-# Reusable regexp generators used by the grammar
-my $ALPHANUM = '\p{Letter}\p{Number}\pM';
 
 sub re_huggy {
     my $brace1 = shift;
