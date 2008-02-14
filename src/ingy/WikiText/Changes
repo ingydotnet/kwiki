@@ -1,4 +1,10 @@
 ---
+version: 0.07
+date:    Thu Feb 14 01:44:34 PST 2008
+changes:
+  - Support '=' in WikiByte
+  - Make reduction errors smaller
+---
 version: 0.06
 date:    Wed Feb 13 01:47:51 PST 2008
 changes: Turn WikiText.pm into a base class

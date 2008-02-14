@@ -36,6 +36,9 @@ sub end_node {
     my $self = shift;
     my $node = shift;
     my $tag = $node->{type};
+
+    return if $self->{output} =~ s/^\+$tag\n\z/=$tag\n/m;
+
     $tag =~ s/-.*//;
     $self->{output} .= "-$tag\n";
 }

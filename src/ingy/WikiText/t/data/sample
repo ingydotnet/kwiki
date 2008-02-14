@@ -76,4 +76,20 @@ We are Devo.
  The End
 -h1
 
+=== Horizontal Rule
+--- sample
+foo
+
+----
+
+bar
+
+--- wikibyte
++p
+ foo
+-p
+=hr
++p
+ bar
+-p
 

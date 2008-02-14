@@ -45,6 +45,7 @@ MANIFEST			This list of files
 META.yml
 README
 t/data/sample
+t/reduction-error.t
 t/sample_to_html.t
 t/sample_to_wikibyte.t
 t/TestWikiText.pm

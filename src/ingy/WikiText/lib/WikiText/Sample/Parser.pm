@@ -2,7 +2,7 @@ package WikiText::Sample::Parser;
 use base 'WikiText::Parser';
 
 sub create_grammar {
-    my $all_blocks = [ 'h1',  'h2', 'h3', 'p' ];
+    my $all_blocks = [ 'h1',  'h2', 'h3', 'hr', 'p' ];
 
     my $all_phrases = [ 'b', 'i' ];
 
@@ -32,6 +32,9 @@ sub create_grammar {
         },
         h3 => {
             match => re_header(3),
+        },
+        hr => {
+            match => qr/^----\n(?:\s*\n)?/,
         },
         b => {
             phrases => $all_phrases,

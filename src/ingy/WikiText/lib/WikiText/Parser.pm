@@ -139,7 +139,10 @@ sub subparse {
 
 sub reduction_error {
     my $self = shift;
-    return ref($self) . qq[ reduction error for:\n"$self->{input}"];
+    my $input = $self->{input};
+    $input =~ s/^((.*\n){2}).*/$1/;
+    chomp $input;
+    return ref($self) . qq[ reduction error for:\n"$input"];
 }
 
 sub matched_block {
