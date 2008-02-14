@@ -240,8 +240,7 @@ goes here
 +p
  line
 -p
-+hr
--hr
+=hr
 +p
  goes here
 -p

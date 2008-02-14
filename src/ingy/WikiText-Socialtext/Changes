@@ -1,4 +1,8 @@
 ---
+version: 0.07
+date:    Tue Feb 12 21:59:21 PST 2008
+changes: Make tests work with WikiByte =
+---
 version: 0.06
 date:    Tue Feb 12 21:59:21 PST 2008
 changes: Added more parsing constructs
