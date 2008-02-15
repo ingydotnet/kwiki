@@ -1,4 +1,8 @@
 ---
+version: 0.08
+date:    Thu Feb 14 22:24:18 PST 2008
+changes: Account for multiple text events in a row.
+---
 version: 0.07
 date:    Thu Feb 14 01:44:34 PST 2008
 changes:
