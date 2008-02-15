@@ -1,7 +1,7 @@
 use lib '../WikiText/lib';
 use t::TestWikiText;
 
-plan tests => 11;
+plan tests => 19;
 
 #no_diff;
 
@@ -222,8 +222,7 @@ but *bold* here
 
 some text
 --- wikibyte
-+waflparagraph function="foo" options="bar"
--waflparagraph
+=waflparagraph function="foo" options="bar"
 +p
  some text
 -p
@@ -245,3 +244,146 @@ goes here
  goes here
 -p
 
+=== Indents
+--- wikitext
+> 1a
+>> 2a
+>> 2b
+>>> 3a
+> 1b
+
+--- wikibyte
++blockquote
++p
+ 1a
+-p
++blockquote
++p
+ 2a
+ 2b
+-p
++blockquote
++p
+ 3a
+-p
+-blockquote
+-blockquote
++p
+ 1b
+-p
+-blockquote
+
+=== HTTP Links
+--- wikitext
+I love the http://example.com site
+
+I love the "Example"<http://example.com> site
+
+I love the https://example.com site
+--- wikibyte
++p
+ I love the 
++a href="http://example.com"
+ http://example.com
+-a
+  site
+-p
++p
+ I love the 
++a href="http://example.com"
+ Example
+-a
+  site
+-p
++p
+ I love the 
++a href="https://example.com"
+ https://example.com
+-a
+  site
+-p
+
+=== Asis Phrases
+--- wikitext
+This is {{ *not bold*}}. This is two right curlies: {{}}}} and two left: {{{{}}.
+
+--- wikibyte
++p
+ This is  *not bold*. This is two right curlies: }} and two left: {{.
+-p
+
+=== WAFL Phrase
+--- wikitext
+This is a "renamed"{wafly: with options} yo.
+
+--- wikibyte
++p
+ This is a 
++waflphrase function="wafly" options="with options"
+ renamed
+-waflphrase
+  yo.
+-p
+
+=== IM Phrases
+--- wikitext
+* Ingy - aim:ingydotnet
+
+--- wikibyte
++ul
++li
+ Ingy - 
+=im id="ingydotnet" type="aim"
+-li
+-ul
+
+=== Email addresses
+--- wikitext
+My address is foo.bar@baz.quux but email me at <mailto:lala@dooda.blah>.
+
+Otherwise email "Charlie"<charles@bukow.ski>.
+
+--- wikibyte
++p
+ My address is 
++mail address="foo.bar@baz.quux"
+ foo.bar@baz.quux
+-mail
+  but email me at 
++mail address="lala@dooda.blah"
+ lala@dooda.blah
+-mail
+ .
+-p
++p
+ Otherwise email 
++mail address="charles@bukow.ski"
+ Charlie
+-mail
+ .
+-p
+
+=== Empty Lines
+--- wikitext -trim
+
+
+^ Hello
+
+--- wikibyte
++h1
+ Hello
+-h1
+
+=== Nested Phrases
+--- wikitext
+This is both *_Bold and Italic_*
+
+--- wikibyte
++p
+ This is both 
++b
++i
+ Bold and Italic
+-i
+-b
+-p

@@ -6,14 +6,29 @@ use base 'WikiText::Parser';
 # Reusable regexp generators used by the grammar
 my $ALPHANUM = '\p{Letter}\p{Number}\pM';
 
+# These are all stolen from URI.pm
+my $reserved   = q{;/?:@&=+$,[]#};
+my $mark       = q{-_.!~*'()};
+my $unreserved = "A-Za-z0-9\Q$mark\E";
+my $uric       = quotemeta($reserved) . $unreserved . "%";
+my %im_types = (
+    yahoo  => 'yahoo',
+    ymsgr  => 'yahoo',
+    callto => 'callto',
+    skype  => 'callto',
+    callme => 'callto', 
+    aim    => 'aim',
+    msn    => 'msn',
+    asap   => 'asap',
+);
+my $im_re = join '|', keys %im_types;
+
 sub create_grammar {
     my $all_phrases = [
-#        qw(wafl_phrase asis wiki hyper im b_hyper mail b_mail),
-        qw(wikilink tt b i del)
+        qw(waflphrase asis wikilink a im mail tt b i del)
     ];
     my $all_blocks = [
-#        qw(wafl_block hr hx wafl_p ul ol indent table p empty_p)
-        qw(pre wafl_block hr hx waflparagraph ul ol blockquote table p)
+        qw(pre wafl_block hr hx waflparagraph ul ol blockquote table p empty)
     ];
 
     return {
@@ -22,6 +37,14 @@ sub create_grammar {
 
         top => {
             blocks => $all_blocks,
+        },
+
+        empty => {
+            match => qr/^\s*\n/,
+            filter => sub {
+                my $node = shift;
+                $node->{type} = '';
+            },
         },
 
         wafl_block => {
@@ -53,10 +76,10 @@ sub create_grammar {
         },
 
         blockquote => {
-            match => qr/^((?m:^>.*\n)+)/,
+            match => qr/^((?m:^>.*\n)+)(\s*\n)?/,
             blocks => $all_blocks,
             filter => sub {
-                s/^>\ //gm;
+                s/^>\ ?//gm;
             },
         },
 
@@ -65,7 +88,9 @@ sub create_grammar {
             filter => sub {
                 my $node = shift;
                 my ($function, $options) = split /[: ]/, $node->{text}, 2;
-                $options =~ s/\s*(.*?)\s*/$1/;
+                my $replacement = defined $1 ? $1 : '';
+                $options = '' unless defined $options; # protect against an undefined here
+                $options =~ s/\s*(.*?)\s*/$replacement/;
                 $node->{attributes}{function} = $function;
                 $node->{attributes}{options} = $options;
                 undef $_;
@@ -138,6 +163,7 @@ sub create_grammar {
             blocks => ['td'],
         },
 
+        # XXX Need to support blocks in TD
         td => {
             match => qr/\|?\s*(.*?)\s*\|\n?/s,
             phrases => $all_phrases,
@@ -159,6 +185,7 @@ sub create_grammar {
 
         b => {
             match => re_huggy(q{\*}),
+            phrases => $all_phrases,
         },
 
         tt => {
@@ -167,11 +194,94 @@ sub create_grammar {
 
         i => {
             match => WikiText::Socialtext::Parser::re_huggy(q{\_}),
+            phrases => $all_phrases,
         },
 
         del => {
             match => re_huggy(q{\-}),
+            phrases => $all_phrases,
         },
+
+        im => {
+            match => qr/(\b(?:$im_re)\:[^\s\>\)]+)/,
+            filter => sub {
+                my $node = shift;
+                my ($type, $id) = split /:/, $node->{text}, 2;
+                $node->{attributes}{type} = $type;
+                $node->{attributes}{id} = $id;
+                undef $_;
+            },
+        },
+
+        waflphrase => {
+            match => qr/
+                (?:^|(?<=[\s\-]))
+                (?:"(.+?)")?
+                \{
+                ([\w-]+)
+                (?=[\:\ \}])
+                (?:\s*:)?
+                \s*(.*?)\s*
+                \}
+                (?=[^A-Za-z0-9]|\z)
+            /x,
+            filter => sub {
+                my $node = shift;
+                my ($label, $function, $options) = @{$node}{qw(1 2 3)};
+                $label ||= '';
+                $node->{attributes}{function} = $function;
+                $node->{attributes}{options} = $options;
+                $_ = $label;
+            },
+        },
+
+        mail => {
+            match => qr/
+                (?:"([^"]*)"\s*)?
+                <?
+                (?:mailto:)?
+                ([\w+%\-\.]+@(?:[\w\-]+\.)+[\w\-]+)
+                >?
+            /x,
+            filter => sub {
+                my $node = shift;
+                $_ = $node->{1} || $node->{2};
+                $node->{attributes}{address} = $node->{2};
+            },
+        },
+
+        a => {
+            match => qr{
+                (?:"([^"]*)"\s*)?
+                <?
+                (
+                    (?:http|https|ftp|irc|file):
+                    (?://)?
+                    [$uric]+
+                    [A-Za-z0-9/#]
+                )
+                >?
+            }x,
+            filter => sub {
+                my $node = shift;
+                $_ = $node->{1} || $node->{2};
+                $node->{attributes}{href} = $node->{2};
+            },
+        },
+
+        asis => {
+            match => qr/
+                \{\{
+                (.*?)
+                \}\}(\}*)
+            /xs,
+            filter => sub {
+                my $node = shift;
+                $node->{type} = '';
+                $_ = $node->{1} . $node->{2};
+            },
+        },
+
     };
 }
 
