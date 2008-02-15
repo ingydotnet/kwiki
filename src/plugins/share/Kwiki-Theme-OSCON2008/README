@@ -1,0 +1,18 @@
+NAME
+    Kwiki::Theme::OSCON2007 - Kwiki OSCON2007 Theme
+
+SYNOPSIS
+DESCRIPTION
+AUTHOR
+   Based on OSCON2007 theme by OReilly
+
+   Alberto Simoes <ambs@cpan.org>
+
+COPYRIGHT
+    Copyright (c) 2007. Alberto Simoes. All rights reserved.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+    See http://www.perl.com/perl/misc/Artistic.html
+
