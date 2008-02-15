@@ -4,7 +4,10 @@ use warnings;
 
 sub new {
     my $class = shift;
-    return bless { @_ }, ref($class) || $class;
+    return bless {
+        @_,
+        last_event => '',
+    }, ref($class) || $class;
 }
 
 sub init {
@@ -20,7 +23,15 @@ sub content {
 sub insert {
     my $self = shift;
     my $ast = shift;
-    $self->{output} .= $ast->{output} || '';
+    if ($self->{last_event} eq 'text') {
+        chomp $self->{output};
+        my $subtext = $ast->{output} || '';
+        $subtext =~ s/^ //;
+        $self->{output} .= $subtext;
+    }
+    else {
+        $self->{output} .= $ast->{output} || '';
+    }
 }
 
 sub begin_node {
@@ -30,6 +41,7 @@ sub begin_node {
     $tag =~ s/-.*//;
     my $attributes = _get_attributes($node);
     $self->{output} .= "+$tag$attributes\n";
+    $self->{last_event} = 'begin';
 }
 
 sub end_node {
@@ -37,7 +49,9 @@ sub end_node {
     my $node = shift;
     my $tag = $node->{type};
 
-    return if $self->{output} =~ s/^\+$tag\n\z/=$tag\n/m;
+    $self->{last_event} = 'end';
+
+    return if $self->{output} =~ s/^\+$tag\b(.*\n)\z/=$tag$1/m;
 
     $tag =~ s/-.*//;
     $self->{output} .= "-$tag\n";
@@ -47,7 +61,14 @@ sub text_node {
     my $self = shift;
     my $text = shift;
     $text =~ s/\n/\n /g;
-    $self->{output} .= " $text\n";
+    if ($self->{last_event} eq 'text') {
+        chomp $self->{output};
+        $self->{output} .= "$text\n";
+    }
+    else {
+        $self->{output} .= " $text\n";
+    }
+    $self->{last_event} = 'text';
 }
 
 sub _get_attributes {
