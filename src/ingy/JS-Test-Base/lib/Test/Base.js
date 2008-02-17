@@ -12,6 +12,8 @@ proto.init = function() {
     this.state.spec_content = null;
     this.state.filters_map = {};
     this.state.blocks = [];
+    this.block_delim = '===';
+    this.section_delim = '---';
 }
 
 proto.spec = function(url) {
@@ -110,21 +112,23 @@ proto.make_block = function(hunk) {
     block.name = name.replace(/^\s*(.*?)\s*$/, '$1');
 
     var chunks = [];
-    while (hunk.indexOf('\n---') >= 0) {
-        index = hunk.indexOf('\n---') + 1;
+    var delim = this.section_delim;
+    while (hunk.indexOf('\n' + delim) >= 0) {
+        index = hunk.indexOf('\n' + delim) + 1;
         var chunk = hunk.substr(0, index);
         hunk = hunk.substr(index);
         chunks.push(chunk);
     }
     chunks.push(hunk);
 
+    delim = delim.replace(/[\+]/g, '\\+');
     for (var i = 0; i < chunks.length; i++) {
         var chunk = chunks[i];
         index = chunk.indexOf('\n');
         if (index < 0) throw('xxx1');
         var line1 = chunk.substr(0, index);
         var section_data = chunk.substr(index + 1);
-        line1 = line1.replace(/^---\s*/, '');
+        line1 = line1.replace(new RegExp('^' + delim + '\\s*'), '');
         if (! line1.length) throw('xxx2');
         var section_name = '';
         var section_filters = [];
