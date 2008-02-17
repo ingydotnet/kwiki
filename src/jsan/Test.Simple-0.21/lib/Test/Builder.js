@@ -383,12 +383,18 @@ Test.Builder.prototype._isDiag = function (got, op, expect) {
     for (var i = 0; i < args.length; i++) {
         if (args[i] != null) {
             args[i] = op == 'eq' ? "'" + args[i].toString() + "'" : args[i].valueOf();
+
+            args[i] = args[i].replace(/&/g, '&amp;'); 
+            args[i] = args[i].replace(/</g, '&lt;');
+            args[i] = args[i].replace(/>/g, '&gt;');
+            args[i] = args[i].replace(/"/g, '&quot;'); // " end quote for emacs
         }
     }
 
+
     return this.diag(
-        "         got: " + args[0] + Test.Builder.LF +
-        "    expected: " + args[1] + Test.Builder.LF
+        "         got: \"" + args[0] + "\"" + Test.Builder.LF +
+        "    expected: \"" + args[1] + "\"" + Test.Builder.LF
     );
 };
 
@@ -584,7 +590,7 @@ Test.Builder.prototype._setupOutput = function () {
             }
 
             // Default to the normal write and scroll down...
-            doc.write(msg);
+            doc.write("<pre style='margin: 0px'>"+msg+"</pre>");
             // IE 6 Service Pack 2 requires that we re-cache the object. Bill
             // Gates only knows why!
             body = doc.body || doc.getElementsByTagName("body")[0];
@@ -593,7 +599,7 @@ Test.Builder.prototype._setupOutput = function () {
 
         this.output(writer);
         this.failureOutput(function (msg) {
-            writer('<span style="color: red; font-weight: boldvv">'
+            writer('<span style="color: red; font-weight: bold">'
                    + msg + '</span>')
         });
         this.todoOutput(writer);

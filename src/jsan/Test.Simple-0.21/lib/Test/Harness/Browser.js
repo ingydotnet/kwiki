@@ -92,7 +92,8 @@ if (window.parent != window &&
         // Safari makes it impossible to do anything with the iframe if it's
         // set to display:none. See:
         // http://www.quirksmode.org/bugreports/archives/2005/02/hidden_iframes.html
-        if (/Safari/.test(navigator.userAgent)) {
+        //alert(navigator.userAgent);
+        if (/Safari|Konqueror/.test(navigator.userAgent)) {
             node.style.visibility = "hidden";
             node.style.height = "0"; 
             node.style.width = "0";
@@ -107,11 +108,20 @@ if (window.parent != window &&
         var node = document.createElement("pre");
         node.setAttribute("id", "output");
         document.body.appendChild(node);
+        // Brutal hack to make output linkable
+        fixoutput = function(node) {
+            // Trailing space added and replaced to work around yet another
+            // Safari bug.
+            node.innerHTML = node.innerHTML.replace(
+                / ?(\w[\w\.]+?\w)(?=\.\.\.)/m, '<a href="$1">$1</a>'
+            ) + ' ';
+        };
         return {
             pass: function (msg) {
                 node.appendChild(document.createTextNode(msg));
                 window.scrollTo(0, document.body.offsetHeight
                                 || document.body.scrollHeight);
+                fixoutput(node);
             },
             fail: function (msg) {
                 var red = document.createElement("span");
@@ -231,7 +241,7 @@ if (window.parent != window &&
         } else { // if (/\.js$/.test(file)) {
             if (/MSIE/.test(navigator.userAgent)
                 || /Opera/.test(navigator.userAgent)
-                || /Safari/.test(navigator.userAgent))
+                || /Safari|Konqueror/.test(navigator.userAgent))
             {
                 // These browsers have problems with the DOM solution. It
                 // simply doesn't work in Safari, and Opera considers its
