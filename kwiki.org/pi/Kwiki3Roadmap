@@ -1,0 +1,19 @@
+* Bootstrap Kwiki3 onto pi.kwiki.org **(DONE -- February 3, 2008)**
+* Complete [[WikiCreole]] implementation (February 8, 2008)
+** External links
+** More tests
+** Escape attribute function for Wikibyte (+ tests)
+** Document data structures in Document-Tools
+* Support page names with spaces and punctuation
+* Add more plugins to default
+** Kwiki::RecentChanges
+** Kwiki::Archive::Rcs
+** Kwiki::Revisions
+** Kwiki::UserName::Auth
+** Kwiki::Users::Auth
+** Kwiki::Search
+** Kwiki::Breadcrumbs
+** Kwiki::Diff
+** Kwiki::RecentChangesRSS
+** Kwiki::PagePrivacy: to think big, combining Kwiki::UserName::Auth, Kwiki::Users::Auth and Kwiki::PagePrivacy, can provide minimal page privilege management functions.
+* Web-based plugin managing interfaces.

@@ -1,0 +1,16 @@
+== Linebreaks
+
+The double backslash syntax is nice for supporting multiline list items:
+
+{{{
+* Roses are red\\violets are blue
+}}}
+
+However, converting newlines into linebreaks inside of paragraphs just makes sense.
+
+{{{
+Roses are red
+Violets are blue
+}}}
+
+We'll support both.

@@ -1,0 +1,1 @@
+Kwiki3 should be able to store pages in any format.  By default, we'll store pages as [[WikiByte]], which is a nice, assembly language-like, serialization format that is easy to debug and transform.

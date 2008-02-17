@@ -1,0 +1,25 @@
+A [[Transclusion]] is a link whose content is displayed inline.  On the surface, it acts like a cut and paste, except:
+
+* There is a link to the original content
+* The content of the "paste" stays in sync with the original source.  In other words, if the source content changes, so does the transcluded content.
+
+== User Interface
+
+One of the primary challenges with transclusions will be user interface.  Ideally, we'd like to see some interface where you can drag-and-drop the content you're trying to transclude.  This could benefit from a split-screen interface, where you can browse content on one screen and edit it on another.
+
+== Granular Addressability
+
+* Granular identifiers (e.g. [[PurpleNumbers]])
+* Document querying language (e.g. XPath, jQuery)
+
+== Client-Side vs Server-Side
+
+purple-include vs PurpleWiki.
+
+== Use Cases
+
+=== Database-like Queries
+
+Suppose you have pages for SanFrancisco and SanMateo, and on each page, you have restaurant listings. You may want to have a page called BayAreaRestaurants that transcludes the restaurant listings from both pages. A similar use case would be collecting requirements from Use Cases.
+
+TransClusions would be one way to address the challenge, but another would be a [[HyperScope]] view-style approach. In other words, you should be able to say, "Show me these sets of nodes in an outline view on the same page," then be able to manipulate those views in a high-performance way.

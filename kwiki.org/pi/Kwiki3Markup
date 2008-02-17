@@ -1,0 +1,18 @@
+Our strategy for moving forward is to start completely from scratch with markup, using 100% unadulterated [[WikiCreole]] as our starting point, then gradually migrating to [[WikiKreole]] (Creole with our recommended improvements), and finally adding whatever greatness we want to add that Creole doesn't cover.
+
+Unfortunately, it's hard to implement [[WikiCreole]] exactly, because it's a bit underspecified and there are some lingering issues, which we're capturing at [[WikiCreoleIssues]].
+
+Our guidelines for implementing Creole are:
+
+* If it's unimplementable, don't implement it.
+* If it's poorly thought out but implementable, implement it, and do it better in [[WikiKreole]].
+
+== Creole Things We're Not Implementing
+
+* links in any order
+* tildes in unbracketed external links
+* auto-terminating bold, italics, and nowiki at the end of a paragraph. If there's no termination, we won't assume any formatting at all.
+
+== Specification
+
+See http://www.riehle.org/wiki-creole/

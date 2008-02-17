@@ -1,0 +1,35 @@
+This is my current thoughts on Purple addressing and Kwiki. There's a lot to it so I'll jump in.
+
+In the new Kwiki almost all block level things are addressable.
+
+If something is addressable it is transcludable.
+
+Transcludable means it can be used in many contexts.
+
+In new Kwiki all pages are typed, revisioned, immutable nodes.
+
+They have permanent urls. Like {{{http://kwiki.org/nodes/4aq}}}.
+
+In traditional purple wiki a page a bunch of top level blocks, each of which has a nodeid or nid.
+
+The blocks and nids are stored in the page.
+
+This leads to all kinds of trouble in building UIs and managing data.
+
+This leads to talk of storing each nid content separately.
+
+This has problems of its own.
+
+One problem is that maybe you want to transclude 3 adjacent paragraphs as a nid.
+
+----
+
+I am leaning towards a compromise solution:
+
+Pages start as normal pages with several top level blocks but no nids.
+
+Anything on the page is transcludable, using a jQuery-esque selector syntax.
+
+Any part (set of top level blocks) of the page can be extracluded. At that point it defacto gets a nid, which is of course, transcludable.
+
+This keeps the model clean. Tools can be built to easily explode/extraclude pages. Everything is still transcludable, even more so using selection instead of nid. Nids get introduced when they need to, instead of by default. This last part may raise contention in the Church of Purple, but I think this course is worth exploring.

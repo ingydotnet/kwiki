@@ -1,0 +1,1 @@
+* Parser dies when there's a newline enclosed in double brackets (i.e. a link)

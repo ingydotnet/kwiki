@@ -1,0 +1,25 @@
+== Kwiki is a Wiki
+
+In the past, the main focus of Kwiki was to be this Cowboy Framework. Anybody could write a plugin and it should JustWork with any other plugins.
+
+That's still a good idea but now I want to start building wiki features into Kwiki.
+
+== Let Kwiki Be Kwiki
+
+Kwiki 2 did important work to all Kwiki 1 to still work while making massive changes to certain things.
+
+Kwiki 3 will make these massive changes.
+
+I want to end up where most/many of the old plugins still work. Many plugins will go away simply because they will become core features.
+
+== Pages are REST Objects
+
+Pages and other useful objects in the system will all be available via RESTful uris.
+
+== Pages are available in many wikitext formats.
+
+Pages are pages. The wikitext doesn't matter. You can request/store any page in any supported wikitext format. Like mediawiki, creole or classic kwiki.  See [[Kwiki3Markup]].
+
+== Transclusions Rock
+
+We want to support [[Transclusion]]s, because they're bad ass and useful.

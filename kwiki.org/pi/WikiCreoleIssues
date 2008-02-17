@@ -1,0 +1,58 @@
+== Escape Character ({{{~}}})
+
+Creole [[http://www.wikicreole.org/wiki/Creole1.0#section-Creole1.0-EscapeCharacter|specifies]] tilde as an escape character, which escapes the succeeding character.  However, tildes are common usage inside of URLs.  With this format, this URL:
+
+{{{
+http://ingy.net/~ingy/
+}}}
+
+would not parse as a URL in its entirety.  We're assuming that:
+
+{{{
+[[http://ingy.net/~ingy/]]
+}}}
+
+will, although it's not explicitly specified.
+
+== Whitespace and Linebreaks
+
+What happens to whitespace before and after a [[http://www.wikicreole.org/wiki/Creole1.0#section-Creole1.0-LineBreaks|line break]] ({{{\\}}})?  Creole underspecifies this.
+
+== Whitespace and Lists
+
+Creole allows whitespace before and after the [[http://www.wikicreole.org/wiki/Creole1.0#section-Creole1.0-Lists|list character]] (either {{{*}}} or {{{#}}}).  This makes little sense.  It seems like it was done to accomodate Wikis like MoinMoin, which use whitespace to determine list nesting:
+
+{{{
+  * list item 1
+    * sublist item 1
+}}}
+
+This would also be legal Creole.  However, it would parse this as a single list rather than a nested list, which is what a MoinMoin user would expect.  Since they would have to modify their list format anyway, it's better not to allow the whitespace before the list character.
+
+== Nowiki and Preformatting
+
+The Nowiki [[http://www.wikicreole.org/wiki/Creole1.0#section-Creole1.0-NowikiPreformatted|section title]] in the spec suggests that Nowiki content should be preformatted.  However, the spec itself says that this is optional.  Underspecifying does not do anyone any favors.  It looks like this may get [[http://www.wikicreole.org/wiki/CreoleAdditions#section-CreoleAdditions-Monospace|addressed]] in future versions of the spec.
+
+== Terminating Paragraphs
+
+Lists, tables, and nowiki blocks can terminate paragraphs.  So should hr.
+
+== hr
+
+Does hr need blank line to terminate it?  Spec doesn't say, so we assume it doesn't.
+
+== Links
+
+Order does not matter when specifying links and text.  What if it's ambiguous?  Not specified.
+
+== Images
+
+image: prefix can be used in link syntax to specify images.  However, that conflicts with "image:" being the prefix in a page name.  For example, Wikimedia Commons.
+
+== Terminating Formatting
+
+{{{
+foo **bar baz
+}}}
+
+will bold "bar baz".  That's lame.  Also, check out nesting in the [[http://www.wikicreole.org/wiki/Creole1.0#section-Creole1.0-italics|spec]].  Looks like the spec has a bug in how it describes legal nesting.

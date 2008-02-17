@@ -1,0 +1,7 @@
+Creole is a common Wiki markup language meant to be used across different Wikis. It is an amalgamation of Wiki markups that has become a markup in its own right, and it's designed to be compatible with many existing Wiki markups.
+
+We've decided to start with [[WikiCreole]], because it's great for the community, and it's TheRightThingToDo.  We're capturing issues we run across at [[WikiCreoleIssues]] and our recommendations for future versions of Creole at [[WikiKreole]].
+
+== References
+
+* [[http://www.wikicreole.org/|WikiCreole Homepage]]

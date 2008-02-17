@@ -1,0 +1,25 @@
+Kwiki (V1) was originally envisioned to be a Perl based Wiki system where each component of the system was a plugin, and plugins could do just about anything.
+
+----
+
+In KwikiV3, plugins are still very important, but we want to build a more solid foundation, so that people can build even better plugins.
+
+V3 Has the following design goals:
+
+= Kwiki is a Wiki
+
+In the past, Kwiki was pretty much about experimentation in the guise of being a wiki. In the future, Kwiki will focus on being a very solid wiki for people who simply want a great wiki.
+
+= Kwiki is Markup Agnostic
+
+All wikis seem to have their own WikiTextMarkup. WikiCreole is an attempt to make a standard. Kwiki just has WikiPages. You can request these pages in any number of formats including:
+
+* XHTML
+* WikiwygHtml
+* KwikiV1Format
+* KwikiV3Format
+* MediaWikiFormat
+
+etc...
+
+You can edit and store pages in any of these formats. Kwiki will be the first wiki to serve pages in any format.
