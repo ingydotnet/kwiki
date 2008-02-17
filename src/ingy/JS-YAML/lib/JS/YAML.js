@@ -36,7 +36,7 @@ if (! this.YAML) {
     }
 }
 
-YAML.VERSION = '0.10';
+YAML.VERSION = '0.11';
 
 YAML.dump = function() {
     var yaml = new YAML();
