@@ -160,7 +160,6 @@ sub is_kwiki_dir {
 }
 
 sub handle_update {
-    die;
     chdir io->dir(shift || '.')->assert->open . '';
     die "Can't update non Kwiki directory!\n"
       unless -d 'plugin';

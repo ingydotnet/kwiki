@@ -241,6 +241,7 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Edit/TypeKeyRequired.pm \
 	Kwiki/Users/TypeKey.pm \
 	Kwiki/Formatter/Socialtext.pm \
+	Kwiki/Theme/OSCON2008.pm \
 	Kwiki/Theme/OSCON.pm \
 
 PLUGINS_LEVEL_4 = \
