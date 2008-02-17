@@ -1,11 +1,11 @@
 Changes
-examples/Foo-Bar/Changes
-examples/Foo-Bar/lib/JS/Foo/Bar.js
-examples/Foo-Bar/lib/JS/Foo/Bar.pod
-examples/Foo-Bar/Makefile.PL
-examples/Foo-Bar/MANIFEST
-examples/Foo-Bar/README
-examples/Foo-Bar/t/test.t
+examples/JS-Foo-Bar/Changes
+examples/JS-Foo-Bar/lib/JS/Foo/Bar.js
+examples/JS-Foo-Bar/lib/JS/Foo/Bar.pod
+examples/JS-Foo-Bar/Makefile.PL
+examples/JS-Foo-Bar/MANIFEST
+examples/JS-Foo-Bar/README
+examples/JS-Foo-Bar/t/test.t
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
@@ -28,4 +28,5 @@ lib/JS.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml
+README
 t/test.t
