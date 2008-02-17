@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+use JS;
+use strict;
+use warnings;
+
+JS->new->run;
