@@ -4,7 +4,7 @@ YAML - YAML Data Serialization for JavaScript
 DESCRIPTION:
 
 This library defines the YAML.dump function which can be used to serialize
-JavaScript nodes in YAML.
+some JavaScript nodes in YAML.
 
 AUTHORS:
 
@@ -12,7 +12,7 @@ AUTHORS:
 
 COPYRIGHT:
 
-Copyright Ingy döt Net 2007. All rights reserved.
+Copyright Ingy döt Net 2007, 2008.
 
 YAML.js is free software. 
 
