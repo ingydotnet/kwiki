@@ -1,17 +1,32 @@
-= Kwiki 3 Begins
+= The Kwiki Hacker Development Wiki
+
+Welcome to the Kwiki V3 hacker's wiki. [[WhatIsV3]]? Read up.
+
+This wiki is pretty much specific to V3 stuff.
+
+= Kwiki Events
 
 * [[KwikiHackathon]]
-* [[Kwiki3DesignGoals]]
-* [[Kwiki3Roadmap]]
+
+= General Kwiki V3 Information
+
+* [[KwikiDesignGoals]]
+* [[KwikiRoadmap]]
+
+= Kwiki Kommunity
+
+* IRC: #kwiki on irc.freenode.net
 * [[http://irc.kwiki.org/|#kwiki IRC logs]]
 
-* [[Kwiki3Markup]]
-* [[Kwiki3Database]]
+----
+
+* [[KwikiMarkup]]
+* [[KwikiDatabase]]
 * [[KwikiCreoleFormatter]]
 * [[PurpleAdressability]]
 
-== Code
+= Kwiki Kode
 
 http://svn.kwiki.org/kwiki/trunk/
 
-* [[Kwiki3Bugs]]
+* [[KwikiBugs]]
