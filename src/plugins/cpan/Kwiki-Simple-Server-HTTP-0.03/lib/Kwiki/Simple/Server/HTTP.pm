@@ -17,6 +17,8 @@ sub handle_start {
     my $port = shift || $self->hub->config->simple_server_http_port;
     $self->destroy_hub;
     my $server = HTTP::Server::Simple::Kwiki->new($port);
+    $server->background();
+    warn $$, "\n";
     $server->run();
 }
 

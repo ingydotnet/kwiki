@@ -19,13 +19,19 @@ INGY_PATHS = \
 	Test/Base \
 	WikiText \
 	WikiText/Creole \
+	WikiText/HTML \
+	WikiText/Sample \
+	WikiText/Socialtext \
+	WikiText/WikiByte \
 	YAML \
 	YAML/Dumper \
 	YAML/Loader \
 
 INGY_LEVEL_1 = \
+	JS.pm \
 	Perldoc.pm \
 	WikiByte.pm \
+	WikiText.pm \
 	XXX.pm \
 	YAML.pm \
 
@@ -47,6 +53,28 @@ INGY_LEVEL_2 = \
 	Script/Hater.pm \
 	Test/Base.pm \
 	WikiText/Creole.pm \
+	WikiText/Creole.pm \
+	WikiText/DokuWiki.pm \
+	WikiText/HTML.pm \
+	WikiText/Kwiki.pm \
+	WikiText/MediaWiki.pm \
+	WikiText/MoinMoin.pm \
+	WikiText/OddMuse.pm \
+	WikiText/Parser.pm \
+	WikiText/PBWiki.pm \
+	WikiText/Pod.pm \
+	WikiText/PurpleWiki.pm \
+	WikiText/Receiver.pm \
+	WikiText/Sample.pm \
+	WikiText/Socialtext.pm \
+	WikiText/TiddlyWiki.pm \
+	WikiText/Trac.pm \
+	WikiText/TWiki.pm \
+	WikiText/UseMod.pm \
+	WikiText/Wifty.pm \
+	WikiText/WikiByte.pm \
+	WikiText/Wikiwyg.pm \
+	WikiText/Socialtext.pm \
 	Test/YAML.pm \
 	YAML/Base.pm \
 	YAML/Dumper.pm \
@@ -86,6 +114,10 @@ INGY_LEVEL_3 = \
 	Module/Install/TestBase.pm \
 	Test/Base/Filter.pm \
 	WikiText/Creole/Parser.pm \
+	WikiText/HTML/Emitter.pm \
+	WikiText/Sample/Parser.pm \
+	WikiText/WikiByte/Emitter.pm \
+	WikiText/Socialtext/Parser.pm \
 	YAML/Dumper/Base.pm \
 	YAML/Loader/Base.pm \
 

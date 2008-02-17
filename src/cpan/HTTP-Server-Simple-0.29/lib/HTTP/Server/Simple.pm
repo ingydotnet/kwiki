@@ -217,7 +217,7 @@ sub background {
     my $self  = shift;
     my $child = fork;
     die "Can't fork: $!" unless defined($child);
-    return $child if $child;
+    return $child unless $child;
 
     if ( $^O !~ /MSWin32/ ) {
         require POSIX;

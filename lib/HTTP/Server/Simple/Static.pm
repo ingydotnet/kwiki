@@ -1,1 +1,1 @@
-../../../../src/cpan/HTTP-Server-Simple-Static-0.05/lib/HTTP/Server/Simple/Static.pm
+../../../../src/cpan/HTTP-Server-Simple-Static-0.06/lib/HTTP/Server/Simple/Static.pm
