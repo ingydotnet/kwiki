@@ -4,7 +4,7 @@ use warnings;
 use File::Find;
 use 5.005.003;
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 sub new {
     my $class = shift;
@@ -76,7 +76,7 @@ JS - JavaScript Modules on CPAN
 
 Some JavaScript modules can be installed from CPAN. This module comes
 with a utility called C<js-cpan> that helps you find JavaScript modules
-that have been installed on you system so that you can use them in
+that have been installed on your system so that you can use them in
 various projects.
 
 =head1 EXPLANATION
@@ -89,30 +89,32 @@ For example, the basic file layout is similar, the Test::Harness and
 Test::Simple framework has been ported to JSAN, and most modules use
 Makefiles to set things up.
 
-The Open JSAN project offers the tip off the iceberg in terms of being a
-CPAN for JavaScript. However it has a long way to go and not a lot of
-community to get it there.
+The Open JSAN project offers the tip off the iceberg in terms of
+being a CPAN for JavaScript. However it has a long way to go and not
+a lot of community to get it there. CPAN is a good place to put
+JavaScript modules.
 
 Many projects require JavaScript components these days, and it would be
 nice to simply list them in the META.yml of your Perl project
 distributions.
 
-There is a simple way to package non-Perl components into Perl/CPAN
+There is a dead simple way to package non-Perl components into Perl/CPAN
 distributions. The components get installed in your Perl system but do
 not affect Perl in any other way.
 
-JS is a module to explain and help maintain the JavaScript modules
+JS.pm is a module to explain and help maintain the JavaScript modules
 installed from CPAN.
 
-Some module distributions will have both Perl and JavaScript components.
-Others will have only JavaScript components. All JavaScript modules and
-JavaScript module distributions should have a top-level-namespace of 'JS'.
+Some module distributions will have both Perl and JavaScript
+components. Others will have only JavaScript components. All JavaScript
+modules and JavaScript-only distributions should have a top-level-namespace
+of 'JS'.
 
 =head1 JS MODULE AUTHOR HOWTO
 
 It turns out that Perl's ExtUtils::MakeMaker will install *any*
-files that you put in the C<lib/> directory, into your perl's
-sitelib. So setting up a JavaScript distribution is very similar to
+files that you put in the C<lib/> directory, into your C<perl>'s
+C<sitelib>. So setting up a JavaScript distribution is very similar to
 setting on a Perl one.
 
 Say you have a JavaScript module called C<Foo.Bar>. First create a
@@ -145,8 +147,8 @@ Now just run these commands:
 
 That's it. You've joined the revolution. :)
 
-NOTE: There is a working sample JavaScript module shipped with C<JS.pm>
-      in the C<examples/Foo-Bar> directory.
+NOTE: There is a working example JavaScript module shipped with C<JS.pm>
+      in the C<examples/JS-Foo-Bar> directory.
 
 =head1 AUTHOR
 
