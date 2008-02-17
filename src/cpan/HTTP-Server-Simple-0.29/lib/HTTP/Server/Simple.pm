@@ -1,13 +1,14 @@
-package HTTP::Server::Simple;
 use strict;
 use warnings;
+
+package HTTP::Server::Simple;
 use FileHandle;
 use Socket;
 use Carp;
 use URI::Escape;
 
 use vars qw($VERSION $bad_request_doc);
-$VERSION = '0.27';
+$VERSION = '0.29';
 
 
 =head1 NAME
@@ -58,13 +59,12 @@ By default, the server traps a few signals:
 
 =item HUP
 
-When you C<kill -HUP> the server, it does its best to rexec
-itself.  Please note that in order to provide restart-on-SIGHUP,
-HTTP::Server::Simple sets a SIGHUP handler during initialisation. If
-your request handling code forks you need to make sure you reset this
-or unexpected things will happen if somebody sends a HUP to all running
-processes spawned by your app (e.g. by "kill -HUP <script>")
-
+When you C<kill -HUP> the server, it lets the current request finish being
+processed, then uses the C<restart> method to re-exec itself. Please note that
+in order to provide restart-on-SIGHUP, HTTP::Server::Simple sets a SIGHUP
+handler during initialisation. If your request handling code forks you need to
+make sure you reset this or unexpected things will happen if somebody sends a
+HUP to all running processes spawned by your app (e.g. by "kill -HUP <script>")
 
 =item PIPE
 
@@ -73,6 +73,60 @@ it ignores the signal. Otherwise, a client closing the connection early
 could kill the server
 
 =back
+
+=head1 EXAMPLE
+ 
+ #!/usr/bin/perl
+ {
+ package MyWebServer;
+ 
+ use HTTP::Server::Simple::CGI;
+ use base qw(HTTP::Server::Simple::CGI);
+ 
+ my %dispatch = (
+     '/hello' => \&resp_hello,
+     # ...
+ );
+ 
+ sub handle_request {
+     my $self = shift;
+     my $cgi  = shift;
+   
+     my $path = $cgi->path_info();
+     my $handler = $dispatch{$path};
+ 
+     if (ref($handler) eq "CODE") {
+         print "HTTP/1.0 200 OK\r\n";
+         $handler->($cgi);
+         
+     } else {
+         print "HTTP/1.0 404 Not found\r\n";
+         print $cgi->header,
+               $cgi->start_html('Not found'),
+               $cgi->h1('Not found'),
+               $cgi->end_html;
+     }
+ }
+ 
+ sub resp_hello {
+     my $cgi  = shift;   # CGI.pm object
+     return if !ref $cgi;
+     
+     my $who = $cgi->param('name');
+     
+     print $cgi->header,
+           $cgi->start_html("Hello"),
+           $cgi->h1("Hello $who!"),
+           $cgi->end_html;
+ }
+ 
+ } 
+ 
+ # start the server on port 8080
+ my $pid = MyWebServer->new(8080)->background();
+ print "Use 'kill $pid' to stop server.\n";
+
+=head1 METHODS 
 
 =head2 HTTP::Server::Simple->new($port)
 
@@ -182,34 +236,14 @@ start listening for http requests.
 
 my $server_class_id = 0;
 
+use vars '$SERVER_SHOULD_RUN';
+$SERVER_SHOULD_RUN = 1;
+
 sub run {
     my $self   = shift;
     my $server = $self->net_server;
 
-    # Handle SIGHUP
-
     local $SIG{CHLD} = 'IGNORE';    # reap child processes
-    local $SIG{HUP} = sub {
-
-        # XXX TODO: Autrijus says this code was incorrect when he wrote
-        # it and we should move to the sample code from perldoc perlipc
-        close HTTPDaemon;
-
-        # and then, on systems implementing fork(), we make sure
-        # we are running with a new pid, so another -HUP will still
-        # work on the new process.
-        require Config;
-        if ( $Config::Config{d_fork} and my $pid = fork() ) {
-
-            # finally, allow ^C on the parent process to terminate
-            # the children.
-            waitpid( $pid, 0 );
-            exit;
-        }
-
-        # do the exec. if $0 is not executable, try running it with $^X.
-        exec {$0}( ( ( -x $0 ) ? () : ($^X) ), $0, @ARGV );
-    } if exists $SIG{'HUP'};
 
     # $pkg is generated anew for each invocation to "run"
     # Just so we can use different net_server() implementations
@@ -229,6 +263,8 @@ sub run {
 	$self->after_setup_listener();
         *{"$pkg\::run"} = $self->_default_run;
     }
+
+    local $SIG{HUP} = sub { $SERVER_SHOULD_RUN = 0; };
 
     $pkg->run( port => $self->port );
 }
@@ -252,7 +288,7 @@ sub _default_run {
 
         $self->print_banner;
 
-        while (1) {
+        while ($SERVER_SHOULD_RUN) {
             local $SIG{PIPE} = 'IGNORE';    # If we don't ignore SIGPIPE, a
                  # client closing the connection before we
                  # finish sending will cause the server to exit
@@ -270,8 +306,37 @@ sub _default_run {
                 close $remote;
             }
         }
+
+        # Got here? Time to restart, due to SIGHUP
+        $self->restart;
     };
 }
+
+=head2 restart
+
+Restarts the server. Usually called by a HUP signal, not directly.
+
+=cut
+
+sub restart {
+    my $self = shift;
+
+    close HTTPDaemon;
+
+    $SIG{CHLD} = 'DEFAULT';
+    wait;
+
+    ### if the standalone server was invoked with perl -I .. we will loose
+    ### those include dirs upon re-exec. So add them to PERL5LIB, so they
+    ### are available again for the exec'ed process --kane
+    use Config;
+    $ENV{PERL5LIB} .= join $Config{path_sep}, @INC;
+
+    # Server simple
+    # do the exec. if $0 is not executable, try running it with $^X.
+    exec {$0}( ( ( -x $0 ) ? () : ($^X) ), $0, @ARGV );
+}
+
 
 sub _process_request {
     my $self = shift;
@@ -635,13 +700,15 @@ sub valid_http_method {
 
 =head1 AUTHOR
 
-Copyright (c) 2004-2006 Jesse Vincent, <jesse@bestpractical.com>.
+Copyright (c) 2004-2008 Jesse Vincent, <jesse@bestpractical.com>.
 All rights reserved.
 
 Marcus Ramberg <drave@thefeed.no> contributed tests, cleanup, etc
 
 Sam Vilain, <samv@cpan.org> contributed the CGI.pm split-out and
 header/setup API.
+
+Example section by almut on perlmonks, suggested by Mark Fuller.
 
 =head1 BUGS
 
