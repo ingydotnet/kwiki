@@ -18,11 +18,13 @@ sub handle_request {
   if ($url =~ /\.(jpg|gif|png|css|javascript)$/) {
     $self->serve_static($cgi, ".");
   } else {
-    my $capture = IO::Capture::Stdout->new();
-    $capture->start();
-    Kwiki::Boot->debug->boot->kwiki->process;
-    $capture->stop();
-    my $output = join '', $capture->read;
+    my $output = '';
+    open my $fh, '>', \$output or die "Can't open: $!";
+    {
+        my $old_fh = select $fh;
+        Kwiki::Boot->debug->boot->kwiki->process;
+        select $old_fh;
+    }
 
     if ($output =~ m{^Status: 302}) {
 #         warn "302\n$output\n";
