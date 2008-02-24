@@ -1,0 +1,35 @@
+=head1 NAME
+
+Kwiki::OpenID - OpenID authentication for Kwiki
+
+=head1 SYNOPSIS
+
+ $ $EDITOR plugins
+ # Kwiki::UserName
+ Kwiki::Session
+ Kwiki::OpenID
+ Kwiki::Edit::OpenID # Optional, recommended
+ 
+ $ $EDITOR
+ users_class: Kwiki::Users::OpenID
+ script_name: http://wiki.example.com/index.cgi
+
+ $ kwiki-update
+
+=head1 DESCRIPTION
+
+Kwiki::OpenID is a Kwiki User Authentication plugin to use the OpenID
+distributed identity system.
+
+=head1 SEE ALSO
+
+L<Kwiki::Edit::RequireUserName, L<Kwiki::Users::Remote>
+
+=head1 AUTHOR
+
+Florian Merges E<lt>fmerges@cpan.orgE<gt>
+
+inspired by L<Kwiki::TypeKey>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
