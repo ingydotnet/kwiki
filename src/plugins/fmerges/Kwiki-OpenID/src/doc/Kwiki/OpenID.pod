@@ -23,7 +23,7 @@ distributed identity system.
 
 =head1 SEE ALSO
 
-L<Kwiki::Edit::RequireUserName, L<Kwiki::Users::Remote>
+L<Kwiki::Edit::RequireUserName>, L<Kwiki::Users::Remote>
 
 =head1 AUTHOR
 
