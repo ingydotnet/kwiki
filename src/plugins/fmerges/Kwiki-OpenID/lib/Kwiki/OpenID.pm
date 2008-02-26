@@ -53,7 +53,6 @@ sub login_openid {
 
         my $nonce_pattern = $self->config->consumer_secret;
         my $nonce = md5(sprintf($nonce_pattern, time, (stat $0)[9], -s _, $session->id));
-        warn "NONCE : [$nonce]";
         $session->param('nonce', $nonce);
 
         my $script_name = $self->config->script_name;
