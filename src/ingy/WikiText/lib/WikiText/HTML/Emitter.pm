@@ -2,7 +2,7 @@ package WikiText::HTML::Emitter;
 use strict;
 use warnings;
 
-use base 'WikiText::Receiver';
+use base 'WikiText::Emitter';
 use CGI::Util;
 
 my $type_tags = {
@@ -10,22 +10,6 @@ my $type_tags = {
     i => 'em',
     wikilink => 'a',
 };
-
-sub init {
-    my $self = shift;
-    $self->{output} = '';
-}
-
-sub content {
-    my $self = shift;
-    return $self->{output};
-}
-
-sub insert {
-    my $self = shift;
-    my $ast = shift;
-    $self->{output} .= $ast->{output} || '';
-}
 
 sub uri_escape {
     $_ = shift;
