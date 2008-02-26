@@ -41,7 +41,10 @@ sub begin_wikilink {
     my $link = $self->{callbacks}{wikilink}
         ? $self->{callbacks}{wikilink}->($node)
         : CGI::Util::escape($node->{attributes}{target});
-    return qq{<a href="$link">};
+
+    my $class = $node->{attributes}{class};
+    $class = $class ? qq{ class="$class"} : '';
+    return qq{<a href="$link"$class>};
 }
 
 sub end_node {
