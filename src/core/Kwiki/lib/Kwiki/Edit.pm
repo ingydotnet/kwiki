@@ -126,6 +126,6 @@ function clear_default_content(content_box) {
 <input type="hidden" name="page_name" value="[% page_uri %]" />
 <input type="hidden" name="page_time" value="[% page_time %]" />
 <textarea name="page_content" rows="25" cols="80" onfocus="clear_default_content(this)">
-[%- page_content -%]
+[%- page_content | html -%]
 </textarea>
 </form>
