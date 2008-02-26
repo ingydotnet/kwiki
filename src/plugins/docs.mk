@@ -39,6 +39,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/Scriptaculous.pod \
 	Kwiki/ShortcutLinks.pod \
 	Kwiki/TableOfContents.pod \
+	Kwiki/OpenID.pod \
 	Kwiki/Ajax.pod \
 	Kwiki/AnchorLink.pod \
 	Kwiki/AuthorOnlyPageEditing.pod \

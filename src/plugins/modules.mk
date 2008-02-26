@@ -76,6 +76,7 @@ PLUGINS_LEVEL_2 = \
 	Kwiki/Scriptaculous.pm \
 	Kwiki/ShortcutLinks.pm \
 	Kwiki/TableOfContents.pm \
+	Kwiki/OpenID.pm \
 	Kwiki/Ajax.pm \
 	Kwiki/AnchorLink.pm \
 	Kwiki/AuthorOnlyPageEditing.pm \
@@ -205,6 +206,8 @@ PLUGINS_LEVEL_3 = \
 	Kwiki/Toolbar/List.pm \
 	Kwiki/Widgets/RandomQuote.pm \
 	Kwiki/Widgets/RecentChanges.pm \
+	Kwiki/Edit/OpenIDRequired.pm \
+	Kwiki/Users/OpenID.pm \
 	Kwiki/Command/Edit.pm \
 	Kwiki/Command/RecentChanges.pm \
 	Kwiki/DB/ClassDBI.pm \

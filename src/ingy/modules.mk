@@ -23,16 +23,21 @@ INGY_PATHS = \
 	WikiText/Sample \
 	WikiText/Socialtext \
 	WikiText/WikiByte \
+	WikiText/Wikrad \
 	YAML \
 	YAML/Dumper \
 	YAML/Loader \
+	YAML2 \
 
 INGY_LEVEL_1 = \
 	JS.pm \
 	Perldoc.pm \
+	pQuery.pm \
 	WikiByte.pm \
 	WikiText.pm \
 	XXX.pm \
+	YAML2.pm \
+	YAML2.pm \
 	YAML.pm \
 
 INGY_LEVEL_2 = \
@@ -55,6 +60,7 @@ INGY_LEVEL_2 = \
 	WikiText/Creole.pm \
 	WikiText/Creole.pm \
 	WikiText/DokuWiki.pm \
+	WikiText/Emitter.pm \
 	WikiText/HTML.pm \
 	WikiText/Kwiki.pm \
 	WikiText/MediaWiki.pm \
@@ -75,6 +81,8 @@ INGY_LEVEL_2 = \
 	WikiText/WikiByte.pm \
 	WikiText/Wikiwyg.pm \
 	WikiText/Socialtext.pm \
+	WikiText/Wikrad.pm \
+	YAML2/Parser.pm \
 	Test/YAML.pm \
 	YAML/Base.pm \
 	YAML/Dumper.pm \
@@ -118,6 +126,7 @@ INGY_LEVEL_3 = \
 	WikiText/Sample/Parser.pm \
 	WikiText/WikiByte/Emitter.pm \
 	WikiText/Socialtext/Parser.pm \
+	WikiText/Wikrad/Emitter.pm \
 	YAML/Dumper/Base.pm \
 	YAML/Loader/Base.pm \
 
