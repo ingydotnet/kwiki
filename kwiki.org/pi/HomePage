@@ -1,12 +1,13 @@
-= The Kwiki Hacker Development Wiki
+= The Kwiki Development hacKerwiki
 
-Welcome to the Kwiki V3 hacker's wiki. [[WhatIsV3]]? Read up.
+Welcome to the Kwiki V3 hacKer's wiki. [[WhatIsV3]]? Read up.
 
 This wiki is pretty much specific to V3 stuff.
 
 = Kwiki Events
 
 * [[KwikiHackathon]]
+** [[KwikiHackers]]
 
 = General Kwiki V3 Information
 
@@ -21,6 +22,7 @@ This wiki is pretty much specific to V3 stuff.
 ----
 
 * [[KwikiMarkup]]
+* [[K3MarkupLanguage]]
 * [[KwikiDatabase]]
 * [[KwikiCreoleFormatter]]
 * [[PurpleAdressability]]

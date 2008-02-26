@@ -1,0 +1,13 @@
+Kwiki Comes with its own web server plugin called Kwiki::Simple::Server::HTTP. You can start a server with this command:
+
+{{{
+kwiki -start 8080
+}}}
+
+To Do:
+
+* Browser spins forever when using this server.
+** DONE - [[FlorianMerges]]++
+* Redirects don't work properly.
+** DONE - [[FlorianMerges]]++
+* Need to make server a backgrounded preforking server.

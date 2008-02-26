@@ -1,1 +1,2 @@
 * Parser dies when there's a newline enclosed in double brackets (i.e. a link)
+* Kwiki dies if a file is added to /www/a/home/ams/prj/amswiki/database without setting read-write to file for appropriate Kwiki installation user. This only happens when manually creating a new file and later attempting to edit it via the Web.

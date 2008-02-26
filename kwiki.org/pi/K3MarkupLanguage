@@ -1,0 +1,66 @@
+K3ML is the new wiki markup language to be used by default in Kwiki. It borrows from the the following languages:
+
+* WikiCreole - K3ML is a Creole based language, but with the changes recommended by [[WikiKreole]].
+* Kwiki - K3ML takes the best ideas from the classic Kwiki markup.
+* Gmail - Will attempt to provide wiki markup for any html you can create in Gmail's rich text editor.
+
+This page attempts to specify this markup language in both a personal, human friendly way and a pedantic grammar like way.
+
+Throughout this text you'll see the words **block** and **phrase**. A block is akin to a DIV in html. A phrase is akin to a span. Blocks can contain more blocks //or// phrases, but not both. Phrases can contain more phrases, but never contain blocks. A **unit** is a generic term for both block and phrase.
+
+A Document is a block that contains blocks. When parsing K3ML, it best to take the current unit (beginning with the Document) and parse it into its subunits, and then repase each of them. This is preferable to pure streaming parsing, although the algorithm can be made somewhat streaming.
+
+----
+
+This rest of this text defines the units of K3ML.
+
+= AllTopLevelBlocks
+
+This is a list of all the blocks that can be contained in a Document. It is listed here because it is reused in the rest of the grammar.
+
+**Contains**: Paragraph + Header1 + Header2 + Header3 + Header4 + OrderedList + UnorderedList + HorizontalRule + Table + Preformatted + EmptyBlock + ClassBlock + FunctionBlock + GrammarBlock
+
+= AllPhrases
+
+This is a list of all the blocks that can be contained in a Document. It is listed here because it is reused in the rest of the grammar.
+
+**Contains**: Strong + Emphasis + Delete + Underline + Teletype + WikiLink + InterWikiLink + ExternalLink + Function + EscapeChar + LineBreak + Text
+
+= Document
+
+The top level element of a wiki page is called a Document. This contains the text of the entire page. This may seem obvious, but it is listed here so we can define what a Document can contain.
+
+**Type**: Block
+
+**Contains**: AllTopLevelBlocks
+
+= Paragraph
+
+**Type**: Block
+**Contains**: AllPhrases
+
+A paragraph is a set of contiguous non-empty lines that cannot be confused with other block markup.
+
+A paragraph starts with non-blank line that does not match any other block syntax. It ends with a blank line or another block. If it ends with a blank line, that line should be consumed by the parser.
+
+The paragraph content reported by the parser should have no final blank line, and the newline at the end should be removed.
+
+**Example**
+
+{{{
+This is a one line paragraph.
+----
+The HR above ended the first paragraph
+This paragraph has two line.
+
+This is the third paragraph.
+}}}
+
+= UnorderedList
+
+**Type**: Block
+**Contains**: UnorderedListItem
+
+----
+
+= STILL UNDER CONSTRUCTION...
