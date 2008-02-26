@@ -7,11 +7,11 @@ use mixin 'Kwiki::Installer';
 use Kwiki::Users::OpenID;   # In order to fill the __DATA__
 use Net::OpenID::Consumer;
 use LWPx::ParanoidAgent;
-use Digest::SHA1 qw(sha1);
+use Digest::MD5 qw(md5);
 use Text::Microformat;
 use CGI;
 
-our $VERSION = 0.01;
+our $VERSION = '0.02';
 
 const class_id    => 'user_name';
 const class_title => 'Kwiki with OpenID authentication';
@@ -47,14 +47,13 @@ sub logout_openid {
 }
 
 sub login_openid {
-    my $oi_referer = $self->cgi->page;
-    my $ci         = $self->cgi->oi_url;
-    if ($ci) {
+    if (my $ci = $self->cgi->oi_url) {
         my $session = $self->hub->session->load;
-        $session->param('oi_referer', $oi_referer); # Safe for later
+        $session->param('oi_referer', $self->cgi->page); # Safe for later
 
         my $nonce_pattern = $self->config->consumer_secret;
-        my $nonce = sha1(sprintf($nonce_pattern, time, (stat $0)[9], -s _, $session->id));
+        my $nonce = md5(sprintf($nonce_pattern, time, (stat $0)[9], -s _, $session->id));
+        warn "NONCE : [$nonce]";
         $session->param('nonce', $nonce);
 
         my $script_name = $self->config->script_name;
@@ -70,16 +69,14 @@ sub login_openid {
         my $claimed_identity = $csr->claimed_identity($ci);
 
         unless (defined $claimed_identity) {
-            warn "Can't determine claimed identity for: [$ci]";
-            return $self->redirect('action=login_openid;oi_error=Wrong identity');
+            return $self->redirect('action=login_openid&oi_error=Wrong identity');
         }
         my $check_url = $claimed_identity->check_url(
             return_to => $script_name . "?action=check_login_openid",
         );
         $self->redirect($check_url);    # Now we send the user to authenticate
     }
-    $self->render_screen(
-        content_pane => 'login_openid.html', page => $oi_referer);
+    $self->render_screen(content_pane => 'login_openid.html');
 }
 
 sub check_login_openid {
@@ -103,7 +100,7 @@ sub check_login_openid {
         $self->redirect($setup_url);
     }
     elsif ($csr->user_cancel) {
-        $self->redirect('action=login_openid;oi_error=User cancel');
+        $self->redirect('action=login_openid&oi_error=User cancel');
     }
     elsif (my $vident = $csr->verified_identity) {
         my $verified_url = $vident->url;
@@ -111,7 +108,7 @@ sub check_login_openid {
         $self->redirect("?$page");
     } 
     else {
-        $self->redirect('action=login_openid;oi_error=Service temporarily unavailable');
+        $self->redirect('action=login_openid&oi_error=Service temporarily unavailable');
     }
 }
 
@@ -151,6 +148,7 @@ sub create_cookie {
 package Kwiki::OpenID::CGI;
 use Kwiki::CGI '-Base';
 
+cgi 'oi_error';
 cgi 'oi_url';
 cgi 'page';
 cgi 'url';
@@ -193,11 +191,11 @@ __template/tt2/user_name_title.html__
 <!-- END user_name_title.html -->
 __template/tt2/login_openid.html__
 <!-- BEGIN login_openid.html -->
-[% IF hub.cgi.oi_error %]
-<div class="error">Error: [% hub.cgi.oi_error %]</div>
+[% IF self.cgi.oi_error %]
+<div class="error"><p>Error: [% self.cgi.oi_error %]</p></div>
 [% END %]
 <form action="[% script_name %]" method="get">
-<input type="hidden" name="page" value="[% page %]">
+<input type="hidden" name="page" value="[% self.cgi.page %]">
 <input type="hidden" name="action" value="login_openid">
 <b>Your OpenID URL:</b> <input type="text" class="openid_input" name="oi_url" size="30">
 <input style="background: rgb(255, 98, 0) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: rgb(255, 255, 255);" value="Login" type="submit">

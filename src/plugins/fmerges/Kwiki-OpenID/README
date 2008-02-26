@@ -1,4 +1,4 @@
-Kwiki::OpenID version 0.01
+Kwiki::OpenID version 0.02
 =======================================
 
 Kwiki plugin for OpenID authentication
@@ -23,7 +23,6 @@ Perl modules:
   Kwiki::Session
   Net::OpenID::Consumer
   Text::Microformat
-  Digest::SHA1
 
 COPYRIGHT AND LICENCE
 

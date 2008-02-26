@@ -1,12 +1,12 @@
 package Kwiki::Edit::OpenIDRequired;
 use strict;
 
-our $VERSION = 0.01;
+our $VERSION = '0.01';
 
 use Kwiki::Plugin '-Base';
 use mixin 'Kwiki::Installer';
 
-const class_id => 'EditOpenIDRequired';
+const class_id    => 'EditOpenIDRequired';
 const class_title => 'Require OpenID to edit';
 
 sub register {
@@ -22,7 +22,7 @@ sub require_openid {
     if (! $req->have_OpenID) {
         my $page_uri = $page->uri;
         $hook->cancel;
-        return $self->redirect("action=edit_noOpenID&page=$page_uri");
+        return $self->redirect("action=edit_noOpenID&page_name=$page_uri");
     }
 }
 
@@ -47,7 +47,7 @@ __template/tt2/edit_noOpenID.html__
 <div class="error">
 <p>
 This web site does not allow anonymous editing.
-Please <a href="[% script_name _ "?action=login_openid;page=" _ hub.cgi.page %]">login via OpenID</a> first.
+Please <a href="[% script_name _ "?action=login_openid;page_name=" _ hub.cgi.page %]">login via OpenID</a> first.
 </p>
 <p>
 </p>

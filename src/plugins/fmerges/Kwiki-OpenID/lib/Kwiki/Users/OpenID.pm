@@ -1,7 +1,7 @@
 package Kwiki::Users::OpenID;
 use strict;
 
-our $VERSION = 0.01;
+our $VERSION = '0.01';
 
 use Kwiki::Users '-Base';
 
