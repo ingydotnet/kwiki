@@ -72,7 +72,6 @@ INGY_LEVEL_2 = \
 	WikiText/PurpleWiki.pm \
 	WikiText/Receiver.pm \
 	WikiText/Sample.pm \
-	WikiText/Socialtext.pm \
 	WikiText/TiddlyWiki.pm \
 	WikiText/Trac.pm \
 	WikiText/TWiki.pm \
