@@ -1,7 +1,7 @@
 package Kwiki::Users::OpenID;
 use strict;
 
-our $VERSION = '0.02';
+our $VERSION = '0.01';
 
 use Kwiki::Users '-Base';
 
@@ -40,11 +40,7 @@ field 'nickname';
 sub set_user_name {
     return unless $self->is_in_cgi;
     my $cookie = $self->hub->cookie->jar->{openid};
-    unless($cookie && $cookie->{oi_url}) {
-        $self->name($self->hub->config->user_default_name);
-        # without authentication...
-        return;
-    }
+    $cookie && $cookie->{oi_url} or return;
     for my $key (qw/oi_url url icon name email nickname fn/) {
         $self->$key($cookie->{$key});
     }
