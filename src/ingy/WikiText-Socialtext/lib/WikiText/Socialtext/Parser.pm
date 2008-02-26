@@ -102,7 +102,7 @@ sub create_grammar {
             filter => sub {
                 my $node = shift;
                 $node->{type} = 'h' . length($node->{1});
-                $_ = $node->{2};
+                $_ = $node->{text} = $node->{2};
             },
         },
 
