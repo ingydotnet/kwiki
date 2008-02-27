@@ -9,6 +9,7 @@ my $type_tags = {
     b => 'strong',
     i => 'em',
     wikilink => 'a',
+    hyperlink => 'a',
 };
 
 sub uri_escape {
@@ -27,10 +28,22 @@ sub begin_node {
     $self->{output} .=
       ($tag =~ /^(br|hr)$/)
         ? "<$tag />\n" 
+        : ($type eq "hyperlink")
+          ?  $self->begin_hyperlink($node)
         : ($type eq "wikilink")
           ?  $self->begin_wikilink($node)
           : "<$tag>" .
             ($tag =~ /^(ul|ol|table|tr)$/ ? "\n" : "");
+}
+
+sub begin_hyperlink {
+    my $self = shift;
+    my $node = shift;
+    my $tag = $node->{type};
+
+    my $link = $node->{attributes}{target};
+
+    return qq{<a href="$link">};
 }
 
 sub begin_wikilink {
@@ -54,10 +67,6 @@ sub end_node {
     my $tag = $type_tags->{$type} || $type;
     $tag =~ s/-.*//;
     return if ($tag =~ /^(br|hr)$/);
-    if ($tag eq "wikilink") {
-        $self->{output} .= '</a>';
-        return;
-    }
     $self->{output} .= "</$tag>" .
         ($tag =~ /^(p|hr|ul|ol|li|h\d|table|tr|td)$/ ? "\n" : "");
 }

@@ -9,7 +9,7 @@ sub create_grammar {
     ];
 
     my $all_phrases = [
-        'b', 'i', 'tt', 'br', 'wikilink',
+        'b', 'i', 'tt', 'br', 'hyperlink', 'wikilink',
     ];
 
     return {
@@ -120,6 +120,15 @@ sub create_grammar {
         br => {
             match => qr/\\\\/,
         },
+        hyperlink => {
+#            type => 'a',
+            match => qr/\[\[(http:\/\/.*?)\]\]/,
+            filter => sub {
+                $_[0]->{attributes}{target} =
+                    s/(.*?)\s*\|\s*(.*)/$2/ ? $1 : $_;
+            },
+        },
+
         wikilink => {
 #            type => 'a',
             match => qr/\[\[(.*?)\]\]/,
