@@ -1,0 +1,5 @@
+Kwiki V1 was not really called V1 before, but that's what we call it now. It's the old Kwiki code. V1 is still supported and is still the default for a new wiki.
+
+V2 was started in Dec 2006. It was the start of a major refactoring of Kwiki. We made it so that everything you need to run a Kwiki was contained in the svn repo (except Perl itself of course). V2 was put on hold when Ingy had the scooter accident in Taiwan in Aril 2007.
+
+V3 started in Feb 2008 and is picking up where V2 left off. See [[KwikiDesignGoals]] for more info.

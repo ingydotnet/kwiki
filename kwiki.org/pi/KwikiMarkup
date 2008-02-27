@@ -1,4 +1,4 @@
-Our strategy for moving forward is to start completely from scratch with markup, using 100% unadulterated [[WikiCreole]] as our starting point, then gradually migrating to [[WikiKreole]] (Creole with our recommended improvements), and finally implementing [[K3MarkupLanguage]], which adds whatever greatness we want to add that Creole doesn't cover.
+Our strategy for moving forward is to start completely from scratch with markup, using 100% unadulterated [[WikiCreole]] as our starting point, then gradually migrating to [[WikiKreole]] (Creole with our recommended improvements), and finally implementing [[KwikiK3MarkupLanguage]], which adds whatever greatness we want to add that Creole doesn't cover.
 
 Unfortunately, it's hard to implement [[WikiCreole]] exactly, because it's a bit underspecified and there are some lingering issues, which we're capturing at [[WikiCreoleIssues]].
 

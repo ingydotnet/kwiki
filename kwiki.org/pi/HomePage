@@ -1,34 +1,26 @@
-= The Kwiki Development hacKerwiki
+= The Kwiki Development hacKer Wiki!
 
-Welcome to the Kwiki V3 hacKer's wiki. [[WhatIsV3]]? Read up.
-
-This wiki is pretty much specific to V3 stuff.
-
-= Kwiki Events
-
-* [[KwikiHackathon]]
-** [[KwikiHackers]]
+Welcome to the Kwiki V3 hacKer wiki. [[WhatIsV3]]? Read up.
 
 = General Kwiki V3 Information
 
+* [[WhatIsKwiki]]?
+* The [[KwikiVision]]
+* [[KwikiKoncepts]]
 * [[KwikiDesignGoals]]
 * [[KwikiRoadmap]]
+* [[KwikiBugs]]
 
 = Kwiki Kommunity
 
 * IRC: #kwiki on irc.freenode.net
 * [[http://irc.kwiki.org/|#kwiki IRC logs]]
 
-----
-
-* [[KwikiMarkup]]
-* [[K3MarkupLanguage]]
-* [[KwikiDatabase]]
-* [[KwikiCreoleFormatter]]
-* [[PurpleAdressability]]
-
 = Kwiki Kode
 
 http://svn.kwiki.org/kwiki/trunk/
 
-* [[KwikiBugs]]
+= Kwiki Events
+
+* [[KwikiHackathon]]
+** [[KwikiHackers]]
