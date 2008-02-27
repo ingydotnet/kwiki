@@ -1,0 +1,1 @@
+../../src/cpan/Module-Pluggable-3.6/lib/Devel/InnerPackage.pm

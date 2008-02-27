@@ -1,0 +1,1 @@
+../../src/cpan/URI-Fetch-0.08/lib/URI/Fetch.pm

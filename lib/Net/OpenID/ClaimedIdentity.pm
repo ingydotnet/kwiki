@@ -1,0 +1,1 @@
+../../../src/cpan/Net-OpenID-Consumer-0.14/lib/Net/OpenID/ClaimedIdentity.pm

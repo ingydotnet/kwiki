@@ -1,0 +1,1 @@
+../../../src/cpan/Class-Accessor-0.31/lib/Class/Accessor/Fast.pm

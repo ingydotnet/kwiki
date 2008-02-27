@@ -1,0 +1,1 @@
+../../../src/cpan/Class-Data-Inheritable-0.08/lib/Class/Data/Inheritable.pm
