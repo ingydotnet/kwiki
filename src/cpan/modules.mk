@@ -8,10 +8,13 @@ CPAN_PATHS = \
 	CGI/Session/Test \
 	Class \
 	Class/Accessor \
+	Class/Data \
 	Crypt \
 	Date \
 	Devel \
 	File \
+	HTML \
+	HTML/Element \
 	HTTP/Server \
 	HTTP/Server/Simple \
 	HTTP/Server/Simple/CGI \
@@ -31,12 +34,15 @@ CPAN_PATHS = \
 	Text/Microformat/Element \
 	Text/Microformat/Plugin \
 	Text/Microformat/Plugin/Parser \
+	UNIVERSAL \
 	URI \
 	URI/Fetch \
 	URI/file \
 	URI/urn \
+	XML \
 
 CPAN_LEVEL_1 = \
+	NEXT.pm \
 	URI.pm \
 
 CPAN_LEVEL_2 = \
@@ -48,6 +54,11 @@ CPAN_LEVEL_2 = \
 	Crypt/DH.pm \
 	Date/Manip.pm \
 	File/MMagic.pm \
+	HTML/AsSubs.pm \
+	HTML/Element.pm \
+	HTML/Parse.pm \
+	HTML/TreeBuilder.pm \
+	HTML/Tree.pm \
 	IO/Capture.pm \
 	LWPx/ParanoidAgent.pm \
 	MIME/Type.pm \
@@ -58,6 +69,7 @@ CPAN_LEVEL_2 = \
 	Pod/Simple.pm \
 	String/Diff.pm \
 	Text/Microformat.pm \
+	UNIVERSAL/require.pm \
 	URI/data.pm \
 	URI/Escape.pm \
 	URI/file.pm \
@@ -98,6 +110,8 @@ CPAN_LEVEL_2 = \
 	URI/_userpass.pm \
 	URI/WithBase.pm \
 	URI/Fetch.pm \
+	XML/Element.pm \
+	XML/TreeBuilder.pm \
 
 CPAN_LEVEL_3 = \
 	CGI/Session/Driver.pm \
@@ -105,6 +119,8 @@ CPAN_LEVEL_3 = \
 	CGI/Session/Tutorial.pm \
 	Class/Accessor/Faster.pm \
 	Class/Accessor/Fast.pm \
+	Class/Data/Inheritable.pm \
+	HTML/Element/traverse.pm \
 	HTTP/Server/Simple.pm \
 	IO/Capture/Stderr.pm \
 	IO/Capture/Stdout.pm \
