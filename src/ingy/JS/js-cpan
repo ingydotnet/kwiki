@@ -1,6 +1,6 @@
 #!/usr/bin/perl
-use JS;
 use strict;
 use warnings;
+use JS;
 
-JS->new->run;
+JS->new->run(@ARGV);

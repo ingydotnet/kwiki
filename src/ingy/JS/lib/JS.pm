@@ -4,7 +4,7 @@ use warnings;
 use File::Find;
 use 5.005.003;
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 sub new {
     my $class = shift;
@@ -13,15 +13,16 @@ sub new {
 
 sub run {
     my $self = shift;
+    my @args = @_;
 
-    if (! @ARGV) {
+    if (! @args) {
         return $self->list_all();
     }
-    for my $js_module (@ARGV) {
+    for my $js_module (@args) {
         $js_module =~ s/\.js$//;
-        my $path = $self->find_js_path($js_module)
-          or warn "*** Can't find $js_module\n";
-        print "$path\n";
+        my @path = $self->find_js_path($js_module)
+          or warn("*** Can't find $js_module\n"), next;
+        print join "\n", sort(@path), "";
     }
 }
 
@@ -45,19 +46,20 @@ sub find_js_path {
     my $self = shift;
     my $module = shift;
     $module =~ s/(::|\.)/\//g;
+    $module =~ s/\*$/.*/;
     $module .= '.js';
 
     my $found = {};
-    my $module_path;
+    my @module_path;
     find {
         wanted => sub {
             my $path = $File::Find::name;
-            return unless $path =~ /\Q$module\E$/;
+            return unless $path =~ /$module(\.gz)?$/i;
             return if $found->{$path}++;
-            $module_path = $path;
+            push @module_path, $path;
         },
     }, grep {-d $_ and $_ ne '.'} @INC;
-    return $module_path;
+    return @module_path;
 }
 
 1;
@@ -69,6 +71,7 @@ JS - JavaScript Modules on CPAN
 =head1 SYSNOPSIS
 
     > js-cpan
+    > js-cpan Foo*
     > js-cpan Foo.Bar
     > ln -s `js-cpan Foo.Bar` Foo.Bar.js
 

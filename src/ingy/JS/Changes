@@ -1,4 +1,10 @@
 ---
+version: 0.12
+date:    Tue Mar 11 02:50:09 EET 2008
+changes:
+- Add tests.
+- Add wildcarding.
+---
 version: 0.11
 date:    Sat Feb 16 15:23:27 PST 2008
 changes:

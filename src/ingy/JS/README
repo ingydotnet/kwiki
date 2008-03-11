@@ -3,6 +3,7 @@ NAME
 
 SYSNOPSIS
         > js-cpan
+        > js-cpan Foo*
         > js-cpan Foo.Bar
         > ln -s `js-cpan Foo.Bar` Foo.Bar.js
 
