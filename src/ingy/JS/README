@@ -2,10 +2,24 @@ NAME
     JS - JavaScript Modules on CPAN
 
 SYSNOPSIS
+        > # Typical unix command line stuff:
+        > sudo cpan JS::jQuery
+        ... cpan installs JS-jQuery ...
         > js-cpan
-        > js-cpan Foo*
-        > js-cpan Foo.Bar
-        > ln -s `js-cpan Foo.Bar` Foo.Bar.js
+        jquery-1.2.3
+        jquery-1.2.3.min
+        jquery-1.2.3.pack
+        jQuery
+        > js-cpan jQuery*
+        /Library/Perl/5.8.8/JS/jQuery.js
+        /Library/Perl/5.8.8/JS/jquery-1.2.3.js
+        /Library/Perl/5.8.8/JS/jquery-1.2.3.min.js
+        /Library/Perl/5.8.8/JS/jquery-1.2.3.min.js.gz
+        /Library/Perl/5.8.8/JS/jquery-1.2.3.pack.js
+        > js-cpan jQuery.js
+        /Library/Perl/5.8.8/JS/jQuery.js
+        > cd my/webapp/that/requires/jquery/javascript/
+        > ln -s `js-cpan jQuery.js` jQuery.js
 
 DESCRIPTION
     Some JavaScript modules can be installed from CPAN. This module comes
@@ -51,6 +65,9 @@ JS MODULE AUTHOR HOWTO
     Say you have a JavaScript module called "Foo.Bar". First create a
     distribution directory called: "JS-Foo-Bar". Put your JavaScript code in
     "lib/JS/Foo/Bar.js". Put your documentation in "lib/JS/Foo/Bar.pod".
+    Create a bare bones "lib/JS/Foo/Bar.pm" Perl module so that CPAN related
+    tools can find your stuff.
+
     Your Makefile.PL should look something like this:
 
         use inc::Module::Install;
@@ -74,7 +91,7 @@ JS MODULE AUTHOR HOWTO
         make
         make manifest
         make dist
-        cpan-upload -user foo -passwd bar -mailto foo@bar.com Foo-Bar-0.01.tar.gz
+        cpan-upload -user foo -passwd bar -mailto foo@bar.com JS-Foo-Bar-0.01.tar.gz
 
     That's it. You've joined the revolution. :)
 

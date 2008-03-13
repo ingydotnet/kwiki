@@ -1,4 +1,10 @@
 ---
+version: 0.14
+date:    Tue Mar 11 21:20:57 EET 2008
+changes:
+- Better SYNOPSIS in doc.
+- Improved example module.
+---
 version: 0.12
 date:    Tue Mar 11 02:50:09 EET 2008
 changes:

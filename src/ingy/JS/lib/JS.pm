@@ -4,7 +4,7 @@ use warnings;
 use File::Find;
 use 5.005.003;
 
-our $VERSION = '0.12';
+our $VERSION = '0.14';
 
 sub new {
     my $class = shift;
@@ -70,10 +70,24 @@ JS - JavaScript Modules on CPAN
 
 =head1 SYSNOPSIS
 
+    > # Typical unix command line stuff:
+    > sudo cpan JS::jQuery
+    ... cpan installs JS-jQuery ...
     > js-cpan
-    > js-cpan Foo*
-    > js-cpan Foo.Bar
-    > ln -s `js-cpan Foo.Bar` Foo.Bar.js
+    jquery-1.2.3
+    jquery-1.2.3.min
+    jquery-1.2.3.pack
+    jQuery
+    > js-cpan jQuery*
+    /Library/Perl/5.8.8/JS/jQuery.js
+    /Library/Perl/5.8.8/JS/jquery-1.2.3.js
+    /Library/Perl/5.8.8/JS/jquery-1.2.3.min.js
+    /Library/Perl/5.8.8/JS/jquery-1.2.3.min.js.gz
+    /Library/Perl/5.8.8/JS/jquery-1.2.3.pack.js
+    > js-cpan jQuery.js
+    /Library/Perl/5.8.8/JS/jQuery.js
+    > cd my/webapp/that/requires/jquery/javascript/
+    > ln -s `js-cpan jQuery.js` jQuery.js
 
 =head1 DESCRIPTION
 
@@ -123,7 +137,10 @@ setting on a Perl one.
 Say you have a JavaScript module called C<Foo.Bar>. First create a
 distribution directory called: C<JS-Foo-Bar>. Put your JavaScript code
 in C<lib/JS/Foo/Bar.js>. Put your documentation in
-C<lib/JS/Foo/Bar.pod>. Your Makefile.PL should look something like this:
+C<lib/JS/Foo/Bar.pod>. Create a bare bones C<lib/JS/Foo/Bar.pm> Perl module so
+that CPAN related tools can find your stuff.
+
+Your Makefile.PL should look something like this:
 
     use inc::Module::Install;
     name     'JS-Foo-Bar';
@@ -146,7 +163,7 @@ Now just run these commands:
     make
     make manifest
     make dist
-    cpan-upload -user foo -passwd bar -mailto foo@bar.com Foo-Bar-0.01.tar.gz
+    cpan-upload -user foo -passwd bar -mailto foo@bar.com JS-Foo-Bar-0.01.tar.gz
 
 That's it. You've joined the revolution. :)
 
