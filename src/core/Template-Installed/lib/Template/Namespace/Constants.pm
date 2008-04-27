@@ -7,33 +7,31 @@
 #   on variables in a particular namespace.
 #
 # AUTHOR
-#   Andy Wardley   <abw@andywardley.com>
+#   Andy Wardley   <abw@wardley.org>
 #
 # COPYRIGHT
-#   Copyright (C) 1996-2002 Andy Wardley.  All Rights Reserved.
+#   Copyright (C) 1996-2006 Andy Wardley.  All Rights Reserved.
 #   Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: Constants.pm,v 1.23 2004/01/30 19:33:09 abw Exp $
+#   $Id: Constants.pm 1055 2007-04-27 11:50:40Z abw $
 #
 #============================================================================
 
 package Template::Namespace::Constants;
 
 use strict;
-use Template::Base;
+use warnings;
+use base 'Template::Base';
 use Template::Config;
 use Template::Directive;
 use Template::Exception;
 
-use base qw( Template::Base );
-use vars qw( $VERSION $DEBUG );
-
-$VERSION = sprintf("%d.%02d", q$Revision: 1.23 $ =~ /(\d+)\.(\d+)/);
-$DEBUG   = 0 unless defined $DEBUG;
+our $VERSION = 1.27;
+our $DEBUG   = 0 unless defined $DEBUG;
 
 
 sub _init {
@@ -170,22 +168,22 @@ stash and returns it.
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-1.23, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+1.27, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

@@ -3,8 +3,9 @@ use 5.006001;
 use strict;
 use warnings;
 use base 'Exporter';
+use Encode;
 
-our $VERSION = '0.12';
+our $VERSION = '0.14';
 our @EXPORT_OK = qw(field const);
 
 my %code = (
@@ -68,7 +69,10 @@ sub field {
     my $sub = eval $code;
     die $@ if $@;
     no strict 'refs';
-    *{"${package}::$field"} = $sub;
+    use utf8;
+    my $method = "${package}::$field";
+    $method = Encode::decode_utf8($method);
+    *{$method} = $sub;
     return $code if defined wantarray;
 }
 
@@ -195,7 +199,7 @@ Ingy döt Net <ingy@cpan.org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006. Ingy döt Net. All rights reserved.
+Copyright (c) 2006, 2008. Ingy döt Net.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

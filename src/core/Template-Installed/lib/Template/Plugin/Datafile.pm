@@ -8,31 +8,27 @@
 #   list object containing hashes representing records in the file.
 #
 # AUTHOR
-#   Andy Wardley   <abw@kfs.org>
+#   Andy Wardley   <abw@wardley.org>
 #
 # COPYRIGHT
-#   Copyright (C) 1996-2000 Andy Wardley.  All Rights Reserved.
+#   Copyright (C) 1996-2006 Andy Wardley.  All Rights Reserved.
 #   Copyright (C) 1998-2000 Canon Research Centre Europe Ltd.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
-#----------------------------------------------------------------------------
-#
-# $Id: Datafile.pm,v 2.67 2004/01/30 19:33:14 abw Exp $
+# REVISION
+#   $Id: Datafile.pm 1055 2007-04-27 11:50:40Z abw $
 #
 #============================================================================
 
 package Template::Plugin::Datafile;
 
-require 5.004;
-
 use strict;
-use vars qw( @ISA $VERSION );
-use base qw( Template::Plugin );
-use Template::Plugin;
+use warnings;
+use base 'Template::Plugin';
 
-$VERSION = sprintf("%d.%02d", q$Revision: 2.67 $ =~ /(\d+)\.(\d+)/);
+our $VERSION = 2.72;
 
 sub new {
     my ($class, $context, $filename, $params) = @_;
@@ -163,22 +159,22 @@ Doesn't permit use of ':' in a field.  Some escaping mechanism is required.
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-2.67, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+2.72, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

@@ -16,27 +16,21 @@
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
-#------------------------------------------------------------------------
-#
-# $Id: Exception.pm,v 2.65 2004/01/30 19:32:25 abw Exp $
+# REVISION
+#   $Id: Exception.pm 1055 2007-04-27 11:50:40Z abw $
 #
 #========================================================================
 
-
 package Template::Exception;
 
-require 5.005;
-
 use strict;
-use vars qw( $VERSION );
-
+use warnings;
 use constant TYPE  => 0;
 use constant INFO  => 1;
 use constant TEXT  => 2;
 use overload q|""| => "as_string", fallback => 1;
 
-
-$VERSION = sprintf("%d.%02d", q$Revision: 2.65 $ =~ /(\d+)\.(\d+)/);
+our $VERSION = 2.69;
 
 
 #------------------------------------------------------------------------
@@ -219,22 +213,22 @@ would be a specific type of the more general 'foo' type.
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-2.65, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+2.69, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

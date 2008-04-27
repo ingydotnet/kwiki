@@ -3,19 +3,13 @@
 # Template::Tutorial::Web
 #
 # DESCRIPTION
-#   This tutorial provides an introduction to the Template Toolkit and
-#   a "quick start" guide to getting up to speed. Its primarily focus
-#   is on using the Template Toolkit to build web content and it covers
-#   4 basic areas: using tpage and ttree; using the Template.pm module
-#   in CGI scripts; writing Apache/mod_perl handlers; and extending the
-#   toolkit by writing plugins.
+
 #
 # AUTHOR
-#   Andy Wardley  <abw@andywardley.com>
+#   Andy Wardley  <abw@wardley.org>
 #
 # COPYRIGHT
-#   Copyright (C) 1996-2001 Andy Wardley.  All Rights Reserved.
-#   Copyright (C) 1998-2001 Canon Research Centre Europe Ltd.
+#   Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
@@ -769,21 +763,21 @@ about the underlying implementation.
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-Template Toolkit version 2.14, released on 04 October 2004.
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

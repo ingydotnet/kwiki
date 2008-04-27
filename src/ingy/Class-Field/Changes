@@ -1,4 +1,10 @@
 ---
+version: 0.14
+date:    Fri Apr 25 12:20:38 CST 2008
+change:
+- Make Class::Field work with utf8 package names
+
+---
 version: 0.12
 date:    Fri Feb 17 11:48:15 PST 2006
 change:

@@ -22,29 +22,27 @@
 #    view.print(hash3) %] or [% view.print(hash1, hash2, hash3, { }) %]
 #
 # REVISION
-#   $Id: View.pm,v 2.9 2004/01/30 18:36:11 abw Exp $
+#   $Id: View.pm 1022 2006-05-30 17:01:43Z abw $
 #
 #============================================================================
 
 package Template::View;
 
-require 5.004;
-
 use strict;
-use vars qw( $VERSION $DEBUG $AUTOLOAD @BASEARGS $MAP );
-use base qw( Template::Base );
+use warnings;
+use base 'Template::Base';
 
-$VERSION  = sprintf("%d.%02d", q$Revision: 2.9 $ =~ /(\d+)\.(\d+)/);
-$DEBUG    = 0 unless defined $DEBUG;
-@BASEARGS = qw( context );
-$MAP = {
+our $VERSION  = 2.91;
+our $DEBUG    = 0 unless defined $DEBUG;
+our @BASEARGS = qw( context );
+our $AUTOLOAD;
+our $MAP = {
     HASH    => 'hash',
     ARRAY   => 'list',
     TEXT    => 'text',
     default => '',
 };
 
-$DEBUG = 0;    
 
 #------------------------------------------------------------------------
 # _init(\%config)
@@ -728,10 +726,6 @@ TODO
 =head1 AUTHOR
 
 Andy Wardley E<lt>abw@kfs.orgE<gt>
-
-=head1 REVISION
-
-$Revision: 2.9 $
 
 =head1 COPYRIGHT
 

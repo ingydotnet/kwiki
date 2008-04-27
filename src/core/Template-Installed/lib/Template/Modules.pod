@@ -3,15 +3,13 @@
 # Template::Modules
 #
 # DESCRIPTION
-#   This section contains the documentation for the modules that
-#   comprise the Template Toolkit.
+
 #
 # AUTHOR
-#   Andy Wardley  <abw@andywardley.com>
+#   Andy Wardley  <abw@wardley.org>
 #
 # COPYRIGHT
-#   Copyright (C) 1996-2001 Andy Wardley.  All Rights Reserved.
-#   Copyright (C) 1998-2001 Canon Research Centre Europe Ltd.
+#   Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
@@ -39,8 +37,7 @@ Template::Modules - Core modules comprising the Template Toolkit
 
 =head1 DESCRIPTION
 
-This section contains the documentation for the modules that comprise
-the Template Toolkit.
+
 
 =over 4
 
@@ -148,13 +145,19 @@ Experimetal stash allowing list/scalar context definition
 
 =item L<Template::Stash::XS|Template::Stash::XS>
 
-Experimetal high-speed stash written in XS
+High-speed variable stash written in C
 
 
 
 =item L<Template::Test|Template::Test>
 
 Module for automating TT2 test scripts
+
+
+
+=item L<Template::Toolkit|Template::Toolkit>
+
+Template processing system
 
 
 
@@ -167,12 +170,6 @@ Interface to Text::Autoformat module
 =item L<Template::Plugin::CGI|Template::Plugin::CGI>
 
 Interface to the CGI module
-
-
-
-=item L<Template::Plugin::DBI|Template::Plugin::DBI>
-
-Template interface to the DBI module
 
 
 
@@ -215,102 +212,6 @@ Base class for plugin filters
 =item L<Template::Plugin::Format|Template::Plugin::Format>
 
 Plugin to create formatting functions
-
-
-
-=item L<Template::Plugin::GD::Image|Template::Plugin::GD::Image>
-
-Interface to GD Graphics Library
-
-
-
-=item L<Template::Plugin::GD::Polygon|Template::Plugin::GD::Polygon>
-
-Interface to GD module Polygon class
-
-
-
-=item L<Template::Plugin::GD::Constants|Template::Plugin::GD::Constants>
-
-Interface to GD module constants
-
-
-
-=item L<Template::Plugin::GD::Text|Template::Plugin::GD::Text>
-
-Text utilities for use with GD
-
-
-
-=item L<Template::Plugin::GD::Text::Align|Template::Plugin::GD::Text::Align>
-
-Draw aligned strings in GD images
-
-
-
-=item L<Template::Plugin::GD::Text::Wrap|Template::Plugin::GD::Text::Wrap>
-
-Break and wrap strings in GD images
-
-
-
-=item L<Template::Plugin::GD::Graph::lines|Template::Plugin::GD::Graph::lines>
-
-Create line graphs with axes and legends
-
-
-
-=item L<Template::Plugin::GD::Graph::lines3d|Template::Plugin::GD::Graph::lines3d>
-
-Create 3D line graphs with axes and legends
-
-
-
-=item L<Template::Plugin::GD::Graph::bars|Template::Plugin::GD::Graph::bars>
-
-Create bar graphs with axes and legends
-
-
-
-=item L<Template::Plugin::GD::Graph::bars3d|Template::Plugin::GD::Graph::bars3d>
-
-Create 3D bar graphs with axes and legends
-
-
-
-=item L<Template::Plugin::GD::Graph::points|Template::Plugin::GD::Graph::points>
-
-Create point graphs with axes and legends
-
-
-
-=item L<Template::Plugin::GD::Graph::linespoints|Template::Plugin::GD::Graph::linespoints>
-
-Create line/point graphs with axes and legends
-
-
-
-=item L<Template::Plugin::GD::Graph::area|Template::Plugin::GD::Graph::area>
-
-Create area graphs with axes and legends
-
-
-
-=item L<Template::Plugin::GD::Graph::mixed|Template::Plugin::GD::Graph::mixed>
-
-Create mixed graphs with axes and legends
-
-
-
-=item L<Template::Plugin::GD::Graph::pie|Template::Plugin::GD::Graph::pie>
-
-Create pie charts with legends
-
-
-
-=item L<Template::Plugin::GD::Graph::pie3d|Template::Plugin::GD::Graph::pie3d>
-
-Create 3D pie charts with legends
 
 
 
@@ -380,57 +281,27 @@ Plugin interface to Text::Wrap
 
 
 
-=item L<Template::Plugin::XML::DOM|Template::Plugin::XML::DOM>
-
-Plugin interface to XML::DOM
-
-
-
-=item L<Template::Plugin::XML::RSS|Template::Plugin::XML::RSS>
-
-Plugin interface to XML::RSS
-
-
-
-=item L<Template::Plugin::XML::Simple|Template::Plugin::XML::Simple>
-
-Plugin interface to XML::Simple
-
-
-
-=item L<Template::Plugin::XML::Style|Template::Plugin::XML::Style>
-
-Simple XML stylesheet transfomations
-
-
-
-=item L<Template::Plugin::XML::XPath|Template::Plugin::XML::XPath>
-
-Plugin interface to XML::XPath
-
-
-
 
 
 =back
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-Template Toolkit version 2.14, released on 04 October 2004.
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

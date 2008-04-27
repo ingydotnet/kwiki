@@ -8,31 +8,27 @@
 #   FILTER directive.
 #
 # AUTHOR
-#   Andy Wardley   <abw@kfs.org>
+#   Andy Wardley   <abw@wardley.org>
 #
 # COPYRIGHT
-#   Copyright (C) 2001 Andy Wardley.  All Rights Reserved.
+#   Copyright (C) 2001,2006 Andy Wardley.  All Rights Reserved.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: Filter.pm,v 1.31 2004/01/30 19:33:16 abw Exp $
+#   $Id: Filter.pm 1055 2007-04-27 11:50:40Z abw $
 #
 #============================================================================
 
 package Template::Plugin::Filter;
 
-require 5.004;
-
 use strict;
-use Template::Plugin;
+use warnings;
+use base 'Template::Plugin';
 
-use base qw( Template::Plugin );
-use vars qw( $VERSION $DYNAMIC );
-
-$VERSION = sprintf("%d.%02d", q$Revision: 1.31 $ =~ /(\d+)\.(\d+)/);
-$DYNAMIC = 0 unless defined $DYNAMIC;
+our $VERSION = 1.36;
+our $DYNAMIC = 0 unless defined $DYNAMIC;
 
 
 sub new {
@@ -401,22 +397,22 @@ Here's a complete example of a plugin filter module.
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-1.31, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+1.36, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

@@ -8,32 +8,31 @@
 #
 # AUTHORS
 #   Thierry-Michel Barral  <kktos@electron-libre.com>
-#   Andy Wardley           <abw@cre.canon.co.uk>
+#   Andy Wardley           <abw@wardley.org>
 #
 # COPYRIGHT
-#   Copyright (C) 2000 Thierry-Michel Barral, Andy Wardley.
+#   Copyright (C) 2000-2006 Thierry-Michel Barral, Andy Wardley.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
-#----------------------------------------------------------------------------
-#
-# $Id: Date.pm,v 2.72 2004/01/30 19:33:15 abw Exp $
+# REVISION
+#   $Id: Date.pm 1055 2007-04-27 11:50:40Z abw $
 #
 #============================================================================
 
 package Template::Plugin::Date;
 
 use strict;
-use vars qw( $VERSION $FORMAT @LOCALE_SUFFIX );
-use base qw( Template::Plugin );
-use Template::Plugin;
+use warnings;
+use base 'Template::Plugin';
 
 use POSIX ();
 
-$VERSION = sprintf("%d.%02d", q$Revision: 2.72 $ =~ /(\d+)\.(\d+)/);
-$FORMAT  = '%H:%M:%S %d-%b-%Y';    # default strftime() format
-@LOCALE_SUFFIX = qw( .ISO8859-1 .ISO_8859-15 .US-ASCII .UTF-8 );
+our $VERSION = 2.77;
+our $FORMAT  = '%H:%M:%S %d-%b-%Y';    # default strftime() format
+our @LOCALE_SUFFIX = qw( .ISO8859-1 .ISO_8859-15 .US-ASCII .UTF-8 );
+
 
 #------------------------------------------------------------------------
 # new(\%options)
@@ -343,8 +342,8 @@ cute Date::Calc sub-plugin.
 
 =head1 VERSION
 
-2.72, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+2.77, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 
 

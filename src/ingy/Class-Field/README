@@ -20,14 +20,15 @@ DESCRIPTION
     for speed.
 
 FUNCTIONS
-    * field
+    *   field
+
         Defines accessor methods for a field of your class:
 
             package Example;
             use base 'Parent';
             use Class::Field qw'field const';
-    
-            field 'foo';
+            
+    field 'foo';
             field bar => [];
 
             sub lalala {
@@ -41,7 +42,8 @@ FUNCTIONS
         This value will be returned if no value for the field has been set
         in the object.
 
-    * const
+    *   const
+
             const bar => 42;
 
         The "const" function is similar to <field> except that it is
@@ -57,7 +59,7 @@ AUTHOR
     Ingy döt Net <ingy@cpan.org>
 
 COPYRIGHT
-    Copyright (c) 2006. Ingy döt Net. All rights reserved.
+    Copyright (c) 2006, 2008. Ingy döt Net.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

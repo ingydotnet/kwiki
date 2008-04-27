@@ -112,6 +112,7 @@ CORE_LEVEL_2 = \
 	Template/Stash.pm \
 	Template/Test.pm \
 	Template/View.pm \
+	Template/VMethods.pm \
 
 CORE_LEVEL_3 = \
 	Kwiki/Archive/Simple.pm \

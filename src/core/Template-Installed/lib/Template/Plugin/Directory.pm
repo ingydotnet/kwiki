@@ -7,29 +7,27 @@
 #
 # AUTHORS
 #   Michael Stevens <michael@etla.org>, with some mutilations from 
-#   Andy Wardley <abw@kfs.org>.
+#   Andy Wardley <abw@wardley.org>.
 #
 # COPYRIGHT
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: Directory.pm,v 2.65 2004/01/30 19:33:15 abw Exp $
+#   $Id: Directory.pm 1055 2007-04-27 11:50:40Z abw $
 #
 #============================================================================
 
 package Template::Plugin::Directory;
 
-require 5.004;
-
 use strict;
+use warnings;
 use Cwd;
 use File::Spec;
 use Template::Plugin::File;
-use vars qw( $VERSION );
-use base qw( Template::Plugin::File );
+use base 'Template::Plugin::File';
 
-$VERSION = sprintf("%d.%02d", q$Revision: 2.65 $ =~ /(\d+)\.(\d+)/);
+our $VERSION = 2.70;
 
 
 #------------------------------------------------------------------------
@@ -394,8 +392,8 @@ for VIEW support, and made a few other minor tweaks.
 
 =head1 VERSION
 
-2.65, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+2.7, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 
 

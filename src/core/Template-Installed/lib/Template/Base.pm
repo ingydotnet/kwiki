@@ -7,30 +7,27 @@
 #   Template Toolkit modules.
 #
 # AUTHOR
-#   Andy Wardley   <abw@kfs.org>
+#   Andy Wardley   <abw@wardley.org>
 #
 # COPYRIGHT
-#   Copyright (C) 1996-2000 Andy Wardley.  All Rights Reserved.
+#   Copyright (C) 1996-2006 Andy Wardley.  All Rights Reserved.
 #   Copyright (C) 1998-2000 Canon Research Centre Europe Ltd.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
-#------------------------------------------------------------------------
-#
-#   $Id: Base.pm,v 2.70 2004/01/30 19:32:21 abw Exp $
+# REVISION
+#   $Id: Base.pm 1055 2007-04-27 11:50:40Z abw $
 #
 #========================================================================
  
 package Template::Base;
 
-require 5.004;
-
 use strict;
-use vars qw( $VERSION );
+use warnings;
 use Template::Constants;
 
-$VERSION = sprintf("%d.%02d", q$Revision: 2.70 $ =~ /(\d+)\.(\d+)/);
+our $VERSION = 2.77;
 
 
 #------------------------------------------------------------------------
@@ -49,27 +46,25 @@ sub new {
 #    $class->error('');		# always clear package $ERROR var?
 
     {	no strict qw( refs );
-	$argnames = \@{"$class\::BASEARGS"} || [ ];
+        $argnames = \@{"$class\::BASEARGS"} || [ ];
     }
 
     # shift off all mandatory args, returning error if undefined or null
     foreach $arg (@$argnames) {
-	return $class->error("no $arg specified")
-	    unless ($cfg = shift);
-	push(@args, $cfg);
+        return $class->error("no $arg specified")
+            unless ($cfg = shift);
+        push(@args, $cfg);
     }
 
     # fold all remaining args into a hash, or use provided hash ref
-#    local $" = ', ';
-#    print STDERR "args: [@_]\n";
     $cfg  = defined $_[0] && UNIVERSAL::isa($_[0], 'HASH') ? shift : { @_ };
 
     my $self = bless {
-	map { ($_ => shift @args) } @$argnames,
-	_ERROR  => '',
+        map { ($_ => shift @args) } @$argnames,
+        _ERROR  => '',
         DEBUG   => 0,
     }, $class;
-
+    
     return $self->_init($cfg) ? $self : $class->error($self->error);
 }
 
@@ -90,15 +85,15 @@ sub error {
     my $errvar;
 
     { 
-	no strict qw( refs );
-	$errvar = ref $self ? \$self->{ _ERROR } : \${"$self\::ERROR"};
+        no strict qw( refs );
+        $errvar = ref $self ? \$self->{ _ERROR } : \${"$self\::ERROR"};
     }
     if (@_) {
-	$$errvar = ref($_[0]) ? shift : join('', @_);
-	return undef;
+        $$errvar = ref($_[0]) ? shift : join('', @_);
+        return undef;
     }
     else {
-	return $$errvar;
+        return $$errvar;
     }
 }
 
@@ -129,9 +124,9 @@ sub debug {
     my ($pkg, $file, $line) = caller();
 
     unless ($msg =~ /\n$/) {
-	$msg .= ($self->{ DEBUG } & Template::Constants::DEBUG_CALLER)
-		 ? " at $file line $line\n"
-		 : "\n";
+        $msg .= ($self->{ DEBUG } & Template::Constants::DEBUG_CALLER)
+            ? " at $file line $line\n"
+            : "\n";
     }
 
     print STDERR "[$pkg] $msg";
@@ -279,22 +274,22 @@ This generates an error message such as:
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-2.70, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+2.77, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

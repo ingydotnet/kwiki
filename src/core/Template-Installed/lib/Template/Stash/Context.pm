@@ -65,19 +65,18 @@
 #
 #----------------------------------------------------------------------------
 #
-# $Id: Context.pm,v 1.59 2004/01/30 19:33:40 abw Exp $
+# $Id: Context.pm 1055 2007-04-27 11:50:40Z abw $
 #
 #============================================================================
 
 package Template::Stash::Context;
 
-require 5.004;
-
 use strict;
+use warnings;
 use Template::Stash;
-use vars qw( $VERSION $DEBUG $ROOT_OPS $SCALAR_OPS $HASH_OPS $LIST_OPS );
 
-$VERSION = sprintf("%d.%02d", q$Revision: 1.59 $ =~ /(\d+)\.(\d+)/);
+our $VERSION = 1.63;
+our $DEBUG   = 0 unless defined $DEBUG;
 
 
 #========================================================================
@@ -88,24 +87,24 @@ $VERSION = sprintf("%d.%02d", q$Revision: 1.59 $ =~ /(\d+)\.(\d+)/);
 # copy virtual methods from those in the regular Template::Stash
 #------------------------------------------------------------------------
 
-$ROOT_OPS = { 
+our $ROOT_OPS = { 
     %$Template::Stash::ROOT_OPS,
     defined $ROOT_OPS ? %$ROOT_OPS : (),
 };
 
-$SCALAR_OPS = { 
+our $SCALAR_OPS = { 
     %$Template::Stash::SCALAR_OPS,
     'array' => sub { return [$_[0]] },
     defined $SCALAR_OPS ? %$SCALAR_OPS : (),
 };
 
-$LIST_OPS = { 
+our $LIST_OPS = { 
     %$Template::Stash::LIST_OPS,
     'array' => sub { return $_[0] },
     defined $LIST_OPS ? %$LIST_OPS : (),
 };
 		    
-$HASH_OPS = { 
+our $HASH_OPS = { 
     %$Template::Stash::HASH_OPS,
     defined $HASH_OPS ? %$HASH_OPS : (),
 };
@@ -403,7 +402,7 @@ sub _dotop {
     $nextItem ||= "";
     my $scalarContext = 1 if ( $nextItem eq "scalar" );
     my $returnRef = 1     if ( $nextItem eq "ref" );
-    
+
     $args ||= [ ];
     $lvalue ||= 0;
 
@@ -413,119 +412,131 @@ sub _dotop {
     # return undef without an error if either side of the dot is unviable
     # or if an attempt is made to access a private member, starting _ or .
     return undef
-        unless defined($root) and defined($item) and $item !~ /^[\._]/;
+	unless defined($root) and defined($item) and $item !~ /^[\._]/;
 
     if (ref(\$root) eq "SCALAR" && !$lvalue &&
-        (($value = $LIST_OPS->{ $item }) || $item =~ /^-?\d+$/) ) {
+            (($value = $LIST_OPS->{ $item }) || $item =~ /^-?\d+$/) ) {
+        #
         # Promote scalar to one element list, to be processed below.
+        #
         $rootref = 'ARRAY';
         $root = [$root];
     }
     if ($rootref eq __PACKAGE__ || $rootref eq 'HASH') {
-        # if $root is a regular HASH or a Template::Stash kinda HASH (the 
-        # *real* root of everything).  We first lookup the named key 
-        # in the hash, or create an empty hash in its place if undefined
-        # and the $lvalue flag is set.  Otherwise, we check the HASH_OPS
-        # pseudo-methods table, calling the code if found, or return undef.
-        
-        if (defined($value = $root->{ $item })) {
+
+	# if $root is a regular HASH or a Template::Stash kinda HASH (the 
+	# *real* root of everything).  We first lookup the named key 
+	# in the hash, or create an empty hash in its place if undefined
+	# and the $lvalue flag is set.  Otherwise, we check the HASH_OPS
+	# pseudo-methods table, calling the code if found, or return undef.
+
+	if (defined($value = $root->{ $item })) {
             ($ret, $retVal, @result) = _dotop_return($value, $args, $returnRef,
                                                      $scalarContext);
             return $retVal if ( $ret );                     ## RETURN
         }
-        elsif ($lvalue) {
-            # we create an intermediate hash if this is an lvalue
-            return $root->{ $item } = { };		    ## RETURN
-        }
-        elsif ($value = $HASH_OPS->{ $item }) {
-            @result = &$value($root, @$args);		    ## @result
-        }
-        elsif (ref $item eq 'ARRAY') {
-            # hash slice
-            return [@$root{@$item}];                       ## RETURN
-        }
-        elsif ($value = $SCALAR_OPS->{ $item }) {
-            # Apply scalar ops to every hash element, in place.
-            foreach my $key ( keys %$root ) {
+	elsif ($lvalue) {
+	    # we create an intermediate hash if this is an lvalue
+	    return $root->{ $item } = { };		    ## RETURN
+	}
+	elsif ($value = $HASH_OPS->{ $item }) {
+	    @result = &$value($root, @$args);		    ## @result
+	}
+	elsif (ref $item eq 'ARRAY') {
+	    # hash slice
+	    return [@$root{@$item}];                       ## RETURN
+	}
+	elsif ($value = $SCALAR_OPS->{ $item }) {
+	    #
+	    # Apply scalar ops to every hash element, in place.
+	    #
+	    foreach my $key ( keys %$root ) {
                 $root->{$key} = &$value($root->{$key}, @$args);
             }
-        }
+	}
     }
     elsif ($rootref eq 'ARRAY') {
-        # if root is an ARRAY then we check for a LIST_OPS pseudo-method 
-        # (except for l-values for which it doesn't make any sense)
-        # or return the numerical index into the array, or undef
-        
-        if (($value = $LIST_OPS->{ $item }) && ! $lvalue) {
-            @result = &$value($root, @$args);		    ## @result
-        }
-        elsif (($value = $SCALAR_OPS->{ $item }) && ! $lvalue) {
-            # Apply scalar ops to every array element, in place.
-            for ( my $i = 0 ; $i < @$root ; $i++ ) {
+
+	# if root is an ARRAY then we check for a LIST_OPS pseudo-method 
+	# (except for l-values for which it doesn't make any sense)
+	# or return the numerical index into the array, or undef
+
+	if (($value = $LIST_OPS->{ $item }) && ! $lvalue) {
+	    @result = &$value($root, @$args);		    ## @result
+	}
+	elsif (($value = $SCALAR_OPS->{ $item }) && ! $lvalue) {
+	    #
+	    # Apply scalar ops to every array element, in place.
+	    #
+	    for ( my $i = 0 ; $i < @$root ; $i++ ) {
                 $root->[$i] = &$value($root->[$i], @$args); ## @result
             }
-        }
-        elsif ($item =~ /^-?\d+$/) {
-            $value = $root->[$item];
+	}
+	elsif ($item =~ /^-?\d+$/) {
+	    $value = $root->[$item];
             ($ret, $retVal, @result) = _dotop_return($value, $args, $returnRef,
                                                      $scalarContext);
             return $retVal if ( $ret );                     ## RETURN
-        }
+	}
         elsif (ref $item eq 'ARRAY' ) {
             # array slice
             return [@$root[@$item]];                        ## RETURN
         }
     }
-    
+
     # NOTE: we do the can-can because UNIVSERAL::isa($something, 'UNIVERSAL')
     # doesn't appear to work with CGI, returning true for the first call
     # and false for all subsequent calls. 
-    
+
     elsif (ref($root) && UNIVERSAL::can($root, 'can')) {
-        # if $root is a blessed reference then we call the item as a method.
-        # If that fails then we try to fallback on HASH behaviour if 
-        # possible.
+
+	# if $root is a blessed reference (i.e. inherits from the 
+	# UNIVERSAL object base class) then we call the item as a method.
+	# If that fails then we try to fallback on HASH behaviour if 
+	# possible.
         return ref $root->can($item) if ( $returnRef );       ## RETURN
-        eval {
+	eval {
             @result = $scalarContext ? scalar $root->$item(@$args)
-                : $root->$item(@$args);  ## @result
+                                     : $root->$item(@$args);  ## @result
         };
-        
-        if ($@) {
-            # failed to call object method, so try some fallbacks
-            if (UNIVERSAL::isa($root, 'HASH')
-                && defined($value = $root->{ $item })) {
+
+	if ($@) {
+	    # failed to call object method, so try some fallbacks
+	    if (UNIVERSAL::isa($root, 'HASH')
+                    && defined($value = $root->{ $item })) {
                 ($ret, $retVal, @result) = _dotop_return($value, $args,
-                                                         $returnRef, $scalarContext);
+                                                    $returnRef, $scalarContext);
                 return $retVal if ( $ret );                     ## RETURN
-            }
-            elsif (UNIVERSAL::isa($root, 'ARRAY') 
-                   && ($value = $LIST_OPS->{ $item })) {
-                @result = &$value($root, @$args);
-            }
-            else {
-                @result = (undef, $@);
-            }
-        }
+	    }
+	    elsif (UNIVERSAL::isa($root, 'ARRAY') 
+		   && ($value = $LIST_OPS->{ $item })) {
+		@result = &$value($root, @$args);
+	    }
+	    else {
+		@result = (undef, $@);
+	    }
+	}
     }
     elsif (($value = $SCALAR_OPS->{ $item }) && ! $lvalue) {
-        # at this point, it doesn't look like we've got a reference to
-        # anything we know about, so we try the SCALAR_OPS pseudo-methods
-        # table (but not for l-values)
-        @result = &$value($root, @$args);		    ## @result
+
+	# at this point, it doesn't look like we've got a reference to
+	# anything we know about, so we try the SCALAR_OPS pseudo-methods
+	# table (but not for l-values)
+
+	@result = &$value($root, @$args);		    ## @result
     }
     elsif ($self->{ _DEBUG }) {
-        die "don't know how to access [ $root ].$item\n";   ## DIE
+	die "don't know how to access [ $root ].$item\n";   ## DIE
     }
     else {
-        @result = ();
+	@result = ();
     }
-    
+
     # fold multiple return items into a list unless first item is undef
     if (defined $result[0]) {
-        return ref(@result > 1 ? [ @result ] : $result[0])
-            if ( $returnRef );  ## RETURN
-        if ( $scalarContext ) {
+	return ref(@result > 1 ? [ @result ] : $result[0])
+                                            if ( $returnRef );  ## RETURN
+	if ( $scalarContext ) {
             return scalar @result if ( @result > 1 );           ## RETURN
             return scalar(@{$result[0]}) if ( ref $result[0] eq "ARRAY" );
             return scalar(%{$result[0]}) if ( ref $result[0] eq "HASH" );
@@ -535,12 +546,12 @@ sub _dotop {
         }
     }
     elsif (defined $result[1]) {
-        die $result[1];					    ## DIE
+	die $result[1];					    ## DIE
     }
     elsif ($self->{ _DEBUG }) {
-        die "$item is undefined\n";			    ## DIE
+	die "$item is undefined\n";			    ## DIE
     }
-    
+
     return undef;
 }
 
@@ -744,22 +755,22 @@ new features very much.  One nagging implementation problem is that the
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-1.59, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+1.63, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

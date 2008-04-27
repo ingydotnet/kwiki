@@ -6,32 +6,26 @@
 #   Defines filter plugins as used by the FILTER directive.
 #
 # AUTHORS
-#   Andy Wardley <abw@kfs.org>, with a number of filters contributed
+#   Andy Wardley <abw@wardley.org>, with a number of filters contributed
 #   by Leslie Michael Orchard <deus_x@nijacode.com>
 #
 # COPYRIGHT
-#   Copyright (C) 1996-2000 Andy Wardley.  All Rights Reserved.
-#   Copyright (C) 1998-2000 Canon Research Centre Europe Ltd.
+#   Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
-#
-#----------------------------------------------------------------------------
-#
-# $Id: Filters.pm,v 2.78 2004/01/30 19:32:25 abw Exp $
 #
 #============================================================================
 
 package Template::Filters;
 
-require 5.004;
-
 use strict;
-use base qw( Template::Base );
-use vars qw( $VERSION $DEBUG $FILTERS $URI_ESCAPES $PLUGIN_FILTER );
+use warnings;
+use locale;
+use base 'Template::Base';
 use Template::Constants;
 
-$VERSION = sprintf("%d.%02d", q$Revision: 2.78 $ =~ /(\d+)\.(\d+)/);
+our $VERSION = 2.86;
 
 
 #------------------------------------------------------------------------
@@ -44,7 +38,7 @@ $VERSION = sprintf("%d.%02d", q$Revision: 2.78 $ =~ /(\d+)\.(\d+)/);
 # for every filter request for that name.
 #------------------------------------------------------------------------
 
-$FILTERS = {
+our $FILTERS = {
     # static filters 
     'html'            => \&html_filter,
     'html_para'       => \&html_paragraph,
@@ -52,6 +46,7 @@ $FILTERS = {
     'html_para_break' => \&html_para_break,
     'html_line_break' => \&html_line_break,
     'uri'             => \&uri_filter,
+    'url'             => \&url_filter,
     'upper'           => sub { uc $_[0] },
     'lower'           => sub { lc $_[0] },
     'ucfirst'         => sub { ucfirst $_[0] },
@@ -77,11 +72,11 @@ $FILTERS = {
     'redirect'    => [ \&redirect_filter_factory,    1 ],
     'file'        => [ \&redirect_filter_factory,    1 ],  # alias
     'stdout'      => [ \&stdout_filter_factory,      1 ],
-    'latex'       => [ \&latex_filter_factory,       1 ],
 };
 
 # name of module implementing plugin filters
-$PLUGIN_FILTER = 'Template::Plugin::Filter';
+our $PLUGIN_FILTER = 'Template::Plugin::Filter';
+
 
 
 #========================================================================
@@ -262,23 +257,49 @@ sub _dump {
 # uri_filter()                                           [% FILTER uri %]
 #
 # URI escape a string.  This code is borrowed from Gisle Aas' URI::Escape
-# module.  For something so simple, I can't see any validation in making
-# the user install the URI modules just for this, so we cut and paste.
-#
-# URI::Escape is Copyright 1995-2000 Gisle Aas.
-#------------------------------------------------------------------------
+# module, copyright 1995-2004.  See RFC2396 for details.
+#-----------------------------------------------------------------------
+
+# cache of escaped characters
+our $URI_ESCAPES;
 
 sub uri_filter {
     my $text = shift;
 
-    # construct and cache a lookup table for escapes (faster than
-    # doing a sprintf() for every character in every string each 
-    # time)
     $URI_ESCAPES ||= {
         map { ( chr($_), sprintf("%%%02X", $_) ) } (0..255),
     };
+
+    if ($] >= 5.008) {
+        utf8::encode($text);
+    }
     
-    $text =~ s/([^;\/?:@&=+\$,A-Za-z0-9\-_.!~*'()])/$URI_ESCAPES->{$1}/g;
+    $text =~ s/([^A-Za-z0-9\-_.!~*'()])/$URI_ESCAPES->{$1}/eg;
+    $text;
+}
+
+#------------------------------------------------------------------------
+# url_filter()                                           [% FILTER uri %]
+#
+# NOTE: the difference: url vs uri. 
+# This implements the old-style, non-strict behaviour of the uri filter 
+# which allows any valid URL characters to pass through so that 
+# http://example.com/blah.html does not get the ':' and '/' characters 
+# munged. 
+#-----------------------------------------------------------------------
+
+sub url_filter {
+    my $text = shift;
+
+    $URI_ESCAPES ||= {
+        map { ( chr($_), sprintf("%%%02X", $_) ) } (0..255),
+    };
+
+    if ($] >= 5.008) {
+        utf8::encode($text);
+    }
+    
+    $text =~ s/([^;\/?:@&=+\$,A-Za-z0-9\-_.!~*'()])/$URI_ESCAPES->{$1}/eg;
     $text;
 }
 
@@ -481,13 +502,14 @@ sub remove_filter_factory {
 #------------------------------------------------------------------------
 
 sub truncate_filter_factory {
-    my ($context, $len) = @_;
+    my ($context, $len, $char) = @_;
     $len = 32 unless defined $len;
+    $char = "..." unless defined $char;
 
     return sub {
         my $text = shift;
-        return $text if length $text < $len;
-        return substr($text, 0, $len - 3) . "...";
+        return $text if length $text <= $len;
+        return substr($text, 0, $len - length($char)) . $char;
     }
 }
 
@@ -551,6 +573,9 @@ sub redirect_filter_factory {
                                             'OUTPUT_PATH is not set'))
         unless $outpath;
 
+    $context->throw('redirect', "relative filenames are not supported: $file")
+        if $file =~ m{(^|/)\.\./};
+
     $options = { binmode => $options } unless ref $options;
 
     sub {
@@ -585,159 +610,6 @@ sub stdout_filter_factory {
     }
 }
 
-
-#------------------------------------------------------------------------
-# latex_filter_factory($context, $outputType)   [% FILTER latex(outputType) %]
-#
-# Return a filter sub that converts a (hopefully) complete LaTeX source
-# file to either "ps", "dvi", or "pdf".  Output type should be "ps", "dvi"
-# or "pdf" (pdf is default).
-#
-# Creates a temporary directory below File::Spec->tmpdir() (often /tmp)
-# and writes the text into doc.tex. It then runs either pdflatex or
-# latex and optionally dvips. Based on the exit status either returns
-# the entire doc.(pdf|ps|dvi) output or throws an error with a summary
-# of the error messages from doc.log.
-#
-# Written by Craig Barratt, Apr 28 2001.
-# Win32 additions by Richard Tietjen.
-#------------------------------------------------------------------------
-use File::Path;
-use File::Spec;
-use Cwd;
-
-sub latex_filter_factory
-{
-    my($context, $output) = @_;
-
-    $output = lc($output);
-    my $fName = "latex";
-    my($LaTeXPath, $PdfLaTeXPath, $DviPSPath)
-                        = @{Template::Config->latexpaths()};
-    if ( $output eq "ps" || $output eq "dvi" ) {
-        $context->throw($fName,
-                "latex not installed (see Template::Config::LATEX_PATH)")
-                                if ( $LaTeXPath eq "" );
-    } else {
-        $output = "pdf";
-        $LaTeXPath = $PdfLaTeXPath;
-        $context->throw($fName,
-                "pdflatex not installed (see Template::Config::PDFLATEX_PATH)")
-                                if ( $LaTeXPath eq "" );
-    }
-    if ( $output eq "ps" && $DviPSPath eq "" ) {
-        $context->throw($fName,
-                "dvips not installed (see Template::Config::DVIPS_PATH)");
-    }
-    if ( $^O !~ /^(MacOS|os2|VMS)$/i ) {
-        return sub {
-            local(*FH);
-            my $text = shift;
-            my $tmpRootDir = File::Spec->tmpdir();
-            my $cnt = 0;
-            my($tmpDir, $fileName, $devnull);
-            my $texDoc = 'doc';
-
-            do {
-                $tmpDir = File::Spec->catdir($tmpRootDir,
-                                             "tt2latex$$" . "_$cnt");
-                $cnt++;
-            } while ( -e $tmpDir );
-            mkpath($tmpDir, 0, 0700);
-            $context->throw($fName, "can't create temp dir $tmpDir")
-                    if ( !-d $tmpDir );
-            $fileName = File::Spec->catfile($tmpDir, "$texDoc.tex");
-            $devnull  = File::Spec->devnull();
-            if ( !open(FH, ">$fileName") ) {
-                rmtree($tmpDir);
-                $context->throw($fName, "can't open $fileName for output");
-            }
-            print(FH $text);
-            close(FH);
-
-            # latex must run in tmpDir directory
-            my $currDir = cwd();
-            if ( !chdir($tmpDir) ) {
-                rmtree($tmpDir);
-                $context->throw($fName, "can't chdir $tmpDir");
-            }
-            #
-            # We don't need to quote the backslashes on windows, but we
-            # do on other OSs
-            #
-            my $LaTeX_arg = "\\nonstopmode\\input{$texDoc}";
-            $LaTeX_arg = "'$LaTeX_arg'" if ( $^O ne 'MSWin32' );
-            if ( system("$LaTeXPath $LaTeX_arg"
-                   . " 1>$devnull 2>$devnull 0<$devnull") ) {
-                my $texErrs = "";
-                $fileName = File::Spec->catfile($tmpDir, "$texDoc.log");
-                if ( open(FH, "<$fileName") ) {
-                    my $state = 0;
-                    #
-                    # Try to extract just the interesting errors from
-                    # the verbose log file
-                    #
-                    while ( <FH> ) {
-                        #
-                        # TeX errors seems to start with a "!" at the
-                        # start of the line, and are followed several
-                        # lines later by a line designator of the
-                        # form "l.nnn" where nnn is the line number.
-                        # We make sure we pick up every /^!/ line, and
-                        # the first /^l.\d/ line after each /^!/ line.
-                        #
-                        if ( /^(!.*)/ ) {
-                            $texErrs .= $1 . "\n";
-                            $state = 1;
-                        }
-                        if ( $state == 1 && /^(l\.\d.*)/ ) {
-                            $texErrs .= $1 . "\n";
-                            $state = 0;
-                        }
-                    }
-                    close(FH);
-                } else {
-                    $texErrs = "Unable to open $fileName\n";
-                }
-                my $ok = chdir($currDir);
-                rmtree($tmpDir);
-                $context->throw($fName, "can't chdir $currDir") if ( !$ok );
-                $context->throw($fName, "latex exited with errors:\n$texErrs");
-            }
-            if ( $output eq "ps" ) {
-                $fileName = File::Spec->catfile($tmpDir, "$texDoc.dvi");
-                if ( system("$DviPSPath $texDoc -o"
-                       . " 1>$devnull 2>$devnull 0<$devnull") ) {
-                    my $ok = chdir($currDir);
-                    rmtree($tmpDir);
-                    $context->throw($fName, "can't chdir $currDir") if ( !$ok );
-                    $context->throw($fName, "can't run $DviPSPath $fileName");
-                }
-            }
-            if ( !chdir($currDir) ) {
-                rmtree($tmpDir);
-                $context->throw($fName, "can't chdir $currDir");
-            }
-
-            my $retStr;
-            $fileName = File::Spec->catfile($tmpDir, "$texDoc.$output");
-            if ( open(FH, $fileName) ) {
-                local $/ = undef;       # slurp file in one go
-                binmode(FH);
-                $retStr = <FH>;
-                close(FH);
-            } else {
-                rmtree($tmpDir);
-                $context->throw($fName, "Can't open output file $fileName");
-            }
-            rmtree($tmpDir);
-            return $retStr;
-        }
-    } else {
-        $context->throw("$fName not yet supported on $^O OS."
-                      . "  Please contribute code!!");
-    }
-}
 
 1;
 
@@ -1047,9 +919,9 @@ output:
 
 =head2 html
 
-Converts the characters 'E<lt>', 'E<gt>' and '&' to '&lt;', '&gt;' and
-'&amp;', respectively, protecting them from being interpreted as
-representing HTML tags or entities.
+Converts the characters 'E<lt>', 'E<gt>', '&' and '"' to '&lt;',
+'&gt;', '&amp;', and '&quot;' respectively, protecting them from being
+interpreted as representing HTML tags or entities.
 
     [% FILTER html %]
     Binary "<=>" returns -1, 0, or 1 depending on...
@@ -1144,12 +1016,60 @@ output:
 
     my%20file.html
 
-Note that URI escaping isn't always enough when generating hyperlinks in
-an HTML document.  The C<&> character, for example, is valid in a URI and
-will not be escaped by the URI filter.  In this case you should also filter
-the text through the 'html' filter.
+The uri filter correctly encodes all reserved characters, including
+C<&>, C<@>, C</>, C<;>, C<:>, C<=>, C<+>, C<?> and C<$>.  This filter
+is typically used to encode parameters in a URL that could otherwise
+be interpreted as part of the URL.  Here's an example:
 
-    <a href="[% filename | uri | html %]">click here</a>
+    [% path  = 'http://tt2.org/example'
+       back  = '/other?foo=bar&baz=bam' 
+       title = 'Earth: "Mostly Harmless"'
+    %]
+    <a href="[% path %]?back=[% back | uri %]&title=[% title | uri %]">
+
+The output generated is rather long so we'll show it split across two
+lines:
+
+    <a href="http://tt2.org/example?back=%2Fother%3Ffoo%3Dbar%26
+    baz%3Dbam&title=Earth%3A%20%22Mostly%20Harmless%22">
+
+Without the uri filter the output would look like this (also split across
+two lines). 
+
+    <a href="http://tt2.org/example?back=/other?foo=bar
+    &baz=bam&title=Earth: "Mostly Harmless"">
+
+In this rather contrived example we've manage to generate both a broken URL
+(the repeated C<?> is not allowed) and a broken HTML element (the href
+attribute is terminated by the first C<"> after C<Earth: > leaving C<Mostly
+Harmless"> dangling on the end of the tag in precisely the way that harmless
+things shouldn't dangle). So don't do that. Always use the uri filter to
+encode your URL parameters.
+
+However, you should B<not> use the uri filter to encode an entire URL.
+
+   <a href="[% page_url | uri %]">   # WRONG!
+
+This will incorrectly encode any reserved characters like C<:> and C</>
+and that's almost certainly not what you want in this case.  Instead
+you should use the B<url> (note spelling) filter for this purpose.
+
+   <a href="[% page_url | url %]">   # CORRECT
+
+Please note that this behaviour was changed in version 2.16 of the 
+Template Toolkit.  Prior to that, the uri filter did not encode the
+reserved characters, making it technically incorrect according to the
+RFC 2396 specification.  So we fixed it in 2.16 and provided the url
+filter to implement the old behaviour of not encoding reserved 
+characters.
+
+=head2 url
+
+The url filter is a less aggressive version of the uri filter.  It encodes
+any characters outside of the permitted URI character set (as defined by RFC 2396)
+into C<%nn> hex escapes.  However, unlike the uri filter, the url filter does 
+B<not> encode the reserved characters C<&>, C<@>, C</>, C<;>, C<:>, C<=>, C<+>, 
+C<?> and C<$>.  
 
 =head2 indent(pad)
 
@@ -1167,11 +1087,11 @@ output:
     ME> blah blah blah
     ME> cabbages, rhubard, onions
 
-=head2 truncate(length)
+=head2 truncate(length,dots)
 
-Truncates the text block to the length specified, or a default length of
-32.  Truncated text will be terminated with '...' (i.e. the '...' falls
-inside the required length, rather than appending to it).
+Truncates the text block to the length specified, or a default length
+of 32.  Truncated text will be terminated with '...' (i.e. the '...'
+falls inside the required length, rather than appending to it).
 
     [% FILTER truncate(21) %]
     I have much to say on this matter that has previously 
@@ -1181,6 +1101,18 @@ inside the required length, rather than appending to it).
 output:
 
     I have much to say...
+
+If you want to use something other than '...' you can pass that as a 
+second argument.
+
+    [% FILTER truncate(26, '&hellip;') %]
+    I have much to say on this matter that has previously 
+    been said on more than one occasion.
+    [% END %]
+
+output:
+
+    I have much to say&hellip;
 
 =head2 repeat(iterations)
 
@@ -1351,84 +1283,28 @@ generates output to stdout (in this case in binary mode).
 
 =head2 latex(outputType)
 
-Passes the text block to LaTeX and produces either PDF, DVI or
-PostScript output.  The 'outputType' argument determines the output
-format and it should be set to one of the strings: "pdf" (default),
-"dvi", or "ps".
-
-The text block should be a complete LaTeX source file.
-
-    [% FILTER latex("pdf") -%]
-    \documentclass{article}
-
-    \begin{document}
-
-    \title{A Sample TT2 \LaTeX\ Source File}
-    \author{Craig Barratt}
-    \maketitle
-
-    \section{Introduction}
-    This is some text.
-
-    \end{document}
-    [% END -%]
-
-The output will be a PDF file. You should be careful not to prepend or
-append any extraneous characters or text outside the FILTER block,
-since this text will wrap the (binary) output of the latex filter.
-Notice the END directive uses '-%]' for the END_TAG to remove the
-trailing new line.
-
-One example where you might prepend text is in a CGI script where
-you might include the Content-Type before the latex output, eg:
-
-    Content-Type: application/pdf
-
-    [% FILTER latex("pdf") -%]
-    \documentclass{article}
-    \begin{document}
-    ...
-    \end{document}
-    [% END -%]
-
-In other cases you might use the redirect filter to put the output
-into a file, rather than delivering it to stdout.  This might be
-suitable for batch scripts:
-
-    [% output = FILTER latex("pdf") -%]
-    \documentclass{article}
-    \begin{document}
-    ...
-    \end{document}
-    [% END; output | redirect("document.pdf", 1) -%]
-
-(Notice the second argument to redirect to force binary mode.)
-
-Note that the latex filter runs one or two external programs, so it
-isn't very fast.  But for modest documents the performance is adequate,
-even for interactive applications.
-
-A error of type 'latex' will be thrown if there is an error reported
-by latex, pdflatex or dvips.
+The latex() filter is no longer part of the core Template Toolkit
+distribution as of version 2.15.  You can download it as a 
+separate Template-Latex distribution from CPAN.
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-2.78, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+2.86, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

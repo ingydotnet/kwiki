@@ -3,16 +3,13 @@
 # Template::Manual::Config
 #
 # DESCRIPTION
-#   This section contains details of all the configuration options that
-#   can be used to customise the behaviour and extend the features of
-#   the Template Toolkit.
+
 #
 # AUTHOR
-#   Andy Wardley  <abw@andywardley.com>
+#   Andy Wardley  <abw@wardley.org>
 #
 # COPYRIGHT
-#   Copyright (C) 1996-2001 Andy Wardley.  All Rights Reserved.
-#   Copyright (C) 1998-2001 Canon Research Centre Europe Ltd.
+#   Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
@@ -40,9 +37,7 @@ Template::Manual::Config - Configuration options
 
 =head1 DESCRIPTION
 
-This section contains details of all the configuration options that can
-be used to customise the behaviour and extend the features of the
-Template Toolkit.
+
 
 =head2 Template Style and Parsing Options
 
@@ -138,9 +133,9 @@ Output:
 The PRE_CHOMP and POST_CHOMP options can help to clean up some of this
 extraneous whitespace.  Both are disabled by default.
 
-    my $template = Template->new({
-	PRE_CHOMP  => 1,
-	POST_CHOMP => 1,
+    my $template = Template-E<gt>new({
+        PRE_CHOMP  =E<gt> 1,
+        POST_CHOMP =E<gt> 1,
     });
 
 With PRE_CHOMP set to 1, the newline and whitespace preceding a directive
@@ -148,60 +143,97 @@ at the start of a line will be deleted.  This has the effect of
 concatenating a line that starts with a directive onto the end of the 
 previous line.
 
- 	Foo <----------.
- 		       |
+        Foo E<lt>----------.
+                       |
     ,---(PRE_CHOMP)----'
     |
     `-- [% a = 10 %] --.
- 		       |
+                       |
     ,---(POST_CHOMP)---'
     |
-    `-> Bar
+    `-E<gt> Bar
 
 With POST_CHOMP set to 1, any whitespace after a directive up to and
 including the newline will be deleted.  This has the effect of joining
 a line that ends with a directive onto the start of the next line.
 
-If PRE_CHOMP or POST_CHOMP is set to 2, then instead of removing all
-the whitespace, the whitespace will be collapsed to a single space.
+If PRE_CHOMP or POST_CHOMP is set to 2, all whitespace including any
+number of newline will be removed and replaced with a single space.
 This is useful for HTML, where (usually) a contiguous block of
 whitespace is rendered the same as a single space.
 
-You may use the CHOMP_NONE, CHOMP_ALL, and CHOMP_COLLAPSE constants
-from the Template::Constants module to deactivate chomping, remove
-all whitespace, or collapse whitespace to a single space.
+With PRE_CHOMP or POST_CHOMP set to 3, all adjacent whitespace
+(including newlines) will be removed entirely.
+
+These values are defined as CHOMP_NONE, CHOMP_ONE, CHOMP_COLLAPSE and
+CHOMP_GREEDY constants in the Template::Constants module.  CHOMP_ALL
+is also defined as an alias for CHOMP_ONE to provide backwards
+compatability with earlier version of the Template Toolkit.  
+
+Additionally the chomp tag modifiers listed below may also be used for
+the PRE_CHOMP and POST_CHOMP configuration.
+ 
+     my $template = Template-E<gt>new({
+        PRE_CHOMP  =E<lt> '~',
+        POST_CHOMP =E<gt> '-',
+     });
 
 PRE_CHOMP and POST_CHOMP can be activated for individual directives by
 placing a '-' immediately at the start and/or end of the directive.
 
-    [% FOREACH user = userlist %]
+    [% FOREACH user IN userlist %]
        [%- user -%]
     [% END %]
 
-The '-' characters activate both PRE_CHOMP and POST_CHOMP for the one
-directive '[%- name -%]'.  Thus, the template will be processed as if
-written:
+This has the same effect as CHOMP_ONE in removing all whitespace
+before or after the directive up to and including the newline.  The
+template will be processed as if written:
 
-    [% FOREACH user = userlist %][% user %][% END %]
+    [% FOREACH user IN userlist %][% user %][% END %]
 
-Note that this is the same as if PRE_CHOMP and POST_CHOMP were set
-to CHOMP_ALL; the only way to get the CHOMP_COLLAPSE behavior is
-to set PRE_CHOMP or POST_CHOMP accordingly.  If PRE_CHOMP or POST_CHOMP
-is already set to CHOMP_COLLAPSE, using '-' will give you CHOMP_COLLAPSE
-behavior, not CHOMP_ALL behavior.
+To remove all whitespace including any number of newlines, use the '~' 
+character instead.
 
-Similarly, '+' characters can be used to disable PRE_CHOMP or
-POST_CHOMP (i.e.  leave the whitespace/newline intact) options on a
-per-directive basis.
+    [% FOREACH user IN userlist %]
+    
+       [%~ user ~%]
+    
+    [% END %]
+
+To collapse all whitespace to a single space, use the '=' character.
+
+    [% FOREACH user IN userlist %]
+ 
+       [%= user =%]
+    
+    [% END %]
+
+Here the template is processed as if written:
+
+    [% FOREACH user IN userlist %] [% user %] [% END %]
+
+If you have PRE_CHOMP or POST_CHOMP set as configuration options then
+you can use '+' to disable any chomping options (i.e.  leave the
+whitespace intact) on a per-directive basis.
 
     [% FOREACH user = userlist %]
     User: [% user +%]
     [% END %]
 
-With POST_CHOMP enabled, the above example would be parsed as if written:
+With POST_CHOMP set to CHOMP_ONE, the above example would be parsed as
+if written:
 
     [% FOREACH user = userlist %]User: [% user %]
     [% END %]
+
+For reference, the PRE_CHOMP and POST_CHOMP configuration options may be set to any of the following:
+
+     Constant      Value   Tag Modifier
+     ----------------------------------
+     CHOMP_NONE      0          +
+     CHOMP_ONE       1          -
+     CHOMP_COLLAPSE  2          =
+     CHOMP_GREEDY    3          ~
 
 
 
@@ -1191,7 +1223,7 @@ is passed as the argument to Apache/mod_perl handlers.
 example 1 (file name):
 
     my $template = Template->new({
-	OUTPUT => "/tmp/foo",
+        OUTPUT => "/tmp/foo",
     });
 
 example 2 (text string):
@@ -1199,7 +1231,7 @@ example 2 (text string):
     my $output = '';
 
     my $template = Template->new({
-	OUTPUT => \$output,
+        OUTPUT => \$output,
     });
 
 example 3 (file handle):
@@ -1207,7 +1239,7 @@ example 3 (file handle):
     open (TOUT, "> $file") || die "$file: $!\n";
 
     my $template = Template->new({
-	OUTPUT => \*TOUT,
+        OUTPUT => \*TOUT,
     });
 
 example 4 (subroutine):
@@ -1215,24 +1247,24 @@ example 4 (subroutine):
     sub output { my $out = shift; print "OUTPUT: $out" }
 
     my $template = Template->new({
-	OUTPUT => \&output,
+        OUTPUT => \&output,
     });
 
 example 5 (array reference):
 
     my $template = Template->new({
-	OUTPUT => \@output,
+        OUTPUT => \@output,
     })
 
 example 6 (Apache/mod_perl handler):
 
     sub handler {
-	my $r = shift;
+    my $r = shift;
 
-	my $t = Template->new({
-	    OUTPUT => $r,
-	});
-	...
+    my $t = Template->new({
+        OUTPUT => $r,
+    });
+    ...
     }
 
 The default OUTPUT location be overridden by passing a third parameter
@@ -1240,14 +1272,11 @@ to the Template process() method.  This can be specified as any of the
 above argument types.
 
     $t->process($file, $vars, "/tmp/foo");
-    $t->process($file, $vars, "bar");
+    $t->process($file, $vars, \$output);
     $t->process($file, $vars, \*MYGLOB);
     $t->process($file, $vars, \@output); 
     $t->process($file, $vars, $r);  # Apache::Request
     ...
-
-
-
 
 
 
@@ -1433,13 +1462,20 @@ is discarded to make room for the new one.
 The CACHE_SIZE can be set to 0 to disable caching altogether.
 
     my $template = Template->new({
-	CACHE_SIZE => 64,   # only cache 64 compiled templates
+        CACHE_SIZE => 64,   # only cache 64 compiled templates
     });
 
     my $template = Template->new({
-	CACHE_SIZE => 0,   # don't cache any compiled templates
+        CACHE_SIZE => 0,   # don't cache any compiled templates
     });
 
+As well as caching templates as they are found, the Template::Provider
+also implements negative caching to keep track of templates that are 
+I<not> found.  This allows the provider to quickly decline a request
+for a template that it has previously failed to locate, saving the effort
+of going to look for it again.  This is useful when an INCLUDE_PATH includes 
+multiple providers, ensuring that the request is passed down through the 
+providers as quickly as possible.
 
 
 
@@ -1556,12 +1592,24 @@ their corresponding Template::Plugin::* counterparts.  These can be
 redefined by values in the PLUGINS hash.
 
     my $template = Template->new({
-	PLUGINS => {
-	    cgi => 'MyOrg::Template::Plugin::CGI',
-    	    foo => 'MyOrg::Template::Plugin::Foo',
-	    bar => 'MyOrg::Template::Plugin::Bar',
-	},
-    });
+        PLUGINS => {
+            cgi => 'MyOrg::Template::Plugin::CGI',
+            foo => 'MyOrg::Template::Plugin::Foo',
+            bar => 'MyOrg::Template::Plugin::Bar',
+        },  
+    }); 
+
+The recommended convention is to specify these plugin names in lower
+case.  The Template Toolkit first looks for an exact case-sensitive
+match and then tries the lower case conversion of the name specified.
+
+    [% USE Foo %]      # look for 'Foo' then 'foo'
+
+If you define all your PLUGINS with lower case names then they will be
+located regardless of how the user specifies the name in the USE
+directive.  If, on the other hand, you define your PLUGINS with upper
+or mixed case names then the name specified in the USE directive must
+match the case exactly.  
 
 The USE directive is used to create plugin objects and does so by
 calling the plugin() method on the current Template::Context object.
@@ -1571,8 +1619,8 @@ calls the load() class method which should return the class name
 (default and general case) or a prototype object against which the 
 new() method can be called to instantiate individual plugin objects.
 
-If the plugin name is not defined in the PLUGINS hash then the PLUGIN_BASE
-and/or LOAD_PERL options come into effect.
+If the plugin name is not defined in the PLUGINS hash then the
+PLUGIN_BASE and/or LOAD_PERL options come into effect.
 
 
 
@@ -1584,17 +1632,15 @@ If a plugin is not defined in the PLUGINS hash then the PLUGIN_BASE is used
 to attempt to construct a correct Perl module name which can be successfully 
 loaded.  
 
-The PLUGIN_BASE can be specified as a single value or as a reference
-to an array of multiple values.  The default PLUGIN_BASE value,
-'Template::Plugin', is always added the the end of the PLUGIN_BASE
-list (a single value is first converted to a list).  Each value should
-contain a Perl package name to which the requested plugin name is
-appended.
+The PLUGIN_BASE can be specified as a reference to an array of module
+namespaces, or as a single value which is automatically converted to a
+list.  The default PLUGIN_BASE value ('Template::Plugin') is then added
+to the end of this list.
 
 example 1:
 
     my $template = Template->new({
-	PLUGIN_BASE => 'MyOrg::Template::Plugin',
+        PLUGIN_BASE => 'MyOrg::Template::Plugin',
     });
 
     [% USE Foo %]    # => MyOrg::Template::Plugin::Foo
@@ -1603,13 +1649,33 @@ example 1:
 example 2:
 
     my $template = Template->new({
-	PLUGIN_BASE => [   'MyOrg::Template::Plugin',
-			 'YourOrg::Template::Plugin'  ],
+        PLUGIN_BASE => [   'MyOrg::Template::Plugin',
+                           'YourOrg::Template::Plugin'  ],
     });
 
     [% USE Foo %]    # =>   MyOrg::Template::Plugin::Foo
                        or YourOrg::Template::Plugin::Foo 
                        or          Template::Plugin::Foo 
+
+If you don't want the default Template::Plugin namespace added to the
+end of the PLUGIN_BASE, then set the $Template::Plugins::PLUGIN_BASE
+variable to a false value before calling the Template new()
+constructor method.  This is shown in the example below where the
+'Foo' is located as 'My::Plugin::Foo' or 'Your::Plugin::Foo' but not 
+as 'Template::Plugin::Foo'.
+
+example 3:
+
+    use Template::Plugins;
+    $Template::Plugins::PLUGIN_BASE = '';
+
+    my $template = Template->new({
+        PLUGIN_BASE => [   'My::Plugin',
+                           'Your::Plugin'  ],
+    });
+
+    [% USE Foo %]    # =>   My::Plugin::Foo
+                       or Your::Plugin::Foo 
 
 
 
@@ -2090,21 +2156,21 @@ created and used automatically if a GRAMMAR item isn't specified.
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-Template Toolkit version 2.14, released on 04 October 2004.
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

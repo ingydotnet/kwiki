@@ -6,7 +6,7 @@
 #   Factory module for constructing templates from Perl code.
 #
 # AUTHOR
-#   Andy Wardley   <abw@kfs.org>
+#   Andy Wardley   <abw@wardley.org>
 #
 # WARNING
 #   Much of this module is hairy, even furry in places.  It needs
@@ -17,35 +17,30 @@
 #   debugging.
 #
 # COPYRIGHT
-#   Copyright (C) 1996-2000 Andy Wardley.  All Rights Reserved.
+#   Copyright (C) 1996-2006 Andy Wardley.  All Rights Reserved.
 #   Copyright (C) 1998-2000 Canon Research Centre Europe Ltd.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
-#----------------------------------------------------------------------------
-#
-# $Id: Directive.pm,v 2.19 2004/05/20 08:46:54 abw Exp $
+# REVISION
+#   $Id: Directive.pm 1022 2006-05-30 17:01:43Z abw $
 #
 #============================================================================
 
 package Template::Directive;
 
-require 5.004;
-
 use strict;
-use Template::Base;
+use warnings;
+use base 'Template::Base';
 use Template::Constants;
 use Template::Exception;
 
-use base qw( Template::Base );
-use vars qw( $VERSION $DEBUG $PRETTY $WHILE_MAX $OUTPUT );
-
-$VERSION = sprintf("%d.%02d", q$Revision: 2.19 $ =~ /(\d+)\.(\d+)/);
-
-$WHILE_MAX = 1000 unless defined $WHILE_MAX;
-$PRETTY    = 0 unless defined $PRETTY;
-$OUTPUT    = '$output .= ';
+our $VERSION   = 2.20;
+our $DEBUG     = 0 unless defined $DEBUG;
+our $WHILE_MAX = 1000 unless defined $WHILE_MAX;
+our $PRETTY    = 0 unless defined $PRETTY;
+our $OUTPUT    = '$output .= ';
 
 
 sub _init {

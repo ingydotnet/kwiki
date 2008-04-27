@@ -6,34 +6,31 @@
 #   Template Toolkit plugin to implement a basic String object.
 #
 # AUTHOR
-#   Andy Wardley   <abw@kfs.org>
+#   Andy Wardley   <abw@wardley.org>
 #
 # COPYRIGHT
-#   Copyright (C) 2001 Andy Wardley.  All Rights Reserved.
+#   Copyright (C) 2001-2006 Andy Wardley.  All Rights Reserved.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: String.pm,v 2.34 2004/01/30 19:33:20 abw Exp $
+#   $Id: String.pm 1055 2007-04-27 11:50:40Z abw $
 #
 #============================================================================
 
 package Template::Plugin::String;
 
-require 5.004;
-
 use strict;
-use Template::Plugin;
+use warnings;
+use base 'Template::Plugin';
 use Template::Exception;
 
-use base qw( Template::Plugin );
-use vars qw( $VERSION $ERROR);
 use overload q|""| => "text",
              fallback => 1;
 
-$VERSION = sprintf("%d.%02d", q$Revision: 2.34 $ =~ /(\d+)\.(\d+)/);
-$ERROR   = '';
+our $VERSION = 2.40;
+our $ERROR   = '';
 
 *centre  = \*center;
 *append  = \*push;
@@ -313,9 +310,29 @@ sub truncate {
     return $self unless defined $length;
     $suffix ||= '';
     return $self if CORE::length $self->{ text } <= $length;
-    $self->{ text } = substr($self->{ text }, 0, 
+    $self->{ text } = CORE::substr($self->{ text }, 0, 
 			     $length - CORE::length($suffix)) . $suffix;
     return $self;
+}
+
+
+sub substr {
+    my ($self, $offset, $length, $replacement) = @_;
+    $offset ||= 0;
+
+    if(defined $length) {
+        if (defined $replacement) {
+            my $removed = CORE::substr( $self->{text}, $offset, $length );
+            CORE::substr( $self->{text}, $offset, $length ) = $replacement;
+            return $removed;
+        }
+        else {
+            return CORE::substr( $self->{text}, $offset, $length );
+        }
+    } 
+    else {
+        return CORE::substr( $self->{text}, $offset );
+    }
 }
 
 
@@ -559,6 +576,26 @@ Delegates to Perl's internal split() so the parameters are exactly the same.
          ...
     [% END %]
 
+=item substr($offset, $length, $replacement)
+
+Returns a substring starting at $offset, for $length characters.
+
+    [% str = String.new('foo bar baz wiz waz woz') %]
+    [% str.substr(4, 3) %]    # bar
+
+If $length is not specified then it returns everything from the $offset
+to the end of the string.
+
+    [% str.substr(12) %]      # wiz waz woz
+
+If both $length and $replacement are specified, then the method
+replaces everything from $offset for $length characters with
+$replacement.  The substring removed from the string is then 
+returned.
+
+    [% str.substr(0, 11, 'FOO') %]   # foo bar baz
+    [% str %]                        # FOO wiz waz woz
+
 =back
 
 =head2 Mutation Methods
@@ -761,22 +798,22 @@ Repeats the string $count times.
 
 =head1 AUTHOR
 
-Andy Wardley E<lt>abw@andywardley.comE<gt>
+Andy Wardley E<lt>abw@wardley.orgE<gt>
 
-L<http://www.andywardley.com/|http://www.andywardley.com/>
+L<http://wardley.org/|http://wardley.org/>
 
 
 
 
 =head1 VERSION
 
-2.34, distributed as part of the
-Template Toolkit version 2.14, released on 04 October 2004.
+2.4, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.
 
 =head1 COPYRIGHT
 
-  Copyright (C) 1996-2004 Andy Wardley.  All Rights Reserved.
-  Copyright (C) 1998-2002 Canon Research Centre Europe Ltd.
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.
+
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
