@@ -11,7 +11,7 @@ use Digest::MD5 qw(md5);
 use Text::Microformat;
 use CGI;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 const class_id    => 'user_name';
 const class_title => 'Kwiki with OpenID authentication';

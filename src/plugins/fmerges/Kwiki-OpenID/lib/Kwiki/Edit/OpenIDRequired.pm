@@ -1,7 +1,7 @@
 package Kwiki::Edit::OpenIDRequired;
 use strict;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Kwiki::Plugin '-Base';
 use mixin 'Kwiki::Installer';
@@ -47,7 +47,7 @@ __template/tt2/edit_noOpenID.html__
 <div class="error">
 <p>
 This web site does not allow anonymous editing.
-Please <a href="[% script_name _ "?action=login_openid;page_name=" _ hub.cgi.page %]">login via OpenID</a> first.
+Please <a href="[% script_name _ "?action=login_openid;page=" _ hub.cgi.page_name %]">login via OpenID</a> first.
 </p>
 <p>
 </p>

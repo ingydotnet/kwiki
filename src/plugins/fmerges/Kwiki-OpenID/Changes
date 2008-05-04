@@ -1,5 +1,8 @@
 Revision history for Perl extension Kwiki::OpenID
     
+0.03  Sun May 04 16:24:19 2008
+    - Small fix for redirecting back when OpenID is required for editing.
+
 0.02  Wed Feb 27 02:31:23 2008
     - Small modifications.
     - Using Digest::MD5 instead of Digest::SHA1.
