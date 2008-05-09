@@ -1,0 +1,11 @@
+Hello world.
+
+{{{
+This is preformatted text.
+
+   Will //it// work?
+
+Hope so.
+}}}
+
+Fini.

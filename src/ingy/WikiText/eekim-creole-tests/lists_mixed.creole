@@ -1,0 +1,17 @@
+= Mixed =
+
+* Item one.
+* Item two.
+## Ordered subitem one.
+## Ordered subitem two.
+*** Unordered subitem one.
+* Item three.
+# Ordered item one.
+
+# Item one.
+# Item two.
+** Unordered subitem one.
+** Unordered subitem two.
+### Ordered subitem one.
+# Item three.
+* Unordered item one.

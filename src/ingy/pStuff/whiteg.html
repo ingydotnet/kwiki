@@ -1,0 +1,515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+					"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>Administrator Guide to oolong.uta.fi</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<div id="cover">
+    <h1 id="guide-title">Administrator Guide to oolong.uta.fi</h1>
+    <p id="author">
+        Chienting Weng<br />
+        Hypermedia Laboratory<br />
+        University of Tampere
+    </p>
+    <p id="version">Version 0.1 --- 28.03.2008</p>
+</div>
+<div id="content">
+    <div class="document-header"></div>
+    <h2 id="ch1">Chapter 1: Introduction </h2>
+    <p> This document is for the administrator of oolong, a Dell PowerEdge 1950 (abbr is PE1950) rack server that host Hypermedia Lab Game Research Group's website and web services. The document describes the hardware specifications, operating systems, virtualization tools, services, and related configurations running on oolong.</p>
+    <h2 id="ch2"> Chapter 2: Server Specifications </h2>
+    <p> This chapter includes the hardware specifications and system architectures of oolong. </p>
+    <h3 id="2.1"> 2.1 Hardware Specifications </h3>
+    <p> All hardwares are originally come with PE1950, there are no extra parts.</p>
+    <table class="spec-table" summary="Hardware information of Dell Power Edge 1950">
+        <caption>Fig1. Hardware Specification of PE1950</caption>
+        <tr>
+            <th>Item</th>
+            <th>Specification</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>Model</td>
+            <td>Dell PowerEdge 1950 1U rack server</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>CPU</td>
+            <td>Intel Xeon Quad Core</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Hard Disk Drive</td>
+            <td>143GB SAS HDD</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>RAM</td>
+            <td>2GB</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Power</td>
+            <td></td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>RAID Controller</td>
+            <td>Dell PERC 5/i SAS/SATA/SCSI RAID Controller (LSI MegaRAID)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Network</td>
+            <td>Broadcom NetXtreme II Gigabit Ethernet</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Support</td>
+            <td>3 Year, 4 hour 24/7 onsite sSilver upport</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>Operating System</td>
+            <td>None</td>
+            <td>None</td>
+        </tr>
+    </table>
+    <h3 id="2.2"> 2.2 System Architecture </h3>
+    <p> The system uses Xen virtualization software to run three virtual systems. Xen is an open source virtualization solution which supports a wide range of virtual operating systems including Windows, Linux, Solaris, and various versions of the BSD operating systems. It is theorically possible to run all mentioned operating systems on Xen, but due to the host OS and hardware, it is simply more difficult to get some operating systems working well than others, for example, I could not run FreeBSD well on a Debian-based Xen box. But there are more success stories about running Windows and Linux on Xen.</p>
+    <p>The base operating system (called Dom0 in Xen) is Debian GNU/Linux 4.0 (a.k.a Debian Etch), the virtual systems (called DomU in Xen) running on it are two Ubuntu 6.06 LTS and one Debian Etch. The respective operating systems are listed in the table below:</p>
+        <table class="spec-table">
+        	<caption>Fig2. System architecture</caption>
+            <tr>
+                <th>Dom0/DomU</th>
+                <th>Operating System</th>
+            </tr>
+            <tr>
+                <td>Dom0</td>
+                <td>Debian Etch</td>
+            </tr>
+            <tr>
+                <td>DomU</td>
+                <td>Ubuntu 6.06 LTS</td>
+            </tr>
+            <tr>
+                <td>DomU</td>
+                <td>Debian Etch</td>
+            </tr>
+            <tr>
+                <td>DomU</td>
+                <td>Ubuntu 6.06 LTS</td>
+            </tr>
+        </table>
+    <h4 id="2.2.1"> 2.2.1 Network Interfaces, IPs and hostnames </h4>
+    <p>There are six static IPs available for use, two are for the physical ethernet network interface on Dom0 with specified Mac address, four are for DomU virtual machines, listed as below:</p>
+    <p>Note: because the server will be moved to university's computer center, all the IP addresses will change after moving.</p>
+        <table class="spec-table" summary="IPs and hostnames assigned to oolong.">
+        	<caption>Fig3. Network Interface Information</caption>
+            <tr>
+                <th>NIC/DomU</th>
+                <th>IP</th>
+                <th>Hostname</th>
+            </tr>
+            <tr>
+                <td>NIC (mac: 00:19:B9:EB:BE:85)</td>
+                <td>153.1.17.22</td>
+                <td>oolong.uta.fi</td>
+            </tr>
+            <tr>
+                <td>NIC (mac: 00:19:B9:EB:BE:87)</td>
+                <td>153.1.17.26</td>
+                <td>oolong1.uta.fi</td>
+            </tr>
+            <tr>
+                <td>DomU</td>
+                <td>153.1.17.86</td>
+                <td>oolong2.uta.fi</td>
+            </tr>
+            <tr>
+                <td>DomU</td>
+                <td>153.1.17.87</td>
+                <td>oolong3.uta.fi</td>
+            </tr>
+            <tr>
+                <td>DomU</td>
+                <td>153.1.17.88</td>
+                <td>oolong4.uta.fi</td>
+            </tr>
+            <tr>
+                <td>DomU</td>
+                <td>153.1.17.89</td>
+                <td>oolong5.uta.fi</td>
+            </tr>
+        </table>
+    <h2 id="#ch3">Chapter 3: System Installation</h2>
+    <p>This chapter describes the system-level configurations and how to install required operating systems on oolong.</p>
+    <h3 id="3.1">3.1 RAID System</h3>
+    <p>oolong uses RAID 1 (one-to-one mirror) backup, so the actually available HDD space is 143 GB, the other HDD is for mirroring. To modify the RAID configuration, press <strong>Ctrl+R</strong> to enter the PERC 5/i controller utility at booting.</p>
+    <h3 id="3.2">3.2 Debian Etch Installation</h3>
+    <p>To install Debian Etch, download the CD/DVD image from <a href="http://ftp.funet.fi/pub/linux/mirrors/debian-cdimage/">http://ftp.funet.fi/pub/linux/mirrors/debian-cdimage/</a>. No special tweaks are required during the installation process, network card and RAID controller are automatically detected and activated. But the network driver has to be upgraded and the network configuration has to be modified after installation.</p>
+    <h4 id="3.2.1">3.2.1 Network Interface Card Configuration</h4>
+    <p>Dell PE1950 present their onboard network cards as Gb1 and Gb2 in BIOS, but these map to eth1 and eth0 respectively ("backwards") under Linux. This issue is fixed in kernel 2.6.19-rc3 and higher. But the current kernel of oolong is kernel 2.6.18-5, so manually changing the network card configurations is necessary. In our case, the default dhcp configuration will assign IP addresses and Hostnames to each network card as following:</p> 
+        <table class="spec-table">
+        	<caption>Fig4. Ethernet Card Configurations</caption>
+            <tr>
+                <th>Mac address</th>
+                <th>Card name</th>
+                <th>IP</th>
+                <th>Hostname</th>
+            </tr>
+            <tr>
+                <td>00:19:B9:EB:BE:85</td>
+                <td>eth1</td>
+                <td>153.1.17.26</td>
+                <td>oolong.uta.fi</td>
+            </tr>
+            <tr>
+                <td>00:19:B9:EB:BE:87</td>
+                <td>eth0</td>
+                <td>153.1.17.22</td>
+                <td>oolong1.uta.fi</td>
+            </tr>
+        </table>
+    <p>This is different from our expectation: eth0 as oolong.uta.fi and eth1 as oolong1.uta.fi. The solution is to switch the network mac address,  make 00:19:B9:EB:BE:85 become eth0's mac address and 00:19:B9:EB:BE:87 become eth1s'. To change mac address information, edit <strong>/etc/udev/rules.d/z25_persistent-net.rules.</strong> The modified file is as below: </p>
+    <blockquote><pre>
+# This file was automatically generated by the /lib/udev/write_net_rules
+# program, probably run by the persistent-net-generator.rules rules file.
+#
+# You can modify it, as long as you keep each rule on a single line.
+# MAC addresses must be written in lowercase.
+
+# PCI device 0x14e4:0x164c (bnx2)
+SUBSYSTEM=="net", DRIVERS=="?*", ATTRS{address}=="00:19:b9:eb:be:87", NAME="eth1"
+
+# PCI device 0x14e4:0x164c (bnx2)
+SUBSYSTEM=="net", DRIVERS=="?*", ATTRS{address}=="00:19:b9:eb:be:85", NAME="eth0"
+	</pre></blockquote>
+	<p>In this way, we can guarantee that dhcp will assign correct IP to each ethernet network card. <strong>/etc/udev/rules.d/z25_persistent-net.rules</strong> is automatically generated at first time startup, after that, it will be modified if there are new interfaces hardware added to the system, but the existing content will remain the same. So unless you reinstall the system or manually modify the existing content, otherwise, the configuration file will not be changed. More information about <strong>/etc/udev/rules.d/z25_persistent-net.rules</strong> can be found at <a href="http://wiki.debian.org/udev?highlight=%28persistent-net-generator%29">Debian Wiki udev</a>.</p>
+    <h4 id="3.2.2">3.2.2 Add Ethernet Network Card</h4>
+    <p>Only one network card is detected and activated at installation, so we have to manually add and configure another ethernet card. For a detail document on how to configure network on Debian, refer to <a href="http://wiki.debian.org/NetworkConfiguration?highlight=%28interface%29%7C%28network%29%7C%28name%29">Debian Wiki - NetworkConfiguration</a>. The network interface configuration file is <strong>/etc/network/interfaces</strong>, the current content is as following:</p>
+    <blockquote><pre>
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+allow-hotplug eth0
+# iface eth0 inet dhcp
+iface eth0 inet static
+address 153.1.17.22
+netmask 255.255.255.0
+gateway 153.1.17.5
+
+auto eth1
+allow-hotplug eth1
+# iface eth1 inet dhcp
+iface eth1 inet static
+address 153.1.17.26
+netmask 255.255.255.0
+gateway 153.1.17.5
+
+up /sbin/iptables-restore /etc/network/iptable
+    </pre></blockquote>
+    <p>Although as mentioned in 3.2.1 that dhcp works, I personally perfer specifying network configuration information manually, just a double check. Besides the default eth0, eth1 and its configurations are added to the file. The last line <strong>up /sbin/iptables-restore /etc/network/iptable</strong> activates the firewall. After changing <strong>/etc/network/interfaces</strong>, it is required to restart the network to make the new configuration working. To relaunch the network, run <i>/etc/init.d/networking restart</i> with root permission.</p>
+    <h4 id="3.2.3">3.2.3 Upgrade Network Driver</h4>
+    <p>The original Broadcom NetXtreme II network card driver (bnx2 v1.4.44) that comes with Debian Etch can not work properly on Xen, this issue is solved in version 1.5.10c, so the network card driver  has to be upgraded to at least or higher than 1.5.10c. To download the latest driver, visit <a href="http://www.broadcom.com/support/ethernet_nic/netxtremeii.php">http://www.broadcom.com/support/ethernet_nic/netxtremeii.php</a>, or there is a copy of bnx2 1.5.10c driver at <strong>//arnika/laitos$/hyper/Projektit/Gamelab/Server_documents/PE1950</strong>. Refer to the <a href="http://lists.xensource.com/archives/html/xen-users/2007-10/msg00176.html">xensource mailing list</a> for the detail instructions. The complete email content is copied as below:</p>
+    <blockquote><pre>
+I have a new x3655 IBM and whenever the /etc/xen/scripts/network-bridge
+script starts, the ethernet would no longer work.  This post isn't about
+the cause, but the fix.  I did a lot of tcpdumps and Googling, but I'll
+spare you that.  All they do is prove that yes, there is an issue. :)
+
+I tried Debian 4.0 i386/amd64 and Ubuntu 7.04 Server i386/amd64 and they
+all exhibit the problem.
+
+Upgrading the bnx2 driver is the key.  I came to find bnx2 is included
+in the initrd.  Debian comes with 1.4.44 and Ubuntu 1.4.45 of the
+driver.  As of this writing 1.5.10c is the latest from Broadcom and is
+what I ended up using.
+	
+Summary:
+* Install kernel source, make config/prepare the distro's config file
+* Download bnx2 source, compile and install
+* Update initrd
+
+Here are step by step instructions for clean install of Debian 4.0 amd64:
+
+aptitude install linux-source unzip
+cd /usr/src
+tar jxf linux-source-2.6.18.tar.bz2
+ln -s linux-source-2.6.18 linux
+cd linux
+cp /boot/config-2.6.18-5-xen-amd64 ./.config
+make oldconfig (<enter> through all the prompts to take defaults)
+make prepare
+cd /tmp
+wget http://www.broadcom.com/docs/driver_download/NXII/linux-1.5.10c.zip
+unzip linux-1.5.10c.zip
+cp Server/Linux/Driver/bnx2-1.5.10c.tar.gz /usr/src
+cd /usr/src
+tar zxf bnx2-1.5.10c.tar.gz
+cd bnx2-1.5.10c/src
+make
+make install
+mv /boot/initrd.img-2.6.18-5-xen-amd64 \
+/boot/initrd.img-2.6.18-5-xen-amd64.orig
+update-initramfs -k `uname -r` -c
+reboot
+
+Verify:
+zcat /boot/initrd.img-2.6.18-5-xen-amd64.orig|strings|grep "bnx2 v"
+Broadcom NetXtreme II Gigabit Ethernet Driver bnx2 v1.4.44 (August 10, 2006)
+
+zcat /boot/initrd.img-2.6.18-5-xen-amd64|strings|grep "bnx2 v"
+Broadcom NetXtreme II Gigabit Ethernet Driver bnx2 v1.5.10c (May 4, 2007)
+	
+Other keywords: Dell DELL
+
+-- 
+Kris S. Amundson
+Founder, CIO                   GPG Key: D6D39F2C
+OpenSourcery, LLC.             http://www.opensourcery.com/
+	</pre></blockquote>
+    <h3 id="3.3">3.3 Xen Installation</h3>
+    <p>To install Xen, follow the <a href="http://www.howtoforge.com/debian_etch_xen_3.1">The Perfect Xen 3.1.0 Setup For Debian Etch (i386)</a> on Howtoforge. My experience with installing Xen from the <a href="http://www.howtoforge.com/debian_etch_xen_3.1_p2">binary package</a> and from source all went smoothly, so the installation should not be a problem. The major difference between binary package and source is the ability to compile kernel for the virtual system. If you prefer customizing kernels for different virtual systems, you should install Xen from source. That is what I did to oolong. In The Perfect Xen 3.1.0 Setup For Debian Etch (i386), <a href="http://www.howtoforge.com/debian_etch_xen_3.1_p5">Page 5</a> and <a href="http://www.howtoforge.com/debian_etch_xen_3.1_p6">Page 6</a> decribe how to install Xen 3.1 from source step-by-step. Be sure to double check the driver version of the network card after Xen is installed, it must be higher than bnx2 1.5.10c.</p>
+    <p>If you plan to compile a new kernel for virtual system, besides enabling <strong>quota</strong> and <strong>iptables</strong> as modules in the kernel configuration menu (as mentioned in <a href="http://www.howtoforge.com/debian_etch_xen_3.1_p5">Page 5</a>), you also have to enable <strong>SMB</strong> and <strong>CIFS</strong> network file systems support, otherwise, the system can not connect to our network hard disk drive. In the kernel configuration menu, you can find <strong>SMB</strong> and  <strong>CIFS</strong> options at:</p>
+    <blockquote><pre>
+File Systems ---> 
+Network File Systems ---> 
+[M]SMB
+[M]CIFS
+    </pre></blockquote>
+ 	<h2 id="ch4">Chapter 4: Xen Configuration</h2>
+ 	 <p>All Xen-related configuration and scripting files are placed in <strong>/etc/xen</strong>, <strong>xend-config.sxp</strong> is the core Xend configuration file.</p>
+    <h3 id="4.1">4.1 Base system (Dom) Configurations</h3>
+    <p>As a host of all other virtual machines, Dom0 itself does not run any particular services, only OpenSSL server so we can ssh to it. We need to configure the network so that Dom0 can provide network for all DomU and keep itself safe from unknown connections at the same time.</p> A basic introduction to Xen network can be found at <a href="http://wiki.xensource.com/xenwiki/XenNetworking">http://wiki.xensource.com/xenwiki/XenNetworking</a>.
+    <h4 id="4.1.1">4.1.1 Network Configuration</h4>
+    <p>Xen provides two types of networking: bridging and routing, oolong uses bridging. For security reason, Dom0 does not share ethernet network card with DomUs. There are two ethernet network cards on oolong, eth0 is for Dom0, eth1 is for DomUs. The figure is illustrated as following:</p>
+    <div class="image"><img src="network.png" alt="The network configuration of oolong" height="300" width="400" /></div>
+    <p>To achieve above configuration, we do not use the default xend network configuration in xend-config.sxp. Instead, we create our own network bridge script and add it to xend-config.sxp. Open <strong>/etc/xen/xend-config.sxp</strong>, find the line <strong>(network-script oolong-network)</strong>, <strong>oolong-network</strong> is the network bridge script created for our needs, you can replace this script with any other scripts you create for oolong.</p>
+    <p>All xen-related scripts are placed in <strong>/etc/xen/scripts</strong>, in <strong>/etc/xen/scripts</strong>, there is a file called <strong>oolong-network</strong>, the content is very simple:</p>
+    <blockquote><pre>
+dir=$(dirname "$0")
+"$dir/network-bridge" "$@" vifnum=0 netdev=eth1 bridge=xenbr1
+    </pre></blockquote>
+    <p>It merely calls the network-bridge script with vifnum=0 netdev=eth1 bridge=xenbr1 as parameters, then network-bridge will do the magic for us.</p> With those parameters, we specify eth1 as the network interface for DomU, and specify the name of bridge as xenbr1. A detailed example article can be found at <a href="http://www.debian-administration.org/articles/470">http://www.debian-administration.org/articles/470</a>.</p>
+    <h4 id="4.1.2">4.1.2 Firewall Configuration</h4>
+    <p>Besides the firewall settings in the university firewall, there are also firewall running on Dom0. The policy is: Dom0 is only accessible via eth0 (153.1.17.22/oolong.uta.fi), access to Dom0 via eth1 (153.1.17.26/oolong1.uta.fi) is not allowed. It is valid connecting to DomUs from Dom0, but connecting to Dom0 from DomUs is not allowed.</p>
+    <p>By now, only 153.1.17.87/oolong3.uta.fi is open for external http connection requests (port 80 and 443), other IPs are not open to the  network outside our university, so they are only accessible from within the university network.</p>
+    <p>The firewall tool running on Dom0 is iptables, iptables is a firewall tool and is also a command to manage iptables rules in Linux. Use command <i>man iptables</i> to learn how to use iptables. After changing iptables rules, you can save the rules by using <i><a href="http://iptables-tutorial.frozentux.net/iptables-tutorial.html#IPTABLES-SAVE">iptables-save</a></i>. The iptables rules will be saved to <strong>/etc/network/iptable</strong>, and they will be automatically loaded when boot, so that you don't have to set up iptables rules every time. If you plan to change iptables rules, do not change <strong>/etc/network/iptable</strong> directly, instead, you should use <i>iptables</i> command, after you are sure the iptables rules work as expected, use <i>iptables-save</i> to save the rules. Before saving new iptables rules to <strong>/etc/network/iptable</strong>, you should back up the current one. The current iptables rules on oolong is as below:</p>
+    <blockquote><pre>
+# Generated by iptables-save v1.3.6 on Wed Jan 23 17:33:16 2008
+*nat
+:PREROUTING ACCEPT [2660:485548]
+:POSTROUTING ACCEPT [1166:193315]
+:OUTPUT ACCEPT [57:3666]
+COMMIT
+# Completed on Wed Jan 23 17:33:16 2008
+# Generated by iptables-save v1.3.6 on Wed Jan 23 17:33:16 2008
+*filter
+:INPUT DROP [821:130868]
+:FORWARD ACCEPT [72814:100421356]
+:OUTPUT ACCEPT [613:72279]
+-A INPUT -d 153.1.17.22 -i eth0 -j ACCEPT 
+-A INPUT -i lo -j ACCEPT 
+-A INPUT -i eth1 -m state --state RELATED,ESTABLISHED -j ACCEPT 
+COMMIT
+# Completed on Wed Jan 23 17:33:16 2008
+	</pre></blockquote>
+	<p>What those rules do are:</p>
+    <ul>
+        <li>The default INPUT policy is DROP.</li>
+        <li>If the input connection request is received from eth0 and the destination is to 153.1.17.22, the connectio request is accepted.</li>
+        <li>If the input connection request is a reponse to a related or established output connections to eth1, the connection request is accepted.</li>
+        <li>Any input connection requests other than the above two, are dropped by default.</li>
+    </ul>
+    <p>The iptables rules are automatically applied through <strong>/etc/network/interfaces</strong> at booting. To stop this, remove or comment <strong>/sbin/iptables-restore /etc/network/iptable</strong> in <strong>/etc/network/interfaces</strong>.</p>
+    <h3 id="4.2">4.2 Virtual system (DomU) Configurations</h3>
+    <p>xen-tool is used to create DomU images, a global configuration file (<strong>xen-tools.conf</strong>) is places in <strong>/etc/xen-tools/</strong>. Values can be set in this file so they don't need to be specified everytime upon the command line. The command to create a DomU image is <i>xen-create-image</i>, take oolong3.uta.fi for example, the command is:</p>
+    <i>xen-create-image --hostname=oolong3.uta.fi --ip=153.1.17.87 --dist=etch --mirror=http://ftp.fi.debian.org/debian/ --size=30Gb</i>
+    <p>Other parameters required for creating DomU images are specified in <strong>/etc/xen-tools/xen-tools.conf</strong>. You can also overwrite the values by specifying them upon the command line. <i>xen-create-image</i> creates the DomU image and configuration file for every created DomU image.</p>
+   <p>The configuration file of every DomU image are stored at <strong>/etc/xen/*.cfg</strong>. To make the network working, one line has to be modified for every .cfg file. In each .cfg file, there is a block like:</p>
+    <blockquote><pre>
+#
+#  Networking
+#
+vif  = [ 'ip=<your IP>,bridge=xenbr0' ]
+    </pre></blockquote>
+    <p>Make sure the IP address is correct, then change the <strong>bridge=xenbr0</strong> to <strong>bridge=xenbr1</strong>. In our configurations, the name of the bridge is xenbr1 not xenbr0.</p>
+    <p>This table lists the major configuration parameters of every DomU:</p>
+    	<table class="spec-table" summary="DomU configurations">
+    		<caption>Fig5. Virtual System (DomU) Configurations</caption>
+    		<tr>
+    			<th>hostname</th>
+    			<th>ip</th>
+    			<th>dist</th>
+    			<th>mirror</th>
+    			<th>size</th>
+    			<th>memory</th>
+    			<th>swap</th>
+    		</tr>
+    		<tr>
+    			<td>oolong2.uta.fi</td>
+    			<td>153.1.17.86</td>
+    			<td>dapper</td>
+    			<td>http://gb.archive.ubuntu.com/ubuntu/</td>
+    			<td>45Gb</td>
+    			<td>1.5Gb</td>
+    			<td>256Mb</td>
+    		</tr>
+    		<tr>
+    			<td>oolong3.uta.fi</td>
+    			<td>153.1.17.87</td>
+    			<td>etch</td>
+    			<td>http://ftp.fi.debian.org/debian/</td>
+    			<td>30Gb</td>
+    			<td>512Mb</td>
+    			<td>256Mb</td>
+    		</tr>
+    		<tr>
+    			<td>oolong4.uta.fi</td>
+    			<td>153.1.17.88</td>
+    			<td>dapper</td>
+    			<td>http://gb.archive.ubuntu.com/ubuntu/</td>
+    			<td>20Gb</td>
+    			<td>256Mb</td>
+    			<td>256Mb</td>
+    		</tr>
+    	</table>
+    <h2 id="ch5">Chapter 5: oolong2.uta.fi</h2>
+    <p>oolong2.uta.fi hosts the Gamelab's website, the administrator is Jussi Kuittinen.</p>
+    <h2 id="ch6">Chapter 6: oolong3.uta.fi</h2>
+    <p>oolong3.uta.fi hosts the web services related to Gamelab's researches, including a movabletype blog system (http://www.pelitutkimus.fi) and a mediawiki wiki system (http://www.gamescultures.org) so far. This chapter describes the web services running on oolong3.uta.fi, their related configuration, maintance and backup policy.</p>
+    <p>The web services on oolong3.uta.fi are built upon: Apache web server, MySQL database system, Movabletype, and Mediawiki. The versions are listed as below:</p>
+    	<table class="spec-table" summary="Information about softwares installed on oolong3">
+    		<caption>Fig6. Software Information</caption>
+    		<tr>
+    			<th>Software</th>
+    			<th>version</th>
+    		</tr>
+    		<tr>
+    			<td>Apache</td>
+    			<td>2.2.3</td>
+    		</tr>
+    		<tr>
+    			<td>MySQL</td>
+    			<td>5.0</td>
+    		</tr>
+    		<tr>
+    			<td>Movabletype</td>
+    			<td>MTOS 4.1</td>
+    		</tr>
+    		<tr>
+    			<td>Mediawiki</td>
+    			<td>1.11.1</td>
+    		</tr>
+    	</table>
+    <h3 id="6.1">6.1 Database Management</h3>
+    <p>Database management can be done with web interface, the URL is <a href="http://oolong3.uta.fi/phpmyadmin/">http://oolong3.uta.fi/phpmyadmin/</a>. The database name and user name are listed below:</p>
+    <table class="spec-table" summary="username and password information of the database">
+    	<caption>Fig7. Database Credentials</caption>
+   		<tr>
+    		<th>user</th>
+    		<th>database</th>
+    		<th>password</th>
+    	</tr>
+   		<tr>
+    		<td>root</td>
+    		<td>root can access and manipulate all databases</td>
+    		<td></td>
+    	</tr>
+   		<tr>
+    		<td>pelitutkimus</td>
+    		<td>mt</td>
+    		<td>to be filled</td>
+    	</tr>
+   		<tr>
+    		<td>gamescultures</td>
+    		<td>mediawiki</td>
+    		<td>to be filled</td>
+    	</tr>
+   </table>
+    <h3 id="6.2">6.2 Apache Configuration</h3>
+    <p>We use Apache virtual host feature to host different website with different domain names, each website has its own configuration. The configuration files are place at <strong>/etc/apache2/sites-available</strong>, pelitutkimus is for pelitutkimus.fi and gamescultures is for gamescultures.org.</p>
+    <p>Debian has its special directory design for virtual host managment. To add a new website:<br />
+    <ul>
+    	<li>create a virtual host configuration file for that site and put the file (preferably) in <strong>/etc/apache2/sites-available</strong>. </li>
+    	<li>In <strong>/etc/apache2/sites-enable</strong>, create a symbolic link to the created configuration file.</li>
+    	<li>Restart apache, I usually use <i>apache2ctl graceful.</i></li>
+    </ul>
+    </p>
+    <h3 id="6.3">6.3 Backup Policy</h3>
+    <p> The backup directory on oolong3 is <strong>/backup</strong>. There are two backup scripts doing daily backup: <strong>/etc/cron.daily/automysqlbackup </strong>and <strong>~/root/back/back.pl</strong>. <strong>/etc/cron.daily/automysqlbackup</strong> creates daily, weekly and monthly database backup and stores them in <strong>/backup/db</strong>, <strong>~/root/backup/backup.pl</strong> backups <strong>/backup/db</strong>, <strong>/etc/apache2</strong>, <strong>/var/www/pelitutkimus.fi</strong>, and <strong>/var/www/gamescultures.org</strong>, and copies the generated tar.gz file to the network hard disk drive <strong>//arnika/laitos$/hyper/Projektit/oolong3_Backup/</strong> as remote backup.</p>
+    <p> On oolong3, the network hard disk drive arnika is auto mounted at booting to <strong>/mnt/arnika</strong>, where <strong>/mnt/arnika/hyper/Projektit/oolong3_Backup/</strong> is a hidden directory that is only visible to Frans, Mikael and Chienting, any permission changes has to be configured by Mikael. To change the auto mount configuration, edit the file <strong>/etc/fstab</strong> and <strong>/etc/arnikapw</strong>. By now, the username and password used for connecting //arnika is Chienting's username and password, they will have to be changed in the future.</p>
+    <h3 id="6.4">6.4 Pelitutkimus.fi</h3>
+    <p>pelitutkimus.fi is a website providing information about game, game research and game design in Finnish. It is built by <a href="http://www.movabletype.org/">Movable Type Open Source 4.1 (MTOS4.1)</a>, with <a href="http://www.mollio.org/">Mollio</a> as its design template.</p>
+    <p>The configuration file of Movable Type is <strong>/var/www/pelitutkimus.fi/mt/mt-config.cgi</strong>, it is automatically generated when installing Movable Type, it can also be manually modified to further meet our requirement, just remember to backup before making any changes to the file. Be sure to keep this file safe, because it also contains the database username and password used by Movable Type. Information on all configuration options can be found at <a href="http://www.movabletype.org/documentation/config">http://www.movabletype.org/documentation/config</a>. To manage pelitutkimus.fi, connect to <a href="http://www.pelitutkimus.fi/mt/mt.cgi">log in page</a>, the administrator username and password are: admin / (to be filled).</p>
+    <p>The Movable Type User and Administration Manual is stored at //arnika/hyper/Projektit/Gamelab/Server_documents/MovableType, more documentation can be found at <a href="http://www.movabletype.org/documentation/">movabletype.org/documentation</a>.</p>
+    <h3 id="6.5">6.5 Gamescultures.org</h3>
+    <p>gamescultures.fi is a website for creating knowledge about games cultures. It is built by <a href="http://www.mediawiki.org/wiki/MediaWiki">Mediawiki 1.11.1</a>. The configuration file of Mediawiki is <strong>/var/www/gamescultures.org/wiki/LocalSettings.php</strong>, it is automatically generated when installing Mediawiki, it can also be manually modified to further meet our requirement, just remember to backup before making any changes to the file. Be sure to keep this file safe, because it also contains the database username and password used by Mediawiki. Information on all configuration options can be found at  <a href="http://www.mediawiki.org/wiki/Manual:Configuration_settings">http://www.mediawiki.org/wiki/Manual:Configuration_settings</a>. To manage gamescultures.org, connecto to <a href="http://www.gamescultures.org/index.php?title=Special:Userlogin&returnto=Main_Page">log in page</a>, the administrator username and password are: admin / (to be filled).</p>
+    <p>In addition to the basic Mediawiki, there are extra plugins installed and mofications made to improve the functions.</p>
+    <p>Short URL turns the original long URL http://www.gamescultures.org/index.php/Main_Page to a shorter one, http://www.gamescultures.org/Main_Page. To achieve this, follow the <a href="http://www.mediawiki.org/wiki/Manual:Short_URL/Page_title_--_Working_method_with_mediawiki-1.11">instructions</a> on mediawiki website. For oolong3, there are two files to modify, <strong>/etc/apache2/sites-available/gamescultures</strong> and <strong>/var/www/gamescultures.org/wiki/LocalSettings.php</strong>. In <strong>/etc/apache2/sites-available/gamescultures</strong>, added the following content: </p>
+    <blockquote><pre>
+RewriteEngine On
+# RewriteBase /wiki
+
+RewriteCond %{REQUEST_URI} !^/(stylesheets|images|skins)/
+RewriteCond %{REQUEST_URI} !^/(redirect|texvc|index).php
+RewriteCond %{REQUEST_URI} !^/error/(40(1|3|4)|500).html
+RewriteCond %{REQUEST_URI} !^/favicon.ico
+RewriteCond %{REQUEST_URI} !^/robots.txt
+
+# Rewrite http://wiki.domain.tld/article properly, this is the main rule
+RewriteRule ^/(.*)$ /index.php/?title=$1 [L,QSA]    
+    </pre></blockquote>
+    <p>Then added the following content to <strong>/var/www/gamescultures.org/wiki/LocalSettings.php</strong>:</p>
+    <blockquote><pre>
+## For more information on customizing the URLs please see:
+## http://www.mediawiki.org/wiki/Manual:Short_URL
+## For short URL
+## short urls
+$wgArticlePath      = "/$1";
+$wgUsePathInfo = false;
+    </pre></blockquote>
+    <p>File upload allows users to upload files to gamescultures.org. To enable this feature, add or modify the following options in <strong>/var/www/gamescultures.org/wiki/LocalSettings.php</strong>:</p>
+    <blockquote><pre>
+## To enable image uploads, make sure the 'images' directory
+## is writable, then set this to true:
+$wgEnableUploads       = false;
+    </pre></blockquote>
+    <p>If you want to have a preview of the uploaded image, you have to first install <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a>, then add or modify the folloing options in <strong>/var/www/gamescultures.org/wiki/LocalSettings.php</strong>:</p>
+    <blockquote><pre>
+$wgUseImageMagick = true;
+$wgImageMagickConvertCommand = "/usr/bin/convert";    
+    </pre></blockquote>
+    <p><a href="http://en.wikipedia.org/wiki/User:MarkS/Extra_edit_buttons">Extra Edit buttons</a> help users edit content on gamescultures.org, so they don't have to memorise too many complex wikipedia syntax. There are more than one way to do it, the way gamescultures.org does it to add <a href="http://en.wikipedia.org/wiki/User:MarkS/extraeditbuttons.js">the javascript of extra edit buttons</a> to <a href="http://www.gamescultures.org/MediaWiki:Common.js">http://www.gamescultures.org/MediaWiki:Common.js</a>. In order to do so, you must login as an administrator.</p>
+    <h3 id="6.6">6.6 Domain Name management</h3>
+    <p>The registrar of both pelitutkimus.fi and Gamescultures.org is <a href="http://www.nebula.fi/index.php">Nebula</a>, any domain name related changes (ex. @ record, CNAME record, MX record) is done via Nebula customer service emai: yritystuki@nebula.fi. </p>
+    <p>Both domain names use <a href="http://www.google.com/a/help/intl/en/index.html">Google applications for you domain</a> to provide email service. To manage Google applications for you domain service, login from  <a href="http://www.google.com/a/help/intl/en/index.html">Google applications for you domain</a> page, usernames and passwords are as below:</p>
+    	<table class="spec-table">
+    		<caption>Fig8. Account information of Google applications for you domain</caption>
+    		<tr>
+    			<th>Domain</th>
+    			<th>Username</th>
+    			<th>Password</th>
+    		</tr>
+    		<tr>
+    			<td>pelitutkimus.fi</td>
+    			<td>admin@pelitutkimus.fi</td>
+    			<td>Frans knows it</td>
+    		</tr>
+    		<tr>
+    			<td>gamescultures.org</td>
+    			<td>admin@gamescultures.org</td>
+    			<td>To be filled</td>
+    		</tr>
+    	</table>
+    <h2 id="ch7">Chapter 7: oolong4.uta.fi</h2>
+    <p>oolong4.uta.fi hosts the web services related to the Social Media research group, it is a mediawiki wiki site at this moment. The system administrator is Jani.</p>
+</div> <!-- end of content -->
+</body>

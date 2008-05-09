@@ -1,0 +1,50 @@
+// This jQuery
+jQuery(':header')
+    .each(function() {
+        var num = Number(this.tagName.replace(/H/,''));
+        var indent = "";
+        for (var i=1;i<num;i++){indent+="  "}
+        console.log(indent + jQuery(this).text());
+    })
+
+// Produces this:
+Administrator Guide to oolong.uta.fi
+  Chapter 1: Introduction
+    Chapter 2: Server Specifications
+      2.1 Hardware Specifications
+      2.2 System Architecture
+        2.2.1 Network Interfaces, IPs and hostnames
+  Chapter 3: System Installation
+    3.1 RAID System
+    3.2 Debian Etch Installation
+      3.2.1 Network Interface Card Configuration
+      3.2.2 Add Ethernet Network Card
+      3.2.3 Upgrade Network Driver
+    3.3 Xen Installation
+  Chapter 4: Xen Configuration
+    4.1 Base system (Dom) Configurations
+      4.1.1 Network Configuration
+      4.1.2 Firewall Configuration
+    4.2 Virtual system (DomU) Configurations
+  Chapter 5: oolong2.uta.fi
+  Chapter 6: oolong3.uta.fi
+    6.1 Database Management
+    6.2 Apache Configuration
+    6.3 Backup Policy
+    6.4 Pelitutkimus.fi
+    6.5 Gamescultures.org
+    6.6 Domain Name management
+  Chapter 7: oolong4.uta.fi
+
+# This pQuery:
+use pQuery;
+pQuery('content.html')                      # Load document
+    ->find(':header')                       # Find all headers
+    ->each(sub {                            # For each header
+        my $num = $_->tagName;              # Get tag (H1,H2...)
+        $num =~ s/H//;                      # Strip off 'H'
+        var $indent = "  " x ($num - 1);    # Make indent
+        print $indent . pQuery($_).text;    # Print TOC line
+    })
+
+# Should work but doesn't yet... I'll fix pQuery for you.

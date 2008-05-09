@@ -1,0 +1,1 @@
+../../../src/ingy/*/lib/JS/Foo/Bar.pm

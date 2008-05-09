@@ -1,0 +1,7 @@
+The following should be treated as a paragraph, not as a sublist:
+
+** Hello world.
+*** This is not a sublist.  This is part of the previous paragraph, and, "Hello world" should be bolded.
+* Now this would be the start of a list.
+
+Fini.

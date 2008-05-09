@@ -1,0 +1,125 @@
+jQuery( expression, context )           Returns: jQuery
+jQuery( html )                          Returns: jQuery
+jQuery( elements )                      Returns: jQuery
+jQuery( callback )                      Returns: jQuery
+
+each( callback )                        Returns: jQuery                 Execute a function within the context of every matched element.
+size( )                                 Returns: Number                 The number of elements in the jQuery object.
+length  Returns:                        Number                          The number of elements in the jQuery object.
+eq( position )                          Returns: jQuery                 Reduce the set of matched elements to a single element.
+get( )                                  Returns: Array<Element>         Access all matched DOM elements.
+get( index )                            Returns: Element                Access a single matched DOM element at a specified index in the matched set.
+index( subject )                        Returns: Number                 Searches every matched element for the object and returns the index of the element, if found, starting with zero.
+
+jQuery.fn.extend( object )              Returns: jQuery                 Extends the jQuery element set to provide new methods (used to make a typical jQuery plugin).
+jQuery.extend( object )                 Returns: jQuery                 Extends the jQuery object itself.
+
+jQuery.noConflict( )                    Returns: jQuery                 Run this function to give control of the $ variable back to whichever library first implemented it.
+jQuery.noConflict( extreme )            Returns: jQuery                 Revert control of both the $ and jQuery variables to their original owners. Use with discretion.
+
+attr( name )                            Returns: Object                 Access a property on the first matched element. This method makes it easy to retrieve a property value from the first matched element. If the element does not have an attribute with such a name, undefined is returned.
+attr( properties )                      Returns: jQuery                 Set a key/value object as properties to all matched elements.
+attr( key, value )                      Returns: jQuery                 Set a single property to a value, on all matched elements.
+attr( key, fn )                         Returns: jQuery                 Set a single property to a computed value, on all matched elements.
+removeAttr( name )                      Returns: jQuery                 Remove an attribute from each of the matched elements.
+
+addClass( class )                       Returns: jQuery                 Adds the specified class(es) to each of the set of matched elements.
+hasClass( class )                       Returns: Boolean                Returns true if the specified class is present on at least one of the set of matched elements.
+removeClass( class )                    Returns: jQuery                 Removes all or the specified class(es) from the set of matched elements.
+toggleClass( class )                    Returns: jQuery                 Adds the specified class if it is not present, removes the specified class if it is present.
+
+html( )                                 Returns: String                 Get the html contents (innerHTML) of the first matched element. This property is not available on XML documents (although it will work for XHTML documents).
+html( val )                             Returns: jQuery                 Set the html contents of every matched element. This property is not available on XML documents (although it will work for XHTML documents).
+
+text( )                                 Returns: String                 Get the combined text contents of all matched elements.
+text( val )                             Returns: jQuery                 Set the text contents of all matched elements.
+
+val( )                                  Returns: String, Array          Get the content of the value attribute of the first matched element.
+val( val )                              Returns: jQuery                 Set the value attribute of every matched element.
+val( val )                              Returns: jQuery                 Checks, or selects, all the radio buttons, checkboxes, and select options that match the set of values.
+
+eq( index )                             Returns: jQuery                 Reduce the set of matched elements to a single element.
+hasClass( class )                       Returns: Boolean                Checks the current selection against a class and returns true, if at least one element of the selection has the given class.
+filter( expr )                          Returns: jQuery                 Removes all elements from the set of matched elements that do not match the specified expression(s).
+filter( fn )                            Returns: jQuery                 Removes all elements from the set of matched elements that does not match the specified function.
+is( expr )                              Returns: Boolean                Checks the current selection against an expression and returns true, if at least one element of the selection fits the given expression.
+map( callback )                         Returns: jQuery                 Translate a set of elements in the jQuery object into another set of values in an array (which may, or may not, be elements).
+not( expr )                             Returns: jQuery                 Removes elements matching the specified expression from the set of matched elements.
+slice( start, end )                     Returns: jQuery                 Selects a subset of the matched elements.
+
+add( expr )                             Returns: jQuery                 Adds more elements, matched by the given expression, to the set of matched elements.
+children( expr )                        Returns: jQuery                 Get a set of elements containing all of the unique immediate children of each of the matched set of elements.
+contents( )                             Returns: jQuery                 Find all the child nodes inside the matched elements (including text nodes), or the content document, if the element is an iframe.
+find( expr )                            Returns: jQuery                 Searches for all elements that match the specified expression. This method is a good way to find additional descendant elements with which to process.
+next( expr )                            Returns: jQuery                 Get a set of elements containing the unique next siblings of each of the given set of elements.
+nextAll( expr )                         Returns: jQuery                 Find all sibling elements after the current element.
+parent( expr )                          Returns: jQuery                 Get a set of elements containing the unique parents of the matched set of elements.
+parents( expr )                         Returns: jQuery                 Get a set of elements containing the unique ancestors of the matched set of elements (except for the root element).
+
+prev( expr )                            Returns: jQuery                 Get a set of elements containing the unique previous siblings of each of the matched set of elements.
+prevAll( expr )                         Returns: jQuery                 Find all sibling elements before the current element.
+siblings( expr )                        Returns: jQuery                 Get a set of elements containing all of the unique siblings of each of the matched set of elements.
+
+andSelf( )                              Returns: jQuery                 Add the previous selection to the current selection.
+end( )                                  Returns: jQuery                 Revert the most recent 'destructive' operation, changing the set of matched elements to its previous state (right before the destructive operation).
+
+html( )                                 Returns: String                 Get the html contents (innerHTML) of the first matched element. This property is not available on XML documents (although it will work for XHTML documents).
+html( val )                             Returns: jQuery                 Set the html contents of every matched element. This property is not available on XML documents (although it will work for XHTML documents).
+text( )                                 Returns: String                 Get the combined text contents of all matched elements.
+text( val )                             Returns: jQuery                 Set the text contents of all matched elements.
+
+append( content )                       Returns: jQuery                 Append content to the inside of every matched element.
+appendTo( content )                     Returns: jQuery                 Append all of the matched elements to another, specified, set of elements.
+prepend( content )                      Returns: jQuery                 Prepend content to the inside of every matched element.
+prependTo( content )                    Returns: jQuery                 Prepend all of the matched elements to another, specified, set of elements.
+
+after( content )                        Returns: jQuery                 Insert content after each of the matched elements.
+before( content )                       Returns: jQuery                 Insert content before each of the matched elements.
+insertAfter( content )                  Returns: jQuery                 Insert all of the matched elements after another, specified, set of elements.
+insertBefore( content )                 Returns: jQuery                 Insert all of the matched elements before another, specified, set of elements.
+
+wrap( html )                            Returns: jQuery                 Wrap all matched elements with a structure of other elements.
+wrap( elem )                            Returns: jQuery                 Wrap all matched elements with a structure of other elements.
+wrapAll( html )                         Returns: jQuery                 Wrap all the elements in the matched set into a single wrapper element.
+wrapAll( elem )                         Returns: jQuery                 Wrap all the elements in the matched set into a single wrapper element.
+wrapInner( html )                       Returns: jQuery                 Wrap the inner child contents of each matched element (including text nodes) with an HTML structure.
+wrapInner( elem )                       Returns: jQuery                 Wrap the inner child contents of each matched element (including text nodes) with a DOM element.
+
+replaceWith( content )                  Returns: jQuery                 Replaces all matched elements with the specified HTML or DOM elements.
+replaceAll( selector )                  Returns: jQuery                 Replaces the elements matched by the specified selector with the matched elements.
+
+empty( )                                Returns: jQuery                 Remove all child nodes from the set of matched elements.
+remove( expr )                          Returns: jQuery                 Removes all matched elements from the DOM.
+
+clone( )                                Returns: jQuery                 Clone matched DOM Elements and select the clones.
+clone( true )                           Returns: jQuery                 Clone matched DOM Elements, and all their event handlers, and select the clones.
+
+jQuery.ajax( options )                  Returns: XMLHttpRequest         Load a remote page using an HTTP request.
+load( url, data, callback )             Returns: jQuery                 Load HTML from a remote file and inject it into the DOM.
+jQuery.get( url, data, callback )       Returns: XMLHttpRequest         Load a remote page using an HTTP GET request.
+jQuery.getJSON( url, data, callback )   Returns: XMLHttpRequest         Load JSON data using an HTTP GET request.
+jQuery.getScript( url, callback )       Returns: XMLHttpRequest         Loads, and executes, a local JavaScript file using an HTTP GET request.
+jQuery.post( url, data, callback, type ) Returns: XMLHttpRequest        Load a remote page using an HTTP POST request.
+
+ajaxComplete( callback )                Returns: jQuery                 Attach a function to be executed whenever an AJAX request completes. This is an Ajax Event.
+ajaxError( callback )                   Returns: jQuery                 Attach a function to be executed whenever an AJAX request fails. This is an Ajax Event.
+ajaxSend( callback )                    Returns: jQuery                 Attach a function to be executed before an AJAX request is sent. This is an Ajax Event.
+ajaxStart( callback )                   Returns: jQuery                 Attach a function to be executed whenever an AJAX request begins and there is none already active. This is an Ajax Event.
+ajaxStop( callback )                    Returns: jQuery                 Attach a function to be executed whenever all AJAX requests have ended. This is an Ajax Event.
+ajaxSuccess( callback )                 Returns: jQuery                 Attach a function to be executed whenever an AJAX request completes successfully. This is an Ajax Event.
+
+jQuery.ajaxSetup( options )             Returns:                        Setup global settings for AJAX requests.
+serialize( )                            Returns: jQuery                 Serializes a set of input elements into a string of data. This will serialize all given elements.
+serializeArray( )                       Returns: jQuery                 Serializes all forms and form elements (like the .serialize() method) but returns a JSON data structure for you to work with.
+
+jQuery.each( object, callback )         Returns: Object                 A generic iterator function, which can be used to seamlessly iterate over both objects and arrays.
+jQuery.extend( target, object1, objectN ) Returns: Object               Extend one object with one or more others, returning the original, modified, object.
+jQuery.grep( array, callback, invert )  Returns: Array                  Filter items out of an array, by using a filter function.
+jQuery.makeArray( obj )                 Returns: Array                  Turns an array-like object into a true array.
+jQuery.map( array, callback )           Returns: Array                  Translate all items in an array to another array of items.
+jQuery.inArray( value, array )          Returns: Number                 Determine the index of the first parameter in the Array (-1 if not found).
+jQuery.unique( array )                  Returns: Array                  Remove all duplicate elements from an array of elements.
+
+jQuery.isFunction( obj )                Returns: Boolean                Determine if the parameter passed is a function.
+
+jQuery.trim( str )                      Returns: String                 Remove the whitespace from the beginning and end of a string.

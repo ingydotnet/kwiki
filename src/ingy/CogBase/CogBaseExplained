@@ -1,0 +1,42 @@
+i: hola
+m: hey man
+i: do you know dick1 about python?
+i know a little, but not as much as zac.
+i: yeah but he's an asshole ￼
+i: and he's offline
+m: there's that
+i: I want a program that compiles a subset of python to perl
+i: wondering how I might go about that
+i: honestly I want a new language X that compiles to many languages
+m: thankfully, python has a very regular syntax that is easy to parse.
+i: but Python seems good enough to be X
+i: good point
+m: so maybe just find some parser generator
+m: there are several python implementations. the 1st step would just be to find some existing parser of python that you can heist.
+i: yeah. thanks. I'll probably want something in C so I don't have a language dependency
+i: longer term I am thinking of making a database where the schema has some programming language in it. also the database is typed and you can ask it for a perl class to represent a node type
+i: so to make it work in all the P languages, I would need an X
+i: seems like it could be of common good though
+i: like writing cross lingo modules, etc
+m: might be easiest to get the python source code and extract its parser
+i don't get the database thing.
+i: that's ok ￼
+m: fy. explain it!
+i: heh ok
+i: so I am writing this wiki like database abstraction...
+i: nodes have types
+i: types have schemas (or definitions)
+i: from the schema you could easily generate a Perl module to encapsulate it
+i: so easily, that the db could gen it for you
+m: ah, ok. i think i dig it.
+i: (fyi schemas are nodes too, but built in)
+i: also types can be cast
+i: so you can say give me that "deepDarkPoetry" node cast as a "funnyQuip" node but you might need a little code in the schema to pull off some casts or some integrity checks
+i: etc
+m: naturally
+i: so if the DB can gen perl py and ruby code classes for any type, it needs an X
+i: that's it more or less
+i: I should copy this chat somewhere
+i: I never was able to explain it before ￼
+m: sometimes you just need to be slapped around a little.
+i: you don't have ingy to kick around anymore...
