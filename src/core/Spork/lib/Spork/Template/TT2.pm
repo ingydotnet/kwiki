@@ -1,5 +1,5 @@
 package Spork::Template::TT2;
-use Spoon::Template::TT2 -Base;
+use Spoon::Template -Base;
 use mixin 'Spoon::Installer';
 
 sub plugins { {} }
