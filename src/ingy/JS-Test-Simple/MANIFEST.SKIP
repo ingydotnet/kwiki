@@ -7,5 +7,5 @@
 ^Test\.?Simple
 \.svn
 ^__Build
-^ToDo
 ^Makefile$
+^pm_to_blib

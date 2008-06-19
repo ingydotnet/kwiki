@@ -5,6 +5,7 @@ doc/pod/Test/Harness/Browser.pod
 doc/pod/Test/Harness/Director.pod
 doc/pod/Test/More.pod
 doc/pod/Test/Simple.pod
+HowToCPAN
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
@@ -13,12 +14,13 @@ inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
-lib/Test/Builder.js
-lib/Test/Harness.js
-lib/Test/Harness/Browser.js
-lib/Test/Harness/Director.js
-lib/Test/More.js
-lib/Test/Simple.js
+lib/JS/Test/Builder.js
+lib/JS/Test/Harness.js
+lib/JS/Test/Harness/Browser.js
+lib/JS/Test/Harness/Director.js
+lib/JS/Test/More.js
+lib/JS/Test/Simple.js
+lib/JS/Test/Simple.pm
 Makefile.PL
 MANIFEST			This list of files
 META.json
