@@ -2,7 +2,7 @@ package WikiText::Socialtext;
 use base 'WikiText';
 
 use 5.006.001;
-our $VERSION = '0.09';
+our $VERSION = '0.11';
 
 1;
 
@@ -18,7 +18,7 @@ WikiText::Socialtext - Socialtext WikiText Module
     
 =head1 DESCRIPTION
 
-This module can convert Socialtext markup to HTML.`
+This module can convert Socialtext markup to HTML.
 
 =head1 AUTHOR
 

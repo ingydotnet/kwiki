@@ -28,7 +28,15 @@ sub create_grammar {
         qw(waflphrase asis wikilink a im mail tt b i del)
     ];
     my $all_blocks = [
-        qw(pre wafl_block hr hx waflparagraph ul ol blockquote table p empty)
+        qw(
+            pre wafl_block
+            hr hx
+            waflparagraph
+            ul ol
+            blockquote table
+            p empty
+            else
+        )
     ];
 
     return {
@@ -71,6 +79,15 @@ sub create_grammar {
             filter => sub { chomp },
         },
 
+        else => {
+            match => qr/^(.*)\n/,
+            phrases => [],
+            filter => sub {
+                my $node = shift;
+                $node->{type} = 'p';
+            },
+        },
+
         pre => {
             match => qr/^(?m:^\.pre\ *\n)((?:.*\n)*?)(?m:^\.pre\ *\n)(?:\s*\n)?/,
         },
@@ -98,7 +115,7 @@ sub create_grammar {
         },
 
         hx => {
-            match => qr/^(\^+) +(.*?)(\s+=+)?\s*?\n+/,
+            match => qr/^(\^+) *(.*?)(\s+=+)?\s*?\n+/,
             filter => sub {
                 my $node = shift;
                 $node->{type} = 'h' . length($node->{1});
@@ -107,9 +124,9 @@ sub create_grammar {
         },
 
         ul => {
-            match => re_list('\*'),
+            match => re_list('[\*\-\+]'),
             blocks => [qw(ul ol subl li)],
-            filter => sub { s/^[\*\#] *//mg },
+            filter => sub { s/^[\*\-\+\#] *//mg },
         }, 
 
         ol => {
@@ -301,7 +318,7 @@ sub re_list {
     return qr/^(            # Block must start at beginning
                             # Capture everything in $1
         ^$bullet+\ .*\n     # Line starting with one or more bullet
-        (?:[\*\#]+\ .*\n)*  # Lines starting with '*' or '#'
+        (?:[\*\-\+\#]+\ .*\n)*  # Lines starting with '*' or '#'
     )(?:\s*\n)?/x,          # Eat trailing lines
 }
 
