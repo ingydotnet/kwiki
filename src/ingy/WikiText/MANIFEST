@@ -18,6 +18,7 @@ inc/Test/More.pm
 lib/WikiText.pm
 lib/WikiText/Creole.pm
 lib/WikiText/DokuWiki.pm
+lib/WikiText/Emitter.pm
 lib/WikiText/HTML.pm
 lib/WikiText/HTML/Emitter.pm
 lib/WikiText/Kwiki.pm
@@ -31,7 +32,6 @@ lib/WikiText/PurpleWiki.pm
 lib/WikiText/Receiver.pm
 lib/WikiText/Sample.pm
 lib/WikiText/Sample/Parser.pm
-lib/WikiText/Socialtext.pm
 lib/WikiText/TiddlyWiki.pm
 lib/WikiText/Trac.pm
 lib/WikiText/TWiki.pm
@@ -45,6 +45,7 @@ MANIFEST			This list of files
 META.yml
 README
 t/data/sample
+t/no-final-newline.t
 t/reduction-error.t
 t/sample_to_html.t
 t/sample_to_wikibyte.t

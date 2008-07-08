@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 use 5.006.001;
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 sub new {
     my $class = shift;
@@ -26,6 +26,8 @@ sub to_html {
 }
 
 1;
+
+=encoding utf8
 
 =head1 NAME
 

@@ -10,6 +10,8 @@ sub new {
 sub parse {
     my $self = shift;
     $self->{input} ||= shift;
+    $self->{input} .= "\n"
+        if substr($self->{input}, -1) ne "\n";
     $self->{grammar} ||= $self->set_grammar;
     $self->{receiver} ||= $self->set_receiver;
     $self->{receiver}->init;

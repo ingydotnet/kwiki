@@ -1,4 +1,8 @@
 ---
+version: 0.09
+date:    Tue Jul  8 15:58:12 PDT 2008
+changes: Assert newline at the end of wikitext input.
+---
 version: 0.08
 date:    Thu Feb 14 22:24:18 PST 2008
 changes: Account for multiple text events in a row.
