@@ -178,6 +178,7 @@ sub create_grammar {
         tr => {
             match => qr/^((?m:^\|.*?\|(?:\n| \n(?=\|)|  +\n)))/s,
             blocks => ['td'],
+            filter => sub { s/\s+\z// },
         },
 
         # XXX Need to support blocks in TD

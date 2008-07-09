@@ -2,7 +2,7 @@ package WikiText::Socialtext;
 use base 'WikiText';
 
 use 5.006.001;
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 1;
 

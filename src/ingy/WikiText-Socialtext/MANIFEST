@@ -22,5 +22,6 @@ MANIFEST			This list of files
 META.yml
 README
 t/parser.t
+t/table.t
 t/TestWikiText.pm
 t/to_html.t
