@@ -7,4 +7,6 @@ use_test_base;
 
 install_script  'js-cpan';
 
+clean_files     'META.yml';
+
 WriteAll;

@@ -4,7 +4,7 @@ use warnings;
 use File::Find;
 use 5.005.003;
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 sub new {
     my $class = shift;
@@ -30,12 +30,15 @@ sub list_all {
     my $found = {};
     find {
         wanted => sub {
-            return unless /\.js$/;
+            return unless -f $_;
+            return if /\.(?:pm|pod|packlist)$/;
+            return if /^\./;
             my $dir = $File::Find::dir;
             $dir =~ s{.*/JS\b(/|$)(.*)}{$2} or return;
             my $module = $dir ? "$dir/$_" : $_;
-            $module =~ s/[\/\\]+/./g;
-            $module =~ s/\.js$//;
+            if ($module =~ s/\.js$//) {
+                $module =~ s/[\/\\]+/./g;
+            }
             return if $found->{$module}++;
             print $module, "\n";
         },
@@ -45,16 +48,25 @@ sub list_all {
 sub find_js_path {
     my $self = shift;
     my $module = shift;
-    $module =~ s/(::|\.)/\//g;
+    unless ($module =~ /\//) {
+        $module =~ s/(?:\.)/\//g;
+    }
+    $module =~ s/(?:::)/\//g;
     $module =~ s/\*$/.*/;
-    $module .= '.js';
 
     my $found = {};
     my @module_path;
     find {
         wanted => sub {
             my $path = $File::Find::name;
-            return unless $path =~ /$module(\.gz)?$/i;
+            while (1) {
+                return if -d $_;
+                return if $path =~ /$module\.pm$/i;
+                return if $path =~ /$module\.pod$/i;
+                last if $path =~ /$module$/i;
+                last if $path =~ /$module\.js(?:\.gz)?$/i;
+                return;
+            }
             return if $found->{$path}++;
             push @module_path, $path;
         },

@@ -1,4 +1,9 @@
 ---
+version: 0.15
+date:    Tue Aug 19 23:34:54 PDT 2008
+changes:
+- Allow random files to be installed as well.
+---
 version: 0.14
 date:    Tue Mar 11 21:20:57 EET 2008
 changes:
