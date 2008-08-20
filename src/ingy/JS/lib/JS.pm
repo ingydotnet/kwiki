@@ -2,7 +2,7 @@ package JS;
 use strict;
 use warnings;
 use File::Find;
-use 5.005.003;
+use 5.008;
 
 our $VERSION = '0.15';
 
