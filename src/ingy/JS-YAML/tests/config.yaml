@@ -1,6 +1,4 @@
 index_title: YAML Testing
 import_libs:
-  - lib/Subclass.js
-  - lib/Test/Base.js
-  - ../Test/YAML.js
-  - ../../lib/JS/YAML.js
+  - lib/Test/YAML.js
+  - ../lib/JS/YAML.js
