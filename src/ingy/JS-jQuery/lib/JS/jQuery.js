@@ -1,1 +1,1 @@
-jquery-1.2.3.js
+jquery-1.2.6.js

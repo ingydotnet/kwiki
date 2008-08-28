@@ -7,10 +7,10 @@ inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
-lib/JS/jquery-1.2.3.js
-lib/JS/jquery-1.2.3.min.js
-lib/JS/jquery-1.2.3.min.js.gz
-lib/JS/jquery-1.2.3.pack.js
+lib/JS/jquery-1.2.6.js
+lib/JS/jquery-1.2.6.min.js
+lib/JS/jquery-1.2.6.min.js.gz
+lib/JS/jquery-1.2.6.pack.js
 lib/JS/jQuery.js
 lib/JS/jQuery.pm
 Makefile.PL
