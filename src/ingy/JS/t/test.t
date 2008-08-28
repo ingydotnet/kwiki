@@ -1,6 +1,3 @@
-# use XXX;
-# use YAML;
-# use YAML::Dumper;
 use t::TestJS tests => 4;
 
 filters {

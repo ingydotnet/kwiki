@@ -1,6 +1,7 @@
 Changes
 examples/JS-Foo-Bar/Changes
 examples/JS-Foo-Bar/lib/JS/Foo/Bar.js
+examples/JS-Foo-Bar/lib/JS/Foo/Bar.pm
 examples/JS-Foo-Bar/lib/JS/Foo/Bar.pod
 examples/JS-Foo-Bar/Makefile.PL
 examples/JS-Foo-Bar/MANIFEST
@@ -40,3 +41,4 @@ t/testlib/JS/Foo/Bar-pack.js
 t/testlib/JS/Foo/Bar.js
 t/testlib/JS/Foo/Bar.pm
 t/testlib/JS/Foo/Bar.pod
+t/testlib/JS/Foo/bin/script

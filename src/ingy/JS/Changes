@@ -1,4 +1,14 @@
 ---
+version: 0.17
+date:    Wed Aug 27 23:14:48 PDT 2008
+changes:
+- Fixed a weird bug Stevan found with JS-JSON
+---
+version: 0.16
+date:    Tue Aug 19 23:34:54 PDT 2008
+changes:
+- Forgot to add new test file to MANIFEST in 0.15
+---
 version: 0.15
 date:    Tue Aug 19 23:34:54 PDT 2008
 changes:

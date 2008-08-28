@@ -4,7 +4,7 @@ use warnings;
 use File::Find;
 use 5.008;
 
-our $VERSION = '0.15';
+our $VERSION = '0.17';
 
 sub new {
     my $class = shift;
@@ -61,10 +61,10 @@ sub find_js_path {
             my $path = $File::Find::name;
             while (1) {
                 return if -d $_;
-                return if $path =~ /$module\.pm$/i;
-                return if $path =~ /$module\.pod$/i;
-                last if $path =~ /$module$/i;
-                last if $path =~ /$module\.js(?:\.gz)?$/i;
+                return if $path =~ /[\\\/]$module\.pm$/i;
+                return if $path =~ /[\\\/]$module\.pod$/i;
+                last if $path =~ /[\\\/]$module$/i;
+                last if $path =~ /[\\\/]$module\.js(?:\.gz)?$/i;
                 return;
             }
             return if $found->{$path}++;
@@ -134,10 +134,9 @@ not affect Perl in any other way.
 JS.pm is a module to explain and help maintain the JavaScript modules
 installed from CPAN.
 
-Some module distributions will have both Perl and JavaScript
-components. Others will have only JavaScript components. All JavaScript
-modules and JavaScript-only distributions should have a top-level-namespace
-of 'JS'.
+Some module distributions will have both Perl and JavaScript components.
+Others will have only JavaScript components. All JavaScript modules and
+JavaScript-only distributions should have a top-level-namespace of 'JS'.
 
 =head1 JS MODULE AUTHOR HOWTO
 
