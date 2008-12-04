@@ -1,1 +1,0 @@
-../../src/ingy/YAML/lib/YAML/Types.pm

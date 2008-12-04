@@ -1,1 +1,0 @@
-../../../src/ingy/*/lib/Document/Parser/Creole.pm

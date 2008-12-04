@@ -1,1 +1,0 @@
-../../../src/ingy/*/lib/Document/AST/Wikibyte.pm
