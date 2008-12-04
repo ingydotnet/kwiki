@@ -1,1 +1,0 @@
-use Test::Base -Base;
