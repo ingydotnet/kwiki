@@ -7,6 +7,7 @@ INGY_PATHS = \
 	IO/All \
 	JS \
 	JS/Foo \
+	JS/Test \
 	Module \
 	Module/Compile \
 	Module/Install \
@@ -17,8 +18,7 @@ INGY_PATHS = \
 	Perldoc/Emitter \
 	Perldoc/Parser \
 	Script \
-	Test \
-	Test/Base \
+	Vroom \
 	WikiText \
 	WikiText/Creole \
 	WikiText/HTML \
@@ -26,10 +26,6 @@ INGY_PATHS = \
 	WikiText/Socialtext \
 	WikiText/WikiByte \
 	WikiText/Wikrad \
-	YAML \
-	YAML/Dumper \
-	YAML/Loader \
-	YAML2 \
 	pQuery \
 
 INGY_LEVEL_1 = \
@@ -40,12 +36,9 @@ INGY_LEVEL_1 = \
 	WikiByte.pm \
 	WikiText.pm \
 	XXX.pm \
-	YAML2.pm \
-	YAML2.pm \
-	YAML.pm \
+	YYY.pm \
 
 INGY_LEVEL_2 = \
-	Class/Field.pm \
 	Class/Field.pm \
 	Document/Parser.pm \
 	Document/Receiver.pm \
@@ -63,7 +56,7 @@ INGY_LEVEL_2 = \
 	Perl/Folder.pm \
 	pQuery/DOM.pm \
 	Script/Hater.pm \
-	Test/Base.pm \
+	Vroom/Vroom.pm \
 	WikiText/Creole.pm \
 	WikiText/Creole.pm \
 	WikiText/DokuWiki.pm \
@@ -88,17 +81,6 @@ INGY_LEVEL_2 = \
 	WikiText/Wikiwyg.pm \
 	WikiText/Socialtext.pm \
 	WikiText/Wikrad.pm \
-	YAML2/Parser.pm \
-	YAML2/Parser.pm \
-	Test/YAML.pm \
-	YAML/Base.pm \
-	YAML/Dumper.pm \
-	YAML/Error.pm \
-	YAML/Loader.pm \
-	YAML/Marshall.pm \
-	YAML/Node.pm \
-	YAML/Tag.pm \
-	YAML/Types.pm \
 
 INGY_LEVEL_3 = \
 	Document/AST/Tree.pm \
@@ -117,6 +99,7 @@ INGY_LEVEL_3 = \
 	IO/All/String.pm \
 	IO/All/Temp.pm \
 	JS/Foo/Bar.pm \
+	JS/Test/Simple.pm \
 	Module/Compile/Opt.pm \
 	Module/Install/PMC.pm \
 	Module/Make/Base.pm \
@@ -127,16 +110,12 @@ INGY_LEVEL_3 = \
 	Perldoc/Emitter/Pod.pm \
 	Perldoc/Parser/Kwid.pm \
 	Perldoc/Parser/Perldoc.pm \
-	Module/Install/TestBase.pm \
-	Test/Base/Filter.pm \
 	WikiText/Creole/Parser.pm \
 	WikiText/HTML/Emitter.pm \
 	WikiText/Sample/Parser.pm \
 	WikiText/WikiByte/Emitter.pm \
 	WikiText/Socialtext/Parser.pm \
 	WikiText/Wikrad/Emitter.pm \
-	YAML/Dumper/Base.pm \
-	YAML/Loader/Base.pm \
 
 INGY_LEVEL_4 = \
 	Module/Install/Admin/PMC.pm \
