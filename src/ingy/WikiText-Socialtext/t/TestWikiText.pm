@@ -1,1 +1,0 @@
-../../WikiText/t/TestWikiText.pm
